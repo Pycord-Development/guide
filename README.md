@@ -1,2 +1,2 @@
-# guide
-The official Pycord guide.
+# Guide
+The official Guide for Pycord.
