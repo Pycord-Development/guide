@@ -30,12 +30,12 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'pycord.guide'
+project = 'guide.pycord.dev'
 copyright = '2022, Pycord Developement'
 author = 'Pycord Developement'
 
 # The full version, including alpha/beta/rc tags
-release = '2.0.0'
+release = '2.0.0-b1'
 
 
 # -- General configuration ---------------------------------------------------
