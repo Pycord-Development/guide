@@ -1,2 +1,2 @@
-Slash Commands
-==============
+# Slash Commands
+
