@@ -23,7 +23,7 @@ bot = discord.Bot() # Create a bot object
 
 
 class View(discord.ui.View): # Create a class called View that subclasses discord.ui.View
-    @discord.ui.button(label="Click me!", style=discord.ButtonStyle.primary, emoji='😎') # Create a button with the label "😎 Click me!" with color Blurple
+    @discord.ui.button(label="Click me!", style=discord.ButtonStyle.primary, emoji="😎") # Create a button with the label "😎 Click me!" with color Blurple
     async def button_callback(self, button, interaction):
         await interaction.response.send_message("You clicked the button!") # Send a message when the button is clicked
 
@@ -91,13 +91,13 @@ class MyView(discord.ui.View):
 
 ```python
 class MyView(discord.ui.View):
-    @discord.ui.button(label='A button', style=discord.ButtonStyle.primary, disabled=True) # pass `disabled=True` to make the button pre-disabled
+    @discord.ui.button(label="A button", style=discord.ButtonStyle.primary, disabled=True) # pass `disabled=True` to make the button pre-disabled
     async def button_callback(self, button, interaction):
         ...
 
 @bot.command()
 async def button(ctx):
-    await ctx.send('Press the button!', view=MyView())
+    await ctx.send("Press the button!", view=MyView())
 ```
 
 ### Disabling Buttons on Press
@@ -106,10 +106,10 @@ async def button(ctx):
 
 ```python
 class MyView(discord.ui.View):
-    @discord.ui.button(label='A button', style=discord.ButtonStyle.primary)
+    @discord.ui.button(label="A button", style=discord.ButtonStyle.primary)
     async def button_callback(self, button, interaction):
         button.disabled = True # set button.disabled to True to disable the button
-        button.label = 'No more pressing!' # change the button's label to something else
+        button.label = "No more pressing!" # change the button's label to something else
         await interaction.response.edit_message(view=self) # edit the message's view
 ```
 
@@ -117,7 +117,7 @@ class MyView(discord.ui.View):
 
 ```python
 class MyView(discord.ui.View):
-        @discord.ui.button(emoji='😀', label="Button 1", style=discord.ButtonStyle.primary)
+        @discord.ui.button(emoji="😀", label="Button 1", style=discord.ButtonStyle.primary)
         async def button_callback(self, button, interaction):
             for child in self.children: # loop through all the children of the view
                 child.disabled = True # set the button to disabled
@@ -137,13 +137,13 @@ Sometimes, you want to have a button that is disabled after a certain amount of 
 ```python
 
 class MyView(discord.ui.View):
-    @discord.ui.button(label='A button', style=discord.ButtonStyle.primary, emoji='😎')
+    @discord.ui.button(label="A button", style=discord.ButtonStyle.primary, emoji="😎")
     async def button_callback(self, button, interaction):
-        await interaction.response.send_message('Button was pressed', ephemeral=True)
+        await interaction.response.send_message("Button was pressed", ephemeral=True)
 
 @bot.command()
 async def button(ctx):
-    await ctx.send('Press the button!', view=MyView(timeout=30))
+    await ctx.send("Press the button!", view=MyView(timeout=30))
 ```
 
 As you can see in the last line, we set a timeout of 30 seconds on the view. If you are reusing the view and the timeout will stay the same, you could also define the timeout in the view itself.
@@ -155,7 +155,7 @@ class MyView(discord.ui.View):
 
     @discord.ui.button(style=discord.ButtonStyle.primary)
     async def callback(self, button, interaction):
-        await interaction.response.send_message('Button was pressed', ephemeral=True)
+        await interaction.response.send_message("Button was pressed", ephemeral=True)
 ```
 
 However, in both of the above examples, the view will simply stop working. The button will not be disabled, but it will not respond any more. If someone tries to use it, it will simply show "Interaction Failed". 
@@ -174,7 +174,7 @@ class MyView(discord.ui.View):
 
     @discord.ui.button(style=discord.ButtonStyle.primary)
     async def callback(self, button, interaction):
-        await interaction.response.send_message('Button was pressed', ephemeral=True)
+        await interaction.response.send_message("Button was pressed", ephemeral=True)
 ```
 
 Here, we loop through all the children of the view (buttons and dropdowns in the view) and disable them. Then, we edit the message to show that the timeout was reached.
@@ -198,13 +198,13 @@ class MyView(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None) # timeout of the view must be set to None
 
-    @discord.ui.button(label='A button', custom_id="button-1", style=discord.ButtonStyle.primary, emoji='😎') # the button has a custom_id set
+    @discord.ui.button(label="A button", custom_id="button-1", style=discord.ButtonStyle.primary, emoji="😎") # the button has a custom_id set
     async def button_callback(self, button, interaction):
-        await interaction.response.send_message('Button was pressed', ephemeral=True)
+        await interaction.response.send_message("Button was pressed", ephemeral=True)
 
 @bot.command()
 async def button(ctx):
-    await ctx.send(f'Press the button! View persistence status: {MyView.is_persistent(MyView())}', view=MyView())
+    await ctx.send(f"Press the button! View persistence status: {MyView.is_persistent(MyView())}", view=MyView())
 ```
 
 ## FAQ
@@ -223,13 +223,13 @@ No. As a Discord limitation, you can only have one view per message.
 
 ### Why are buttons so confusing?
 
-Buttons cannot be simple like commands. This system makes them flexible, object-oriented, and does't limit your imagination. There are loads of different ways you can use views and buttons.
+Buttons cannot be simple like commands. This system makes them flexible, object-oriented, and does"t limit your imagination. There are loads of different ways you can use views and buttons.
 
 You could create a view with `view = discord.ui.View()` and create classes for each button instead. These button classes can be added to the view with `view.add_item(MyButton())`. If you are creating a link button that opens a a website on press, you could use the system shown below.
 
 ```python
 view = discord.ui.View()
-view.add_item(discord.ui.Button(label='Go to website', url='https://pycord.dev/', style=discord.ButtonStyle.url))
+view.add_item(discord.ui.Button(label="Go to website", url="https://pycord.dev/", style=discord.ButtonStyle.url))
 ```
 
 The point being, buttons aren't hard to use if you know Python. We recommend learning [Object Oriented Programming with Python](#oop).
