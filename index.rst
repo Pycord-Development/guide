@@ -18,5 +18,6 @@ TocTree
 -------
 
 .. toctree::
+    :maxdepth: 1
 
-    ...
+    guide/Interactions/buttons.md
