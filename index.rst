@@ -2,17 +2,17 @@ Guide
 =====
 Welcome to the official Pycord guide!
 
-... TODO: More detail, etc
+.. TODO: More detail, etc
 
 Getting Started
 ---------------
 
-... TODO: This
+.. TODO: This
 
 Advanced Users
 --------------
 
-... TODO: this
+.. TODO: this
 
 TocTree
 -------
