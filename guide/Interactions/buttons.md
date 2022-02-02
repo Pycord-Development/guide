@@ -234,7 +234,7 @@ view.add_item(discord.ui.Button(label='Go to website', url='https://pycord.dev/'
 
 The point being, buttons aren't hard to use if you know Python. We recommend learning [Object Oriented Programming with Python](#oop).
 
-### <p id="oop">What is OOP? What is subclassing?</p>
+### <h3 id="oop">What is OOP? What is subclassing?</h3>
 
 OOP is a programming paradigm that allows you to create objects that have their own properties and methods. Almost everything in python is an object or a class. `discord.Embed` is a class, `discord.ui.View` is a class. When you use ```view = discord.ui.View()``` to create a view, you are actually creating an object of type `discord.ui.View`.
 
