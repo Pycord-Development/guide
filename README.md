@@ -6,8 +6,8 @@ The official Guide for Pycord.
 ## Windows
 to build on windows just click on the `build_windows.sh` file.
 
-## Linux
-to build on linux just type `build_linux.sh` or `sh build_linux`
+## Unix Based Systems
+to build on linux just type `build_unix.sh` or `sh build_unix`
 
 ## After
 this should generate raw html which you can open in any browser you want.
