@@ -68,6 +68,8 @@ async def stop_recording(ctx):
         await ctx.delete()  # and delete
     else:
         await ctx.respond("I am currently not recording here.")  # respond with this if we aren't recording.
+    
+bot.run("token")
 ```
 and now you are done!
 You have implemented voice receiving into your bot, congrats! most people never get here so it is quite a achivement.
