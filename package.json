@@ -1,7 +1,7 @@
 {
   "name": "guide",
-  "version": "0.0.1",
-  "description": "Pycord documentation",
+  "version": "0.0.2",
+  "description": "Imagine a place.. where you can learn how to add more features to your Pycord bot",
   "main": "index.js",
   "authors": {
     "name": "Matteu",
