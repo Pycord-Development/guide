@@ -1,0 +1,119 @@
+@use '~@matteusan/sentro' with ($prefix: 'pyc', $context: 'theme');
+@use 'helpers';
+
+:root {
+  color-scheme: dark;
+  @include sentro.token-add(
+    $blurple: (
+      'light': #909aff,
+      'default': #5865f2,
+      'dark': #2f3bbe,
+      'ink': #ffffff
+    ),
+    $surface: (
+      'light': #33373a,
+      'default': #23272a,
+      'dark': #17181a,
+      'ink': #ffffff
+    ),
+    $error: (
+      'default': #d93333,
+      'ink': #ffffff
+    ),
+    $warning: (
+      'default': #ffa012,
+      'ink': #000000
+    ),
+    $success: (
+      'default': #1ea33c,
+      'ink': #ffffff
+    ),
+    $radius: (
+      'small': 0.3rem,
+      'medium': 0.5rem,
+      'large': 0.7rem
+    ),
+    $global: (
+      'family': ('Outfit', sans-serif),
+      'weight': 300,
+    ),
+    $title: (
+      'family': ('Saira', monospace),
+      'weight': 700
+    ),
+    $subtitle: (
+      'family': ('Outfit', sans-serif),
+      'weight': 700,
+    ),
+  );
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  box-sizing: inherit;
+  
+  font-family: sentro.token-get('global-family');
+  font-weight: sentro.token-get('global-weight');
+  
+  &::before,
+  &::after {
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    box-sizing: inherit;
+  }
+}
+
+h1,
+h2,
+h3 {
+  font-family: sentro.token-get('title-family');
+  font-weight: sentro.token-get('title-weight');
+}
+
+h4,
+h5,
+h6 {
+  font-family: sentro.token-get('subtitle-family');
+  font-weight: sentro.token-get('subtitle-weight');
+}
+
+a {
+  color: sentro.token-get('blurple');
+  
+  &:hover {
+    color: sentro.token-get('blurple-light');
+  }
+}
+
+code {
+  font-family: 'Fira Code', monospace;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  font-size: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: sentro.token-get('surface-dark');
+  color: sentro.token-get('surface-ink');
+}
+
+.content-wrap {
+  width: calc(100% - 30px);
+  max-width: 1077px;
+  margin: 0 auto;
+  padding: #{sentro.px-to-rem(81px)} 0 1.5rem 0;
+  
+  &--home-page {
+    width: calc(100% - 30px);
+    max-width: 1077px;
+    margin: 0 auto;
+    padding: 2rem 0 1.5rem 0;
+  }
+}

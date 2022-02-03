@@ -1,0 +1,14 @@
+@use 'sass:map';
+@use '~@matteusan/sentro';
+
+@include sentro.breakpoint-config((
+  'small': 320px,
+  'medium': 640px,
+  'large': 870px
+));
+
+@mixin breakpoint($breakpoint, $context: 'min') {
+  @include sentro.breakpoint-create($breakpoint, $context) {
+    @content;
+  }
+}

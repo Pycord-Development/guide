@@ -1,0 +1,22 @@
+{
+  "name": "guide",
+  "version": "0.0.1",
+  "description": "Pycord documentation",
+  "main": "index.js",
+  "authors": {
+    "name": "Matteu",
+    "email": "matteugt@gmail.com"
+  },
+  "repository": "guide/guide",
+  "scripts": {
+    "dev": "vuepress dev src",
+    "build": "vuepress build src"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@matteusan/sentro": "^0.1.20",
+    "sass": "^1.49.7",
+    "sass-loader": "^12.4.0",
+    "vuepress": "^1.5.3"
+  }
+}
