@@ -1,2 +1,0 @@
-# Slash Commands
-
