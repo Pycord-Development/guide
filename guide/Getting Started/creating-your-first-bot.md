@@ -17,7 +17,7 @@ Just like how you needed to sign up to Discord to get started, we need to get yo
 ## Inviting the bot
 Now, lets get the bot added to some servers. Go to the <button class="greybutton">OAuth2</button> tab in the left pane, and select `bot` and `applications.commands` as the scope.
 
-The `applications.command`s scope allows the bot to use Slash Commands, which you may want to have.
+The `applications.commands` scope allows the bot to use Slash Commands, which you may want to have.
 
 Next, we choose what permissions the bot will have. You can select them. For now, lets give your bot the Administrator permission, meaning the bot will have all the permissions.
 Once you select the permissions, click on copy to get the bot invite link.
