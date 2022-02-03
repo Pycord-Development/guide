@@ -39,7 +39,7 @@ it should give the following output:
 <DiscordMessages>
     <DiscordMessage :bot="true" author="Guide Bot" avatar="red">
         <template #interactions>
-            <DiscordInteraction author="Guide Man" avatar="green" :command="true">ping</DiscordInteraction>
+            <DiscordInteraction author="Guide Man" avatar="green" :command="true">button</DiscordInteraction>
         </template>
         This is a button!
         <template #actions>
