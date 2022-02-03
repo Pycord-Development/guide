@@ -1,13 +1,13 @@
 # Buttons
 
-On 26 May 2021, Discord added a new interaction system called buttons. Instead of reactions, bots could not send buttons and users could use this system to interact with bots. This opened up a whole new world of possibilities for bots. Soon after, developers made calculators, polls, games like blackjack, uno and even minecraft!
+On 26 May 2021, Discord added a new interaction system called buttons. Instead of reactions, bots could now send buttons and users could use this system to interact with bots. This opened up a whole new world of possibilities for bots. Soon after, developers made calculators, polls, games like blackjack, uno and even minecraft!
 Buttons provided a clear, easy to use interface for interacting with bots.
 
 So, let's see how we can add buttons to our bot!
 
 ## Concept
 
-Buttons weren't the only update to this user interface system in Discord. Discord also added Dropdowns, and even more new features are coming! 
+Buttons weren't the only update to this user interface system in Discord. Discord also added Dropdowns, and even more features are coming! 
 
 These UI elements reside in a "view". A view can have 5 rows, each row having 5 slots. Each button takes up one slot, and a dropdown takes up all 5 slots of a row. This means that a maximum of 25 buttons can be added to a view. Each message can have just one view.
 
@@ -57,7 +57,7 @@ This is the basic syntax of creating a button. What you create with it is up to 
 
 Check out the [`discord.ButtonStyle`](https://docs.pycord.dev/en/master/api.html#discord.ButtonStyle) class for more information.
 
-<img src="https://discord.com/assets/7bb017ce52cfd6575e21c058feb3883b.png" id="button-styles-img">
+![Different Button Styles](button-styles.png)
 
 You can set a buttons style by specifying the `style` argument in the [`discord.ui.button`](https://docs.pycord.dev/en/master/api.html#discord.ui.button) decorator.
 
@@ -135,7 +135,6 @@ class MyView(discord.ui.View):
 Sometimes, you want to have a button that is disabled after a certain amount of time. This can be used to create a "one-time" button, or to restrict a button to a certain amount of time. This is where timeouts come in.
 
 ```python
-
 class MyView(discord.ui.View):
     @discord.ui.button(label="A button", style=discord.ButtonStyle.primary, emoji="😎")
     async def button_callback(self, button, interaction):
@@ -185,7 +184,7 @@ Sometimes, instead of a button that is disabled after a certain amount of time, 
 
 Normally, when the bot goes offline, all the buttons stop working. You will be able to see the buttons, but nothing will happen when you press them. This is a problem if you are trying to create, say, a self-role system with buttons. This is where persistent views come in.
 
-Persistent views work forever. When the bot goes offline, the buttons will stop working, but once the bot is back online, they start working again. 
+Persistent views work forever. When the bot goes offline, the buttons will stop working till the bot is online again, but once the bot is back online, they start working again. 
 
 In a Persistent View, the timeout must be set to `None` and all the children in the view much have a `custom_id` attribute set.
 
@@ -233,8 +232,7 @@ view.add_item(discord.ui.Button(label="Go to website", url="https://pycord.dev/"
 ```
 
 The point being, buttons aren't hard to use if you know Python. We recommend learning [Object Oriented Programming with Python](#oop).
-
-### <h3 id="oop">What is OOP? What is subclassing?</h3>
+### <e id="oop">What is OOP? What is subclassing?</e>
 
 OOP is a programming paradigm that allows you to create objects that have their own properties and methods. Almost everything in python is an object or a class. `discord.Embed` is a class, `discord.ui.View` is a class. When you use ```view = discord.ui.View()``` to create a view, you are actually creating an object of type `discord.ui.View`.
 
