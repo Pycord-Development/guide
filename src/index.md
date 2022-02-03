@@ -1,7 +1,7 @@
 ---
 home: true
 heroImage: https://v1.vuepress.vuejs.org/hero.png
-tagline: Pycord documentation
+tagline: Imagine a place... where you can learn how to add more features to your Pycord bot
 actionText: Quick Start →
 actionLink: /guide/
 features:
