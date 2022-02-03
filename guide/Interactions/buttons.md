@@ -222,7 +222,7 @@ No. As a Discord limitation, you can only have one view per message.
 
 ### Why are buttons so confusing?
 
-Buttons cannot be simple like commands. This system makes them flexible, object-oriented, and does"t limit your imagination. There are loads of different ways you can use views and buttons.
+Buttons cannot be simple like commands. This system makes them flexible, object-oriented, and doesn't limit your imagination. There are loads of different ways you can use views and buttons.
 
 You could create a view with `view = discord.ui.View()` and create classes for each button instead. These button classes can be added to the view with `view.add_item(MyButton())`. If you are creating a link button that opens a a website on press, you could use the system shown below.
 
