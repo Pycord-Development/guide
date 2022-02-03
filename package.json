@@ -14,6 +14,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@discord-message-components/vue": "^0.2.1",
     "@matteusan/sentro": "^0.1.20",
     "sass": "^1.49.7",
     "sass-loader": "^12.4.0",
