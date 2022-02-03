@@ -4,7 +4,7 @@ Welcome to the official Pycord Guide! This guide will help you get started with 
 
 ## What is Pycord?
 
-Pycord is a modern, easy to use, feature-rich, and async ready API wrapper for Discord, written in Python. Pycord is a maintained fork of `discord.py <https://github.com/Rapptz/discord.py>`_ that helps you create Discord bots with Python.
+Pycord is a modern, easy to use, feature-rich, and async ready API wrapper for Discord, written in Python. Pycord is a maintained fork of [discord.py](https://github.com/Rapptz/discord.py) that helps you create Discord bots with Python.
 
 
 ## Before you begin
