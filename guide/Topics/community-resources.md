@@ -6,7 +6,7 @@ have it be plugins, bot's or utilites, this is all you.
 
 | name      | type    | open-source | github(if any)                                                                  | website(if any)                          |
 |-----------|---------|-------------|---------------------------------------------------------------------------------|------------------------------------------|
-| RoboCord  | Utility | YES         | [pycord-development/robocord](https://github.com/Pycord-Development/RoboCord)   | [https://pycord.dev](pycord.dev)         |
+| RoboCord  | Utility | YES         | [pycord-development/robocord](https://github.com/Pycord-Development/RoboCord)   | [pycord.dev](https://pycord.dev)         |
 
 ## Plug-ins
 
