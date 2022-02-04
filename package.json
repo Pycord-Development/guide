@@ -1,6 +1,6 @@
 {
-  "name": "guide",
-  "version": "0.0.2",
+  "name": "pycord.dev-guide",
+  "version": "2.0.0-b2",
   "description": "Imagine a place... where you can learn how to add more features to your Pycord bot",
   "main": "index.js",
   "authors": {
@@ -8,16 +8,5 @@
     "email": "matteugt@gmail.com"
   },
   "repository": "guide/guide",
-  "scripts": {
-    "dev": "vuepress dev src",
-    "build": "vuepress build src"
-  },
-  "license": "MIT",
-  "devDependencies": {
-    "@discord-message-components/vue": "^0.2.1",
-    "@matteusan/sentro": "^0.1.20",
-    "sass": "^1.49.7",
-    "sass-loader": "^12.4.0",
-    "vuepress": "^1.5.3"
-  }
+  "license": "MIT"
 }

@@ -1,0 +1,3 @@
+class module {};
+
+export = module;
