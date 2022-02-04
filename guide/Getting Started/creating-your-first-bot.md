@@ -134,7 +134,7 @@ Now, you are done with creating your first bot. This is the basic structure of a
 
 ### How do I make prefixed commands?
 
-You can read [this amazing page that doesn't exist](ext/commands.md) and idk how it is gonna be linked but it should (hopefully) be there by the time you read this page.
+You can read [this amazing page that doesn't exist](../Extensions/Commands/index.md) and idk how it is gonna be linked but it should (hopefully) be there by the time you read this page.
 
 <style>
     .blurplebutton{
