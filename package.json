@@ -2,7 +2,7 @@
   "name": "pycord.dev-guide",
   "version": "2.0.0-b2",
   "description": "Imagine a place... where you can learn how to add more features to your Pycord bot",
-  "main": "index.js",
+  "main": "index.ts",
   "authors": {
     "name": "Matteu",
     "email": "matteugt@gmail.com"
