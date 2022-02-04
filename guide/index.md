@@ -1,6 +1,7 @@
 # Pycord Guide
 
-Welcome to the official Pycord Guide! This guide will help you get started with Pycord. This guide will show you how to get your bot running from scratch, how to integrate advanced features into your bot, and how to make full use of the Discord API.
+Imagine a place... where you can learn how to make a bot, learn the inner techniques of pycord, 
+and learn how to add more features to your pycord bot and learn advanced features without feeling so advanced.
 
 ## What is Pycord?
 
