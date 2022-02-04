@@ -1,0 +1,99 @@
+@use '~@matteusan/sentro';
+
+$img-size: 100px;
+
+@mixin init() {
+  .pyc-user-card__section {
+    margin-bottom: 2rem;
+    
+    .pyc-user-card {
+      width: 100%;
+      padding: 1rem;
+      background: sentro.token-get('surface');
+      border-radius: sentro.token-get('radius-medium');
+      display: flex;
+      flex-direction: column;
+      @include sentro.elevation-apply(3);
+      
+      .pyc-user-card__wrap {
+        display: grid;
+        grid-template-columns: $img-size 1fr;
+        grid-gap: 0.7rem;
+        
+        .pyc-user-card__img {
+          width: $img-size;
+          height: $img-size;
+          position: relative;
+          display: grid;
+          place-items: center;
+          overflow: hidden;
+          border-radius: 50%;
+          border: 2px solid sentro.token-get('blurple');
+          background-color: sentro.token-get('blurple'); // Prevents gap between image and border
+          user-select: none;
+          @include sentro.prefix(transition, all 0.1s ease);
+          
+          &:hover {
+            border-color: sentro.token-get('blurple-light');
+            background-color: sentro.token-get('blurple-light');
+          }
+          
+          img {
+            z-index: 1;
+          }
+        }
+        
+        .pyc-user-card__info {
+          .pyc-user-card__name {
+            font-size: sentro.px-to-rem(20px);
+          }
+          
+          .pyc-user-card__role {
+            font-size: sentro.px-to-rem(14px);
+          }
+          
+          .pyc-user-card__quote {
+            margin: 0.5rem 0;
+            font-size: sentro.px-to-rem(12px);
+            white-space: pre-line;
+            
+            &::before {
+              content: open-quote;
+            }
+            
+            &::after {
+              content: close-quote;
+            }
+          }
+        }
+      }
+      
+      .pyc-user-card__links {
+        margin-top: auto;
+        
+        .pyc-user-card__links__wrap {
+          width: 100%;
+          display: inline-block;
+          margin-top: 0.7rem;
+          float: bottom;
+          
+          > * + * {
+            margin-left: 0.5rem;
+          }
+          
+          .pyc-button {
+            max-width: calc(calc(100% - 0.5rem) / 2);
+          }
+          
+          .pyc-user-card__link {
+            @include sentro.prefix(transition, all 0.1s linear);
+            
+            &:hover {
+              color: sentro.token-get('blurple-light');
+            }
+          }
+        }
+      }
+    }
+  }
+}

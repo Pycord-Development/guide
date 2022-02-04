@@ -1,0 +1,196 @@
+@use '~@matteusan/sentro' with ($prefix: 'pyc', $context: 'theme');
+@use 'helpers';
+
+@use 'modules/pyc-button';
+@use 'modules/pyc-hero';
+@use 'modules/pyc-icon';
+@use 'modules/pyc-user-card';
+@use 'modules/pyc-title-bar';
+
+@import url('https://fonts.googleapis.com/css2?family=Saira:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;700&display=swap');
+
+:root {
+  color-scheme: dark;
+  @include sentro.token-add(
+    $blurple: (
+      'light': #909aff,
+      'default': #5865f2,
+      'dark': #2f3bbe,
+      'ink': #fff
+    ),
+    $surface: (
+      'light': #33373a,
+      'default': #23272a,
+      'dark': #17181a,
+      'ink': #fff
+    ),
+    $error: (
+      'default': #d93333,
+      'ink': #fff
+    ),
+    $warning: (
+      'default': #ffa012,
+      'ink': #000
+    ),
+    $success: (
+      'default': #1ea33c,
+      'ink': #fff
+    ),
+    $radius: (
+      'small': 0.3rem,
+      'medium': 0.5rem,
+      'large': 0.7rem
+    ),
+    $global: (
+      'family': ('Outfit', sans-serif),
+      'weight': 300,
+    ),
+    $title: (
+      'family': ('Saira', monospace),
+      'weight': 700
+    ),
+    $subtitle: (
+      'family': ('Outfit', sans-serif),
+      'weight': 700,
+    ),
+  );
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  box-sizing: inherit;
+  
+  font-family: sentro.token-get('global-family');
+  font-weight: sentro.token-get('global-weight');
+  
+  &::before,
+  &::after {
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    box-sizing: inherit;
+  }
+}
+
+h1,
+h2,
+h3 {
+  font-family: sentro.token-get('title-family');
+  font-weight: sentro.token-get('title-weight');
+}
+
+h4,
+h5,
+h6 {
+  font-family: sentro.token-get('subtitle-family');
+  font-weight: sentro.token-get('subtitle-weight');
+}
+
+a {
+  color: sentro.token-get('blurple');
+  
+  &:hover {
+    color: sentro.token-get('blurple-light');
+  }
+}
+
+code {
+  font-family: 'Fira Code', monospace;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  font-size: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: sentro.token-get('surface-dark');
+  color: sentro.token-get('surface-ink');
+}
+
+#__next {
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+
+.content-wrap {
+  width: calc(100% - 30px);
+  max-width: 1077px;
+  margin: 0 auto;
+  padding: #{sentro.px-to-rem(81px)} 0 1.5rem 0;
+  
+  &--home-page {
+    width: calc(100% - 30px);
+    max-width: 1077px;
+    margin: 0 auto;
+    padding: 2rem 0 1.5rem 0;
+  }
+}
+
+.features {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  
+  .feature {
+    margin: 0 0.7rem;
+    color: rgba(#b4b4b4, 80%);
+    cursor: pointer;
+    border-bottom: 3px solid rgba(0 0 0 / 0);
+    @include sentro.prefix(transition, all 0.1s ease);
+    
+    &.active {
+      color: #fff;
+      border-color: #fff;
+    }
+    
+    &:hover,
+    &:focus {
+      color: #fff
+    }
+  }
+}
+
+.call-to-action {
+  height: 25vh;
+  display: grid;
+  place-items: center;
+  margin: 2.3rem 0;
+  text-align: center;
+  
+  .call-to-action__buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 1rem;
+  
+  @include helpers.breakpoint('medium') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @include helpers.breakpoint('large') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@include pyc-button.init();
+@include pyc-hero.init();
+@include pyc-icon.init();
+@include pyc-user-card.init();
+@include pyc-title-bar.init();

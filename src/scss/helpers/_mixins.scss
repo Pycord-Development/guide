@@ -1,0 +1,23 @@
+@use 'sass:map';
+
+$breakpoints: (
+  'small': 320px,
+  'medium': 640px,
+  'large': 870px
+);
+
+@mixin breakpoint($breakpoint, $context: 'min') {
+  @media (#{$context}-width: _contextualize-breakpoint($breakpoint, $context)) {
+    @content;
+  }
+}
+
+@function _contextualize-breakpoint($breakpoint, $context) {
+  @if $context == 'min' {
+    @return map.get($breakpoints, $breakpoint);
+  } @else if $context == 'max' {
+    @return map.get($breakpoints, $breakpoint);
+  } @else {
+    @error 'Invalid breakpoint context: #{$context}! Please choose from the following valid contexts: min, max';
+  }
+}

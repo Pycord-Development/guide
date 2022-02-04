@@ -1,0 +1,31 @@
+@use '~@matteusan/sentro';
+
+@mixin init() {
+  .pyc-title-bar {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    
+    > * + * {
+      margin-left: 0.5rem;
+    }
+    
+    .pyc-title-bar__icon {
+      display: grid;
+      place-items: center;
+      font-size: sentro.px-to-rem(30px);
+      color: sentro.token-get('blurple');
+      user-select: none;
+      
+      > svg {
+        width: sentro.px-to-rem(30px);
+        height: sentro.px-to-rem(30px);
+      }
+    }
+    
+    .pyc-title-bar__title {
+      font-size: sentro.px-to-rem(28px);
+      line-height: sentro.px-to-rem(50px);
+    }
+  }
+}

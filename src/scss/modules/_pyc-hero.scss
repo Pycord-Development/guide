@@ -1,0 +1,78 @@
+@use '~@matteusan/sentro';
+@use '../helpers';
+
+@mixin init() {
+  .pyc-hero {
+    min-height: 47vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 1rem 3rem 1rem;
+    background: linear-gradient(25deg, #{sentro.token-get('blurple-dark')} 0%, #{sentro.token-get('blurple-light')} 100%);
+    color: sentro.token-get('blurple-ink');
+    
+    .pyc-hero__wrap {
+      display: grid;
+      place-items: center;
+      width: calc(100% - 40px);
+      max-width: 1077px;
+      margin: 0 auto;
+      
+      img {
+        width: 100px;
+        height: auto;
+        margin-bottom: 0.7rem;
+        user-select: none;
+      }
+      
+      h1 {
+        text-align: center;
+        font-size: clamp(#{sentro.px-to-rem(28px)}, 10vw, #{sentro.px-to-rem(34px)});
+      }
+      
+      .pyc-hero__subtitle {
+        text-align: center;
+        font-size: clamp(#{sentro.px-to-rem(16px)}, 5.3vw, #{sentro.px-to-rem(18px)});
+        font-weight: 300;
+        font-family: sentro.token-get('pyc-theme-subtitle-family');
+      }
+      
+      .pyc-hero__actions {
+        margin-top: 1rem;
+        
+        .pyc-code-block {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0.8rem;
+          background-color: sentro.token-get('surface');
+          color: sentro.token-get('surface-ink');
+          border-radius: sentro.token-get('radius-small');
+          user-select: text;
+          
+          code {
+            font-size: sentro.px-to-rem(16px);
+            font-family: 'Source Code Pro', monospace;
+            white-space: nowrap;
+            
+            &::before {
+              content: '$';
+              margin-right: 0.7rem;
+            }
+          }
+          
+          .pyc-button {
+            min-width: auto;
+            margin: 0 0.3rem;
+            padding: 0.3rem;
+            
+            .pyc-button__icon {
+              font-size: sentro.px-to-rem(16px);
+            }
+          }
+        }
+      }
+    }
+  }
+}
