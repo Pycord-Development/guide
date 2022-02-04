@@ -1,7 +1,7 @@
 # Pycord Guide
 
-Imagine a place... where you can learn how to make a bot, learn the inner techniques of pycord, 
-learn how to add more features to your pycord bot and learn advanced features without feeling so advanced.
+Imagine a place... where you can learn: how to make a bot, the inner techniques of pycord, 
+how to add more features to your pycord bot and advanced features without feeling so advanced.
 
 ## What is Pycord?
 
