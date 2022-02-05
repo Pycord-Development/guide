@@ -19,10 +19,3 @@ async def ping(ctx):
 ```
 
 
-<DiscordMessages>
-    <DiscordMessage :bot="true" author="Guide Bot" avatar="red">
-        <template #interactions>
-            <DiscordInteraction author="Guide Man" avatar="green" :command="true">ping</DiscordInteraction>
-        </template>
-        pong!
-</DiscordMessages>

@@ -1,6 +1,9 @@
 # Voice
 Welcome to the guide for voice features in Pycord.
-Note: This guide will assume you already have experience with Pycord.
+
+:::caution
+
+This guide will assume you already have experience with Pycord.
 
 ## Requirements
 The only requirement needed for voice features is [`PyNaCl`](https://pypi.org/project/PyNaCl/). The following features are optional:
