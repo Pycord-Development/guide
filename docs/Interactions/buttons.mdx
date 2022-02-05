@@ -1,3 +1,12 @@
+import {
+    DiscordButton,
+    DiscordButtons,
+    DiscordInteraction,
+    DiscordMessage,
+    DiscordMessages,
+} from '@discord-message-components/react';
+import '@discord-message-components/react/styles';
+
 # Buttons
 
 On 26 May 2021, Discord added a new interaction system called buttons. Instead of reactions, bots could now send buttons and users could use this system to interact with bots. This opened up a whole new world of possibilities for bots. Soon after, developers made calculators, polls, games like blackjack, uno and even minecraft!
@@ -7,7 +16,7 @@ So, let's see how we can add buttons to our bot!
 
 ## Concept
 
-Buttons weren't the only update to this user interface system in Discord. Discord also added Dropdowns, and even more features are coming! 
+Buttons weren't the only update to this user interface system in Discord. Discord also added Dropdowns, and even more features are coming!
 
 These UI elements reside in a "view". A view can have 5 rows, each row having 5 slots. Each button takes up one slot, and a dropdown takes up all 5 slots of a row. This means that a maximum of 25 buttons can be added to a view. Each message can have just one view.
 
@@ -30,23 +39,22 @@ bot.run("TOKEN") # Run the bot
 ```
 it should give the following output:
 
-```vue
 <DiscordMessages>
-    <DiscordMessage :bot="true" author="Guide Bot" avatar="red">
-        <template #interactions>
-            <DiscordInteraction author="Guide Man" avatar="green" :command="true">button</DiscordInteraction>
-        </template>
+    <DiscordMessage author="Guide Bot" avatar="red" bot>
+        <div slot="interactions">
+            <DiscordInteraction author="Guide Man" avatar="green" command>button</DiscordInteraction>
+        </div>
         This is a button!
-        <template #actions>
+        <div slot="actions">
             <DiscordButtons>
                 <DiscordButton type="primary">😎 Click me!</DiscordButton>
-            <DiscordButtons>
-        </template>
+            </DiscordButtons>
+        </div>
+    </DiscordMessage>
 </DiscordMessages>
-```
 
 
-As you can see, we create a class called `View` that [subclasses](#oop) [`discord.ui.View`](https://docs.pycord.dev/en/master/api.html#discord.ui.Button). 
+As you can see, we create a class called `View` that [subclasses](#oop) [`discord.ui.View`](https://docs.pycord.dev/en/master/api.html#discord.ui.Button).
 
 Then, we add a function `button_callback` to the `View` class with the decorator [`discord.ui.button`](https://docs.pycord.dev/en/master/api.html#discord.ui.button). This decorator adds a button to a component. This function takes two arguments: the button that was clicked, and the interaction. These arguments are passed to the function when the button is clicked by the module. We use the [`interaction.response.send_message`](https://docs.pycord.dev/en/master/api.html#discord.InteractionResponse.send_message) function to send a message to the channel where the interaction was sent.
 
@@ -166,7 +174,7 @@ class MyView(discord.ui.View):
         await interaction.response.send_message("Button was pressed", ephemeral=True)
 ```
 
-However, in both of the above examples, the view will simply stop working. The button will not be disabled, but it will not respond any more. If someone tries to use it, it will simply show "Interaction Failed". 
+However, in both of the above examples, the view will simply stop working. The button will not be disabled, but it will not respond any more. If someone tries to use it, it will simply show "Interaction Failed".
 
 Instead, we can create `on_timeout` function in the view. This function will be called when the timeout is reached.
 
@@ -191,7 +199,7 @@ Sometimes, instead of a button that is disabled after a certain amount of time, 
 
 Normally, when the bot goes offline, all the buttons stop working. You will be able to see the buttons, but nothing will happen when you press them. This is a problem if you are trying to create, say, a self-role system with buttons. This is where persistent views come in.
 
-Persistent views work forever. When the bot goes offline, the buttons will stop working till the bot is online again, but once the bot is back online, they start working again. 
+Persistent views work forever. When the bot goes offline, the buttons will stop working till the bot is online again, but once the bot is back online, they start working again.
 
 In a Persistent View, the timeout must be set to `None` and all the children in the view much have a `custom_id` attribute set.
 
