@@ -66,6 +66,9 @@
   }
   
   .menu {
+    padding: 1rem !important;
+    background-color: rgba(sentro.token-get-raw('surface'), 50%);
+    
     .menu__list,
     .menu__list-item {
       .menu__link {
