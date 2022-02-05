@@ -1,6 +1,5 @@
 ---
 id: index
-slug: /
 title: Pycord Guide
 ---
 Imagine a place, a place where you can learn how to make a Discord bot, how Pycord works and the techniques it uses to make your bot fast and reliable, how to add more advanced features to your Pycord bot without feeling so advanced, and a whole lot more.
