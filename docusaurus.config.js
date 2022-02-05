@@ -15,7 +15,7 @@ const config = {
   favicon: 'img/favicon.ico',
   organizationName: 'Pycord-Development', // Usually your GitHub org/user name.
   projectName: 'Guide', // Usually your repo name.
-
+  plugins: ['docusaurus-plugin-sass'],
   presets: [
     [
       'classic',
@@ -42,6 +42,14 @@ const config = {
           alt: 'Pycord Logo SVG',
           src: 'img/logo.svg',
         },
+        items: [
+          {
+            type: 'doc',
+            docId: 'index',
+            position: 'left',
+            label: 'Guide'
+          }
+        ]
       },
       footer: {
         style: 'dark',
@@ -51,7 +59,7 @@ const config = {
             items: [
               {
                 label: 'Index',
-                to: '/guide/index.md',
+                to: '/docs/index.md',
               },
             ],
           },
