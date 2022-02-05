@@ -1,10 +1,10 @@
 # Slash Commands
-Discord implemented slash commands as a easier, faster, more efficent, and cooler way of using commands.
-Pycord has implemented it into the library in a professional, efficent and easy manner of which will be showcased here.
+Discord implemented slash commands as an easier, faster, more efficent, and cooler way of using commands.
+Pycord has implemented slash commands into the library in a professional, efficent, and easy manner, which will be showcased here.
 
 ## Basics
 
-Shown below is a basic ping, pong slash command
+Shown below is a basic ping slash command.
 
 ```py
 import discord
