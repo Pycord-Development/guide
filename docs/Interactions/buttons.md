@@ -30,6 +30,7 @@ bot.run("TOKEN") # Run the bot
 ```
 it should give the following output:
 
+```vue
 <DiscordMessages>
     <DiscordMessage :bot="true" author="Guide Bot" avatar="red">
         <template #interactions>
@@ -42,6 +43,7 @@ it should give the following output:
             <DiscordButtons>
         </template>
 </DiscordMessages>
+```
 
 
 As you can see, we create a class called `View` that [subclasses](#oop) [`discord.ui.View`](https://docs.pycord.dev/en/master/api.html#discord.ui.Button). 
@@ -56,17 +58,20 @@ This is the basic syntax of creating a button. What you create with it is up to 
 
 <!-- Button Styles is explained before the other sections because the user should know about disabled buttons, button colors, and so on to be able to understand timeouts -->
 
-| Name     | Usage                          | Color  |
-| ----------- | ----------------------------|------- |
-| Primary  | `discord.ButtonStyle.primary` / `discord.ButtonStyle.blurple` | Blurple|
-| Secondary| `discord.ButtonStyle.secondary` / `discord.ButtonStyle.grey` / `discord.ButtonStyle.gray`| Grey   |
-| Success  | `discord.ButtonStyle.success` / `discord.ButtonStyle.green` | Green  |
-| Danger   | `discord.ButtonStyle.danger` / `discord.ButtonStyle.red` | Red    |
-| Link     | `discord.ButtonStyle.link` / `discord.ButtonStyle.url` | Grey   |
+| Name        | Usage                                                                                     | Color   |
+|-------------|-------------------------------------------------------------------------------------------|---------|
+| Primary     | `discord.ButtonStyle.primary` / `discord.ButtonStyle.blurple`                             | Blurple |
+| Secondary   | `discord.ButtonStyle.secondary` / `discord.ButtonStyle.grey` / `discord.ButtonStyle.gray` | Grey    |
+| Success     | `discord.ButtonStyle.success` / `discord.ButtonStyle.green`                               | Green   |
+| Danger      | `discord.ButtonStyle.danger` / `discord.ButtonStyle.red`                                  | Red     |
+| Link        | `discord.ButtonStyle.link` / `discord.ButtonStyle.url`                                    | Grey    |
 
 Check out the [`discord.ButtonStyle`](https://docs.pycord.dev/en/master/api.html#discord.ButtonStyle) class for more information.
 
+```
+# commented
 ![Different Button Styles](button-styles.png)
+```
 
 You can set a buttons style by specifying the `style` argument in the [`discord.ui.button`](https://docs.pycord.dev/en/master/api.html#discord.ui.button) decorator.
 
