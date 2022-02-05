@@ -30,19 +30,7 @@ bot.run("TOKEN") # Run the bot
 ```
 it should give the following output:
 
-<DiscordMessages>
-    <DiscordMessage :bot="true" author="Guide Bot" avatar="red">
-        <template #interactions>
-            <DiscordInteraction author="Guide Man" avatar="green" :command="true">button</DiscordInteraction>
-        </template>
-        This is a button!
-        <template #actions>
-            <DiscordButtons>
-                <DiscordButton type="primary">😎 Click me!</DiscordButton>
-            <DiscordButtons>
-        </template>
-</DiscordMessages>
-
+.. TODO
 
 As you can see, we create a class called `View` that [subclasses](#oop) [`discord.ui.View`](https://docs.pycord.dev/en/master/api.html#discord.ui.Button). 
 
