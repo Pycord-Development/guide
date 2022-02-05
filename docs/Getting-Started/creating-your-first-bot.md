@@ -2,11 +2,11 @@
 title: Creating Your First Bot
 ---
 
-Exited to create your first bot? Once you [install Pycord](installation.md), you can start right away!
+Excited to create your first bot? Once you [install Pycord](installation.md), you can start right away!
 
-## Creating the bot application
+## Creating the Bot Application
 
-Just like how you needed to sign up to Discord to get started, we need to get your bot signed up too. To do this,
+Just like how you need to sign up to use Discord, your bot also has to be signed up. To do this, you should:
 
 1. Go to the [Discord Developer Portal](https://discord.com/developers/applications) and click
    on <button class="blurplebutton">New Application</button>.
@@ -20,13 +20,17 @@ Just like how you needed to sign up to Discord to get started, we need to get yo
 ## Inviting the bot
 
 Now, lets get the bot added to some servers. Go to the <button class="greybutton">OAuth2</button> tab in the left pane,
-and select `bot` and `applications.commands` as the scope.
+and select `bot` and `applications.commands` as scopes.
 
-The `applications.commands` scope allows the bot to use Slash Commands, which you may want to have.
+The `applications.commands` scope allows the bot to use slash commands, which you may want to have.
 
-Next, we choose what permissions the bot will have. You can select them. For now, lets give your bot the Administrator
+Next, you want to choose what permissions the bot will have and select them. For now, give your bot the administrator
 permission, meaning the bot will have all the permissions. Once you select the permissions, click on copy to get the bot
 invite link.
+
+!!! note
+
+    When your bot is all ready to go, make sure that administrator permissions aren't selected unless your bot truly needs them. Try selecting only permissions the bot will need. For testing, administrator is fine.
 
 ![image](https://gblobscdn.gitbook.com/assets%2F-MjPk-Yu4sOq8KGrr_yG%2F-Mk6tNY3LfDkjd6pqdpL%2F-Mk6tkdpddEWoa2jczZk%2Fimage.png?alt=media&token=52c8a29f-a798-48f8-a8c7-4ecca2681f79)
 
@@ -39,10 +43,10 @@ bots have a "token". You may think of a token as a unique password, since this i
 connect it to Discord.
 
 Tokens are "snowflakes". Not actual snowflakes, though. Just like how no two snowflakes in real life have the same
-pattern, a snowflake in computers is a unique thing - no two bots have the same token - so a token is a snowflake. An ID
-is a snowflake.
+pattern, a snowflake in computers is a unique thing - no two bots have the same token - so a token is considered a snowflake. A Discord user ID
+is also a snowflake.
 
-Now, lets get our bot's token. To do this,
+Now, lets get our bot's token. To do this, you want to:
 
 1. Go back to the <button class="greybutton">Bot</button> tab.
 2. Click on the <button class="blurplebutton">Copy</button> button in the "Token" section.
@@ -77,8 +81,8 @@ You can store your tokens in `.env` files. This is a simple way to store sensiti
     python -m pip install python-dotenv
     ```
 
-If your code is a git repository, you should create a file called `.gitignore` and add `.env` to it. This means that
-whenever you use `git push`, your .env file will not be pushed. It will stay secure in your local system.
+If your code is in a git repository, you should create a file called `.gitignore` and add `.env` to it. This means that
+whenever you use the `git push` command, your .env file will not be pushed along with the rest of your code. It will stay secure in your local system.
 
 ## Coding the Basics
 
@@ -86,14 +90,18 @@ whenever you use `git push`, your .env file will not be pushed. It will stay sec
 import discord
 import os # default module
 from dotenv import load_dotenv
-load_dotenv() # we load all the variables from the env file
+
+load_dotenv() # load all the variables from the env file
 bot = discord.Bot(debug_guilds=[881207955029110855])
+
 @bot.event
 async def on_ready():
     print(f"{bot.user} is ready and online!")
+
 @bot.slash_command(name = "hello", description = "Say hello to the bot")
 async def hello(ctx):
     await ctx.send("Hey!")
+    
 bot.run(os.getenv('TOKEN')) # run the bot with the token
 ```
 
@@ -106,7 +114,7 @@ from dotenv import load_dotenv
 ```
 
 In the first line, `import discord`, we import Pycord. Although you install Pycord with `pip install py-cord`, you
-import it with `import discord`.
+import it with `import discord`. This is so it's as easy as possible when switching from Discord.py to Pycord.
 
 We then import `os` and `dotenv`. `os` is a default module that we will use to get the token from the env file. `dotenv`
 is a module that we will use to load the env file. You installed this with `pip install python-dotenv`.
@@ -122,7 +130,7 @@ We create a new instance of [`discord.Bot`](https://docs.pycord.dev/en/master/ap
 list and add a server where both you and the bot are, and you (preferably) have admin permissions. Normally, you do not
 pass this kwarg. However, if you do not specify this, the slash commands will take up to an hour to show up in all the
 guilds the bot is in. When you restrict the commands to a few guilds, you can instantly see the commands. You can also
-choose to make lone commands restricted to a few guilds, but we will learn that later.
+choose to make lone commands restricted to a few guilds, but we will learn about that later.
 
 ```py
 @bot.event
@@ -131,7 +139,7 @@ async def on_ready():
 ```
 
 We use the [`event`](https://docs.pycord.dev/en/master/api.html#discord.Bot.event) decorator
-and  [`on_ready`](https://docs.pycord.dev/en/master/api.html#discord.on_ready) to define a function that will be called
+and [`on_ready`](https://docs.pycord.dev/en/master/api.html#discord.on_ready) as a function name to define a function that will be called
 when the bot is ready. This is automatically called when the bot is ready to be used.
 
 ```py
@@ -141,12 +149,11 @@ async def say_hello(ctx):
 ```
 
 Here, we use the [`slash_command`](https://docs.pycord.dev/en/master/api.html#discord.Bot.slash_command) decorator to
-define a slash command. We specify the `name` and `description` arguments. If not specified, the name of the Slash
-Command becomes the name of the function. The description will remain empty.
+define a slash command. We specify the `name` and `description` arguments. If not specified, the name of the slash command becomes the name of the function. The description will remain empty.
 
-Finally, we run the bot using the token we specified in our `.env` file.
+Finally, you want to run the bot using the token specified in the `.env` file.
 
-Now, you are done with creating your first bot. This is the basic structure of a bot. What else can you do? The sky is
+Now, you are done with creating your first bot! This is the basic structure of a bot. What else can you do? The sky is
 the limit! Pycord will not limit your imagination. The better you know Python, the more you can do.
 
 ## FAQ
