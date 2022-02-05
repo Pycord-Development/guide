@@ -29,7 +29,7 @@ Pycord is an advanced and complex Python library. To take advantage of the full 
 
 This list is not exhaustive, but it should give you a good idea of what you need to know to get started.
 
-### **Resources**:
+### Learning Resources
 
 You may learn Python from these sources:
 
