@@ -61,15 +61,13 @@
       'weight': 400
     )
   );
-  html[data-theme='dark'] {
-    --ifm-color-primary: #5865f2;
-    --ifm-color-primary-dark: #3949f0;
-    --ifm-color-primary-darker: #2a3bee;
-    --ifm-color-primary-darkest: #1121d6;
-    --ifm-color-primary-light: #7781f4;
-    --ifm-color-primary-lighter: #868ff6;
-    --ifm-color-primary-lightest: #b4baf9;
-  }
+  --ifm-color-primary: #5865f2;
+  --ifm-color-primary-dark: #3949f0;
+  --ifm-color-primary-darker: #2a3bee;
+  --ifm-color-primary-darkest: #1121d6;
+  --ifm-color-primary-light: #7781f4;
+  --ifm-color-primary-lighter: #868ff6;
+  --ifm-color-primary-lightest: #b4baf9;
 }
 
 * {
@@ -125,6 +123,7 @@ html {
   width: 100%;
   height: 100%;
   font-size: 100%;
+  background-color: sentro.token-get('surface-dark');
   box-sizing: border-box;
 }
 

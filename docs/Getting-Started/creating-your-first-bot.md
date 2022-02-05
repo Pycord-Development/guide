@@ -1,4 +1,6 @@
-# Creating your first bot
+---
+title: Creating Your First Bot
+---
 
 Exited to create your first bot? Once you [install Pycord](installation.md), you can start right away!
 
