@@ -1,0 +1,77 @@
+# Receiving Voice Samples
+
+Pycord tries to keep the recording of audio as simple and easy as possible, to keep making Discord bots of any kind easy for all audiences. This guide provides simple and easy examples of using the audio recording feature.
+
+For users that want extra examples, you can find some in Pycord's [repository](https://github.com/Pycord-Development/pycord/blob/master/examples/audio_recording.py).
+
+## Starting out
+
+The first thing you want to do is make a cache of your voice connections. This isn't difficult, as it's just putting a variable with an empty dictionary in our code, such as `connections = {}`.
+
+You will now want to create your command for recording.
+
+```py
+import discord
+
+bot = discord.Bot(debug_guilds=[...])
+connections = {}
+
+@bot.command()
+async def record(ctx):  # If you're using commands.Bot this will also work.
+    voice = ctx.author.voice
+
+    if not voice:
+        await ctx.respond("You aren't in a voice channel!")
+
+    vc = await voice.channel.connect()  # Connect to the voice channel the author is in.
+    connections.update({ctx.guild.id: vc})  # Updating the cache with the guild and channel.
+
+    vc.start_recording(
+        discord.WaveSink(),  # The sink type to use.
+        once_done,  # What to do once done.
+        ctx.channel  # The channel to disconnect from.
+    )
+    await ctx.respond("Started recording!")
+```
+
+Now you are finished making your command for voice receiving! Next, you will want to:
+
+1. Make your finished callback
+2. Make a stop command
+
+### Making a Callback
+To make a callback, you will want to define the currently undefined `once_done` function inside of our command, like so:
+
+```py
+async def once_done(sink: discord.Sink, channel: discord.TextChannel, *args):  # Our voice client already passes these in.
+    user_recorded = [  # A list of recorded users
+        f"<@{user_id}>"
+        for user_id, audio in sink.audio_data.items()
+    ]
+    await sink.vc.disconnect()  # Disconnect from the voice channel.
+    files = [discord.File(audio.file, f"{user_id}.{sink.encoding}") for user_id, audio in sink.audio_data.items()]  # List down the files.
+    await channel.send(f"finished recording audio for: {', '.join(recorded_users)}.", files=files)  # Send a message with the accumulated files.
+```
+
+Now that that's done, the only thing left to do is to make your stop command.
+
+### Making a Stop Command
+The final step to this guide is stopping the audio recording. This is the easiest step by far.
+
+To make it, you will want to do the following:
+
+```py
+@bot.command()
+async def stop_recording(ctx):
+    if ctx.guild.id in connections:  # Check if the guild is in the cache.
+        vc = connections[ctx.guild.id]
+        vc.stop_recording()  # Stop recording, and call the callback (once_done).
+        del connections[ctx.guild.id]  # Remove the guild from the cache.
+        await ctx.delete()  # And delete.
+    else:
+        await ctx.respond("I am currently not recording here.")  # Respond with this if we aren't recording.
+    
+bot.run("token")
+```
+
+Congratulations! You have implemented voice recording into your bot! Most bots and Discord API wrappers don't have this as a feature, so this is quite a feat. Thankfully, Pycord makes it easy to make great bots.

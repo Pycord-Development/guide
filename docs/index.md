@@ -1,16 +1,15 @@
 # Pycord Guide
 
-Imagine a place... where you can learn: how to make a bot, the inner techniques of pycord, 
-how to add more features to your pycord bot and advanced features without feeling so advanced.
+Imagine a place, a place where you can learn how to make a Discord bot, how Pycord works and the techniques it uses to make your bot fast and reliable, how to add more advanced features to your Pycord bot without feeling so advanced, and a whole lot more.
 
 ## What is Pycord?
 
-Pycord is a modern, easy to use, feature-rich, and async ready API wrapper for Discord, written in Python. Pycord is a maintained fork of [discord.py](https://github.com/Rapptz/discord.py) that helps you create Discord bots with Python.
+Pycord is a modern, easy to use, feature-rich, and async ready API wrapper for Discord, written in Python. Pycord is a maintained fork of [Discord.py](https://github.com/Rapptz/discord.py) that helps you create Discord bots with Python.
 
 
 ## Before you begin
 
-Pycord is an advanced and complex python library. To use the full capabilities of Pycord, you will need to have a good understanding of Python. You should know about the basics of Python, and have an understanding of the following concepts:
+Pycord is an advanced and complex Python library. To take advantage of the full capabilities of Pycord, you will need to have a good understanding of Python. You should know the basics of Python and have an understanding of the following concepts:
 
 * Variables
 * Data Types
@@ -19,7 +18,7 @@ Pycord is an advanced and complex python library. To use the full capabilities o
 * Conditionals
 * Loops
 * Classes
-* OOP
+* Object-Oriented Programming
 * Inheritance
 * Exception Handling
 * Iterators
