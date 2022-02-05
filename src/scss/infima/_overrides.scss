@@ -1,0 +1,39 @@
+@use '~@matteusan/sentro';
+
+@mixin init() {
+  .navbar {
+    box-shadow: none;
+    
+    .navbar__toggle {
+      color: #fff !important;
+    }
+    
+    .navbar__items {
+      display: flex;
+      gap: 0.5rem;
+      
+      .navbar__title {
+        font-size: sentro.px-to-rem(24px);
+        font-weight: sentro.token-get('title-weight');
+      }
+      
+      .navbar__item {
+        @extend .pyc-button;
+        max-width: max-content !important;
+        font-weight: 400 !important;
+        
+        &:hover,
+        &:focus,
+        &:active {
+          --hs-button-ink: #fff;
+        }
+        
+        > span {
+          font-family: inherit;
+          font-size: inherit;
+          font-weight: inherit;
+        }
+      }
+    }
+  }
+}
