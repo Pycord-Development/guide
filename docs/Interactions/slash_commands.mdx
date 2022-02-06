@@ -11,26 +11,27 @@ import {
 } from '@discord-message-components/react';
 import '@discord-message-components/react/styles';
 
-# About
-Discord implemented slash commands as an easier, faster, more efficent, and cooler way of using commands.
-Pycord has implemented slash commands into the library in a professional, efficent, and easy manner, which will be showcased here.
+## About
 
-## Basics
+On March 24, 2021, Discord added Slash Commands to Discord as an easier, more efficient, and better way of using bot commands. Pycord has implemented Slash Commands into the library so it's simple and efficient to use, and has familiar syntax.
 
-Shown below is a basic ping slash command.
+## Syntax
+
+Let's create a simple Slash Command.
 
 ```py
 import discord
 
-# discord.Bot removes the required prefix param of commands.Bot
-bot = discord.Bot(debug_guilds=[...])  # since global slash commands can take up to an hour to register 
-# we have to limit the guilds for testing.
+bot = discord.Bot(debug_guilds=[...]) # specify the guild IDs in debug_guilds
 
-@bot.command()  # makes a slash command
-async def ping(ctx):
-    await ctx.respond("pong!")  # respond to the slash command
+# since global slash commands can take up to an hour to register,
+# we need to limit the guilds for testing purposes
 
-bot.run("my_bot_token")
+@bot.command(description="Sends the bot's latency.") # this decorator makes a slash command
+async def ping(ctx): # a slash command will be created with the name "ping"
+    await ctx.respond(f"Pong! Latency is {bot.latency}")
+
+bot.run("TOKEN")
 ```
 
 <DiscordMessages>
@@ -38,8 +39,19 @@ bot.run("my_bot_token")
         <div slot="interactions">
             <DiscordInteraction author="Guide Man" avatar="green" command>ping</DiscordInteraction>
         </div>
-        pong!
+        Pong! Latency is 335ms.
     </DiscordMessage>
 </DiscordMessages>
+
+
+Let's go through the code.
+
+First, we import Pycord's `discord` package.
+
+Next, we create a [`discord.Bot`](https://docs.pycord.dev/en/master/api.html#discord.Bot) object and assign it to a variable `bot`. Notice how we pass the parameter [`debug_guilds`](https://docs.pycord.dev/en/master/api.html#discord.Bot.debug_guilds). Global Slash Commands take up to an hour to register, however, if we limit our bot commands to a few specific guilds, we can use them instantly on those guilds. This is useful for testing purposes. Once you have polished up your command and made it all shiny, you can share its shininess with all of the bot's server by removing this parameter.
+
+We go ahead to use the [`@bot.command`](https://docs.pycord.dev/en/master/api.html#discord.Bot.command) decorator, which registers a new Slash Command. We pass a `description` parameter to give a description to the Slash Command. We can also pass a `name` parameter to change the Slash Command's name. By default, the name of the Slash Command will be the name of the function, in this case, `/ping`.
+
+We create an async function called `ping` with parameters `ctx`, which, when called, sends the bot's ping/latency using [`ctx.respond`](https://docs.pycord.dev/en/master/api.html#discord.ApplicationContext.respond).
 
 
