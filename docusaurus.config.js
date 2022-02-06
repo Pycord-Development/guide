@@ -8,8 +8,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/vsDark');
 const config = {
     title: 'Pycord Guide',
     tagline: 'Imagine a place... where you can learn how to add more features to your Pycord bot',
-    url: 'localhost',
-    baseUrl: '/',
+    url: 'https://pycord.dev',
+    baseUrl: '/guide/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
     favicon: 'img/favicon.ico',
