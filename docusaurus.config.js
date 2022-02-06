@@ -49,7 +49,7 @@ const config = {
         },
         footer: {
             style: 'dark',
-            /*links: [
+            links: [
                 {
                     title: 'Community',
                     items: [
@@ -67,7 +67,7 @@ const config = {
                         },
                     ],
                 },
-                {
+                /*{
                     title: 'More',
                     items: [
                         {
@@ -76,11 +76,11 @@ const config = {
                         },
                         {
                             label: 'GitHub',
-                            href: 'https://github.com/facebook/docusaurus',
+                            href: 'https://github.com/p',
                         },
                     ],
-                },
-            ],*/
+                },*/
+            ],
             copyright: `Copyright © ${ new Date().getFullYear() } Pycord Development`,
         },
         prism: {

@@ -1,4 +1,17 @@
-# Slash Commands
+---
+title: Slash Commands
+----
+
+import {
+    DiscordButton,
+    DiscordButtons,
+    DiscordInteraction,
+    DiscordMessage,
+    DiscordMessages,
+} from '@discord-message-components/react';
+import '@discord-message-components/react/styles';
+
+# About
 Discord implemented slash commands as an easier, faster, more efficent, and cooler way of using commands.
 Pycord has implemented slash commands into the library in a professional, efficent, and easy manner, which will be showcased here.
 
@@ -16,6 +29,17 @@ bot = discord.Bot(debug_guilds=[...])  # since global slash commands can take up
 @bot.command()  # makes a slash command
 async def ping(ctx):
     await ctx.respond("pong!")  # respond to the slash command
+
+bot.run("my_bot_token")
 ```
+
+<DiscordMessages>
+    <DiscordMessage author="Guide Bot" avatar="red" bot>
+        <div slot="interactions">
+            <DiscordInteraction author="Guide Man" avatar="green" command>ping</DiscordInteraction>
+        </div>
+        pong!
+    </DiscordMessage>
+</DiscordMessages>
 
 

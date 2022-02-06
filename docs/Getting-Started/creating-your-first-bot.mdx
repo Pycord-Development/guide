@@ -2,7 +2,16 @@
 title: Creating Your First Bot
 ---
 
-Excited to create your first bot? Once you [install Pycord](installation.md), you can start right away!
+import {
+    DiscordButton,
+    DiscordButtons,
+    DiscordInteraction,
+    DiscordMessage,
+    DiscordMessages,
+} from '@discord-message-components/react';
+import '@discord-message-components/react/styles';
+
+Excited to create your first bot? Once you [install Pycord](installation.mdx), you can start right away!
 
 ## Creating the Bot Application
 
@@ -28,9 +37,11 @@ Next, you want to choose what permissions the bot will have and select them. For
 permission, meaning the bot will have all the permissions. Once you select the permissions, click on copy to get the bot
 invite link.
 
-::: note
+:::note
 
-    When your bot is all ready to go, make sure that administrator permissions aren't selected unless your bot truly needs them. Try selecting only permissions the bot will need. For testing, administrator is fine.
+When your bot is all ready to go, make sure that administrator permissions aren't selected unless your bot truly needs them. Try selecting only permissions the bot will need. For testing, administrator is fine.
+
+:::
 
 ![image](https://gblobscdn.gitbook.com/assets%2F-MjPk-Yu4sOq8KGrr_yG%2F-Mk6tNY3LfDkjd6pqdpL%2F-Mk6tkdpddEWoa2jczZk%2Fimage.png?alt=media&token=52c8a29f-a798-48f8-a8c7-4ecca2681f79)
 
@@ -54,11 +65,13 @@ Now, lets get our bot's token. To do this, you want to:
 
 Now, you have your bot's token copied to your clipboard.
 
-::: danger
+:::danger
 
-	Never leak your bot's token, and never share it with anyone. Even if you get any DMs and someone tells you to do so, perhaps claiming to be Discord Staff, do not do so. They are probably lying and are scamming you. Anyone with your token will be able to access your bot fully. They will be able to do anything they want with your bot. 
+Never leak your bot's token, and never share it with anyone. Even if you get any DMs and someone tells you to do so, perhaps claiming to be Discord Staff, do not do so. They are probably lying and are scamming you. Anyone with your token will be able to access your bot fully. They will be able to do anything they want with your bot. 
 
-	Never push it to GitHub, or send it with the code. One way to prevent your token from getting leaked is to store it in `.env` files.
+Never push it to GitHub, or send it with the code. One way to prevent your token from getting leaked is to store it in `.env` files.
+
+:::
 
 ### Protecting Tokens
 
@@ -104,6 +117,14 @@ async def hello(ctx):
     
 bot.run(os.getenv('TOKEN')) # run the bot with the token
 ```
+<DiscordMessages>
+    <DiscordMessage author="Guide Bot" avatar="red" bot>
+        <div slot="interactions">
+            <DiscordInteraction author="Guide Man" avatar="green" command>hello</DiscordInteraction>
+        </div>
+        Hey!
+    </DiscordMessage>
+</DiscordMessages>
 
 Let's go through the code. First, the imports.
 
@@ -148,6 +169,7 @@ async def say_hello(ctx):
     await ctx.send("Hey!")
 ```
 
+
 Here, we use the [`slash_command`](https://docs.pycord.dev/en/master/api.html#discord.Bot.slash_command) decorator to
 define a slash command. We specify the `name` and `description` arguments. If not specified, the name of the slash command becomes the name of the function. The description will remain empty.
 
@@ -160,5 +182,5 @@ the limit! Pycord will not limit your imagination. The better you know Python, t
 
 ### How do I make prefixed commands?
 
-You can read [this amazing page that doesn't exist](../Extensions/Commands/index.md) and idk how it is gonna be linked
+You can read [this amazing page that doesn't exist](../Extensions/Commands/) and idk how it is gonna be linked
 but it should (hopefully) be there by the time you read this page.
