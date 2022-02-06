@@ -28,7 +28,7 @@ Next, you want to choose what permissions the bot will have and select them. For
 permission, meaning the bot will have all the permissions. Once you select the permissions, click on copy to get the bot
 invite link.
 
-!!! note
+::: note
 
     When your bot is all ready to go, make sure that administrator permissions aren't selected unless your bot truly needs them. Try selecting only permissions the bot will need. For testing, administrator is fine.
 
@@ -54,7 +54,7 @@ Now, lets get our bot's token. To do this, you want to:
 
 Now, you have your bot's token copied to your clipboard.
 
-!!! danger
+::: danger
 
 	Never leak your bot's token, and never share it with anyone. Even if you get any DMs and someone tells you to do so, perhaps claiming to be Discord Staff, do not do so. They are probably lying and are scamming you. Anyone with your token will be able to access your bot fully. They will be able to do anything they want with your bot. 
 
