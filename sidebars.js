@@ -55,7 +55,7 @@ const sidebars = {
     {
       type: 'category',
       label: "Topics",
-      items: ["Topics/community-resources", "Topics/git"]
+      items: ["Topics/community-resources", "Topics/git", "Topics/subclassed-bot"]
     }
   ],
 
