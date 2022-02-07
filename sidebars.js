@@ -41,7 +41,7 @@ const sidebars = {
     {
       type: 'category',
       label: "Topics",
-      items: ["Topics/community-resources"]
+      items: ["Topics/community-resources", "Topics/contributing"]
     }
   ]
 };

@@ -1,0 +1,107 @@
+---
+title: Contributing to the Guide
+---
+
+import {
+    DiscordButton,
+    DiscordButtons,
+    DiscordInteraction,
+    DiscordMessage,
+    DiscordMessages,
+} from '@discord-message-components/react';
+import '@discord-message-components/react/styles';
+
+# About
+This section outlines some syntaxing when making the guide,
+for contributing rules look [here](https://github.com/Pycord-Development/guide/blob/master/.github/CONTRIBUTING.md)
+
+## Notes and warnings
+
+Markdown syntaxing in docusaurus is pretty advanced but in no way hard,
+it's just as simple as:
+```
+:::note
+did you know of girrafe?
+:::
+
+:::danger
+your stepping into the danger zone
+:::
+```
+:::note
+did you know of girrafe?
+:::
+
+:::danger
+your stepping into the danger zone
+:::
+
+to make these have custom titles just add the title next to it, like so:
+```
+:::note Harambe
+An animal know for well uhhhh
+:::
+```
+:::note Harambe
+An animal known for well uhhhh
+:::
+
+## Discord Message Components
+As most files already have the imports for these, it's not that hard to add them,
+the div starts like so:
+
+```
+<DiscordMessages>
+
+</DiscordMessages>
+
+<br />
+```
+of which you list `DiscordMessage`'s, like so:
+
+```
+<DiscordMessages>
+    <DiscordMessage author="Guide Bot" avatar="red">
+        hello obi wan kenobi
+    </DiscordMessage>
+</DiscordMessages>
+
+<br />
+```
+<DiscordMessages>
+    <DiscordMessage author="Guide Bot" avatar="red">
+        hello obi wan kenobi
+    </DiscordMessage>
+</DiscordMessages>
+
+<br />
+
+it is a pretty easy and straight forward syntax.
+
+### Slash Commands
+To make a message authored by a slash command, do the following:
+
+```
+<DiscordMessages>
+    <DiscordMessage author="Guide Bot" avatar="red">
+        <div slot="interactions">
+            <DiscordInteraction author="Davey" avatar="Green" command>davey</DiscordInteraction>
+        </div>
+        DAVEYYYY
+    </DiscordMessage>
+</DiscordMessages>
+
+<br />
+```
+<DiscordMessages>
+    <DiscordMessage author="Guide Bot" avatar="red">
+        <div slot="interactions">
+            <DiscordInteraction author="Davey" avatar="Green" command>davey</DiscordInteraction>
+        </div>
+        DAVEYYYY
+    </DiscordMessage>
+</DiscordMessages>
+
+<br />
+
+remember to always have `<br />` at the end of the components.
