@@ -49,7 +49,8 @@ const sidebars = {
     {
       type: 'category',
       label: "Voice",
-      items: ["Voice/index", "Voice/receiving"]
+      link: { type: "doc", id: "Voice/index" },
+      items: ["Voice/receiving"],
     },
     {
       type: 'category',
