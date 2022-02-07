@@ -1,3 +1,71 @@
 ---
 title: Installation
 ---
+
+Before you can start using Pycord, you need to install the library. 
+
+:::note
+Python **3.8 or above** is required to use Pycord.
+:::
+
+## Fresh Installation
+
+To install Pycord, you can use the following command in your terminal:
+
+    python3 -m pip install py-cord
+
+:::caution
+Remember that you need to install `py-cord`, not `pycord`.
+:::
+
+If you need voice support for your bot, you should run:
+
+    python3 -m pip install "py-cord[voice]"
+
+## Migration
+
+### Updating Pycord
+
+If you are upgrading from a previous version of Pycord, you can use the following command in your terminal:
+
+    python3 -m pip install -U py-cord
+
+
+### Migrating from other libraries
+
+If you are migrating from another library, say, `discord.py`, first of all, you need to uninstall the library.
+
+    python3 -m pip uninstall discord.py
+
+Then, you can install Pycord:
+
+    python3 -m pip install py-cord
+
+:::caution Warning
+Uninstalling `discord.py` after installing `py-cord` can cause issues.
+:::
+
+## Installing Other Builds
+
+### Development Build
+
+:::caution Warning
+The development build may not be stable and cause bugs.
+:::
+
+To install the development build, you can use the following command in your terminal:
+
+    python -m pip install -U git+https://github.com/Pycord-Development/pycord
+
+:::note
+Git is required to install this build. [Learn how you can install Git](/guide/Topics/git).
+:::
+
+## FAQ
+
+### Why is it that the library called Pycord but the package is called py-cord?
+
+Pycord is also the name of another API Wrapper. However, that wrapper is not maintained any longer. PyPi does not allow you to install a package with the same name as another package. Therefore, this new library had to be called `py-cord`. However, since it's harder to keep calling it Py-cord, we decided to call it Pycord.
+
+
+
