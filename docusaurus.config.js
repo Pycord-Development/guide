@@ -9,7 +9,7 @@ const config = {
     title: 'Pycord Guide',
     tagline: 'Imagine a place... where you can learn how to add more features to your Pycord bot',
     url: 'https://pycord.dev',
-    baseUrl: '/guide/',
+    baseUrl: '/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
     favicon: 'img/favicon.ico',
@@ -23,6 +23,7 @@ const config = {
                 docs: {
                     sidebarPath: require.resolve('./sidebars.js'),
                     editUrl: 'https://github.com/Pycord-Development/guide/tree/master/guide',
+                    routeBasePath: '/guide', // we can edit this!
                 },
                 theme: {
                     customCss: require.resolve('./src/scss/main.scss'),
