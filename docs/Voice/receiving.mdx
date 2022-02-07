@@ -2,6 +2,18 @@
 title: Receiving Voice Samples
 ---
 
+import {
+    DiscordButton,
+    DiscordButtons,
+    DiscordInteraction,
+    DiscordMessage,
+    DiscordMessages,
+    DiscordMention,
+} from '@discord-message-components/react';
+import '@discord-message-components/react/styles';
+
+# About
+
 Pycord tries to keep the recording of audio as simple and easy as possible, to keep making Discord bots of any kind easy for all audiences. This guide provides simple and easy examples of using the audio recording feature.
 
 For users that want extra examples, you can find some in Pycord's [repository](https://github.com/Pycord-Development/pycord/blob/master/examples/audio_recording.py).
@@ -35,6 +47,16 @@ async def record(ctx):  # If you're using commands.Bot this will also work.
     )
     await ctx.respond("Started recording!")
 ```
+<DiscordMessages>
+    <DiscordMessage author="Guide Bot" avatar="red" bot>
+        <div slot="interactions">
+            <DiscordInteraction author="Guide Man" avatar="green" command>record</DiscordInteraction>
+        </div>
+        Started recording!
+    </DiscordMessage>
+</DiscordMessages>
+
+<br />
 
 Now you are finished making your command for voice receiving! Next, you will want to:
 
@@ -54,6 +76,13 @@ async def once_done(sink: discord.Sink, channel: discord.TextChannel, *args):  #
     files = [discord.File(audio.file, f"{user_id}.{sink.encoding}") for user_id, audio in sink.audio_data.items()]  # List down the files.
     await channel.send(f"finished recording audio for: {', '.join(recorded_users)}.", files=files)  # Send a message with the accumulated files.
 ```
+<DiscordMessages>
+    <DiscordMessage author="Guide Bot" avatar="red" bot>
+        finished recording audio for: <DiscordMention highlight={true}>GuideMan</DiscordMention>
+    </DiscordMessage>
+</DiscordMessages>
+
+<br />
 
 Now that that's done, the only thing left to do is to make your stop command.
 

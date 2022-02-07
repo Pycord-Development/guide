@@ -27,35 +27,35 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: "Interactions",
+      label: "interactions",
       items: ["Interactions/buttons", "Interactions/slash-commands"]
     },
     {
       type: 'category',
-      label: "Extensions",
+      label: "extensions",
       items: [
         {
           type: 'category',
-          label: "Commands",
+          label: "ext.commands",
           items: ["Extensions/Commands/index"]
         },
         {
           type: 'category',
-          label: "Pages",
+          label: "ext.pages",
           items: ["Extensions/Pages/index"]
         }
       ]
     },
     {
       type: 'category',
-      label: "Voice",
+      label: "voice",
       link: { type: "doc", id: "Voice/index" },
       items: ["Voice/receiving"],
     },
     {
       type: 'category',
-      label: "Topics",
-      items: ["Topics/community-resources"]
+      label: "topics",
+      items: ["Topics/community-resources", "Topics/subclassed-bot"]
     }
   ],
 
