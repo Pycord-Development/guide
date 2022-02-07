@@ -38,6 +38,10 @@
       }
       
       .pyc-hero__actions {
+        width: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
         margin-top: 1rem;
         
         .pyc-code-block {

@@ -23,7 +23,7 @@ const config = {
                 docs: {
                     sidebarPath: require.resolve('./sidebars.js'),
                     editUrl: 'https://github.com/Pycord-Development/guide/tree/master/guide',
-                    routeBasePath: '/guide', // we can edit this!
+                    routeBasePath: '/guide'
                 },
                 theme: {
                     customCss: require.resolve('./src/scss/main.scss'),
@@ -42,6 +42,7 @@ const config = {
     ],
 
     themeConfig: {
+        autoCollapseSidebarCategories: false,
         colorMode: {
             defaultMode: 'dark',
             disableSwitch: true
@@ -59,38 +60,6 @@ const config = {
         },
         footer: {
             style: 'dark',
-            links: [
-                {
-                    title: 'Community',
-                    items: [
-                        {
-                            label: 'Stack Overflow',
-                            href: 'https://stackoverflow.com/questions/tagged/pycord',
-                        },
-                        {
-                            label: 'Discord',
-                            href: 'https://discord.gg/pycord',
-                        },
-                        {
-                            label: 'Github',
-                            href: 'https://github.com/Pycord-Development',
-                        },
-                    ],
-                },
-                /*{
-                    title: 'More',
-                    items: [
-                        {
-                            label: 'Twitter',
-                            to: 'https://twitter.com/PycordDev',
-                        },
-                        {
-                            label: 'GitHub',
-                            href: 'https://github.com/p',
-                        },
-                    ],
-                },*/
-            ],
             copyright: `Copyright © ${ new Date().getFullYear() } Pycord Development`,
         },
         prism: {

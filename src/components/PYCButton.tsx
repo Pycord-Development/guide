@@ -40,8 +40,9 @@ const PYCButton: React.FC<PYCButtonProps> = ({
         return ButtonBase;
     } else {
         return (
-            <Link href={ link }>
-                { ButtonBase }
+            <Link className={ `pyc-button${ type ? ' ' + assertType(type) : '' }` } aria-label={ label || children?.toString() } href={ link }>
+                { icon && <i className="pyc-button__icon" aria-hidden="true">{ icon }</i> }
+                { children && <span className="pyc-button__label">{ children }</span> }
             </Link>
         );
     }

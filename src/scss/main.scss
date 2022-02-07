@@ -106,9 +106,11 @@ h6 {
 
 a {
   margin: 0;
+  text-decoration: none;
   color: sentro.token-get('blurple');
   
   &:hover {
+    text-decoration: none;
     color: sentro.token-get('blurple-light');
   }
 }

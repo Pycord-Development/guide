@@ -2,6 +2,7 @@
 
 @mixin init() {
   .navbar {
+    height: 100%;
     background-color: rgba(sentro.token-get-raw('surface'), 97%);
     box-shadow: none;
     // filter: blur(8px);
@@ -15,6 +16,7 @@
       gap: 0.5rem;
       
       .navbar__title {
+        font-family: sentro.token-get('title-family');
         font-size: sentro.px-to-rem(24px);
         font-weight: sentro.token-get('title-weight');
       }
@@ -58,10 +60,18 @@
     background-color: sentro.key-create('button-fill', rgba(0 0 0 / 0));
     color: sentro.key-create('button-ink', sentro.token-get('blurple'));
     border: 1px solid sentro.key-create('button-border', rgba(0 0 0 / 0));
-    
-    &:hover {
-      @include sentro.key-bind('button-fill', rgba(#fff, 10%));
-      @include sentro.key-bind('button-border', rgba(#fff, 1%));
+    @include sentro.prefix(transition, all 0.1s ease);
+  
+    &:hover,
+    &:focus {
+      @include sentro.key-bind('button-fill', rgba(sentro.token-get-raw('blurple'), 10%));
+      @include sentro.key-bind('button-border', rgba(sentro.token-get-raw('blurple'), 1%));
+    }
+  
+    &:active {
+      @include sentro.key-bind('button-fill', rgba(sentro.token-get-raw('blurple'), 20%));
+      @include sentro.key-bind('button-ink', sentro.token-get('blurple-light'));
+      @include sentro.key-bind('button-border', rgba(sentro.token-get-raw('blurple'), 2%));
     }
   }
   
@@ -76,7 +86,9 @@
         border: 1px solid rgba(0 0 0 / 0);
         @include sentro.prefix(transition, all 0.1s ease);
   
-        &:hover {
+        &:hover,
+        &:focus {
+          outline: none;
           border-color: sentro.token-get('blurple');
         }
         
@@ -100,6 +112,26 @@
           margin-top: 0.5rem;
         }
       }
+    }
+  }
+  
+  .pagination-nav__link {
+    background-color: rgba(sentro.token-get-raw('blurple'), 0%);
+    border: 1px solid rgba(sentro.token-get-raw('blurple'), 0%);
+    @include sentro.prefix(transition, all 0.1s ease);
+    
+    &:hover {
+      background-color: rgba(sentro.token-get-raw('blurple'), 10%);
+      border: 1px solid rgba(sentro.token-get-raw('blurple'), 1%);
+    }
+  
+    &:active {
+      background-color: rgba(sentro.token-get-raw('blurple'), 20%);
+      border: 1px solid rgba(sentro.token-get-raw('blurple'), 7%);
+    }
+    
+    .pagination-nav__sublabel {
+      display: none !important;
     }
   }
   

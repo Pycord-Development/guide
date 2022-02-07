@@ -24,14 +24,14 @@
     
     @include _text($color);
     
-    &.inverted {
+    &.pyc-button--inverted {
       @include _text('surface');
     }
     
     &.pyc-button--outlined {
       @include _outlined($color);
       
-      &.inverted {
+      &.pyc-button--inverted {
         @include _outlined('surface');
       }
     }
@@ -39,7 +39,7 @@
     &.pyc-button--filled {
       @include _filled($color);
       
-      &.inverted {
+      &.pyc-button--inverted {
         @include _filled('surface');
       }
     }
@@ -61,6 +61,7 @@
     .pyc-button__label {
       font-size: inherit;
       font-weight: inherit;
+      text-align: center;
     }
   }
 }
@@ -70,16 +71,16 @@
   color: sentro.key-create('button-ink', sentro.token-get('#{$color}'));
   border: 1px solid sentro.key-create('button-border', rgba(0 0 0 / 0));
   
-  &:active {
-    @include sentro.key-bind('button-fill', rgba(#fff, 15%));
-    @include sentro.key-bind('button-ink', sentro.token-get('#{$color}-light'));
-    @include sentro.key-bind('button-border', rgba(#fff, 15%));
-  }
-  
   &:hover,
   &:focus {
-    @include sentro.key-bind('button-fill', rgba(#fff, 10%));
-    @include sentro.key-bind('button-border', rgba(#fff, 10%));
+    @include sentro.key-bind('button-fill', rgba(sentro.token-get-raw('#{$color}'), 10%));
+    @include sentro.key-bind('button-border', rgba(sentro.token-get-raw('#{$color}'), 1%));
+  }
+  
+  &:active {
+    @include sentro.key-bind('button-fill', rgba(sentro.token-get-raw('#{$color}'), 20%));
+    @include sentro.key-bind('button-ink', sentro.token-get('#{$color}-light'));
+    @include sentro.key-bind('button-border', rgba(sentro.token-get-raw('#{$color}'), 2%));
   }
   
   &:disabled {
