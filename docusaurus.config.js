@@ -44,7 +44,7 @@ const config = {
     themeConfig: {
         colorMode: {
             defaultMode: 'dark',
-            disableSwitch: true
+            disableSwitch: true,
         },
         navbar: {
             title: 'Pycord Guide',
@@ -64,32 +64,39 @@ const config = {
                     title: 'Community',
                     items: [
                         {
+                            label: 'Discord',
+                            href: 'https://discord.gg/pycord',
+                        },
+                        {
                             label: 'Stack Overflow',
                             href: 'https://stackoverflow.com/questions/tagged/pycord',
                         },
+                        
+                        
+                    ],
+                },
+                
+                {
+                    title: 'Pycord',
+                    items: [
                         {
-                            label: 'Discord',
-                            href: 'https://discord.gg/pycord',
+                            label: 'Documentation',
+                            href: 'https://docs.pycord.dev',
                         },
                         {
                             label: 'Github',
                             href: 'https://github.com/Pycord-Development',
                         },
-                    ],
-                },
-                /*{
-                    title: 'More',
-                    items: [
+                        {
+                            label: 'Website',
+                            href: 'https://pycord.dev',
+                        },
                         {
                             label: 'Twitter',
-                            to: 'https://twitter.com/PycordDev',
-                        },
-                        {
-                            label: 'GitHub',
-                            href: 'https://github.com/p',
+                            href: 'https://twitter.com/PycordDev',
                         },
                     ],
-                },*/
+                },
             ],
             copyright: `Copyright © ${ new Date().getFullYear() } Pycord Development`,
         },
