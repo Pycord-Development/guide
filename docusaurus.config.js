@@ -60,7 +60,7 @@ const config = {
         },
         footer: {
             style: 'dark',
-            copyright: `Copyright © ${ new Date().getFullYear() } Pycord Development`,
+            copyright: `Copyright © Pycord Development, All rights reserved.`,
         },
         prism: {
             theme: lightCodeTheme,
