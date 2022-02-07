@@ -45,7 +45,7 @@ const config = {
         autoCollapseSidebarCategories: false,
         colorMode: {
             defaultMode: 'dark',
-            disableSwitch: true
+            disableSwitch: true,
         },
         navbar: {
             title: 'Pycord Guide',

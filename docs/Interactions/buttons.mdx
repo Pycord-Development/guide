@@ -45,7 +45,8 @@ async def button(ctx):
 
 bot.run("TOKEN") # Run the bot
 ```
-Using this `button` command should return the following message:
+
+Using this  command should return the following message:
 
 <DiscordMessages>
     <DiscordMessage author="Guide Bot" avatar="red" bot>
@@ -61,6 +62,7 @@ Using this `button` command should return the following message:
     </DiscordMessage>
 </DiscordMessages>
 
+<br />
 
 As you can see, we create a class called `View` that [subclasses](#oop) [`discord.ui.View`](https://docs.pycord.dev/en/master/api.html#discord.ui.Button).
 
@@ -85,6 +87,7 @@ This is the basic syntax of creating a button. What you create with it is up to 
 Check out the [`discord.ButtonStyle`](https://docs.pycord.dev/en/master/api.html#discord.ButtonStyle) class for more information.
 
 
+
 ![Different Button Styles](button-styles.png)
 
 
@@ -92,7 +95,6 @@ You can set a button's style by adding the `style` argument in the [`discord.ui.
 
 ```python
 class View(discord.ui.View):
-
     @discord.ui.button(label="Click me!", style=discord.ButtonStyle.success)
     async def button_callback(self, button, interaction):
         await interaction.response.send_message("You clicked the button!")
@@ -148,11 +150,13 @@ class MyView(discord.ui.View):
 
 ```python
 class MyView(discord.ui.View):
+
         @discord.ui.button(emoji="😀", label="Button 1", style=discord.ButtonStyle.primary)
         async def button_callback(self, button, interaction):
             for child in self.children: # loop through all the children of the view
                 child.disabled = True # set the button to disabled
             await interaction.response.edit_message(view=self)
+            
         @discord.ui.button(label="Button 2", style=discord.ButtonStyle.primary)
         async def second_button_callback(self, button, interaction):
             for child in self.children:
