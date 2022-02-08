@@ -113,3 +113,35 @@ To make a message authored by a slash command, do the following:
 <br />
 
 remember to always have `<br />` at the end of the components.
+
+### Buttons
+To add a button to a message do so:
+
+```
+<DiscordMessages>
+    <DiscordMessage author="Guide Bot" avatar="red" bot>
+        <div slot="interactions">
+            <DiscordInteraction author="Guide Man" avatar="green" command>button</DiscordInteraction>
+        </div>
+        button go brrr
+        <div slot="actions">
+            <DiscordButtons>
+                <DiscordButton type="primary">haha funny button</DiscordButton>
+            </DiscordButtons>
+        </div>
+    </DiscordMessage>
+</DiscordMessages>
+```
+<DiscordMessages>
+    <DiscordMessage author="Guide Bot" avatar="red" bot>
+        <div slot="interactions">
+            <DiscordInteraction author="Guide Man" avatar="green" command>button</DiscordInteraction>
+        </div>
+        button go brrr
+        <div slot="actions">
+            <DiscordButtons>
+                <DiscordButton type="primary">haha funny button</DiscordButton>
+            </DiscordButtons>
+        </div>
+    </DiscordMessage>
+</DiscordMessages>
