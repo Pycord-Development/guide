@@ -11,66 +11,262 @@ import {
 } from '@discord-message-components/react';
 import '@discord-message-components/react/styles';
 
-# About
-This section outlines some syntaxing when making the guide,
-for contributing rules look [here](https://github.com/Pycord-Development/guide/blob/master/.github/CONTRIBUTING.md)
+This page outlines some of the basic syntax you need to know to contribute to the guide. We recommend you also check out:
 
-## Notes and warnings
+  - [Docusaurus's Docs](https://docusaurus.io/docs/)
+  - [Contributing Rules](https://github.com/Pycord-Development/guide/blob/master/.github/CONTRIBUTING.md)
 
-Markdown syntaxing in docusaurus is pretty advanced but in no way hard,
-it's just as simple as:
+## Info
+
+We use [Docusaurus v2](https://docusaurus.io/) to generate our guide. All of the guide pages are generated from `mdx` files in the [`docs/`](https://github.com/Pycord-Development/guide/tree/master/docs) directory. MDX allows you to use JSX in your markdown content.
+
+## Markdown Syntax
+
+This page quickly outlines some of the syntaxing that is used in markdown.
+
+```md
+
+Markdown syntax is pretty easy. You can add **bold**, *italic* and _underline_ text. You can use ~~strikethrough~~. You can use `inline code blocks`.
+
+    ```python
+    print("We can use code blocks like this.")
+    ```
+
+You can add [links to other websites](https://pycord.dev). You can add images by adding ![alt text](https://pycord.dev/image.png).
+  - You can create
+  - unordered lists like this
+
+1. Or ordered lists
+2. Like this
+
+1. If you want markdown to automatically detect what number you are on, you can use `1.`
+1. Like this
+
+# Headers
+## Go
+### Like
+#### This
+
+You can even use HTML in Markdown.
+
+<samp>This text is monospaced</samp>
+Use <br/> to add a break line.
+
+> We can use blockquotes too.
+
+
+
+2 ways to create tables:
+
+<table>
+    <tr>
+        <th>Header</th>
+        <th>Header</th>
+    </tr>
+    <tr>
+        <td>Cell</td>
+        <td>Cell</td>
+    </tr>
+</table>
+
+| Header | Header |
+| ------ | ------ |
+| Cell   | Cell   |
+
+Here's a line for us to start with.
+
+This line is separated from the one above by two newlines, so it will be a *separate paragraph*.
+
+This line is also a separate paragraph, but...
+This line is only separated by a single newline, so it's a separate line in the *same paragraph*.
+
+We can use emojis too! :joy:
+
+- [x] We can have task lists too
+- [ ] This is a task
+- [ ] That's not done yet
+
 ```
-:::note
-did you know of girrafe?
-:::
 
-:::danger
-your stepping into the danger zone
+<details>
+<summary>Preview</summary>
+<div class="markdown-body">
+
+Markdown syntax is pretty easy. You can add **bold**, *italic* and _underline_ text. You can use ~~strikethrough~~. You can use `inline code blocks`.
+
+```python
+print("We can use code blocks like this.")
+```
+
+You can add [links to other websites](https://pycord.dev). You can add images by adding ![alt text](https://pycord.dev/image.png).
+  - You can create
+  - unordered lists like this
+
+1. Or ordered lists
+2. Like this
+
+1. If you want markdown to automatically detect what number you are on, you can use `1.`
+1. Like this
+
+    # Headers
+    ## Go
+    ### Like
+    #### This
+
+You can even use HTML in Markdown.
+
+<samp>This text is monospaced</samp>
+Use <br/> to add a break line.
+
+> We can use blockquotes too.
+
+
+
+2 ways to create tables:
+
+<table>
+    <tr>
+        <th>Header</th>
+        <th>Header</th>
+    </tr>
+    <tr>
+        <td>Cell</td>
+        <td>Cell</td>
+    </tr>
+</table>
+
+| Header | Header |
+| ------ | ------ |
+| Cell   | Cell   |
+
+Here's a line for us to start with.
+
+This line is separated from the one above by two newlines, so it will be a *separate paragraph*.
+
+This line is also a separate paragraph, but...
+This line is only separated by a single newline, so it's a separate line in the *same paragraph*.
+
+We can use emojis too! :joy:
+
+- [x] We can have task lists too
+- [ ] This is a task
+- [ ] That's not done yet
+
+</div>
+</details>
+
+## Admonitions
+
+We can add warnings, notes, etc. with the following syntax:
+
+```md
+
+:::note
+
+Some **content** with _markdown_ `syntax`. 
+
 :::
 
 :::tip
-my hat
+
+Some **content** with _markdown_ `syntax`. 
+
 :::
-```
-:::note
-did you know of girrafe?
+
+:::info
+
+Some **content** with _markdown_ `syntax`. 
+
+:::
+
+:::caution
+
+Some **content** with _markdown_ `syntax`. 
+
 :::
 
 :::danger
-your stepping into the danger zone
+
+Some **content** with _markdown_ `syntax`. 
+
+:::
+
+:::important
+
+Remember that it's `:::important`, not `::: important` with a space!
+
+:::
+
+```
+
+<details>
+<summary>Preview</summary>
+<div class="markdown-body">
+
+:::note
+
+Some **content** with _markdown_ `syntax`. 
+
 :::
 
 :::tip
-my hat
+
+Some **content** with _markdown_ `syntax`. 
+
 :::
 
-to make these have custom titles just add the title next to it, like so:
-```
-:::note Harambe
-An animal know for well uhhhh
+:::info
+
+Some **content** with _markdown_ `syntax`. 
+
 :::
-```
-:::note Harambe
-An animal known for well uhhhh
+
+:::caution
+
+Some **content** with _markdown_ `syntax`. 
+
 :::
+
+:::danger
+
+Some **content** with _markdown_ `syntax`. 
+
+:::
+
+:::important
+
+Remember that it's `:::important`, not `::: important` with a space!
+
+:::
+
+:::tip Cool Stuff
+
+You can edit an admonition's title by adding text after the `:::` and name, like this!
+
+:::
+
+</div>
+
+</details>
 
 ## Discord Message Components
 As most files already have the imports for these, it's not that hard to add them,
 the div starts like so:
 
-```
+```md
 <DiscordMessages>
 
 </DiscordMessages>
 
 <br />
 ```
-of which you list `DiscordMessage`'s, like so:
 
-```
+This is where you list a `DiscordMessage`.
+
+```md
 <DiscordMessages>
     <DiscordMessage author="Guide Bot" avatar="red">
-        hello obi wan kenobi
+        Hello!
     </DiscordMessage>
 </DiscordMessages>
 
@@ -78,38 +274,185 @@ of which you list `DiscordMessage`'s, like so:
 ```
 <DiscordMessages>
     <DiscordMessage author="Guide Bot" avatar="red">
-        hello obi wan kenobi
+        Hello!
     </DiscordMessage>
 </DiscordMessages>
 
 <br />
 
-it is a pretty easy and straight forward syntax.
+It is a pretty easy and straight forward syntax.
+
+:::tip
+
+Add a `<br/>` to the end of a component to make the text below it look better!
+
+:::
+
 
 ### Slash Commands
+
 To make a message authored by a slash command, do the following:
 
-```
+```md
 <DiscordMessages>
-    <DiscordMessage author="Guide Bot" avatar="red">
+    <DiscordMessage author="Guide Bot" avatar="red" bot>
         <div slot="interactions">
-            <DiscordInteraction author="Davey" avatar="Green" command>davey</DiscordInteraction>
+            <DiscordInteraction author="BobDotCom" avatar="https://cdn.discordapp.com/avatars/690420846774321221/5a2e465e7a4a56aa18b50ee94cde4229.png" command>update</DiscordInteraction>
         </div>
-        DAVEYYYY
+        Updated Pycord!
+    </DiscordMessage>
+</DiscordMessages>
+```
+
+<DiscordMessages>
+    <DiscordMessage author="Guide Bot" avatar="red" bot>
+        <div slot="interactions">
+            <DiscordInteraction author="BobDotCom" avatar="https://cdn.discordapp.com/avatars/690420846774321221/5a2e465e7a4a56aa18b50ee94cde4229.png" command>update</DiscordInteraction>
+        </div>
+        Updated Pycord!
+    </DiscordMessage>
+</DiscordMessages>
+
+
+
+### Buttons
+
+To make a message with buttons, do the following:
+
+```md
+<DiscordMessages>
+    <DiscordMessage author="Guide Bot" avatar="red" bot>
+        <div slot="interactions">
+            <DiscordInteraction author="BobDotCom" avatar="https://cdn.discordapp.com/avatars/690420846774321221/5a2e465e7a4a56aa18b50ee94cde4229.png" command>work</DiscordInteraction>
+        </div>
+        Work Done!
+        <div slot="actions">
+            <DiscordButtons>
+                <DiscordButton type="primary">Rest</DiscordButton>
+                <DiscordButton type="secondary">Sleep</DiscordButton>
+            </DiscordButtons>
+        </div>
+    </DiscordMessage>
+</DiscordMessages>
+```
+
+<DiscordMessages>
+    <DiscordMessage author="Guide Bot" avatar="red" bot>
+        <div slot="interactions">
+            <DiscordInteraction author="BobDotCom" avatar="https://cdn.discordapp.com/avatars/690420846774321221/5a2e465e7a4a56aa18b50ee94cde4229.png" command>work</DiscordInteraction>
+        </div>
+        Work Done!
+        <div slot="actions">
+            <DiscordButtons>
+                <DiscordButton type="primary">Rest</DiscordButton>
+                <DiscordButton type="secondary">Sleep</DiscordButton>
+            </DiscordButtons>
+        </div>
+    </DiscordMessage>
+</DiscordMessages>
+
+### Examples
+
+```md
+<DiscordMessages>
+    <DiscordMessage author="Pycord Manager" avatar="https://cdn.discordapp.com/avatars/882631512829329448/32b7c23df364938574997fc86ef24cee.png" bot>
+        <div slot="interactions">
+            <DiscordInteraction author="BobDotCom" avatar="https://cdn.discordapp.com/avatars/690420846774321221/5a2e465e7a4a56aa18b50ee94cde4229.png" command>update</DiscordInteraction>
+        </div>
+        Updating Pycord ... <br /> <br />
+        Pushing local commits to GitHub ... <br />
+        Building ... <br />
+        Deploying to PyPi ... <br />
+        Successfully deployed. <br />
+        Making announcement with @everyone ping ...  <br />
+        <br />
+        v3.3.5 deployed to PyPi, check it out <a href="https://pypi.org/project/Pycord/">here</a>!
+    </DiscordMessage>
+    <DiscordMessage author="Clone" avatar="https://cdn.discordapp.com/avatars/543397958197182464/fe1297ec629e24faeb2d293b7259f2ab.png">
+    It's stable, right?
+    </DiscordMessage>
+    <DiscordMessage author="BobDotCom" avatar="https://cdn.discordapp.com/avatars/690420846774321221/5a2e465e7a4a56aa18b50ee94cde4229.png">
+    Well ... 
     </DiscordMessage>
 </DiscordMessages>
 
 <br />
 ```
+
 <DiscordMessages>
-    <DiscordMessage author="Guide Bot" avatar="red">
+    <DiscordMessage author="Pycord Manager" avatar="https://cdn.discordapp.com/avatars/882631512829329448/32b7c23df364938574997fc86ef24cee.png" bot>
         <div slot="interactions">
-            <DiscordInteraction author="Davey" avatar="Green" command>davey</DiscordInteraction>
+            <DiscordInteraction author="BobDotCom" avatar="https://cdn.discordapp.com/avatars/690420846774321221/5a2e465e7a4a56aa18b50ee94cde4229.png" command>update</DiscordInteraction>
         </div>
-        DAVEYYYY
+        Updating Pycord ... <br /> <br />
+        Pushing local commits to GitHub ... <br />
+        Building ... <br />
+        Deploying to PyPi ... <br />
+        Successfully deployed. <br />
+        Making announcement with @everyone ping ...  <br />
+        <br />
+        v3.3.5 deployed to PyPi, check it out <a href="https://pypi.org/project/Pycord/">here</a>!
+    </DiscordMessage>
+    <DiscordMessage author="Clone" avatar="https://cdn.discordapp.com/avatars/543397958197182464/fe1297ec629e24faeb2d293b7259f2ab.png">
+    It's stable, right?
+    </DiscordMessage>
+    <DiscordMessage author="BobDotCom" avatar="https://cdn.discordapp.com/avatars/690420846774321221/5a2e465e7a4a56aa18b50ee94cde4229.png">
+    Well ... 
     </DiscordMessage>
 </DiscordMessages>
 
 <br />
 
-remember to always have `<br />` at the end of the components.
+
+```md
+<DiscordMessages>
+    <DiscordMessage author="Pycord Manager" avatar="https://cdn.discordapp.com/avatars/882631512829329448/32b7c23df364938574997fc86ef24cee.png" bot>
+        <div slot="interactions">
+            <DiscordInteraction author="BobDotCom" avatar="https://cdn.discordapp.com/avatars/690420846774321221/5a2e465e7a4a56aa18b50ee94cde4229.png" command>work</DiscordInteraction>
+        </div>
+        Working ... <br/> <br/>
+        Made 6 commits! <br/>
+        Started a new branch! <br/>
+        Started a PR! <br/>
+        Reverted a revert! <br/>
+        Procastinated! You decide to fix bugs in your PR later!
+        <div slot="actions">
+            <DiscordButtons>
+                <DiscordButton type="primary">😎 Go inactive for 2 days</DiscordButton>
+                <DiscordButton type="danger">Work More</DiscordButton>
+            </DiscordButtons>
+        </div>
+    </DiscordMessage>
+    <DiscordMessage author="Catra" avatar="https://cdn.discordapp.com/avatars/856780995629154305/a_7e12da98f634a9d658b868c38b8a68b2.png">
+    Please, no more chaos.
+    </DiscordMessage>
+</DiscordMessages>
+
+<br />
+```
+
+<DiscordMessages>
+    <DiscordMessage author="Pycord Manager" avatar="https://cdn.discordapp.com/avatars/882631512829329448/32b7c23df364938574997fc86ef24cee.png" bot>
+        <div slot="interactions">
+            <DiscordInteraction author="BobDotCom" avatar="https://cdn.discordapp.com/avatars/690420846774321221/5a2e465e7a4a56aa18b50ee94cde4229.png" command>work</DiscordInteraction>
+        </div>
+        Working ... <br/> <br/>
+        Made 6 commits! <br/>
+        Started a new branch! <br/>
+        Started a PR! <br/>
+        Reverted a revert! <br/>
+        Procastinated! You decide to fix bugs in your PR later!
+        <div slot="actions">
+            <DiscordButtons>
+                <DiscordButton type="primary">😎 Go inactive for 2 days</DiscordButton>
+                <DiscordButton type="danger">Work More</DiscordButton>
+            </DiscordButtons>
+        </div>
+    </DiscordMessage>
+    <DiscordMessage author="Catra" avatar="https://cdn.discordapp.com/avatars/856780995629154305/a_7e12da98f634a9d658b868c38b8a68b2.png">
+    Please, no more chaos.
+    </DiscordMessage>
+</DiscordMessages>
+
+<br />
+
