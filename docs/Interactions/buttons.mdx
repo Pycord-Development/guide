@@ -3,17 +3,16 @@ title: Buttons
 ---
 
 import {
-    DiscordButton,
-    DiscordButtons,
-    DiscordInteraction,
-    DiscordMessage,
-    DiscordMessages,
-} from '@discord-message-components/react';
-import '@discord-message-components/react/styles';
+  DiscordButton,
+  DiscordButtons,
+  DiscordInteraction,
+  DiscordMessage,
+  DiscordMessages,
+} from "@discord-message-components/react";
+import "@discord-message-components/react/styles";
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
 # About
 
@@ -50,20 +49,22 @@ async def button(ctx):
 bot.run("TOKEN") # Run the bot
 ```
 
-Using this  command should return the following message:
+Using this command should return the following message:
 
 <DiscordMessages>
-    <DiscordMessage author="Guide Bot" avatar="red" bot>
-        <div slot="interactions">
-            <DiscordInteraction author="Guide Man" avatar="green" command>button</DiscordInteraction>
-        </div>
-        This is a button!
-        <div slot="actions">
-            <DiscordButtons>
-                <DiscordButton type="primary">😎 Click me!</DiscordButton>
-            </DiscordButtons>
-        </div>
-    </DiscordMessage>
+  <DiscordMessage author="Guide Bot" avatar="red" bot>
+    <div slot="interactions">
+      <DiscordInteraction author="Guide Man" avatar="green" command>
+        button
+      </DiscordInteraction>
+    </div>
+    This is a button!
+    <div slot="actions">
+      <DiscordButtons>
+        <DiscordButton type="primary">😎 Click me!</DiscordButton>
+      </DiscordButtons>
+    </div>
+  </DiscordMessage>
 </DiscordMessages>
 
 <br />
@@ -80,20 +81,17 @@ This is the basic syntax of creating a button. What you create with it is up to 
 
 <!-- Button Styles is explained before the other sections because the user should know about disabled buttons, button colors, and so on to be able to understand timeouts -->
 
-| Name        | Usage                                                                                     | Color   |
-|-------------|-------------------------------------------------------------------------------------------|---------|
-| Primary     | `discord.ButtonStyle.primary` / `discord.ButtonStyle.blurple`                             | Blurple |
-| Secondary   | `discord.ButtonStyle.secondary` / `discord.ButtonStyle.grey` / `discord.ButtonStyle.gray` | Grey    |
-| Success     | `discord.ButtonStyle.success` / `discord.ButtonStyle.green`                               | Green   |
-| Danger      | `discord.ButtonStyle.danger` / `discord.ButtonStyle.red`                                  | Red     |
-| Link        | `discord.ButtonStyle.link` / `discord.ButtonStyle.url`                                    | Grey    |
+| Name      | Usage                                                                                     | Color   |
+| --------- | ----------------------------------------------------------------------------------------- | ------- |
+| Primary   | `discord.ButtonStyle.primary` / `discord.ButtonStyle.blurple`                             | Blurple |
+| Secondary | `discord.ButtonStyle.secondary` / `discord.ButtonStyle.grey` / `discord.ButtonStyle.gray` | Grey    |
+| Success   | `discord.ButtonStyle.success` / `discord.ButtonStyle.green`                               | Green   |
+| Danger    | `discord.ButtonStyle.danger` / `discord.ButtonStyle.red`                                  | Red     |
+| Link      | `discord.ButtonStyle.link` / `discord.ButtonStyle.url`                                    | Grey    |
 
 Check out the [`discord.ButtonStyle`](https://docs.pycord.dev/en/master/api.html#discord.ButtonStyle) class for more information.
 
-
-
 ![Different Button Styles](assets/button-styles.png)
-
 
 You can set a button's style by adding the `style` argument in the [`discord.ui.button`](https://docs.pycord.dev/en/master/api.html#discord.ui.button) decorator.
 
@@ -142,37 +140,37 @@ async def button(ctx):
 <Tabs>
   <TabItem value="disabling-a-single-component" label="Disabling a single component on press" default>
 
-  ```python
-  class MyView(discord.ui.View):
-    @discord.ui.button(label="A button", style=discord.ButtonStyle.primary)
-    async def button_callback(self, button, interaction):
-        button.disabled = True # set button.disabled to True to disable the button
-        button.label = "No more pressing!" # change the button's label to something else
-        await interaction.response.edit_message(view=self) # edit the message's view
-  ```
+```python
+class MyView(discord.ui.View):
+  @discord.ui.button(label="A button", style=discord.ButtonStyle.primary)
+  async def button_callback(self, button, interaction):
+      button.disabled = True # set button.disabled to True to disable the button
+      button.label = "No more pressing!" # change the button's label to something else
+      await interaction.response.edit_message(view=self) # edit the message's view
+```
 
   </TabItem>
 
   <TabItem value="disabling-all-children" label="Disabling all children of a view">
 
-  ```python
-  class MyView(discord.ui.View):
+```python
+class MyView(discord.ui.View):
 
-      @discord.ui.button(emoji="😀", label="Button 1", style=discord.ButtonStyle.primary)
-      async def button_callback(self, button, interaction):
-          for child in self.children: # loop through all the children of the view
-              child.disabled = True # set the button to disabled
-          await interaction.response.edit_message(view=self)
-                    
-      @discord.ui.button(label="Button 2", style=discord.ButtonStyle.primary)
-      async def second_button_callback(self, button, interaction):
-          for child in self.children:
-              child.disabled = True
-          await interaction.response.edit_message(view=self)
-  ```
+    @discord.ui.button(emoji="😀", label="Button 1", style=discord.ButtonStyle.primary)
+    async def button_callback(self, button, interaction):
+        for child in self.children: # loop through all the children of the view
+            child.disabled = True # set the button to disabled
+        await interaction.response.edit_message(view=self)
+
+    @discord.ui.button(label="Button 2", style=discord.ButtonStyle.primary)
+    async def second_button_callback(self, button, interaction):
+        for child in self.children:
+            child.disabled = True
+        await interaction.response.edit_message(view=self)
+```
+
   </TabItem>
 </Tabs>
-
 
 ## Timeouts
 
@@ -277,9 +275,10 @@ view.add_item(discord.ui.Button(label="Go to website", url="https://pycord.dev/"
 ```
 
 The point being, buttons aren't hard to use if you know Python. We recommend learning [Object Oriented Programming with Python](#oop).
+
 ### <e id="oop">What is OOP? What is subclassing?</e>
 
-OOP (object-oriented programming) is a programming paradigm that allows you to create objects that have their own properties and methods. Almost everything in python is an object or a class. `discord.Embed` and `discord.ui.View` are both classes. When you use ```view = discord.ui.View()``` to create a view, you are actually creating an object of type `discord.ui.View`.
+OOP (object-oriented programming) is a programming paradigm that allows you to create objects that have their own properties and methods. Almost everything in python is an object or a class. `discord.Embed` and `discord.ui.View` are both classes. When you use `view = discord.ui.View()` to create a view, you are actually creating an object of type `discord.ui.View`.
 
 Subclassing is a Python OOP concept. It means that you can create a class that inherits from another class. In other words, the class that subclasses another class can inherit all the methods and attributes of that class.
 
@@ -287,8 +286,8 @@ We highly recommend you learn about basic Python concepts like classes and inher
 
 **Resources**:
 
-  - [W3Schools's Guide to Python Classes & Objects](https://www.w3schools.com/python/python_classes.asp)
-  - [W3Schools's Guide to Python Inheritance](https://www.w3schools.com/python/python_inheritance.asp)
+- [W3Schools's Guide to Python Classes & Objects](https://www.w3schools.com/python/python_classes.asp)
+- [W3Schools's Guide to Python Inheritance](https://www.w3schools.com/python/python_inheritance.asp)
 
 ### Do buttons need any special permissions?
 

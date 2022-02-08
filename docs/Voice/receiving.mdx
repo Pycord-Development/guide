@@ -3,14 +3,14 @@ title: Receiving Voice Samples
 ---
 
 import {
-    DiscordButton,
-    DiscordButtons,
-    DiscordInteraction,
-    DiscordMessage,
-    DiscordMessages,
-    DiscordMention,
-} from '@discord-message-components/react';
-import '@discord-message-components/react/styles';
+  DiscordButton,
+  DiscordButtons,
+  DiscordInteraction,
+  DiscordMessage,
+  DiscordMessages,
+  DiscordMention,
+} from "@discord-message-components/react";
+import "@discord-message-components/react/styles";
 
 # About
 
@@ -47,13 +47,16 @@ async def record(ctx):  # If you're using commands.Bot this will also work.
     )
     await ctx.respond("Started recording!")
 ```
+
 <DiscordMessages>
-    <DiscordMessage author="Guide Bot" avatar="red" bot>
-        <div slot="interactions">
-            <DiscordInteraction author="Guide Man" avatar="green" command>record</DiscordInteraction>
-        </div>
-        Started recording!
-    </DiscordMessage>
+  <DiscordMessage author="Guide Bot" avatar="red" bot>
+    <div slot="interactions">
+      <DiscordInteraction author="Guide Man" avatar="green" command>
+        record
+      </DiscordInteraction>
+    </div>
+    Started recording!
+  </DiscordMessage>
 </DiscordMessages>
 
 <br />
@@ -64,6 +67,7 @@ Now you are finished making your command for voice receiving! Next, you will wan
 2. Make a stop command
 
 ### Making a Callback
+
 To make a callback, you will want to define the currently undefined `once_done` function inside of our command, like so:
 
 ```py
@@ -76,10 +80,12 @@ async def once_done(sink: discord.Sink, channel: discord.TextChannel, *args):  #
     files = [discord.File(audio.file, f"{user_id}.{sink.encoding}") for user_id, audio in sink.audio_data.items()]  # List down the files.
     await channel.send(f"finished recording audio for: {', '.join(recorded_users)}.", files=files)  # Send a message with the accumulated files.
 ```
+
 <DiscordMessages>
-    <DiscordMessage author="Guide Bot" avatar="red" bot>
-        finished recording audio for: <DiscordMention highlight={true}>GuideMan</DiscordMention>
-    </DiscordMessage>
+  <DiscordMessage author="Guide Bot" avatar="red" bot>
+    finished recording audio for:{" "}
+    <DiscordMention highlight={true}>GuideMan</DiscordMention>
+  </DiscordMessage>
 </DiscordMessages>
 
 <br />
@@ -87,6 +93,7 @@ async def once_done(sink: discord.Sink, channel: discord.TextChannel, *args):  #
 Now that that's done, the only thing left to do is to make your stop command.
 
 ### Making a Stop Command
+
 The final step to this guide is stopping the audio recording. This is the easiest step by far.
 
 To make it, you will want to do the following:
@@ -101,7 +108,7 @@ async def stop_recording(ctx):
         await ctx.delete()  # And delete.
     else:
         await ctx.respond("I am currently not recording here.")  # Respond with this if we aren't recording.
-    
+
 bot.run("token")
 ```
 

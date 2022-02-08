@@ -3,13 +3,13 @@ title: Slash Commands
 ---
 
 import {
-    DiscordButton,
-    DiscordButtons,
-    DiscordInteraction,
-    DiscordMessage,
-    DiscordMessages,
-} from '@discord-message-components/react';
-import '@discord-message-components/react/styles';
+  DiscordButton,
+  DiscordButtons,
+  DiscordInteraction,
+  DiscordMessage,
+  DiscordMessages,
+} from "@discord-message-components/react";
+import "@discord-message-components/react/styles";
 
 ## About
 
@@ -35,12 +35,14 @@ bot.run("TOKEN")
 ```
 
 <DiscordMessages>
-    <DiscordMessage author="Guide Bot" avatar="red" bot>
-        <div slot="interactions">
-            <DiscordInteraction author="Guide Man" avatar="green" command>ping</DiscordInteraction>
-        </div>
-        Pong! Latency is 335ms.
-    </DiscordMessage>
+  <DiscordMessage author="Guide Bot" avatar="red" bot>
+    <div slot="interactions">
+      <DiscordInteraction author="Guide Man" avatar="green" command>
+        ping
+      </DiscordInteraction>
+    </div>
+    Pong! Latency is 335ms.
+  </DiscordMessage>
 </DiscordMessages>
 
 <br />
@@ -54,5 +56,3 @@ Next, we create a [`discord.Bot`](https://docs.pycord.dev/en/master/api.html#dis
 We go ahead to use the [`@bot.command`](https://docs.pycord.dev/en/master/api.html#discord.Bot.command) decorator, which registers a new Slash Command. We pass a `description` parameter to give a description to the Slash Command. We can also pass a `name` parameter to change the Slash Command's name. By default, the name of the Slash Command will be the name of the function, in this case, `/ping`.
 
 We create an async function called `ping` with parameters `ctx`, which, when called, sends the bot's ping/latency using [`ctx.respond`](https://docs.pycord.dev/en/master/api.html#discord.ApplicationContext.respond).
-
-

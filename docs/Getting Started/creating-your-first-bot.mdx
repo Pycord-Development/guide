@@ -3,13 +3,13 @@ title: Creating Your First Bot
 ---
 
 import {
-    DiscordButton,
-    DiscordButtons,
-    DiscordInteraction,
-    DiscordMessage,
-    DiscordMessages,
-} from '@discord-message-components/react';
-import '@discord-message-components/react/styles';
+  DiscordButton,
+  DiscordButtons,
+  DiscordInteraction,
+  DiscordMessage,
+  DiscordMessages,
+} from "@discord-message-components/react";
+import "@discord-message-components/react/styles";
 
 Excited to create your first bot? Once you [install Pycord](installation.mdx), you can start right away!
 
@@ -67,7 +67,7 @@ Now, you have your bot's token copied to your clipboard.
 
 :::danger
 
-Never leak your bot's token, and never share it with anyone. Even if you get any DMs and someone tells you to do so, perhaps claiming to be Discord Staff, do not do so. They are probably lying and are scamming you. Anyone with your token will be able to access your bot fully. They will be able to do anything they want with your bot. 
+Never leak your bot's token, and never share it with anyone. Even if you get any DMs and someone tells you to do so, perhaps claiming to be Discord Staff, do not do so. They are probably lying and are scamming you. Anyone with your token will be able to access your bot fully. They will be able to do anything they want with your bot.
 
 Never push it to GitHub, or send it with the code. One way to prevent your token from getting leaked is to store it in `.env` files.
 
@@ -85,14 +85,17 @@ You can store your tokens in `.env` files. This is a simple way to store sensiti
    ```env
    TOKEN = [PASTE YOUR TOKEN HERE]
    ```
+
    for example
+
    ```env
    TOKEN = NzkyNzE1NDU0MTk2MDg4ODQy.X-hvzA.Ovy4MCQywSkoMRRclStW4xAYK7I
    ```
+
 3. Install [`python-dotenv`](https://pypi.org/project/python-dotenv/)
-    ```bash
-    python -m pip install python-dotenv
-    ```
+   ```bash
+   python -m pip install python-dotenv
+   ```
 
 If your code is in a git repository, you should create a file called `.gitignore` and add `.env` to it. This means that
 whenever you use the `git push` command, your .env file will not be pushed along with the rest of your code. It will stay secure in your local system.
@@ -114,16 +117,19 @@ async def on_ready():
 @bot.slash_command(name = "hello", description = "Say hello to the bot")
 async def hello(ctx):
     await ctx.send("Hey!")
-    
+
 bot.run(os.getenv('TOKEN')) # run the bot with the token
 ```
+
 <DiscordMessages>
-    <DiscordMessage author="Guide Bot" avatar="red" bot>
-        <div slot="interactions">
-            <DiscordInteraction author="Guide Man" avatar="green" command>hello</DiscordInteraction>
-        </div>
-        Hey!
-    </DiscordMessage>
+  <DiscordMessage author="Guide Bot" avatar="red" bot>
+    <div slot="interactions">
+      <DiscordInteraction author="Guide Man" avatar="green" command>
+        hello
+      </DiscordInteraction>
+    </div>
+    Hey!
+  </DiscordMessage>
 </DiscordMessages>
 
 Let's go through the code. First, the imports.
@@ -146,8 +152,7 @@ Next, we load the env file with `load_dotenv()`.
 bot = discord.Bot(debug_guilds=[881207955029110855])
 ```
 
-We create a new instance of [`discord.Bot`](https://docs.pycord.dev/en/master/api.html#discord.Bot
-). In the `debug_guilds` argument, we pass a list of guild IDs where we want to test the bot. Remember to change the
+We create a new instance of [`discord.Bot`](https://docs.pycord.dev/en/master/api.html#discord.Bot). In the `debug_guilds` argument, we pass a list of guild IDs where we want to test the bot. Remember to change the
 list and add a server where both you and the bot are, and you (preferably) have admin permissions. Normally, you do not
 pass this kwarg. However, if you do not specify this, the slash commands will take up to an hour to show up in all the
 guilds the bot is in. When you restrict the commands to a few guilds, you can instantly see the commands. You can also
@@ -168,7 +173,6 @@ when the bot is ready. This is automatically called when the bot is ready to be 
 async def say_hello(ctx):
     await ctx.send("Hey!")
 ```
-
 
 Here, we use the [`slash_command`](https://docs.pycord.dev/en/master/api.html#discord.Bot.slash_command) decorator to
 define a slash command. We specify the `name` and `description` arguments. If not specified, the name of the slash command becomes the name of the function. The description will remain empty.
