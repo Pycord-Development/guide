@@ -17,35 +17,41 @@ const sidebars = {
     "index",
     "installation",
     {
-      type: 'category',
-      label: 'Getting Started',
+      type: "category",
+      label: "Getting Started",
       items: ["Getting-Started/creating-your-first-bot"],
     },
     {
-      type: 'category',
+      type: "category",
       label: "Interactions",
-      items: ["Interactions/buttons", "Interactions/dropdowns", "Interactions/slash-commands"]
-    },
-    {
-      type: 'category',
-      label: "Extensions",
       items: [
-        'Extensions/Commands',
-        'Extensions/Pages'
-      ]
+        "Interactions/buttons",
+        "Interactions/dropdowns",
+        "Interactions/slash-commands",
+      ],
     },
     {
-      type: 'category',
+      type: "category",
+      label: "Extensions",
+      items: ["Extensions/Commands", "Extensions/Pages"],
+    },
+    {
+      type: "category",
       label: "Voice",
-      link: {type: "doc", id: "Voice/index"},
-      items: ["Voice/receiving"]
+      link: { type: "doc", id: "Voice/index" },
+      items: ["Voice/receiving"],
     },
     {
-      type: 'category',
+      type: "category",
       label: "Topics",
-      items: ["Topics/community-resources", "Topics/git", "Topics/sharding", "Topics/contributing"]
-    }
-  ]
+      items: [
+        "Topics/community-resources",
+        "Topics/git",
+        "Topics/sharding",
+        "Topics/contributing",
+      ],
+    },
+  ],
 };
 
 module.exports = sidebars;
