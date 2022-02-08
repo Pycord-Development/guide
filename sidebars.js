@@ -19,7 +19,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'Getting Started',
-      items: ["Getting Started/creating-your-first-bot"],
+      items: ["Getting-Started/creating-your-first-bot"],
     },
     {
       type: 'category',
