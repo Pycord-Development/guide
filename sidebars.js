@@ -15,15 +15,16 @@
 const sidebars = {
   sidebar: [
     "index",
+    "installation",
     {
       type: 'category',
       label: 'Getting Started',
-      items: ["Getting Started/installation", "Getting Started/creating-your-first-bot"],
+      items: ["Getting Started/creating-your-first-bot"],
     },
     {
       type: 'category',
       label: "Interactions",
-      items: ["Interactions/buttons", "Interactions/slash-commands"]
+      items: ["Interactions/buttons", "Interactions/dropdowns", "Interactions/slash-commands"]
     },
     {
       type: 'category',
@@ -36,12 +37,13 @@ const sidebars = {
     {
       type: 'category',
       label: "Voice",
-      items: ["Voice/index", "Voice/receiving"]
+      link: {type: "doc", id: "Voice/index"},
+      items: ["Voice/receiving"]
     },
     {
       type: 'category',
       label: "Topics",
-      items: ["Topics/community-resources", "Topics/contributing"]
+      items: ["Topics/community-resources", "Topics/git", "Topics/contributing"]
     }
   ]
 };

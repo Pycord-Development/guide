@@ -11,6 +11,10 @@ import {
 } from '@discord-message-components/react';
 import '@discord-message-components/react/styles';
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
 # About
 
 On May 26, 2021, Discord added a new interaction called buttons. Instead of reactions, bots could now send buttons and users could use them to interact with the bots. This opened up a whole new world of possibilities for bots. Soon after, developers made calculators, polls, and games like blackjack, Uno and even Minecraft!
@@ -88,7 +92,7 @@ Check out the [`discord.ButtonStyle`](https://docs.pycord.dev/en/master/api.html
 
 
 
-![Different Button Styles](button-styles.png)
+![Different Button Styles](assets/button-styles.png)
 
 
 You can set a button's style by adding the `style` argument in the [`discord.ui.button`](https://docs.pycord.dev/en/master/api.html#discord.ui.button) decorator.
@@ -135,34 +139,40 @@ async def button(ctx):
 
 ### Disabling Buttons on Press
 
-**Disabling a Single Button**
+<Tabs>
+  <TabItem value="disabling-a-single-component" label="Disabling a single component on press" default>
 
-```python
-class MyView(discord.ui.View):
+  ```python
+  class MyView(discord.ui.View):
     @discord.ui.button(label="A button", style=discord.ButtonStyle.primary)
     async def button_callback(self, button, interaction):
         button.disabled = True # set button.disabled to True to disable the button
         button.label = "No more pressing!" # change the button's label to something else
         await interaction.response.edit_message(view=self) # edit the message's view
-```
+  ```
 
-**Disabling All Buttons**
+  </TabItem>
 
-```python
-class MyView(discord.ui.View):
+  <TabItem value="disabling-all-children" label="Disabling all children of a view">
 
-        @discord.ui.button(emoji="😀", label="Button 1", style=discord.ButtonStyle.primary)
-        async def button_callback(self, button, interaction):
-            for child in self.children: # loop through all the children of the view
-                child.disabled = True # set the button to disabled
-            await interaction.response.edit_message(view=self)
-            
-        @discord.ui.button(label="Button 2", style=discord.ButtonStyle.primary)
-        async def second_button_callback(self, button, interaction):
-            for child in self.children:
-                child.disabled = True
-            await interaction.response.edit_message(view=self)
-```
+  ```python
+  class MyView(discord.ui.View):
+
+      @discord.ui.button(emoji="😀", label="Button 1", style=discord.ButtonStyle.primary)
+      async def button_callback(self, button, interaction):
+          for child in self.children: # loop through all the children of the view
+              child.disabled = True # set the button to disabled
+          await interaction.response.edit_message(view=self)
+                    
+      @discord.ui.button(label="Button 2", style=discord.ButtonStyle.primary)
+      async def second_button_callback(self, button, interaction):
+          for child in self.children:
+              child.disabled = True
+          await interaction.response.edit_message(view=self)
+  ```
+  </TabItem>
+</Tabs>
+
 
 ## Timeouts
 
