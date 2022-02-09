@@ -44,12 +44,24 @@ const sidebars = {
     {
       type: "category",
       label: "Topics",
+      link: { type: "generated-index" },
       items: [
-        "Topics/community-resources",
-        "Topics/git",
+        "Topics/intents",
+        "Topics/subclassing-bots",
         "Topics/sharding",
+        "Topics/git",
+        "Topics/community-resources",
         "Topics/contributing",
       ],
+      customProps: {
+        cards: [
+          {
+            title: "Intents",
+            description: "Learn all about Discord intents",
+            url: "/topics/intents",
+          }
+        ]
+      }
     },
   ],
 };
