@@ -159,3 +159,53 @@ And this is a User Command:
 Pretty cool, right? To learn more about these two, please read the (Message and User Commands guide)
 [message-user-commands.mdx]
 
+## Application Commands vs. Prefix Commands
+
+Ever since Discord was created, apps on it have used prefixes. This means that you'd have to put a 
+certain character or string of characters in front of your command, such as `!ping`. The way this 
+worked was that your bot listened for messages and picked out the ones that had its prefix, and then
+responded with the command. Now, Discord is forcing developers to switch their applications to
+`Application Commands`, a new system meant to preserve the privacy and safety of Discord's users. But 
+why exactly is Discord making us switch? What's the better option, Application Commands or prefix
+commands? Following discusses everything you need to know.
+
+### Discord's Decision
+
+You should be familiar with Discord scams by now, right? The links people send in DMs and servers 
+telling you it's Nitro or a game them and their friends have been working on, only to get not Nitro
+or a neat Indie game, but to get booted off of Discord and your account information changed. These
+are very common on Discord, and they still aren't under control. Discord is doing everything in their
+power to stop it, and this includes using Application Commands rather than prefix commands.
+
+Prefix commands work by reading messages, as described before. Application Commands, however, don't
+work this way. Application Commands work by Discord sending your bot information for when a command
+was used. This way, Discord can limit message reading to only bots that absolutely depend on it, such
+as auto moderation bots. 
+
+### Who Has to Use Application Commands
+
+Any verified bot without a reason that Discord deems acceptable must use Application Commands. Discord
+is allowing applications for the Message Content intent, but they're being picky about it and won't
+approve bots that simply *prefer* prefix commands. So, if your bot doesn't have an automoderator,
+message detector, or anything that reads messages, you're out of luck.
+
+Unverified bots, however, don't have to use Application Commands. This is because the Message Content
+intent is a `Privileged Intent`, meaning that you must apply for it and it only needs to be applied
+for if your bot is verified or going to be verified. Unverified bots don't have to apply for intents
+until they need to get verified, so they can use Privileged Intents freely.
+
+So if your bot is for a couple of servers, you can use prefix commands. If you plan on going somewhere
+with your bot, it'll have to use Application Commands.
+
+### What's the Better Option
+
+At the beginning, when slash commands and the Message Content intent were being announced, developers
+*hated* it. There were complaints everywhere. At the time, slash commands were thought to be clunky,
+slow, and inefficient. Since then, more Application Commands have been introduced and fixes to
+them have been applied. Slash commands aren't as terrible as when they first came out, and they
+now even support attachements. 
+
+What's truly the better option is up to you as a developer. But, there isn't really an option. If
+you plan on growing your bot, you have to use Application Commands. Developers with bigger bots don't
+have a choice, so we'll just have to get used to it.
+
