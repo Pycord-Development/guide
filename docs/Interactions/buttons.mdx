@@ -17,19 +17,19 @@ import TabItem from "@theme/TabItem";
 # About
 
 On May 26, 2021, Discord added a new interaction called buttons. Instead of reactions, bots could now send buttons and users could use them to interact with bots. This opened up a whole new world of possibilities for bots. Soon after, developers made calculators, polls, and games like blackjack, Uno and even Minecraft!
-Buttons provided a clear, easy to use interface for interacting with bots.
+Buttons provided a clear and easy to use interface for interacting with bots.
 
 So, let's see how you can add buttons to your bot!
 
 ## Concept
 
-Buttons weren't the only update to the interactions system in Discord. Discord also added drop-down menus, called "select menus." Discord is also still working on more interaction elements!
+Buttons weren't the only update to the interactions system in Discord. Discord also added drop-down menus, called Select Menus. Discord is also still working on more interaction elements!
 
-These UI elements reside in a "view". A view can have 5 rows, each row having 5 slots. Each button takes up one slot, and a dropdown takes up all 5 slots of a row. This means that a maximum of 25 buttons can be added to a view. Each message can have just one view.
+These UI elements reside in a "view". To learn more about views, please refer to the (interactions page.)[index.mdx]
 
 ## Usage Syntax
 
-Lets see how to create a simple responsive button.
+Let's see how to create a simple responsive button.
 
 ```python
 import discord
@@ -188,7 +188,7 @@ async def button(ctx):
     await ctx.send("Press the button!", view=MyView(timeout=30))
 ```
 
-As you can see in the last line, we set a timeout of 30 seconds on the view. If you are reusing the view and the timeout will stay the same, you could also define the timeout in the view itself.
+As you can see in the last line, we set a timeout of 30 seconds to the view. If you are reusing the view and want the timeout to stay the same, you can also define the timeout in the view itself.
 
 ```python
 class MyView(discord.ui.View):
@@ -291,7 +291,7 @@ We highly recommend you learn about basic Python concepts like classes and inher
 
 ### Do buttons need any special permissions?
 
-No new permissions are needed for both the bot and the server to allow bots to use buttons.
+No new permissions are needed for either the bot or the server to allow bots to use buttons.
 
 ### Should I replace reactions with buttons for my bot?
 

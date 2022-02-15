@@ -9,7 +9,7 @@ import TabItem from "@theme/TabItem";
 
 ## What are Intents?
 
-Intents allow bot developers to "subscribe" to specific events in Discord. This is useful for bots that need to respond to specific events, such as when a user joins a server, or when a user sends a message. You could choose to enable all intents, or to enable only specific intents that your bot requires.
+Intents allow bot developers to "subscribe" to specific events in Discord. This is useful for bots that need to respond to specific events, such as when a user joins a server sends a message. You could choose to enable all intents, or to enable only specific intents that your bot requires.
 
 ## How do I enable intents?
 
@@ -45,11 +45,11 @@ Remember that [Privileged Intents](#what-are-privileged-intents) require you to 
 
 ## What are Privileged Intents?
 
-Discord defines some intents as "previleged" because of the sensitive information they contain. Currently, the `members` and `presences` intents are privileged. These intents require you to enable them in the Bot Developer Portal. Once your bot reaches 100 servers, you will need to verify your bot in order for these intents to keep working.
+Discord defines some intents as "previleged" because of the sensitive information they contain. Currently, there are three privileged intents: `members`, `presences`, and `messages`. These intents must be enabled in your bot's Developer Portal. Once your bot reaches 100 servers, you will need to verify your bot in order for these intents to keep working.
 
 :::tip
 
-Only enable these intents if you need them. These intents reveal quite sensitive information about the users in your server. These intents are priviliged in order to respect the privacy of users, and you should do that as well.
+Only enable these intents if you need them. These intents give your bot access to quite sensitive information about the users in your server. These intents are priviliged in order to respect the privacy of users, and you should do that as well.
 
 Not enabling these intents doesn't mean you won't be able to ban users, but you will be unable to detect when a new user joins a server, or what game they are playing. 
 

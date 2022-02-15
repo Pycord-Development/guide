@@ -24,6 +24,7 @@ const sidebars = {
     {
       type: "category",
       label: "Interactions",
+      link: { type: "doc", id: "Interactions/index" },
       items: [
         "Interactions/buttons",
         "Interactions/dropdowns",
