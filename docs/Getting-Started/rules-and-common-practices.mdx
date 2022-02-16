@@ -1,0 +1,88 @@
+---
+title: Rules and Common Practices
+---
+
+# Rules and Common Practices of Creating a Bot
+
+When creating almost anything, there's always a certain set of rules to follow or common practices,
+such as (PEP8)[https://www.python.org/dev/peps/pep-0008/] for Python. This applies for creating bots
+with Pycord as well.
+
+:::note
+Most of these rules and common practices are only applicable for verified bots, but it's good to
+follow them nonetheless.
+:::
+
+## Rules
+
+There are rules for creating bots, and most of these are required by Discord themselves, not us at
+Pycord. Not following these rules may get your bot denied for verification.
+
+### Terms of Service and Privacy Policy
+
+Starting at some point in time, Discord has made providing a privacy policy with your bot a requirement.
+This is so that Discord knows exactly what you are doing with its users' data.
+
+:::tip
+You don't need a lawyer or anyone special to write out a privacy policy for you, nor do you need
+it approved by some official entity. Simply writing out how you are going to use Discord user
+information in a neat way is enough.
+:::
+
+Providing a Terms of Service for your bot is optional, though usually a best practice. It tells users
+what they can and cannot do with your service, and makes it easier to settle disputes if someone 
+disagrees with you.
+
+Read more in Discord's official [Legal Docs](https://discord.com/developers/docs/legal)
+
+### Developer Policy
+
+We could list almost every rule about using Discord's API here. *Or* we could simply link Discord's
+developer policy to make it easier on us. You can find Discord's developer policy
+[here](https://discord.com/developers/docs/policy). This outlines what you can and cannot do with
+Discord's developer API. And, don't worry, it's completely readable and understandable.
+
+## Best Practices
+
+Now, here's something we *can't* simply link an article for. We're going to discuss the best practices
+of creating a Discord bot with Pycord.
+
+### Bot Sharding
+
+To any new or maybe even experienced bot developer, sharding a bot sounds beneficial once you hear 
+about it. I'm here to tell you that it isn't a good idea to shard your bot.
+
+*Wait a minute, why would it be an option if it wasn't a good idea?* It's simple. I lied. Sort of.
+I'm not going to go into the details of sharding a bot, so you can read about it on
+[this page](../Topics/sharding.mdx). Basically, though, sharding is the process of taking your bot
+and breaking it up into small pieces so it's easier to perform tasks. This is very useful for large
+bots, as it makes them faster and more reliable. Sharding is not a good practice for small bots.
+
+:::note
+Discord itself will actually notify you once your bot is ready for sharding.
+:::
+
+At the very least, wait for one thousand servers to shard your bot. If you shard your bot while it's
+small, you'll just be wasting resources and possibly making your bot slower.
+
+### Verification
+
+Verifying your Discord bot is something every developer would like to achieve. It shows that your bot
+is in more than 75 servers. It's generally a good idea to try to get your bot verified as soon as
+possible. We're talking at 76 servers soon. This is because Discord can be somewhat slow in terms of
+bot verification, so verifying as soon as possible gives them enough time to verify before your bot
+reaches the 100 server cap. If a bot is not verified, it cannot grow beyong 100 servers.
+
+It's also a good idea to only apply for the privileged intents that you need. Applying for intents
+your bot doesn't use wastes both your time and Discord's time, as your whole verification request
+can be denied simply because you applied for an intent you didn't need.
+
+### Subclassing
+
+While it may take some time, subclassing a bot is very worth it. Once again, this was explained 
+elsewhere so I won't go into the details, but I felt it fit here so I put it here.
+
+Subclassing a bot makes it more flexible and allows it to do a lot more. Read more about subclassing
+bots [here](../Topics/subclassing-bots.mdx)
+
+

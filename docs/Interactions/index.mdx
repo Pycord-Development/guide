@@ -31,8 +31,8 @@ __**Application Commands**__
 ## Message Components
 
 Message Components are fairly new features in Discord, allowing developers to give their bots a fast 
-and understandable user interface to their bot. Message Components are easy to use and make your bot
-look modern, sleek, and downright awesome.
+and understandable user interface. Message Components are easy to use and make your bot look modern,
+sleek, and downright awesome.
 
 ### Views
 
@@ -91,16 +91,34 @@ Text Modals are the most recent Message Component in Discord. They're useful for
 filling out forms such as a sign-up for your bot's service. These are meant to replace long bot setup
 processes by allowing users to fill out a form, as well as replace having to make the user send 
 messages that the bot uses in general. Due to the upcoming (Message Content Intent)[topics/intents.mdx],
-verified bots will be forced to use Discord's new Interaction system instead of messages. Text Modals
+verified bots will be forced to use Discord's new interactions system instead of messages. Text Modals
 are opened by clicking on a button.
 
 [Text Modal example?]
 
 This is what a Text Modal looks like. Easy to use and one of the most useful Message Components yet.
 
+
+### Views
+
+Views are not an Application Command nor are they a Message Component. Views are the invisible
+placeholders or grid that Message Components lie in. Views can have up to 5 `Action Rows`. `Action
+Rows` can have a maximum of 5 slots. Below you can find a table of how many slots a Message 
+Interaction takes up.
+
+| Component    | Slots                        |
+|--------------|------------------------------|
+| Buttons      | 1 Slot                       |
+| Select Menus | 5 Slots                      |
+| Text Modals  | 1 Slot (opened via a button) |
+
+So, based on this, you could have a maximum of 25 buttons in a View with no Select Menus and 5 Select
+Menus with no Buttons in a View. This doesn't mean you can't have them both in a View. You can have
+a combination, such as 20 Buttons and a Select Menu or 10 Buttons and 3 Select Menus. 
+
 ## Application Commands
 
-Application Commands are also a new feature to Discord, that allow with easier ways to use commands
+Application Commands are also a new feature to Discord that allow easier ways to use commands
 that don't compromise Discord safety and privacy. Application Commands are easy to add to your bot
 and give users an easier and safer way to use commands.
 
@@ -109,7 +127,7 @@ and give users an easier and safer way to use commands.
 Slash Commands were the first Discord Interaction. Slash Commands are easy to use and create. They
 allow for an alternative to prefix commands without the need for the message content intent.
 
-::: note
+:::note
 
 Preferring prefix commands over Application Commands are **not** a valid reason to apply for the
 message content Privileged Intent. Using this as a reason will get your application denied.
