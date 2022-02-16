@@ -11,28 +11,45 @@ import {
 } from "@discord-message-components/react";
 import "@discord-message-components/react/styles";
 
-# Discord Interactions
+Back in the December 2020, Discord released their first interaction: the slash command. 
+Since then, Discord has added and updated Interactions a lot. Different types of Interactions are:
 
-Back in the December of 2020, Discord released their first interaction: the slash command. This was
-the beginning to a great deal of amazing Message Components and Application Commands in Discord.
-Since then, Discord also added:
+__**Message Components**__
 
-- Buttons
-- Select Menus
-- Text Modals
-- Message commands
-- User Commands
+- **Buttons**: buttons that can be clicked on to perform an action
+- **Select Menus**: Dropdowns used to select an option from a list of options
+- **Modals**: Form-like modals that can be used to ask for input
 
-Buttons, Select Menus, and Text Modals fall under the `Message Components` category, while Slash
-Commands, Message Commands, and User Commands fall under the `Application Commands` category. Keep
-reading to find out more about Message Components and Application Commands and why they're useful for
-your application, as well as the pros and cons of using them.
+__**Application Commands**__
+
+- **Slash Commands**: Commands that can be used to perform an action
+- **Context Menu Commands**
+  - **User Commands:** Commands that can be used *on* a user by right clicking/selecting them
+  - **Message Commands:** Commands that can be used on a message by right clicking/selecting it
+
 
 ## Message Components
 
 Message Components are fairly new features in Discord, allowing developers to give their bots a fast 
 and understandable user interface. Message Components are easy to use and make your bot look modern,
 sleek, and downright awesome.
+
+### Views
+
+Views are not an Application Command nor are they a Message Component. Views are the invisible
+placeholders or grid that Message Components lie in. Views can have up to 5 `Action Rows`. `Action
+Rows` can have a maximum of 5 slots. Below you can find a table of how many slots a Message 
+Interaction takes up.
+
+| Component    | Slots                        |
+| ------------------------------------------- |
+| Buttons      | 1 Slot                       |
+| Select Menus | 5 Slots                      |
+| Text Modals  | 1 Slot (opened via a button) |
+
+So, based on this, you could have a maximum of 25 buttons in a View with no Select Menus and 5 Select
+Menus with no Buttons in a View. This doesn't mean you can't have them both in a View. You can have
+a combination, such as 20 Buttons and a Select Menu or 10 Buttons and 3 Select Menus. 
 
 ### Buttons
 
@@ -80,6 +97,7 @@ are opened by clicking on a button.
 [Text Modal example?]
 
 This is what a Text Modal looks like. Easy to use and one of the most useful Message Components yet.
+
 
 ### Views
 
