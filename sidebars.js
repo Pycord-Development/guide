@@ -34,7 +34,15 @@ const sidebars = {
     {
       type: "category",
       label: "Extensions",
-      items: ["Extensions/Commands", "Extensions/Pages"],
+      items: [
+        {
+          type: "category",
+          label: "Commands",
+          items: [
+            "Extensions/Commands/creating-prefixed-commands",
+          ]
+        }
+      ],
     },
     {
       type: "category",
