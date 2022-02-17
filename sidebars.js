@@ -39,7 +39,7 @@ const sidebars = {
           type: "category",
           label: "Commands",
           items: [
-            "Extensions/Commands/creating-prefixed-commands",
+            "Extensions/Commands/prefixed-commands",
           ]
         }
       ],
