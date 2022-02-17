@@ -41,6 +41,7 @@ const sidebars = {
           items: [
             "Extensions/Commands/prefixed-commands",
             "Extensions/Commands/cogs",
+            "Extensions/Commands/help-command",
           ]
         }
       ],
