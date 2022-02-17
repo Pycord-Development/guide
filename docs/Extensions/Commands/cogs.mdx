@@ -1,0 +1,69 @@
+---
+title: Cogs
+---
+
+In the last guide, we learned about prefixed commands. Now we'll learn how to categorize them.
+
+Cogs, often known as modules, are used to organize commands into groups. This is useful for grouping commands that have the same functionality. This also helps make your files less cluttered and messy.
+
+## Getting Started
+
+First of all, create a folder to store your cogs, eg. `cogs/`.
+
+Then, create a file inside the folder, eg. `cogs/greetings.py`. By convention, the file name should be the same as the name of the cog or module.
+
+We can add some code to the file, eg.
+
+```python title="./cogs/greetings.py"
+import discord
+from discord.ext import commands
+
+
+class Greetings(commands.Cog): # create a class for our cog that inherits from commands.Cog
+    # this class is used to create a cog, which is a module that can be added to the bot
+
+    def __init__(self, bot): # this is a special method that is called when the cog is loaded
+        self.bot = bot 
+
+    @commands.command() # create a command
+    async def hello(self, ctx): # all methods now must have both self and ctx parameters
+        await ctx.send('Hello!')
+
+    @commands.command()
+    async def goodbye(self, ctx):
+        await ctx.send('Goodbye!')
+
+    @commands.Cog.listener() # we can add event listeners to our cog
+    async def on_member_join(self, member): # this is called when a member joins the server
+    # you must enable the proper intents
+    # to access this event.
+    # See the Popular-Topics/Intents page for more info
+        await member.send('Welcome to the server!')
+
+def setup(bot): # this is called by Pycord to setup the cog
+    bot.add_cog(Greetings(bot)) # add the cog to the bot
+```
+
+You can add any number of commands to your cog. You can also add event listeners to your cog. However, this code will not work on it's own. In your `bot.py`/`main.py`/main bot file, you must add the following code:
+
+```python
+bot.load_extension('cogs.greetings')
+```
+
+This loads the file `cogs/greetings.py` and adds it to the bot. Remember that the `/`'s is replaced by `.`'s and there is no `.py` at the end.
+
+If you have multiple cogs, you can add them all at once by adding the following code:
+
+```python
+cogs_list = [
+    'greetings',
+    'moderation',
+    'fun',
+    'owner'
+]
+
+for cog in cogs_list:
+    bot.load_extension(f'cogs.{cog}')
+```
+
+That is it! Now you can use the commands in your cogs. Your bot is now equipped with cogs! Cogs will make your help command look much cleaner. Talking about help commands, you might wanna get a better one. Check out the next tutorial!
