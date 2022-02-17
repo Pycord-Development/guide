@@ -1,4 +1,95 @@
 ---
 title: Threads
-description: All about threads
+description: Threads with Pycord
 ---
+
+In programming, threads are a way to run multiple processes at the same time. In Discord, threads are a way to keep multiple conversations going at the same time. Let's take a brief look at how to use threads in Pycord.
+
+:::tip
+
+Not all the methods and attributes will be covered in this guide, but you can find them in the documentation! [Check it out!](https://docs.pycord.dev/en/master/api.html#discord.Thread)
+
+:::
+
+## Creating a thread
+
+With a few lines of code, we can create threads in Pycord. 
+
+:::important
+
+All public threads need a starting message. This message will start the thread. However, private threads (which can be unlocked with server boosting level 2) do not require a starting message.
+
+:::
+
+### Creating thread from a message
+
+```python
+message = await something.send("My Starting Message")
+await message.create_thread(name="thread name", auto_archive_duration=60)
+```
+
+You may also use other ways to create the thread, for example, by using `on_message` events or by commands.
+
+### Creating thread in a channel
+
+```python
+channel = bot.get_channel(...) # define this!
+await channel.create_thread(name="Thread Name", message=None, auto_archive_duration=60, type=None, reason=None)
+```
+
+A thread type could be `news_thread`, `public_thread`, `private_thread`. You may use it by passing `type=discord.ChannelType.news_thread`.
+
+## Deleting Threads
+
+Deleting Threads is simple. You just need to get a thread, and then use the `delete` method.
+
+```python
+thread = bot.get_channel(thread_id) # you could use other ways to get a thread
+await thread.delete()
+```
+
+## Editing Threads
+
+__**Parameters**__
+
+  - `name` (str) – The new name of the thread
+
+  - `archived` (bool) – Whether to archive the thread or not.
+
+  - `locked` (bool) – Whether to lock the thread or not.
+
+  - `invitable` (bool) – Whether non-moderators can add other non-moderators to this thread. Only available for private threads.
+
+  - `auto_archive_duration` (int) – The new duration in minutes before a thread is automatically archived for inactivity. Must be one of 60, 1440, 4320, or 10080.
+
+  - `slowmode_delay` (int) – Specifies the slowmode rate limit for user in this thread, in seconds. A value of 0 disables slowmode. The maximum value possible is 21600.
+
+```python
+thread = bot.get_channel(id)
+await thread.edit(
+    name="New Name",
+    archived=True,
+    locked=True,
+    slowmode_delay=10,
+    auto_archive_duration=60,
+    )
+```
+
+As you can see, threads are quite simple. Once you learn how to use them, it's easy to create whatever you want.
+
+## FAQ
+
+### Why am I getting a `Forbidden` error when I try to create a thread?
+
+This is probably because the bot does not have the proper permissions to create a thread. 
+
+### Why am I getting an Unknown Message error when I try to create a thread?
+
+Getting an error looking something like `discord.ext.commands.errors.CommandInvokeError: Command raised an exception: HTTPException: 400 Bad Request (error code: 10008): Unknown Message`?
+
+There could be multiple reasons, some of them being:
+
+- The message does not exist
+- The message already has a thread
+- The message is in channel x, you are trying to start a thread in channel y.
+- The message was deleted.
