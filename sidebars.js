@@ -29,6 +29,7 @@ const sidebars = {
         "Interactions/buttons",
         "Interactions/dropdowns",
         "Interactions/slash-commands",
+        "Interactions/context-menus"
       ],
     },
     {
