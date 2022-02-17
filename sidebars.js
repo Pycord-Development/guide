@@ -52,25 +52,32 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Topics",
+      label: "Popular Topics",
       link: { type: "generated-index" },
       items: [
-        "Topics/intents",
-        "Topics/subclassing-bots",
-        "Topics/sharding",
-        "Topics/git",
-        "Topics/community-resources",
-        "Topics/contributing",
+        "Popular-Topics/intents",
+        "Popular-Topics/subclassing-bots",
+        "Popular-Topics/sharding",
+        "Popular-Topics/git",
       ],
       customProps: {
         cards: [
           {
             title: "Intents",
             description: "Learn all about Discord intents",
-            url: "/topics/intents",
+            url: "/popular-topics/intents",
           }
         ]
       }
+    },
+    {
+      type: "category",
+      label: "More",
+      link: { type: "generated-index" },
+      items: [
+        "More/community-resources",
+        "More/contributing",
+      ]
     },
   ],
 };
