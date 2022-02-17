@@ -55,6 +55,7 @@ const sidebars = {
       label: "Popular Topics",
       link: { type: "generated-index" },
       items: [
+        "Popular-Topics/threads",
         "Popular-Topics/intents",
         "Popular-Topics/subclassing-bots",
         "Popular-Topics/sharding",
