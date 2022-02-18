@@ -1,6 +1,6 @@
 ---
 title: Prefixed Commands
-description: Learn how to use the commands extention for Pycord.
+description: Learn how to use the commands extension for Pycord.
 ---
 
 import {
@@ -18,13 +18,13 @@ import TabItem from "@theme/TabItem";
 Before Discord added slash commands, all bots had prefixed commands. A user would type `!ping` or `?ping` or whatever the bot's prefix was to get a response.
 However, this prefixed commands system isn't native to Discord! Developers made use of the `on_message` event to check if the message began with a `!ping`. So every time a message was sent, the bot would check if it began with the prefix, or with the command name.
 
-The syntax becomes a little more complicated when you want to have multiple commands. There are several more disadvances to this system. This is where the commands extention comes in.
+The syntax becomes a little more complicated when you want to have multiple commands. There are several more disadvances to this system. This is where the commands extension comes in.
 `ext.commands` has various advantages, such as:
 
 - Simpler syntax
 - Easier to use
 - Easier to parse user input
-- Comes with build-in help commands
+- Comes with built-in help commands
 - Comes with a built-in system for categorizing commands
 
 <Tabs>
@@ -148,7 +148,7 @@ async def on_command_error(ctx, error):
 
 :::tip
 
-You can do much more with the commands extention! This example only showcases the same features as the previous example. You can use a different built-in help command, or even create your own! You will learn about creating Help Commands and Categories in the next tutorials.
+You can do much more with the commands extension! This example only showcases the same features as the previous example. You can use a different built-in help command, or even create your own! You will learn about creating Help Commands and Categories in the next tutorials.
 
 :::
 
