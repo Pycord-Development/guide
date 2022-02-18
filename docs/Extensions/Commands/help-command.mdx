@@ -15,11 +15,12 @@ import "@discord-message-components/react/styles";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-ext.commands comes with it's own built-in help commands. In this guide, we will take a look at them as well as learn how to create your own. Let's dive in!
+ext.commands comes with it's own build-in help commands. In this guide, we will take a look at them as well as learn how to create your own. Let's dive in!
 
 :::note
 
-This guide talks a lot about subclassing. It is important to understand about object-oriented programming and subclassing. Please learn about those Python Concepts before proceeding.
+This guide demomstrates using object-oriented programming and subclassing to make a help command for your
+Pycord bot. It is important to understand these two concepts before continuing.
 
 **Learning Resources**:
   - [W3Schools - Python Subclassing](https://www.w3schools.com/python/python_classes.asp)
@@ -29,19 +30,22 @@ This guide talks a lot about subclassing. It is important to understand about ob
 
 ## The Wrong Way
 
-A popular way to create a help command is to disable the built-in help command and create your own. This is not recommended and will lead to a lot of confusion. 
+A popular way to create a help command is to disable the built-in help command and create your own. This is not recommended as it will lead to a lot of confusion. 
 
 ```python title="The Wrong Way"
 bot = commands.Bot(command_prefix='!', help_command=None)
 # OR
 bot.help_command = None
+# OR
+bot.remove_command("help")
 
 @bot.command()
 async def help(ctx, *, argument=None):
   ...
 ```
 
-While it's possible to create a help command this way, you will be missing out on some of the most useful features of the help command! Using these features will save you time and effort.
+While it's possible to create a help command this way, doing so does not utilize the full capabilities
+of making one with Pycord. Making a help command with subclassing and OOP will save time and effort.
 
 ## Types of Help Commands
 
@@ -59,7 +63,7 @@ The default help command is enabled by default, but it's not exactly pretty. The
 import discord
 from discord.ext import commands
 
-bot = commands.Bot(command_prefix='!', help_command=commands.DefaultHelpCommand()) # help_command is DefaultHelpCommand by default so it isn't necessary to enable it like this
+bot = commands.Bot(command_prefix='!', help_command=commands.DefaultHelpCommand()) # help_command is DefaultHelpCommand by default so it isn't nessesary to enable it like this
 # We enable it here for the sake of understanding
 
 ...
@@ -122,7 +126,7 @@ bot.run("token")
 
 </Tabs>
 
-## Updating Built-in Help Commands
+## Updating Build-in Help Commands
 
 Let's try to make the `MinimalHelpCommand` look better. We will do this by putting it's content in an embed.
 
@@ -214,7 +218,7 @@ Let's go through the code.
 
 - There is a chance that the Cog is empty, so we use `if command_signatures:`.
 
-- We get the name of the cog using `getattr(cog, "qualified_name", "No Category")`. This calls the attribute `qualified_name` of the cog, and if it has no name, it returns "No Category".
+- We get the name of the cog using `getattr(cog, "qualified_name", "No Category")`. This calles the attribute `qualified_name` of the cog, and if it has no name, it returns "No Category".
 
 - We add a field to the embed with the name of the cog and the value of the command signatures.
 
