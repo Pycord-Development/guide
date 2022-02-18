@@ -56,3 +56,48 @@ Next, we create a [`discord.Bot`](https://docs.pycord.dev/en/master/api.html#dis
 We then go ahead to use the [`@bot.command`](https://docs.pycord.dev/en/master/api.html#discord.Bot.command) decorator, which registers a new Slash Command. We pass a `description` parameter to give a description to the Slash Command. We can also pass a `name` parameter to change the Slash Command's name. By default, the name of the Slash Command will be the name of the function, in this case, `/ping`.
 
 We create an async function called `ping` with parameters `ctx`, which, when called, sends the bot's ping/latency using [`ctx.respond`](https://docs.pycord.dev/en/master/api.html#discord.ApplicationContext.respond).
+
+## Cogs with Slash Commands
+
+As seen with the [commands extension](../Extensions/Commands/cogs), cogs are a useful feature to group commands together. Fortunately, cogs can also work with Slash Commands!
+
+In order to use Slash Commands with cogs, you'll have to use the `slash_command` decorator instead of the `bot.command` decorator. This is imported with the `discord` module, so you don't have to import anything else.
+
+Here's a cog with slash commands instead of prefix commands.
+
+```python title="./cogs/greetings.py"
+import discord
+from discord.ext import commands
+
+class Greetings(commands.Cog):
+  def __init__(self, bot):
+    self.bot = bot
+
+  @discord.slash_command()
+  async def hello(self, ctx):
+    await ctx.respond("Hello, this is a slash command from a cog!")
+
+  @discord.slash_command()
+  async def bye(self, ctx):
+    await ctx.respond("Bye, remember that this is a slash command from a cog!")
+
+  @discord.slash_command(guild_ids=[...])
+  async def restricted(self, ctx):
+    await ctx.respond("Hi, this is a restricted slash command from a cog!")
+
+def setup(bot):
+  bot.add_cog(Greetings(bot))
+```
+
+The registered slash commands from the cog should be displayed as normal in the Slash Command menu.
+
+<DiscordMessages>
+  <DiscordMessage author="Guide Bot" avatar="red" bot>
+    <div slot="interactions">
+      <DiscordInteraction author="Guide Man" avatar="green" command>
+        hello
+      </DiscordInteraction>
+    </div>
+    Hello, this is a slash command from a cog!
+  </DiscordMessage>
+</DiscordMessages>
