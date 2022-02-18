@@ -22,3 +22,6 @@ yarn-error.log*
 # Workstations
 /.idea
 /.vscode
+
+# Bot Tests
+bot_tests/
