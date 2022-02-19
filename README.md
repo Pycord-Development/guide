@@ -4,7 +4,7 @@ This website is built using [Docusaurus 2](https://docusaurus.io/), a modern sta
 
 # Purpose
 This guide is meant to serve as a professional guide to **all** of Pycord's features,
-this also mean's everything is critiqued to end up at the best quality.
+this also means that everything is critiqued to end up at the best quality.
 If a part of the guide doesn't make these expectations 
 it will either be refactored, or redone.
 
