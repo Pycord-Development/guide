@@ -104,6 +104,26 @@ Here's what the registered subcommands will look like in the Slash Command Menu:
 
 You'll notice that there's the name of the Slash Command Group and then the name of the subcommand seperated by a space.
 
+## Sub-groups
+
+We've made a subcommand group, but did you know that you could create a group inside another?
+
+```python
+from discord import SlashCommandGroup
+from math import sqrt
+
+math = SlashCommandGroup("math", "Math related commands")
+advanced = math.create_subgroup("advanced", "Advanced math commands")
+
+@advanced.command()
+async def square_root(ctx, x: int):
+  await ctx.respond(sqrt(x))
+
+bot.add_application_command(math)
+```
+
+The command created above can be invoked by typing `/math advanced square_root`.
+
 ## Slash Commands in Cogs
 
 As seen with the [commands extension](../Extensions/Commands/cogs), cogs are a useful feature to group commands together. Fortunately, cogs can also work with Slash Commands!
