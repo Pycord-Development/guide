@@ -23,14 +23,15 @@ This guide demomstrates using object-oriented programming and subclassing to mak
 Pycord bot. It is important to understand these two concepts before continuing.
 
 **Learning Resources**:
-  - [W3Schools - Python Subclassing](https://www.w3schools.com/python/python_classes.asp)
-  - [W3Schools - Python Inheritance](https://www.w3schools.com/python/python_inheritance.asp)
+
+- [W3Schools - Python Subclassing](https://www.w3schools.com/python/python_classes.asp)
+- [W3Schools - Python Inheritance](https://www.w3schools.com/python/python_inheritance.asp)
 
 :::
 
 ## The Wrong Way
 
-A popular way to create a help command is to disable the built-in help command and create your own. This is not recommended as it will lead to a lot of confusion. 
+A popular way to create a help command is to disable the built-in help command and create your own. This is not recommended as it will lead to a lot of confusion.
 
 ```python title="The Wrong Way"
 bot = commands.Bot(command_prefix='!', help_command=None)
@@ -112,12 +113,15 @@ bot.run("token")
   </DiscordMessage>
   <DiscordMessage author="Guide Bot" avatar="red" bot>
     Use <code>!help [command]</code> for more info on a command.
-    <br/>
+    <br />
     You can also use <code>!help [category]</code> for more info on a category.
-    <br/>
-    <br/>
-    <strong> <u>No Category</u> </strong>
-    <br/>
+    <br />
+    <br />
+    <strong>
+      {" "}
+      <u>No Category</u>{" "}
+    </strong>
+    <br />
     help ping
   </DiscordMessage>
 </DiscordMessages>
@@ -149,7 +153,7 @@ Let's go through the code.
 First, we create a new class called `MyNewHelp`. This class is a subclass of `MinimalHelpCommand`.
 
 Next, we override the `send_pages` method. This method is responsible for sending the help command to the user.
-We override this method because we don't want to change the content of the pages, just how they send.
+We override this method because we don't want to change the content of the pages, just how they are sent.
 
 We use the `get_destination` method to get the destination of the message. This is the channel or user that the help command is to be sent to.
 
@@ -158,20 +162,23 @@ We use the `paginator.pages` property to get the different pages of the help com
 Finally, we set this as our new help command using `bot.help_command = MyNewHelp()`.
 
 <DiscordMessages>
-	<DiscordMessage author="Guide Bot" avatar="red" bot>
-		<DiscordEmbed>
-			    Use <code>uwu help [command]</code> for more info on a command.
-    <br/>
-    You can also use <code>uwu help [category]</code> for more info on a category.
-    <br/>
-    <br/>
-    <strong> <u>No Category</u> </strong>
-    <br/>
-    help ping
-		</DiscordEmbed>
-	</DiscordMessage>
+  <DiscordMessage author="Guide Bot" avatar="red" bot>
+    <DiscordEmbed>
+      Use <code>uwu help [command]</code> for more info on a command.
+      <br />
+      You can also use <code>uwu help [category]</code> for more info on a
+      category.
+      <br />
+      <br />
+      <strong>
+        {" "}
+        <u>No Category</u>{" "}
+      </strong>
+      <br />
+      help ping
+    </DiscordEmbed>
+  </DiscordMessage>
 </DiscordMessages>
-
 
 ## Creating Your Own Help Command
 
@@ -223,7 +230,6 @@ Let's go through the code.
 - We add a field to the embed with the name of the cog and the value of the command signatures.
 
 - Finally, we send the embed to the channel.
-
 
 Let's improve the code a little.
 
@@ -279,11 +285,12 @@ Let's quickly go through the code we haven't discussed yet.
       await ctx.send(f"Pong! {round(bot.latency * 1000)}ms")
   ```
 - Line 6 is shorthand for
+
   ```python
   alias = command.aliases
   if alias:
     ...
-  
+
   # is the same as
 
   if alias := command.aliases:
@@ -291,6 +298,7 @@ Let's quickly go through the code we haven't discussed yet.
   ```
 
   A very cool but not well-known Python shorthand!
+
 - In line 7, we get the aliases of the command and add them to the embed.
 
 ### Cog Help
@@ -379,7 +387,7 @@ class SupremeHelpCommand(commands.HelpCommand):
         if filtered_commands := await self.filter_commands(commands):
             for command in filtered_commands:
                 embed.add_field(name=self.get_command_signature(command), value=command.help or "No help found...")
-           
+
         await self.get_destination().send(embed=embed)
 
     async def send_group_help(self, group):
@@ -392,9 +400,9 @@ class SupremeHelpCommand(commands.HelpCommand):
 
 bot.help_command = SupremeHelpCommand()
 ```
+
 </div>
 </details>
-
 
 ## Command Attributes
 
@@ -405,7 +413,7 @@ attributes = {
    'name': "help",
    'aliases': ["helpme"],
    'cooldown': commands.CooldownMapping.from_cooldown(3, 5, commands.BucketType.user),
-} 
+}
 
 # You need to use CooldownMapping.from_cooldown(rate, per, type)
 
