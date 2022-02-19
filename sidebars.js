@@ -41,6 +41,7 @@ const sidebars = {
           label: "Commands",
           items: [
             "Extensions/Commands/prefixed-commands",
+            "Extensions/Commands/groups",
             "Extensions/Commands/cogs",
             "Extensions/Commands/help-command",
           ]
