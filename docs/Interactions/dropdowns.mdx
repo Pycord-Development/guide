@@ -5,7 +5,7 @@ title: Select Menus
 # About
 
 On [Insert date], Discord added their second message component: Select Menus. Select Menus allow users
-to choose from a list of items sent by a bot. These are a great substitute for having a user send a 
+to choose from a list of items sent by a bot. These are a great substitute for having a user send a
 number that corresponds to an option. You can even allow users to select multiple options from Select
 Menus. This guide will show you the easy and painless ways of using them with Pycord.
 
@@ -13,11 +13,11 @@ Menus. This guide will show you the easy and painless ways of using them with Py
 
 Select Menus aren't the only message component in Discord. There are also [Buttons](buttons.mdx) and
 [Text Modals](modals.mdx). Select Menus make it easy for users to pick one or multiple options from
-a list provided by a bot. 
+a list provided by a bot.
 
 ```py
 class MyView(discord.ui.View):
-    
+
     @discord.ui.select(
         placeholder = "Choose a Flavor!",
         min_values = 1,
@@ -82,9 +82,9 @@ This is a big section, and it's only the decorator! Don't worry, though, it's ve
 - `pleaceholder` is what goes in the select before any value is selected.
 - `min_values` is the minimum amount of values a user has to choose.
 - `max_values` is the maximum amount of values a user can choose.
-- `options` is a list of discord.SelectOption objects that make up a Select Menu Option. 
-    - `label` in a Select Option is the label of the option.
-    - `description` in a Select Option is the description of the option.
+- `options` is a list of discord.SelectOption objects that make up a Select Menu Option.
+  - `label` in a Select Option is the label of the option.
+  - `description` in a Select Option is the description of the option.
 
 Not so bad, was it?
 
@@ -93,7 +93,7 @@ async def select_callback(self, select, callback):
     await interaction.respond.send_message(f"Awesome! I like {self.values[0]} too!")
 ```
 
-Finally, the callback. This is what the Select Menu actually *does* after being used. In this case,
+Finally, the callback. This is what the Select Menu actually _does_ after being used. In this case,
 it responds to the interactions with "Awesome! I like {The option you chose} too!"
 
 Once again, if you found any of these very hard to understand, we suggest freshening up your Python

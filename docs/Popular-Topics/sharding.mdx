@@ -4,20 +4,21 @@ description: All about Sharding Discord Bots.
 ---
 
 # Sharding
+
 Sharding in Pycord is straight forward and simplistic,
 
 :::tip When to Shard?
 
 It is recommended to only shard your bot when it reaches 2,000 or more servers. Anything under this
 will not do anything and consume unnecessary resources. Discord itself will let you know when it's
-time for sharding. 
+time for sharding.
 
 :::
 
 Just replace your `discord.Client`, `discord.Bot`, `commands.Bot` objects
 with `discord.AutoShardedClient`, `discord.AutoShardedBot`, `commands.AutoShardedBot` respectively.
 
-If you want to specify the amount of shards your bot uses, 
+If you want to specify the amount of shards your bot uses,
 just add the `shards` parameter, along with the amount of shards you want.
 
 ## What is Sharding?
@@ -30,9 +31,9 @@ Sharding is used only for large bots, and takes up additional resources for mana
 Pycord automatically shards your bot, so the only thing you need to do is use an `AutoShardedClient`
 or `AutoShardedBot` class instead of a plain `Client` or `Bot` class. Pretty cool, right?
 
-Just because you *can* shard your bot doesn't mean you *should*. While Pycord makes it easy to shard
+Just because you _can_ shard your bot doesn't mean you _should_. While Pycord makes it easy to shard
 your bot, it isn't necessary to actually shard unless your bot is large. Sharding a small bot isn't
-just useless, but actually *harmful*, as it uses extra resources and may slow down your bot. Discord
+just useless, but actually _harmful_, as it uses extra resources and may slow down your bot. Discord
 themselves will actually let you know when your bot needs sharding.
 
 ## Why Should I Shard my Bot?
@@ -40,4 +41,4 @@ themselves will actually let you know when your bot needs sharding.
 Sharding is very necessary for big bots. While your bot grows, it gets harder for your bot to control
 how many guilds it is in and what parts of your code should do what. This is exactly what sharding
 handles, it makes all of this easier for your bot. Remember, though, only shard your bot once it's
-big enough, and that's at *least* 1,000 guilds.
+big enough, and that's at _least_ 1,000 guilds.

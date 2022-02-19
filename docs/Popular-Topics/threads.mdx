@@ -13,7 +13,7 @@ Not all the methods and attributes will be covered in this guide, but you can fi
 
 ## Creating a thread
 
-With a few lines of code, we can create threads in Pycord. 
+With a few lines of code, we can create threads in Pycord.
 
 :::important
 
@@ -50,19 +50,19 @@ await thread.delete()
 
 ## Editing Threads
 
-__**Parameters**__
+****Parameters****
 
-  - `name` (str) – The new name of the thread
+- `name` (str) – The new name of the thread
 
-  - `archived` (bool) – Whether to archive the thread or not.
+- `archived` (bool) – Whether to archive the thread or not.
 
-  - `locked` (bool) – Whether to lock the thread or not.
+- `locked` (bool) – Whether to lock the thread or not.
 
-  - `invitable` (bool) – Whether non-moderators can add other non-moderators to this thread. Only available for private threads.
+- `invitable` (bool) – Whether non-moderators can add other non-moderators to this thread. Only available for private threads.
 
-  - `auto_archive_duration` (int) – The new duration in minutes before a thread is automatically archived for inactivity. Must be one of 60, 1440, 4320, or 10080.
+- `auto_archive_duration` (int) – The new duration in minutes before a thread is automatically archived for inactivity. Must be one of 60, 1440, 4320, or 10080.
 
-  - `slowmode_delay` (int) – Specifies the slowmode rate limit for user in this thread, in seconds. A value of 0 disables slowmode. The maximum value possible is 21600.
+- `slowmode_delay` (int) – Specifies the slowmode rate limit for user in this thread, in seconds. A value of 0 disables slowmode. The maximum value possible is 21600.
 
 ```python
 thread = bot.get_channel(id)
@@ -81,7 +81,7 @@ As you can see, threads are quite simple. Once you learn how to use them, it's e
 
 ### Why am I getting a `Forbidden` error when I try to create a thread?
 
-This is probably because the bot does not have the proper permissions to create a thread. 
+This is probably because the bot does not have the proper permissions to create a thread.
 
 ### Why am I getting an Unknown Message error when I try to create a thread?
 

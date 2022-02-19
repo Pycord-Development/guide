@@ -6,7 +6,6 @@ description: All about intents in Discord.
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-
 ## What are Intents?
 
 Intents allow bot developers to "subscribe" to specific events in Discord. This is useful for bots that need to respond to specific events, such as when a user joins a server sends a message. You could choose to enable all intents, or to enable only specific intents that your bot requires.
@@ -22,23 +21,23 @@ Remember that [Privileged Intents](#what-are-privileged-intents) require you to 
 <Tabs>
   <TabItem value="enabling-all-intents" label="Enabling all intents" default>
 
-  ```python
-  import discord
+```python
+import discord
 
-  bot = discord.Bot(intents=discord.intents.all())
-  ```
+bot = discord.Bot(intents=discord.intents.all())
+```
 
   </TabItem>
     
   <TabItem value="enabling-specific-intents" label="Enabling specific intents">
 
-  You can view a list of intents and the events they subscribe to [here](https://docs.pycord.dev/en/master/api.html#discord.Intents).
+You can view a list of intents and the events they subscribe to [here](https://docs.pycord.dev/en/master/api.html#discord.Intents).
 
-  ```python
-  import discord
+```python
+import discord
 
-  bot = discord.Bot(intents=discord.intents.members(bans=True, guilds=True))
-  ```
+bot = discord.Bot(intents=discord.intents.members(bans=True, guilds=True))
+```
 
   </TabItem>
 </Tabs>
@@ -51,6 +50,6 @@ Discord defines some intents as "previleged" because of the sensitive informatio
 
 Only enable these intents if you need them. These intents give your bot access to quite sensitive information about the users in your server. These intents are privileged in order to respect the privacy of users, and you should do that as well.
 
-Not enabling these intents doesn't mean you won't be able to ban users, but you will be unable to detect when a new user joins a server, or what game they are playing. 
+Not enabling these intents doesn't mean you won't be able to ban users, but you will be unable to detect when a new user joins a server, or what game they are playing.
 
 :::

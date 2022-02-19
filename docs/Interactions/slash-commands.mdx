@@ -57,7 +57,7 @@ We then go ahead to use the [`@bot.command`](https://docs.pycord.dev/en/master/a
 
 We create an async function called `ping` with parameters `ctx`, which, when called, sends the bot's ping/latency using [`ctx.respond`](https://docs.pycord.dev/en/master/api.html#discord.ApplicationContext.respond).
 
-## Groups and Subcommands
+## Subcommand Groups
 
 You might want to group certain commands together for organization. You could use a cog, but sometimes a better solution is to make a Command Group. A Command Group is exactly what it sounds like, a group of individual slash commands together.
 
@@ -104,7 +104,7 @@ Here's what the registered subcommands will look like in the Slash Command Menu:
 
 You'll notice that there's the name of the Slash Command Group and then the name of the subcommand seperated by a space.
 
-## Cogs with Slash Commands
+## Slash Commands in Cogs
 
 As seen with the [commands extension](../Extensions/Commands/cogs), cogs are a useful feature to group commands together. Fortunately, cogs can also work with Slash Commands!
 
