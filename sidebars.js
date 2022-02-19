@@ -63,7 +63,6 @@ const sidebars = {
         "Popular-Topics/intents",
         "Popular-Topics/subclassing-bots",
         "Popular-Topics/sharding",
-        "Popular-Topics/git",
       ],
       customProps: {
         cards: [
@@ -80,6 +79,7 @@ const sidebars = {
       label: "More",
       link: { type: "generated-index" },
       items: [
+        "More/git",
         "More/community-resources",
         "More/contributing",
       ]
