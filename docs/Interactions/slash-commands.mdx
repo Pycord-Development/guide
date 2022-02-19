@@ -57,6 +57,53 @@ We then go ahead to use the [`@bot.command`](https://docs.pycord.dev/en/master/a
 
 We create an async function called `ping` with parameters `ctx`, which, when called, sends the bot's ping/latency using [`ctx.respond`](https://docs.pycord.dev/en/master/api.html#discord.ApplicationContext.respond).
 
+## Groups and Subcommands
+
+You might want to group certain commands together for organization. You could use a cog, but sometimes a better solution is to make a Command Group. A Command Group is exactly what it sounds like, a group of individual slash commands together.
+
+In order to make a slash command group, you can either use the `bot.create_group` function or manually make a `SlashCommandGroup` class like this:
+
+```python
+import discord
+
+bot = discord.Bot(debug_guilds=[...]) # specify the guild IDs in debug_guilds
+
+# create slash command group with bot.create_group
+greetings = bot.create_group("greetings", "Greet people")
+
+@greetings.command()
+async def hello(ctx):
+  await ctx.respond(f"Hello, {ctx.author}!")
+
+@greetings.command()
+async def bye(ctx):
+  await ctx.respond(f"Bye, {ctx.author}!")
+
+# or create a slash command group manually
+math = SlashCommandGroup("math", "Math related commands")
+
+@math.command()
+async def add(ctx, num1: int, num2: int):
+  sum = num1 + num2
+  await ctx.respond(f"{num1} plus {num2} is {sum}.")
+
+@math.command()
+async def subtract(ctx, num1: int, num2: int):
+  sum = num1 - num2
+  await ctx.respond(f"{num1} minus {num2} is {sum}.")
+
+# you'll have to manually add the manually created slash command group
+bot.add_application_command(math)
+
+bot.run("TOKEN")
+```
+
+Here's what the registered subcommands will look like in the Slash Command Menu:
+
+![Picture of the subcommands in the Slash Command Menu](../assets/groups-and-subcommands.png)
+
+You'll notice that there's the name of the Slash Command Group and then the name of the subcommand seperated by a space.
+
 ## Cogs with Slash Commands
 
 As seen with the [commands extension](../Extensions/Commands/cogs), cogs are a useful feature to group commands together. Fortunately, cogs can also work with Slash Commands!
