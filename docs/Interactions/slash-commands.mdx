@@ -117,7 +117,7 @@ advanced = math.create_subgroup("advanced", "Advanced math commands")
 
 @advanced.command()
 async def square_root(ctx, x: int):
-  await ctx.respond(sqrt(x))
+    await ctx.respond(sqrt(x))
 
 bot.add_application_command(math)
 ```
@@ -137,23 +137,23 @@ import discord
 from discord.ext import commands
 
 class Greetings(commands.Cog):
-  def __init__(self, bot):
-    self.bot = bot
+    def __init__(self, bot):
+        self.bot = bot
 
-  @discord.slash_command()
-  async def hello(self, ctx):
-    await ctx.respond("Hello, this is a slash command from a cog!")
+    @discord.slash_command()
+    async def hello(self, ctx):
+        await ctx.respond("Hello, this is a slash command from a cog!")
 
-  @discord.slash_command()
-  async def bye(self, ctx):
-    await ctx.respond("Bye, remember that this is a slash command from a cog!")
+    @discord.slash_command()
+    async def bye(self, ctx):
+        await ctx.respond("Bye, remember that this is a slash command from a cog!")
 
-  @discord.slash_command(guild_ids=[...])
-  async def restricted(self, ctx):
-    await ctx.respond("Hi, this is a restricted slash command from a cog!")
+    @discord.slash_command(guild_ids=[...])
+    async def restricted(self, ctx):
+        await ctx.respond("Hi, this is a restricted slash command from a cog!")
 
 def setup(bot):
-  bot.add_cog(Greetings(bot))
+    bot.add_cog(Greetings(bot))
 ```
 
 The registered slash commands from the cog should be displayed as normal in the Slash Command menu.
