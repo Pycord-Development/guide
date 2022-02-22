@@ -132,7 +132,8 @@ bot.run("token")
 
 ## Updating Build-in Help Commands
 
-Let's try to make the `MinimalHelpCommand` look better. We can do this by putting its content in an embed.
+Let's try to make the `MinimalHelpCommand` look better. We can do this by putting its content in an
+embed.
 
 ```python
 bot = commands.Bot(command_prefix='!')
@@ -152,21 +153,24 @@ Let's go through the code.
 
 First, we create a new class called `MyNewHelp`. This class is a subclass of `MinimalHelpCommand`.
 
-Next, we override the `send_pages` method. This method is responsible for sending the help command to the user.
-We override this method because we don't want to change the content of the pages, just how they are sent.
+Next, we override the `send_pages` method. This method is responsible for sending the help command to
+the user. We override this method because we don't want to change the content of the pages, just how
+they are sent.
 
-We use the `get_destination` method to get the destination of the message. This is the channel or user that the help command is to be sent to.
+We use the `get_destination` method to get the destination of the message. This is the channel or use
+ that the help command is to be sent to.
 
-We use the `paginator.pages` property to get the different pages of the help command. We put the page in an embed, and then send the embed to the destination channel.
+We use the `paginator.pages` property to get the different pages of the help command. We put the page
+in an embed, and then send the embed to the destination channel.
 
 Finally, we set this as our new help command using `bot.help_command = MyNewHelp()`.
 
 <DiscordMessages>
   <DiscordMessage author="Guide Bot" avatar="red" bot>
     <DiscordEmbed>
-      Use <code>uwu help [command]</code> for more info on a command.
+      Use <code>!help [command]</code> for more info on a command.
       <br />
-      You can also use <code>uwu help [category]</code> for more info on a
+      You can also use <code>!help [category]</code> for more info on a
       category.
       <br />
       <br />
@@ -215,17 +219,21 @@ Let's go through the code.
 
 - First, we create a new class called `MyHelp`. This class is a subclass of `HelpCommand`.
 
-- Next, we override the `send_bot_help` method. This method is responsible for sending the main help command to the user.
+- Next, we override the `send_bot_help` method. This method is responsible for sending the main help
+command to the user.
 
 - We create an embed with title "Help".
 
-- We iterate through `mapping.items()`, which returns a list of tuples, the first element being the cog and the second element being a list of commands.
+- We iterate through `mapping.items()`, which returns a list of tuples, the first element being the
+cog and the second element being a list of commands.
 
-- By using `self.get_command_signature(c)` we get the signature of the command, also known as the `parameters` or `arguments`.
+- By using `self.get_command_signature(c)` we get the signature of the command, also known as the
+`parameters` or `arguments`.
 
 - There is a chance that the cog is empty, so we use `if command_signatures:`.
 
-- We get the name of the cog using `getattr(cog, "qualified_name", "No Category")`. This calls the cog's attribute `qualified_name` that returns "No Category" if the cog has no name.
+- We get the name of the cog using `getattr(cog, "qualified_name", "No Category")`. This calls the
+cog's attribute `qualified_name` that returns "No Category" if the cog has no name.
 
 - We add a field to the embed with the name of the cog and the value of the command signatures.
 
@@ -240,9 +248,11 @@ class MyHelp(commands.HelpCommand):
 
     async def send_bot_help(self, mapping):
         embed = discord.Embed(title="Help", color=discord.Color.blurple())
+
         for cog, commands in mapping.items():
            filtered = await self.filter_commands(commands, sort=True)
            command_signatures = [self.get_command_signature(c) for c in filtered]
+
            if command_signatures:
                 cog_name = getattr(cog, "qualified_name", "No Category")
                 embed.add_field(name=cog_name, value="\n".join(command_signatures), inline=False)
@@ -253,7 +263,8 @@ class MyHelp(commands.HelpCommand):
 bot.help_command = MyHelp()
 ```
 
-Now it won't show any commands that can't be used by the user. It won't show all the aliases of the command either. Let's instead make it show the aliases in the command help menu.
+Now the help command won't show commands that the user can't use, as well as aliases for commands.
+Let's make the help command show command aliases.
 
 ### Command Help
 
@@ -276,8 +287,12 @@ bot.help_command = MyHelp()
 
 Let's quickly go through the code we haven't discussed yet.
 
-- In line 3, we create an embed with title the signature of the command (so that the title of the embed looks like `<command> <parameter> [parameter]`), and a random color.
-- In lines 4 and 5, we get the help of the command and add it to the embed. The help of a command can be specified in docstrings of a command function, for example,
+- In line 3, we create an embed with title the signature of the command (so that the title of the
+embed looks like `<command> <parameter> [parameter]`), and a random color.
+
+- In lines 4 and 5, we get the command's `help` description and add it to the embed. The help description
+of a command can be specified in docstrings of a command function. For example:
+
   ```python
   @bot.command()
   async def ping(ctx):
@@ -297,7 +312,7 @@ Let's quickly go through the code we haven't discussed yet.
     ...
   ```
 
-  A very cool but not well-known Python shorthand!
+  A very helpful (but not well-known) Python shorthand!
 
 - In line 7, we get the aliases of the command and add them to the embed.
 
@@ -349,7 +364,7 @@ Add all of these methods together and you have a fully functioning help command!
 
 :::note
 
-The code was updated a little bit to make it better.
+The following code has been slightly edited from the tutorial version.
 
 :::
 
@@ -406,7 +421,8 @@ bot.help_command = SupremeHelpCommand()
 
 ## Command Attributes
 
-How can you add cooldowns to your help command? Or set aliases, or change it's name? The answer to all of these questions lies in command attributes.
+How can you add cooldowns, set aliases, and change the name of help commands? Command attributes can
+help you do all of that, and more!
 
 ```python
 attributes = {
@@ -422,21 +438,23 @@ bot.help_command = MyHelp(command_attrs=attributes)
 
 ## Error Handling
 
-When a user types something like `!help pycordupdate`, we need to inform the user that the command does not exist. We do this with a simple error handler.
+When a user attempts to use a command that does not exist,, we need to inform the user.
+We can do this by overriding the `send_error_message` function.
 
 ```python
 class MyHelp(commands.HelpCommand):
     async def send_error_message(self, error):
         embed = discord.Embed(title="Error", description=error, color=discord.Color.red())
         channel = self.get_destination()
+
         await channel.send(embed=embed)
 ```
 
 <DiscordMessages>
-  <DiscordMessage author="NoobGuy" avatar="green">
+  <DiscordMessage author="Guide Bot" avatar="green">
     !help update_pycord
   </DiscordMessage>
-  <DiscordMessage author="Guide Bot" avatar="blue" bot>
+  <DiscordMessage author="Guide Bot" avatar="red" bot>
     <DiscordEmbed embedTitle="Error" borderColor="#ff0000">
       Command 'update_pycord' not found.
     </DiscordEmbed>
@@ -445,5 +463,6 @@ class MyHelp(commands.HelpCommand):
 
 ## Credits
 
-Most of the content from this guide is from [InterStella0's walkthrough guide on subclassing HelpCommand](https://gist.github.com/InterStella0/b78488fb28cadf279dfd3164b9f0cf96#why).
+Most of the content from this guide is from
+[InterStella0's walkthrough guide on subclassing HelpCommand](https://gist.github.com/InterStella0/b78488fb28cadf279dfd3164b9f0cf96).
 Thanks to InterStella0 for making this guide amazing.

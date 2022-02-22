@@ -24,6 +24,9 @@ Once you close your terminal that you've run your program on, the program is no 
 the bot stops sending heartbeats and can no longer process commands. This is why you have to constantly
 keep the process running.
 
+This goes for all programs, in a different nature. If the code isn't compiled/built/assembled/interpreted/whatever, 
+it can't be running.
+
 ## What is a Host?
 
 A host is a server or container for running code offered by a **hosting provider.** There are a lot
@@ -56,6 +59,15 @@ There are three types of hosts.
     </TabItem>
 </Tabs>
 
+:::danger
+
+Make sure you choose a hosting provider you trust. If you need, you can ask around in communities
+or even [Pycord's official support server](https://pycord.dev/discord) for trusted hosts. Just make
+sure the hosting provider you're looking at has good reviews on public forums. Googling along the 
+lines of "[host] review" should do the trick.
+
+:::
+
 Most hosting providers rent their services to you for a monthly or yearly fee. These can be anywhere
 from a few dollars to hundreds or thousands of dollars.
 
@@ -73,7 +85,7 @@ Once you've decided your operating system, you'll want to set it up and install 
 done, you can copy your bot's files to your remote system, install the required packages, and run
 the bot. 
 
-:::danger
+:::warning
 
 If you are using SSH and run the file, your bot will not stay running. This is because the file is
 only told to run during your session. You can use a command like [nohup](https://en.wikipedia.org/wiki/Nohup)

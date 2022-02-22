@@ -15,11 +15,15 @@ import "@discord-message-components/react/styles";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-Before Discord added slash commands, all bots had prefixed commands. A user would type `!ping` or `?ping` or whatever the bot's prefix was to get a response.
-However, this prefixed commands system isn't native to Discord! Developers made use of the `on_message` event to check if the message began with a `!ping`. So every time a message was sent, the bot would check if it began with the prefix, or with the command name.
+Before Discord added slash commands, all bots had prefixed commands. A user would type the bot's prefix
+followed by a word or phrase to invoke a command, such as `?help` or `!help`.
+However, this prefixed commands system isn't native to Discord! Developers made use of an `on_message`
+event to check if the message began with a certain character, then invoke the command. Every time a
+message was sent, the bot would see the message and check for its "prefix"
 
-The syntax becomes a little more complicated when you want to have multiple commands. There are several more disadvances to this system. This is where the commands extension comes in.
-`ext.commands` has various advantages, such as:
+The syntax becomes a little more complicated when you want to have multiple commands. There are several
+disadvantages to this system. This is where the commands extension comes in. `ext.commands` has
+various advantages, such as:
 
 - Simpler syntax
 - Easier to use
@@ -56,13 +60,13 @@ async def on_message(message):
 ```
 
 <DiscordMessages>
-  <DiscordMessage author="Guide User" avatar="blue">
+  <DiscordMessage author="Guide Man" avatar="blue">
     !ping
   </DiscordMessage>
   <DiscordMessage author="Guide Bot" avatar="red" bot>
     Pong!
   </DiscordMessage>
-  <DiscordMessage author="Guide User" avatar="blue">
+  <DiscordMessage author="Guide Man" avatar="blue">
     !announce Hello Hello World!
   </DiscordMessage>
   <DiscordMessage author="Guide Bot" avatar="red" bot>
@@ -70,7 +74,7 @@ async def on_message(message):
     <br />
     Hello World!
   </DiscordMessage>
-  <DiscordMessage author="Guide User" avatar="blue">
+  <DiscordMessage author="Guide Man" avatar="blue">
     !help
   </DiscordMessage>
   <DiscordMessage author="Guide Bot" avatar="red" bot>
@@ -102,13 +106,13 @@ async def on_command_error(ctx, error):
 ```
 
 <DiscordMessages>
-  <DiscordMessage author="Guide User" avatar="blue">
+  <DiscordMessage author="Guide Man" avatar="blue">
     !ping
   </DiscordMessage>
   <DiscordMessage author="Guide Bot" avatar="red" bot>
     Pong!
   </DiscordMessage>
-  <DiscordMessage author="Guide User" avatar="blue">
+  <DiscordMessage author="Guide Man" avatar="blue">
     !announce Hello Hello World!
   </DiscordMessage>
   <DiscordMessage author="Guide Bot" avatar="red" bot>
@@ -116,13 +120,13 @@ async def on_command_error(ctx, error):
     <br />
     Hello World!
   </DiscordMessage>
-  <DiscordMessage author="Guide User" avatar="blue">
+  <DiscordMessage author="Guide Man" avatar="blue">
     !pycord
   </DiscordMessage>
   <DiscordMessage author="Guide Bot" avatar="red" bot>
     Unknown command.
   </DiscordMessage>
-  <DiscordMessage author="Guide User" avatar="blue">
+  <DiscordMessage author="Guide Man" avatar="blue">
     !help
   </DiscordMessage>
   <DiscordMessage author="Guide Bot" avatar="red" bot>
@@ -148,7 +152,9 @@ async def on_command_error(ctx, error):
 
 :::tip
 
-You can do much more with the commands extension! This example only showcases the same features as the previous example. You can use a different built-in help command, or even create your own! You will learn about creating Help Commands and Categories in the next tutorials.
+The commands extension has many more uses. This example only showcases the basic features mentioned
+in the previous example. Other things you can do with the commands extension include using a different
+built-in help command and creating your own. The following tutorials showcase these.
 
 :::
 
@@ -165,7 +171,8 @@ Before we check out the syntax, let's take a look at the bot classes.
 >
 > `discord.ext.commands.Bot` - Subclasses `discord.Bot`, adds prefixed commands, cogs, and more.
 
-This means that `discord.ext.commands.Bot` has both slash commands and prefixed commands, as well as events, cogs and more.
+This means that `discord.ext.commands.Bot` has both slash commands and prefixed commands, as well as
+events, cogs and more.
 
 Now let's look at the syntax.
 
@@ -185,13 +192,13 @@ bot.run("token") # Run the bot with your token.
 ```
 
 <DiscordMessages>
-  <DiscordMessage author="Guide User" avatar="blue">
+  <DiscordMessage author="Guide Man" avatar="blue">
     !ping
   </DiscordMessage>
   <DiscordMessage author="Guide Bot" avatar="red" bot>
     Pong!
   </DiscordMessage>
-  <DiscordMessage author="User 2" avatar="green">
+  <DiscordMessage author="Guide Woman" avatar="green">
     !help
   </DiscordMessage>
   <DiscordMessage author="Guide Bot" avatar="red" bot>
@@ -215,13 +222,15 @@ bot.run("token") # Run the bot with your token.
 
 :::tip
 
-The help command is a built-in command and is enabled by default. You will learn more about it in the next tutorials.
+The help command is a built-in command and is enabled by default. You will learn more about it in the
+following guides.
 
 :::
 
 ## Parameters
 
-Prefixed commands can take parameters, just like slash commands. You can specify the parameters in the function itself.
+Prefixed commands can take parameters, just like slash commands. You can specify the parameters in
+the function itself.
 
 ```python {2}
 @bot.command()
@@ -229,8 +238,11 @@ async def echo(ctx, *, message):
     await ctx.send(message)
 ```
 
-`ctx` is the context of the message. `*` means that the parameter can be any number of words. `message` is the parameter. If you had not passed `*`, `message` would only have been one word.
-For example, if a user had passed `!echo hello world`, `message` would have been `hello`. Since we passed `*`, `message` is `hello world`, or the rest of the message.
+`ctx` is the context of the message. `*` means that the parameter can be any number of words. `message`
+is the parameter. If you had not passed `*`, `message` would only have been one word.
+
+For example, if a user had used `!echo hello world`, `message` would have been `hello`. Since we 
+passed `*`, `message` is `hello world`, or the rest of the message.
 
 We can pass multiple parameters too!
 
@@ -240,27 +252,35 @@ async def echo(ctx, channel:discord.TextChannel, title, *, message):
     await channel.send("**{}**\n{}".format(title, message))
 ```
 
-In the example above, `channel` is a parameter that is of type `discord.TextChannel`. When you specify the type of the parameter, Pycord will automatically try to convert the parameter to that type. That is why you are able to use `channel.send` directly without needing to convert it first.
+In the example above, `channel` is a parameter that is of type `discord.TextChannel`. When you
+specify the type of the parameter, Pycord will automatically try to convert the parameter to that type.
+That is why you are able to use `channel.send` directly without needing to convert it first.
 
-We also have a new parameter, the `title`. This does not have a type, so it will be a string. `*` means that the rest of the message belongs to the next parameter, in this case, `message`.
+We also have a new parameter, `title`. This does not have a type, so it will be a string. `*` means
+that the rest of the message belongs to the next parameter, in this case, `message`.
 
-When a user types `!echo #general Greetings! Hello World!`, `channel` will be the text channel `#general`, `title` will be `Greetings!` and `message` will be `Hello World!`.
+When a user types `!echo #general Greetings! Hello World!`, `channel` will be the text channel
+`#general`, `title` will be `Greetings!` and `message` will be `Hello World!`.
 
-Let's take an example where the user passes `!echo #general Holiday Greetings! Greetings to you all!`. Here, the user wants the title to be "Holiday Greetings!" and the message to be "Greetings to you all!". However, since Pycord parses the message at whitespaces, the title will end up being "Holiday" and the message "Greetings! Greetings to you all!". The user can prevent this by typing `!echo "Holiday Greetings!" Greetings to you all!`.
+Let's take an example where the user passes `!echo #general Holiday Greetings! Greetings to you all!`.
+Here, the user wants the title to be "Holiday Greetings!" and the message to be "Greetings to you all!".
+However, since Pycord parses the message at whitespaces, the title will end up being "Holiday" and the
+message "Greetings! Greetings to you all!". The user can prevent this by typing `!echo "Holiday
+Greetings!" Greetings to you all!`.
 
 <DiscordMessages>
-  <DiscordMessage author="Guide User" avatar="blue">
+  <DiscordMessage author="Santa Claus" avatar="blue">
     !echo #general Holiday Greetings! Greetings to you all!
   </DiscordMessage>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+  <DiscordMessage author="Elf" avatar="red" bot>
     <strong>Holiday</strong>
     <br />
     Greetings! Greetings to you all!
   </DiscordMessage>
-  <DiscordMessage author="User 2" avatar="green">
+  <DiscordMessage author="Mrs. Claus" avatar="green">
     !echo #general "Holiday Greetings!" Greetings to you all!
   </DiscordMessage>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+  <DiscordMessage author="Elf" avatar="red" bot>
     <strong>Holiday Greetings!</strong>
     <br />
     Greetings to you all!
@@ -281,4 +301,7 @@ async def gtn(ctx, guess:int):
         await ctx.send("Nope! Better luck next time :)")
 ```
 
-If you had not specified the type of the parameter, it would have been a string. And since "5" is not the same as 5 in python, the bot would have responded with "Nope! Better luck next time :)". Even if you do not specify the type of the parameter, you can still convert it later on, in this case, with `int(guess)`.
+If you had not specified the type of the parameter, it would have been a string. And since `"5"` is not
+the same as `5` in python, the bot would have responded with "Nope! Better luck next time :)".
+Even if you do not specify the type of the parameter, you can still convert it later on, in this case,
+with `int(guess)`.
