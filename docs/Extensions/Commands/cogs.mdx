@@ -4,20 +4,22 @@ title: Cogs
 
 In the last guide, we learned about prefixed commands. Now we'll learn how to categorize them.
 
-Cogs, often known as modules, are used to organize commands into groups. This is useful for grouping commands that have the same functionality. This also helps make your files less cluttered and messy.
+Cogs, often known as modules or extensions, are used to organize commands into groups. This is useful
+for grouping commands that have the same general idea (such as moderation commands). This also helps
+to avoid making your bot's files messy and cluttered.
 
 ## Getting Started
 
 First of all, create a folder to store your cogs, eg. `cogs/`.
 
-Then, create a file inside the folder, eg. `cogs/greetings.py`. By convention, the file name should be the same as the name of the cog or module.
+Then, create a file inside the folder, eg. `cogs/greetings.py`. By convention, the file name should
+be the same as the name of the cog or module.
 
-We can add some code to the file, eg.
+We can then create the cog.
 
 ```python title="./cogs/greetings.py"
 import discord
 from discord.ext import commands
-
 
 class Greetings(commands.Cog): # create a class for our cog that inherits from commands.Cog
     # this class is used to create a cog, which is a module that can be added to the bot
@@ -44,13 +46,16 @@ def setup(bot): # this is called by Pycord to setup the cog
     bot.add_cog(Greetings(bot)) # add the cog to the bot
 ```
 
-You can add any number of commands to your cog. You can also add event listeners to your cog. However, this code will not work on it's own. In your `bot.py`/`main.py`/main bot file, you must add the following code:
+You can add any number of commands to your cog, as well as event listeners. However, this code will
+not work on it's own. In your main bot file, you must add the following code:
 
 ```python
 bot.load_extension('cogs.greetings')
 ```
 
-This loads the file `cogs/greetings.py` and adds it to the bot. Remember that the `/`'s is replaced by `.`'s and there is no `.py` at the end.
+This loads the file `cogs/greetings.py` and adds it to the bot. 
+The argument of `load_extension` should be your cog's path (eg. cogs/greetings.py) without the file
+extension and with the `/` replaced with `.`
 
 If you have multiple cogs, you can add them all at once by adding the following code:
 
@@ -66,4 +71,47 @@ for cog in cogs_list:
     bot.load_extension(f'cogs.{cog}')
 ```
 
-That is it! Now you can use the commands in your cogs. Your bot is now equipped with cogs! Cogs will make your help command look much cleaner. Talking about help commands, you might wanna get a better one. Check out the next tutorial!
+## Cog Rules
+
+When using a cog instead of a main file, there are some changes you have to make to your code. This
+is because cogs work slightly different than a regular file.
+
+### The `self` variable
+
+The self variable is a variable that represents a class. In the case of cogs, `self` represents 
+the cog. In the `__init__` function, you can see that we have `self.bot = bot`. `bot` represents your
+`discord.Bot` or `discord.ext.commands.Bot` instance, which is used for some functions. 
+
+This means that instead of using functions that would usually be accessed via `bot`, you now need
+to access them via `self.bot`
+
+Because we're in a class, all of our commands are methods of that class. Because of this, all of our
+functions need to have `self` as the first parameter, where `self` is the cog. Without this, we
+wouldn't be able to access our bot instance.
+
+### Creating Commands
+
+When creating commands, your decorator would usually be something like `@bot.command()`. If you're using
+cogs, this isn't the case. In a cog, you can't access the bot instance outside of functions, so to 
+register a function as a command, you must instead use `@commands.command()`.
+
+Also, when creating a command, make sure that it is indented. If we want a command to be actually
+inside of a cog, it has to be inside of your cog's class. If the command is not inside of the cog,
+your command becomes useless.
+
+### Events
+
+When creating events, you can no longer use `@bot.event` as a decorator. This is because we cannot
+access the `bot` variable outside of a function. To make an event, you have to use the `ext.commands`
+method, `@commands.Cog.listener()`. Events also need `self` as its first parameter.
+
+And that's it! Cogs are a simple and easy way of organizing your code. Now you can check out how to
+create a help command [here](help-command.mdx)
+
+:::info Related Guides
+
+- [Creating a Help Command](help-command.mdx)
+- [Rules and Common Practices](../Getting-Started/rules-and-common-practices.mdx)
+- [Prefixed Commands](prefixed-commands.mdx)
+
+:::
