@@ -21,7 +21,7 @@ export default function Home(): JSX.Element {
         guide. A Pycord Guide!
         <br /> <br />
         Whether you are a newbie or an experienced developer, you will find
-        everything you want to know about Pycord here. This guide will teach
+        everything you need to know about Pycord here. This guide will teach
         you:
         <ul>
           <li>How to get a brand new bot running from scratch;</li>

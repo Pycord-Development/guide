@@ -2,10 +2,13 @@
 title: Hosting Your Pycord Bot
 ---
 
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
 # Hosting Your Pycord Bot
 
 If you're completely new to this, you might have thought something along the lines of "Yay! I got my
-bot working," after following our [Creating your First Bot](creating-your-first-bot.mdx) guide, only
+bot working," after following our [Creating your First Bot](creating-your-first-bot) guide, only
 to close your IDE or shut down your computer to find your bot offline.
 
 The reason for this is that programs have to be hosted somewhere, meaning some machine somewhere has
@@ -39,9 +42,9 @@ There are three types of hosts.
     <TabItem value="hosttype-shared" label="Shared Hosting">
         Shared hosting is a type of hosting where multiple people share one VPS. Getting a spot on
         a shared host is usually cheap, sometimes even free. Shared hosts do not give you a lot of 
-        resources, from less than 4 gigabytes of RAM and half of a CPU, with very little storage. 
-        Shared hosting is usually used for website hosting and is not recommended for hosting a Discord
-        bot.
+        resources, from less than a gigabyte of RAM (usually 512mb on free hosts) and half of a CPU 
+        with very little storage. Shared hosting is usually used for website hosting and is not 
+        recommended for hosting a Discord bot.
     </TabItem>
     <TabItem value="hosttype-vps" label="VPS" default>
         A virtual private server (VPS) is a virtual computer (virtual machine) that is rented out to
@@ -58,6 +61,7 @@ There are three types of hosts.
         large projects and are overkill for something like a Discord bot.
     </TabItem>
 </Tabs>
+<br/>
 
 :::danger
 
@@ -87,7 +91,7 @@ the bot.
 
 :::warning
 
-If you are using SSH and run the file, your bot will not stay running. This is because the file is
+If you are using SSH to run the file, your bot will not stay running. This is because the file is
 only told to run during your session. You can use a command like [nohup](https://en.wikipedia.org/wiki/Nohup)
 to make sure your file stays running after you disconnect.
 

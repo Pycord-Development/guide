@@ -19,7 +19,11 @@ const sidebars = {
     {
       type: "category",
       label: "Getting Started",
-      items: ["Getting-Started/creating-your-first-bot"],
+      items: [
+        "Getting-Started/creating-your-first-bot",
+        "Getting-Started/rules-and-common-practices",
+        "Getting-Started/hosting-your-bot"
+      ],
     },
     {
       type: "category",
@@ -29,7 +33,8 @@ const sidebars = {
         "Interactions/buttons",
         "Interactions/dropdowns",
         "Interactions/slash-commands",
-        "Interactions/context-menus"
+        "Interactions/context-menus",
+        "Interactions/text-modals"
       ],
     },
     {
