@@ -11,6 +11,9 @@ import {
 } from "@discord-message-components/react";
 import "@discord-message-components/react/styles";
 
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
 ## About
 
 On March 24, 2021, Discord added Slash Commands to Discord as an easier, more efficient, and better way of using bot commands. Pycord has implemented Slash Commands into the library so it's simple, efficient, and familiar.
@@ -168,6 +171,76 @@ The registered slash commands from the cog should be displayed as normal in the 
     Hello, this is a slash command from a cog!
   </DiscordMessage>
 </DiscordMessages>
+
+## Options & Option Types
+
+Whenever you're using Slash Commands, you might notice that you can specify parameters that the user has to set or can optionally set. These are called Options.
+
+Since you want different inputs from Options, you'll have to specify the type for that Option. There are a few ways of doing this.
+
+<Tabs>
+  <TabItem value="0" label="Use type annotations and let Pycord figure out its type" default>
+
+```python
+import discord
+
+bot = discord.Bot()
+
+@bot.command()
+# pycord will then figure out the types for you
+async def add(ctx, first: discord.Option(int), second: discord.Option(int)):
+  # you can use them as they were actual integers
+  sum = first + second
+  await ctx.respond(f"The sum of {first} and {second} is {sum}.")
+
+bot.run("TOKEN")
+```
+
+<DiscordMessages>
+  <DiscordMessage author="Guide Bot" avatar="red" bot>
+    <div slot="interactions">
+      <DiscordInteraction author="Guide Man" avatar="green" command>
+        add
+      </DiscordInteraction>
+    </div>
+    The sum of 1 and 1 is 2.
+  </DiscordMessage>
+</DiscordMessages>
+
+  </TabItem>
+  <TabItem value="1" label="Explicitly set the type using the SlashCommandOptionType enum">
+
+```python
+import discord
+
+bot = discord.Bot()
+
+@bot.command()
+# this explicitly tells pycord what types the options are instead of it figuring it out by itself
+async def join(
+  ctx, 
+  first: discord.Option(discord.SlashCommandOptionType.string), 
+  second: discord.Option(discord.SlashCommandOptionType.string)
+):
+  joined = first + second
+  await ctx.respond(f"The joined string of \"{first}\" and \"{second}\" is \"{joined}\".")
+
+bot.run("TOKEN")
+```
+
+<DiscordMessages>
+  <DiscordMessage author="Guide Bot" avatar="red" bot>
+    <div slot="interactions">
+      <DiscordInteraction author="Guide Man" avatar="green" command>
+        join
+      </DiscordInteraction>
+    </div>
+    The joined string of "hi" and " mom" is "hi mom".
+  </DiscordMessage>
+</DiscordMessages>
+
+  </TabItem>
+</Tabs>
 
 :::info Related Topics
 
