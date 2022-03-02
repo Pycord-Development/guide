@@ -27,7 +27,7 @@ Once you close your terminal that you've run your program on, the program is no 
 the bot stops sending heartbeats and can no longer process commands. This is why you have to constantly
 keep the process running.
 
-This goes for all programs, in a different nature. If the code isn't compiled/built/assembled/interpreted/whatever, 
+This goes for all programs, in a different nature. If the code isn't compiled/built/assembled/interpreted, 
 it can't be running.
 
 ## What is a Host?
@@ -50,15 +50,15 @@ There are three types of hosts.
         A virtual private server (VPS) is a virtual computer (virtual machine) that is rented out to
         customers. Most people use a VPS for hosting their projects such as Discord bots. You can get
         anywhere from less than a gigabyte of RAM and a less powerful CPU to just under one hundred
-        gigabytes of RAM, a powerful CPU, and a fair amount of storage. A VPS is the best choice for
-        most users, and can be fairly cheap.
+        gigabytes of RAM, a (or multiple) powerful CPU(s), and a fair amount of storage. A VPS is the
+        best choice for most users, and can be fairly cheap.
     </TabItem>
     <TabItem value="hosttype-dedicated" label="Dedicated">
         A dedicated host is a physical computer. You can buy these yourself or rent one from a hosting
-        provider. A Raspberry Pi can be considered a dedicated host. Dedicated hosts are often very
-        expensive, but are also very powerful, having a few hundred gigabytes of RAM and a few very
-        powerful CPUs, along with a good amount of storage. Dedicated hosts are usually used for very
-        large projects and are overkill for something like a Discord bot.
+        provider. Dedicated hosts are often very expensive, but are also very powerful, having a
+        few hundred gigabytes of RAM and a few very powerful CPUs, along with a good amount of storage.
+        Dedicated hosts are usually used for very large projects and are overkill for something like
+        a Discord bot.
     </TabItem>
 </Tabs>
 <br/>
@@ -94,5 +94,17 @@ the bot.
 If you are using SSH to run the file, your bot will not stay running. This is because the file is
 only told to run during your session. You can use a command like [nohup](https://en.wikipedia.org/wiki/Nohup)
 to make sure your file stays running after you disconnect.
+
+:::
+
+Now your bot is hosted, but that doesn't mean it can't go offline. If your bot encounters an error,
+it can often go offline or stop its own process. For this, make sure you have proper error handling.
+Also be sure to pay attention to your hosting provider's updates or news, as they usually notify
+users of when they plan on doing maintanence to their servers, making their services unavailable for
+a short time.
+
+:::info Related Topics
+
+- [Creating Your First Bot](creating-your-first-bot)
 
 :::

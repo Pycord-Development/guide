@@ -11,11 +11,13 @@ import {
 } from "@discord-message-components/react";
 import "@discord-message-components/react/styles";
 
-Excited to create your first bot? Once you [install Pycord](installation.mdx), you can start right away!
+Excited to create your first bot? Once you [install Pycord](installation.mdx), you can start right
+away!
 
 ## Creating the Bot Application
 
-Just like how you need to sign up to use Discord, your bot also has to be signed up. To do this, you should:
+Just like how you need to sign up to use Discord, your bot also has to be signed up. To do this,
+you should:
 
 1. Go to the [Discord Developer Portal](https://discord.com/developers/applications) and click
    on <button class="blurplebutton">New Application</button>.
@@ -28,18 +30,21 @@ Just like how you need to sign up to use Discord, your bot also has to be signed
 
 ## Inviting the bot
 
-Now, lets get the bot added to some servers. Go to the <button class="greybutton">OAuth2</button> tab in the left pane,
-and select `bot` and `applications.commands` as scopes.
+Now, lets get the bot added to some servers. Go to the <button class="greybutton">OAuth2</button> tab
+in the left pane and select `bot` and `applications.commands` as scopes.
 
-The `applications.commands` scope allows the bot to use slash commands, which you may want to have.
+You may want your bot to have application commands, which is what the `application.commands` scope
+allows your bot to make.
 
-Next, you want to choose what permissions the bot will have and select them. For now, give your bot the administrator
-permission, meaning the bot will have all the permissions. Once you select the permissions, click on copy to get the bot
-invite link.
+Next, you want to choose what permissions the bot will have and select them. For now, you can just
+give your bot the `administrator` permission, which gives your bot every permission. Once you select
+your bot's permissions, click on <button class="blurplebutton">copy</button> to get the bot invite link.
 
 :::tip
 
-When your bot is all ready to go, make sure that administrator permissions aren't selected unless your bot truly needs them. Try selecting only permissions the bot will need. For testing, administrator is fine.
+When your bot is all ready to go, make sure that administrator permissions aren't selected unless
+your bot truly needs them. Try selecting only permissions the bot will need. For testing,
+administrator is fine.
 
 :::
 
@@ -49,15 +54,15 @@ You can use this link to invite the bot.
 
 ## Tokens
 
-Now that we have an account for our bot, we need to login. In order to login, we need the bot's password. All users and
-bots have a "token." You may think of a token as a unique password, since this is what we use to log into the bot and
-connect it to Discord.
+Now that you have an account for your bot, you need to login. In order to login, we need the bot's
+password. All users and bots have a "token." You may think of this token as a password, as this allows
+us to log our bot into Discord.
 
 Tokens are "snowflakes." Not actual snowflakes, though. Just like how no two snowflakes in real life have the same
-pattern, snowflakes in computers are unique things - no two bots have the same token - so a token is considered a snowflake. A Discord user ID
-is also a snowflake.
+pattern, snowflakes in computers are unique things - no two bots have the same token - so a token is
+considered a snowflake. A Discord user ID is also a snowflake.
 
-Now, lets get our bot's token. To do this, you want to:
+Now, lets get your bot's token. To do this, you want to:
 
 1. Go back to the <button class="greybutton">Bot</button> tab.
 2. Click on the <button class="blurplebutton">Copy</button> button in the "Token" section.
@@ -67,9 +72,13 @@ Now, you have your bot's token copied to your clipboard.
 
 :::danger
 
-Never leak your bot's token, and never share it with anyone. Even if you get any DMs and someone tells you to do so, perhaps claiming to be Discord Staff, do not do so. They are probably lying and are scamming you. Anyone with your token will be able to access your bot fully. They will be able to do anything they want with your bot.
+Do not, under any circumstances, give your token to anyone. Even if you are contacted by someone 
+claiming to be Discord staff, do not give them your bot's token. They are lying to you to try and
+gain access to your bot. If an unauthorized user gains access to your bot's token, they can access
+your bot and use it in malicious ways.
 
-Never push it to GitHub, or send it with the code. One way to prevent your token from getting leaked is to store it in `.env` files.
+Never push your token to GitHub or include it in your code. One way to prevent your token from
+getting leaked is to store it in `.env` files.
 
 :::
 
@@ -80,13 +89,13 @@ Never push it to GitHub, or send it with the code. One way to prevent your token
 You can store your tokens in `.env` files. This is a simple way to store sensitive information.
 
 1. Create a file with the name `.env`. Just `.env`, with the dot/period at the start.
-2. Define the token in the file, like
+2. Define the token in the file, like so:
 
    ```env
    TOKEN = [PASTE YOUR TOKEN HERE]
    ```
 
-   for example
+   for example:
 
    ```env
    TOKEN = NzkyNzE1NDU0MTk2MDg4ODQy.X-hvzA.Ovy4MCQywSkoMRRclStW4xAYK7I
@@ -97,8 +106,9 @@ You can store your tokens in `.env` files. This is a simple way to store sensiti
    python -m pip install python-dotenv
    ```
 
-If your code is in a git repository, you should create a file called `.gitignore` and add `.env` to it. This means that
-whenever you use the `git push` command, your .env file will not be pushed along with the rest of your code. It will stay secure in your local system.
+If you are using Git to track your bot's changes, you should create a file called `.gitignore` and add
+`.env` to it. This stops your `.env` file from getting tracked along with the rest of your code, and
+will not be pushed to a remote Git repository. It will stay secure on your local machine.
 
 ## Coding the Basics
 
@@ -154,11 +164,12 @@ Next, we load the env file with `load_dotenv()`.
 bot = discord.Bot(debug_guilds=[881207955029110855])
 ```
 
-We create a new instance of [`discord.Bot`](https://docs.pycord.dev/en/master/api.html#discord.Bot). In the `debug_guilds` argument, we pass a list of guild IDs where we want to test the bot. Remember to change the
-list and add a server where both you and the bot are, and you (preferably) have admin permissions. Normally, you do not
-pass this kwarg. However, if you do not specify this, the slash commands will take up to an hour to show up in all the
-guilds the bot is in. When you restrict the commands to a few guilds, you can instantly see the commands. You can also
-choose to make lone commands restricted to a few guilds, but we will learn about that later.
+In this line, we create a new instance of [`discord.Bot`](https://docs.pycord.dev/en/master/api.html#discord.Bot).
+In this object, we pass a `debug_guilds` argument, which is a list of guild IDs that the bot's application
+commands will appear in. This is beneficial for testing purposes, when we are testing a new command
+or two and don't want everyone to be able to use it. If debug guilds are not specified, all of the 
+servers the bot is in will have access to your slash commands, which can take up to an hour to register.
+
 
 ```py
 @bot.event
@@ -166,27 +177,43 @@ async def on_ready():
     print(f"{bot.user} is ready and online!")
 ```
 
-We use the [`event`](https://docs.pycord.dev/en/master/api.html#discord.Bot.event) decorator
-and [`on_ready`](https://docs.pycord.dev/en/master/api.html#discord.on_ready) as a function name to define a function that will be called
-when the bot is ready. This is automatically called when the bot is ready to be used.
+We use the [`event`](https://docs.pycord.dev/en/master/api.html#discord.Bot.event) decorator to override
+the [`on_ready`](https://docs.pycord.dev/en/master/api.html#discord.on_ready) function to define an
+event that is automatically called when the bot is ready to use.
 
 ```py
 @bot.slash_command(name = "hello", description = "Say hello to the bot")
 async def say_hello(ctx):
-    await ctx.send("Hey!")
+    await ctx.respond("Hey!")
 ```
 
-Here, we use the [`slash_command`](https://docs.pycord.dev/en/master/api.html#discord.Bot.slash_command) decorator to
-define a slash command. We specify the `name` and `description` arguments. If not specified, the name of the slash command becomes the name of the function. The description will remain empty.
+Here, we use the [`slash_command`](https://docs.pycord.dev/en/master/api.html#discord.Bot.slash_command)
+decorator to define a slash command. We specify the `name` and `description` arguments. If not
+specified, the name of the slash command would be the function name and the command description would
+be empty.
 
 Finally, you want to run the bot using the token specified in the `.env` file.
 
-Now, you are done with creating your first bot! This is the basic structure of a Pycord bot. What else can you do? The sky is
-the limit! Pycord will not limit your imagination. The better you know Python, the more you can do.
+Now you have finished creating your first Pycord bot! What we have showed you is just the basic structure
+of a bot. You can do a lot more with Python and Pycord knowledge, as well as your imagination! Pycord
+will not limit your bot's abilities.
 
 ## FAQ
 
 ### How do I make prefixed commands?
 
-You can read [this amazing page that doesn't exist](../Extensions/Commands/prefixed-commands) and idk how it is gonna be linked
-but it should (hopefully) be there by the time you read this page.
+Prefixed commands are an older method of creating bot commands that listens for messages and replies
+if the message starts with a certain character. You can read [this page](../Extensions/Commands/prefixed-commands)
+to learn more about prefixed commands.
+
+### I have a lot of commands. How can I organize them?
+
+[Cogs](../Extensions/Commands.cogs) are a great way to organize your commands by putting them into
+groups called cogs. Cogs are separate files that your bot loads to get the commands inside.
+You can read more about cogs, as well as learn how to use them and their benefits, 
+[here](../Extensions/Commands.cogs).
+
+### How do I add components, such as buttons and dropdown menus, to my bot?
+
+Pycord makes it very easy to use Message Commands with your bot by using the `discord.ui` module.
+To learn more, read about Message Commands in our [interactions directory](../Interactions).

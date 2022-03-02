@@ -2,15 +2,13 @@
 title: Cogs
 ---
 
-In the last guide, we learned about prefixed commands. Now we'll learn how to categorize them.
-
 Cogs, often known as modules or extensions, are used to organize commands into groups. This is useful
 for grouping commands that have the same general idea (such as moderation commands). This also helps
 to avoid making your bot's files messy and cluttered.
 
 ## Getting Started
 
-First of all, create a folder to store your cogs, eg. `cogs/`.
+First, you'll need to create a folder to store your cogs, eg. `cogs/`.
 
 Then, create a file inside the folder, eg. `cogs/greetings.py`. By convention, the file name should
 be the same as the name of the cog or module.
@@ -47,7 +45,7 @@ def setup(bot): # this is called by Pycord to setup the cog
 ```
 
 You can add any number of commands to your cog, as well as event listeners. However, this code will
-not work on it's own. In your main bot file, you must add the following code:
+not work on its own. In your main bot file, you must add the following code:
 
 ```python
 bot.load_extension('cogs.greetings')

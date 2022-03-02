@@ -2,7 +2,8 @@
 title: Command Groups
 ---
 
-Command groups are a way to create subcommands for your commands. For example, `!afk set` or `!afk remove`.
+Command groups are a way to create subcommands for your commands. For example, `!afk set` or `!afk
+remove`.
 
 ## Syntax
 
@@ -40,6 +41,12 @@ async def add(ctx, a: int, b: int):
 async def subtract(ctx, a: int, b: int):
     ...
 ```
+
+To create a command group, the command's decorator must be `@bot.group`. Once you have a command with
+that decorator, you can use `@function.command()`, such as `@math.command()`. Now, you have subcommand
+groups!
+
+<!-- Waiting for slash command groups in Pycord -->
 
 :::info Related Topics
 
