@@ -113,3 +113,32 @@ your bot's code won't be lost if your computer spontaneously combusts or you sma
 anger. You can simply grab the back-up computer that everyone has laying around and you're back
 in business. 
 
+### Organization and Cleanliness
+
+It is *extremely* important to have organized code. This includes commands, objects, functions, 
+and classes. If you don't have organized code, it will get progressively harder for you to recognize
+it, and others won't be able to decipher it. 
+
+Make sure you utilize indents and spaces, as these are very important in making your code readable.
+
+```py title="Bad Spacing"
+class MyClass:
+    async def add(self,num1,num2):
+        return num1+num2
+    async def sub(self,num1,num2):
+        return num1-num2
+```
+
+```py title="Good Spacing"
+class MyClass:
+    async def add(self, num1, num2):
+        return num1 + num2
+
+    async def sub(self, num1, num2):
+        return num1-num2
+```
+
+See the difference? Now, which one looks more readable? Hopefully you answered the second example. 
+Python's [PEP8](https://www.python.org/dev/peps/pep-0008/) is a PEP (**Python Enhancement Proposal**)
+style guide for Python. It is the style guide that is used by most Python developers and programmers,
+providing a universal way to write and read code.
