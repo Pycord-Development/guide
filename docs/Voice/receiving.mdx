@@ -14,13 +14,17 @@ import "@discord-message-components/react/styles";
 
 # About
 
-Pycord tries to keep the recording of audio as simple and easy as possible, to keep making Discord bots of any kind easy for all audiences. This guide provides simple and easy examples of using the audio recording feature.
+Pycord tries to keep the recording of audio as simple and easy as possible, to keep making Discord
+bots of any kind easy for all audiences. This guide provides simple and easy examples of using the
+audio recording feature.
 
-For users that want extra examples, you can find some in Pycord's [GitHub repository](https://github.com/Pycord-Development/pycord/blob/master/examples/audio_recording.py).
+For users that want extra examples, you can find some in Pycord's
+[GitHub repository](https://github.com/Pycord-Development/pycord/blob/master/examples/audio_recording.py).
 
 ## Starting out
 
-The first thing you want to do is make a cache of your voice connections. This isn't difficult, as it's just putting a variable with an empty dictionary in our code, such as `connections = {}`.
+The first thing you want to do is make a cache of your voice connections. This isn't difficult, as
+it's just putting a variable with an empty dictionary in our code, such as `connections = {}`.
 
 You will now want to create your command for recording.
 
@@ -68,7 +72,8 @@ Now you are finished making your command for voice receiving! Next, you will wan
 
 ### Making a Callback
 
-To make a callback, you will want to define the currently undefined `once_done` function inside of our command, like so:
+To make a callback, you will want to define the currently undefined `once_done` function inside of
+our command, like so:
 
 ```py
 async def once_done(sink: discord.Sink, channel: discord.TextChannel, *args):  # Our voice client already passes these in.
