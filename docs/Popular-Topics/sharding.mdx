@@ -24,8 +24,9 @@ just add the `shards` parameter, along with the amount of shards you want.
 ## What is Sharding?
 
 Sharding is the process of breaking up your bot into smaller pieces so it has a better time handling
-events. As Discord's Documentation puts it, sharding is "a method of user-controlled guild sharding
-which allows for splitting events across a number of gateway connections. "
+events. As [Discord's Documentation](https://discord.com/developers/docs/topics/gateway#sharding) puts
+it, sharding is "a method of user-controlled guild sharding which allows for splitting events across
+a number of gateway connections."
 
 Sharding is used only for large bots, and takes up additional resources for managing the new processes.
 Pycord automatically shards your bot, so the only thing you need to do is use an `AutoShardedClient`

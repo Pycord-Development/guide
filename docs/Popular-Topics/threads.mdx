@@ -3,11 +3,13 @@ title: Threads
 description: Threads with Pycord
 ---
 
-In programming, threads are a way to run multiple processes at the same time. In Discord, threads are a way to keep multiple conversations going at the same time. Let's take a brief look at how to use threads in Pycord.
+In programming, threads are a way to run multiple processes at the same time. In Discord, threads are
+a way to keep multiple conversations going at the same time. Let's take a brief look at how to use threads in Pycord.
 
 :::tip
 
-Not all the methods and attributes will be covered in this guide, but you can find them in the documentation! [Check it out!](https://docs.pycord.dev/en/master/api.html#discord.Thread)
+Not all the methods and attributes will be covered in this guide, but you can find them in the documentation!
+[Check it out!](https://docs.pycord.dev/en/master/api.html#discord.Thread)
 
 :::
 
@@ -17,14 +19,15 @@ With a few lines of code, we can create threads in Pycord.
 
 :::important
 
-All public threads need a starting message. This message will start the thread. However, private threads (which can be unlocked with server boosting level 2) do not require a starting message.
+All public threads need a starting message. This message will start the thread. However, private threads
+(which can be unlocked with server boosting level 2) do not require a starting message.
 
 :::
 
 ### Creating thread from a message
 
 ```python
-message = await something.send("My Starting Message")
+message = await ctx.send("My Starting Message")
 await message.create_thread(name="thread name", auto_archive_duration=60)
 ```
 
@@ -85,7 +88,8 @@ This is probably because the bot does not have the proper permissions to create 
 
 ### Why am I getting an Unknown Message error when I try to create a thread?
 
-Getting an error looking something like `discord.ext.commands.errors.CommandInvokeError: Command raised an exception: HTTPException: 400 Bad Request (error code: 10008): Unknown Message`?
+Getting an error looking something like `discord.ext.commands.errors.CommandInvokeError: Command
+raised an exception: HTTPException: 400 Bad Request (error code: 10008): Unknown Message`?
 
 There could be multiple reasons, some of them being:
 
