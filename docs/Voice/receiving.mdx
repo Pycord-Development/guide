@@ -28,7 +28,7 @@ it's just putting a variable with an empty dictionary in our code, such as `conn
 
 You will now want to create your command for recording.
 
-```py
+```py title="Record Command Example"
 import discord
 
 bot = discord.Bot(debug_guilds=[...])
@@ -75,7 +75,7 @@ Now you are finished making your command for voice receiving! Next, you will wan
 To make a callback, you will want to define the currently undefined `once_done` function inside of
 our command, like so:
 
-```py
+```py title="Recorder Callback"
 async def once_done(sink: discord.Sink, channel: discord.TextChannel, *args):  # Our voice client already passes these in.
     user_recorded = [  # A list of recorded users
         f"<@{user_id}>"
@@ -103,7 +103,7 @@ The final step to this guide is stopping the audio recording. This is the easies
 
 To make it, you will want to do the following:
 
-```py
+```py title="Stop Recording Command"
 @bot.command()
 async def stop_recording(ctx):
     if ctx.guild.id in connections:  # Check if the guild is in the cache.

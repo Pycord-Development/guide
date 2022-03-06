@@ -28,13 +28,13 @@ So, let's see how you can add buttons to your bot!
 Buttons weren't the only update to the interactions system in Discord. Discord also added [drop-down
 menus, called Select Menus](dropdowns). Discord is also still working on more interaction elements!
 
-These UI elements reside in a "view". To learn more about views, please refer to the [interactions page.](index)
+These UI elements reside in a "view". To learn more about views, please refer to the [interactions page.](../Interactions)
 
 ## Usage Syntax
 
 Let's see how to create a simple responsive button.
 
-```python
+```python title="Simple Button Example"
 import discord
 from discord import commands
 
@@ -106,7 +106,7 @@ Check out the [`discord.ButtonStyle`](https://docs.pycord.dev/en/master/api.html
 
 You can set a button's style by adding the `style` argument in the [`discord.ui.button`](https://docs.pycord.dev/en/master/api.html#discord.ui.button) decorator.
 
-```python
+```python title="The Style Argument"
 class View(discord.ui.View):
     @discord.ui.button(label="Click me!", style=discord.ButtonStyle.success)
     async def button_callback(self, button, interaction):
@@ -121,7 +121,7 @@ So, how do we move the buttons to another row?
 This can be done by specifying the `row` argument in the [`discord.ui.button`](https://docs.pycord.dev/en/master/api.html#discord.ui.button)
 decorator.
 
-```python
+```python title="Specifying Rows"
 class MyView(discord.ui.View):
 
     @discord.ui.button(label="Button 1", row=1, style=discord.ButtonStyle.primary)
@@ -137,7 +137,7 @@ class MyView(discord.ui.View):
 
 ### Making Pre-Disabled Buttons
 
-```python
+```python title="Pre-Disabled Buttons"
 class MyView(discord.ui.View):
     @discord.ui.button(label="A button", style=discord.ButtonStyle.primary, disabled=True) # pass `disabled=True` to make the button pre-disabled
     async def button_callback(self, button, interaction):
@@ -153,7 +153,7 @@ async def button(ctx):
 <Tabs>
   <TabItem value="disabling-a-single-component" label="Disabling a single component on press" default>
 
-```python
+```python title="Disabling a Component"
 class MyView(discord.ui.View):
   @discord.ui.button(label="A button", style=discord.ButtonStyle.primary)
   async def button_callback(self, button, interaction):
@@ -164,9 +164,9 @@ class MyView(discord.ui.View):
 
   </TabItem>
 
-  <TabItem value="disabling-all-children" label="Disabling all children of a view">
+  <TabItem value="disabling-all-children" label="Disabling all of a view's children">
 
-```python
+```python title="Disabling All Children"
 class MyView(discord.ui.View):
 
     @discord.ui.button(emoji="😀", label="Button 1", style=discord.ButtonStyle.primary)
@@ -189,7 +189,7 @@ class MyView(discord.ui.View):
 
 Sometimes, you want to have a button that is disabled after a certain amount of time. This is where timeouts come in.
 
-```python
+```python title="Timeouts in the Message"
 class MyView(discord.ui.View):
 
     @discord.ui.button(label="A button", style=discord.ButtonStyle.primary, emoji="😎")
@@ -204,7 +204,7 @@ async def button(ctx):
 As you can see in the last line, we set a timeout of 30 seconds to the view. If you are reusing the
 view and want the timeout to stay the same, you can also define the timeout in the view itself.
 
-```python
+```python title="Timeouts in the View"
 class MyView(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=10)
@@ -220,7 +220,7 @@ disabled, but it will not respond any more. If someone tries to use it, it will 
 To prevent this, we can create `on_timeout` function in the view. This function will be called when
 the timeout is reached.
 
-```python
+```python title="on_timeout Example"
 class MyView(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=10)
@@ -251,7 +251,7 @@ Persistent views work forever. When the bot goes offline, the buttons will stop 
 
 In a Persistent View, the timeout must be set to `None` and all the children in the view much have a `custom_id` attribute set.
 
-```python
+```python title="Perisistent View"
 @bot.event
 async def on_ready():
     bot.add_view(MyView()) # Registers a View for persistent listening.
@@ -323,6 +323,6 @@ That is up to you. Buttons do provide a cleaner interface for your bot, and are 
 :::info Related Topics
 
 - [Slash Commands](slash-commands)
-- [Interactions Index](index)
+- [Interactions Index](../Interactions)
 
 :::
