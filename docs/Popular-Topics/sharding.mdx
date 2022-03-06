@@ -5,22 +5,6 @@ description: All about Sharding Discord Bots.
 
 # Sharding
 
-Sharding in Pycord is straight forward and simplistic,
-
-:::tip When to Shard?
-
-It is recommended to only shard your bot when it reaches 2,000 or more servers. Anything under this
-will not do anything and consume unnecessary resources. Discord itself will let you know when it's
-time for sharding.
-
-:::
-
-Just replace your `discord.Client`, `discord.Bot`, `commands.Bot` objects
-with `discord.AutoShardedClient`, `discord.AutoShardedBot`, `commands.AutoShardedBot` respectively.
-
-If you want to specify the amount of shards your bot uses,
-just add the `shards` parameter, along with the amount of shards you want.
-
 ## What is Sharding?
 
 Sharding is the process of breaking up your bot into smaller pieces so it has a better time handling
@@ -36,6 +20,18 @@ Just because you _can_ shard your bot doesn't mean you _should_. While Pycord ma
 your bot, it isn't necessary to actually shard unless your bot is large. Sharding a small bot isn't
 just useless, but actually _harmful_, as it uses extra resources and may slow down your bot. Discord
 themselves will actually let you know when your bot needs sharding.
+
+## How Do I Shard in Pycord?
+
+Sharding in Pycord is straight-forward.
+
+Just replace your `discord.Client`, `discord.Bot`, `commands.Bot` objects
+with `discord.AutoShardedClient`, `discord.AutoShardedBot`, `commands.AutoShardedBot` respectively.
+
+These new objects have inherit from the original objects, so all of the functions from those other types should be present. 
+
+If you want to specify the amount of shards your bot uses,
+just add the `shards` parameter, along with the amount of shards you want.
 
 ## Why Should I Shard my Bot?
 
