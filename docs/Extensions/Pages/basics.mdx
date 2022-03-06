@@ -3,3 +3,67 @@ title: Paginator Basics
 ---
 
 ## Paginator Components
+
+### [Page](https://docs.pycord.dev/en/master/ext/pages/index.html#page)
+This class contains two attributes: `content` and `embeds`, which correspond to the attributes of the same name on the `discord.Message` class.
+To create a new Page, use the following syntax:
+```py
+import discord
+page= Page(content="My Page Content", embeds=[discord.Embed(title="My First Embed Title")])
+```
+
+### [PageGroup](https://docs.pycord.dev/en/master/ext/pages/index.html#pagegroup)
+This class represents a group of pages. It uses most of the same parameters as `Paginator`, which allows each `PageGroup` to effectively have its own settings and behaviors.
+
+### [Paginator](https://docs.pycord.dev/en/master/ext/pages/index.html#paginator)
+This is the main class for `ext.pages`, and is used to control most of the functionality of the extension.
+
+In its most basic form, with no arguments provided (default values listed below), a paginator can be created like so:
+
+```py
+import discord
+from discord.ext.pages import Paginator, Page
+
+my_pages = [
+    Page(
+        content="This is my first page. It has a list of embeds and message content.",
+        embeds=[
+            discord.Embed(title="My First Embed Title"),
+            discord.Embed(title="My Second Embed Title"),
+        ],
+    ),
+    Page(
+        content="This is my second page. It only has message content.",
+    ),
+    Page(
+        embeds=[
+            discord.Embed(
+                title="This is my third page.",
+                description="It has no message content, and one embed.",
+            )
+        ],
+    ),
+]
+paginator = Paginator(pages=my_pages)
+```
+
+Attributes for the `Paginator` class which have default values are:
+- `show_disabled` **:** `True`
+  - Show buttons that are disabled (i.e. can't be clicked)
+- `author_check` **:** `True`
+  - Only the author can interact with the paginator.
+- `timeout` **:** `180` *(seconds)*
+  - The paginator will time out and become inactive after this many seconds.
+- `disable_on_timeout` **:** `True`
+  - If the paginator times out, it will be automatically disabled and all buttons will be unusable.
+- `use_default_buttons` **:** `True`
+  - Use the default set of 4 buttons and a page indicator.
+- `show_indicator` **:** `True`
+  - When using the default buttons, shows a middle 5th button with the current/total page numbers.
+
+Other attributes that can be set are:
+
+
+### PaginatorButton
+
+### PaginatorMenu
