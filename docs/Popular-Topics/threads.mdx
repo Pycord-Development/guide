@@ -26,7 +26,7 @@ All public threads need a starting message. This message will start the thread. 
 
 ### Creating thread from a message
 
-```python
+```python title="Creating a Thread from a Message"
 message = await ctx.send("My Starting Message")
 await message.create_thread(name="thread name", auto_archive_duration=60)
 ```
@@ -35,7 +35,7 @@ You may also use other ways to create the thread, for example, by using `on_mess
 
 ### Creating thread in a channel
 
-```python
+```python title="Creating a Thread from a Channel"
 channel = bot.get_channel(...) # define this!
 await channel.create_thread(name="Thread Name", message=None, auto_archive_duration=60, type=None, reason=None)
 ```
@@ -46,7 +46,7 @@ A thread type could be `news_thread`, `public_thread`, `private_thread`. You may
 
 Deleting Threads is simple. You just need to get a thread, and then use the `delete` method.
 
-```python
+```python title="Deleting a Thread"
 thread = bot.get_channel(thread_id) # you could use other ways to get a thread
 await thread.delete()
 ```
@@ -67,7 +67,7 @@ await thread.delete()
 
 - `slowmode_delay` (int) – Specifies the slowmode rate limit for user in this thread, in seconds. A value of 0 disables slowmode. The maximum value possible is 21600.
 
-```python
+```python title="Editing a Thread"
 thread = bot.get_channel(id)
 await thread.edit(
     name="New Name",

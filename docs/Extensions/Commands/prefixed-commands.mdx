@@ -34,7 +34,7 @@ various advantages, such as:
 <Tabs>
   <TabItem value="0" label="Using Events to Create Prefixed Commands" default>
 
-```python
+```python title="Prefixed Commands with Events"
 import discord
 
 client = discord.Client()
@@ -85,7 +85,7 @@ async def on_message(message):
   </TabItem>
   <TabItem value="1" label="Using the Commands Extension">
 
-```python
+```python title="The Commands Extension"
 import discord
 from discord.ext import commands
 
@@ -176,7 +176,7 @@ events, cogs and more.
 
 Now let's look at the syntax.
 
-```python
+```python title="A Simple Prefixed Bot"
 import discord
 from discord.ext import commands # Import the commands extension
 # discord.ext.commands is not the same as discord.commands!
@@ -232,7 +232,7 @@ following guides.
 Prefixed commands can take parameters, just like slash commands. You can specify the parameters in
 the function itself.
 
-```python {2}
+```python title="Parameters Example 1"
 @bot.command()
 async def echo(ctx, *, message):
     await ctx.send(message)
@@ -246,7 +246,7 @@ passed `*`, `message` is `hello world`, or the rest of the message.
 
 We can pass multiple parameters too!
 
-```python
+```python title="Parameters Example 2"
 @bot.command()
 async def echo(ctx, channel:discord.TextChannel, title, *, message):
     await channel.send("**{}**\n{}".format(title, message))
@@ -289,7 +289,7 @@ Greetings!" Greetings to you all!`.
 
 Let's check out another example for parameters and parameter types.
 
-```python
+```python title="Parameters Example 3"
 import random
 
 @bot.command()

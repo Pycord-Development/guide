@@ -60,7 +60,7 @@ There are two types of built-in help commands:
 <Tabs>
 <TabItem label="Default Help Command" value="default">
 
-```python
+```python title="Default Help Command"
 import discord
 from discord.ext import commands
 
@@ -96,7 +96,7 @@ bot.run("token")
 </TabItem>
 <TabItem label="Minimal Help Command" value="minimal">
 
-```python
+```python title="Minimal Help Command"
 import discord
 from discord.ext import commands
 
@@ -135,7 +135,7 @@ bot.run("token")
 Let's try to make the `MinimalHelpCommand` look better. We can do this by putting its content in an
 embed.
 
-```python
+```python title="Minimal Help Command Example"
 bot = commands.Bot(command_prefix='!')
 
 
@@ -199,7 +199,7 @@ There are 4 methods that we need to override:
 
 ### Bot Help
 
-```python
+```python title="Bot Help Example"
 class MyHelp(commands.HelpCommand):
     async def send_bot_help(self, mapping):
         embed = discord.Embed(title="Help")
@@ -241,7 +241,7 @@ cog's attribute `qualified_name` that returns "No Category" if the cog has no na
 
 Let's improve the code a little.
 
-```python
+```python title="Improved Bot Help Example"
 class MyHelp(commands.HelpCommand):
     def get_command_signature(self, command):
         return '%s%s %s' % (self.context.clean_prefix, command.qualified_name, command.signature)
@@ -270,8 +270,8 @@ Let's make the help command show command aliases.
 
 This function is called when the user uses `<prefix>help <command>`.
 
-```python
-class MyHelp(commands.MinimalHelpCommand):
+```python title="Command Help Example"
+class MyHelp(commands.HelpCommand):
     async def send_command_help(self, command):
         embed = discord.Embed(title=self.get_command_signature(command), color=discord.Color.random())
         if command.help:
@@ -320,7 +320,7 @@ of a command can be specified in docstrings of a command function. For example:
 
 This is pretty easy!
 
-```python
+```python title="Custom Cog Help Example"
 class MyHelp(commands.HelpCommand):
     def get_command_signature(self, command):
         return '%s%s %s' % (self.context.clean_prefix, command.qualified_name, command.signature)
@@ -341,7 +341,7 @@ Once again, we create an embed, get the commands that the user can use, and add 
 
 Similar to the cog help, this is pretty easy!
 
-```python
+```python title = "Custom Group Help Example"
 class MyHelp(commands.HelpCommand):
     def get_command_signature(self, command):
         return '%s%s %s' % (self.context.clean_prefix, command.qualified_name, command.signature)
@@ -368,7 +368,7 @@ The following code has been slightly edited from the tutorial version.
 
 :::
 
-```python
+```python title="Custom Help Command Example"
 class SupremeHelpCommand(commands.HelpCommand):
     def get_command_signature(self, command):
         return '%s%s %s' % (self.context.clean_prefix, command.qualified_name, command.signature)
@@ -424,7 +424,7 @@ bot.help_command = SupremeHelpCommand()
 How can you add cooldowns, set aliases, and change the name of help commands? Command attributes can
 help you do all of that, and more!
 
-```python
+```python title="Help Command Attributes"
 attributes = {
    'name': "help",
    'aliases': ["helpme"],
@@ -441,7 +441,7 @@ bot.help_command = MyHelp(command_attrs=attributes)
 When a user attempts to use a command that does not exist,, we need to inform the user.
 We can do this by overriding the `send_error_message` function.
 
-```python
+```python title="Custom Help Error Example"
 class MyHelp(commands.HelpCommand):
     async def send_error_message(self, error):
         embed = discord.Embed(title="Error", description=error, color=discord.Color.red())

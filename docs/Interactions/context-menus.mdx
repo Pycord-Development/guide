@@ -78,7 +78,7 @@ async def is_this_user_sus(ctx, member: discord.Member):  # user commands return
 
 ## Message Commands
 
-```python
+```python title="Message Commands Example"
 @bot.message_command(name="Is Message Sus")  # creates a global message command. use guild_ids=[] to create guild-specific commands.
 async def is_this_msg_sus(ctx, message: discord.Message):  # message commands return the message
     await ctx.respond(f"Message {message.id} sent by {member.name} is {'not sus' if message.id == 543397958197182464 else 'sus'}")
@@ -112,6 +112,6 @@ async def is_this_msg_sus(ctx, message: discord.Message):  # message commands re
 :::info Related Topics
 
 - [Slash Commands](slash-commands)
-- [Interactions Index](index)
+- [Interactions Index](../Interactions)
 
 :::
