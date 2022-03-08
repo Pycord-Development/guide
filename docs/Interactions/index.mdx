@@ -157,16 +157,87 @@ of a message, while User Commands are only found in the apps tab of a user. Mess
 useful for having function to report a message, warn a user for that message, and more. User Commands
 are useful for having a function to add a user to a ticket, warn a user, and more.
 
-This is a Message Command:
+Here's an example of a Message Command:
 
-<!-- [Message Command Example] -->
+<DiscordMessages>
+  <DiscordMessage
+    author="Guide Man"
+    avatar="green"
+  >
+    I'm sus
+  </DiscordMessage>
+  <DiscordMessage
+    author="Guide Bot"
+    avatar="red"
+    bot
+  >
+    <div slot="interactions">
+      <DiscordInteraction
+        author="Other Guide Man"
+        avatar="orange"
+        command
+      >
+        Reverse Message
+      </DiscordInteraction>
+    </div>
+    Message 930650407917748286 sent by Guide Man reversed is "sus m'I"
+  </DiscordMessage>
+</DiscordMessages>
 
-And this is a User Command:
+<br />
 
-<!-- [User Command Example] -->
+And here's an example of a User Command:
 
-Pretty cool, right? To learn more about these two, please read the [Message and User Commands guide]
-(context-menus)
+<DiscordMessages>
+  <DiscordMessage
+    author="Guide Man"
+    avatar="green"
+  >
+    Other Guide Man has been on Discord for so long
+  </DiscordMessage>
+  <DiscordMessage
+    author="Guide Bot"
+    avatar="red"
+    bot
+  >
+    <div slot="interactions">
+      <DiscordInteraction
+        author="Other Guide Man"
+        avatar="orange"
+        command
+      >
+        User Age
+      </DiscordInteraction>
+    </div>
+    Other Guide Man is 1 week old.
+  </DiscordMessage>
+  <DiscordMessage
+    author="Guide Bot"
+    avatar="red"
+    bot
+  >
+    <div slot="interactions">
+      <DiscordInteraction
+        author="Other Guide Man"
+        avatar="orange"
+        command
+      >
+        User Age
+      </DiscordInteraction>
+    </div>
+    Guide Man is 40 years old.
+  </DiscordMessage>
+  <DiscordMessage
+    author="Guide Man"
+    avatar="green"
+  >
+    sus
+  </DiscordMessage>
+</DiscordMessages>
+
+<br />
+
+Pretty cool, right? To learn more about these two, please read the [Context Menus guide](./context-menus.mdx)
 
 ## [Application Commands](#application-commands) vs. [Prefix Commands](../Extensions/Commands/prefixed-commands.mdx)
 
