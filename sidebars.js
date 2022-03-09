@@ -50,7 +50,8 @@ const sidebars = {
             "Extensions/Commands/cogs",
             "Extensions/Commands/help-command",
           ]
-        }
+        },
+        "Extensions/Tasks/tasks",
       ],
     },
     {
