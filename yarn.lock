@@ -1647,10 +1647,10 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@matteusan/sentro@0.1.20":
-  version "0.1.20"
-  resolved "https://registry.yarnpkg.com/@matteusan/sentro/-/sentro-0.1.20.tgz#edbd1e335c5662c08a1898dc07d8742d02124d85"
-  integrity sha512-7pqB45X1SFy/sdlIABf1ShVw+BQRXLAe/+VYRQh0pcEUAWgtghoA9DAu5q7PexK4q+azuotHuP0cGhzoFqlV0w==
+"@matteusan/sentro@0.1.21":
+  version "0.1.21"
+  resolved "https://registry.yarnpkg.com/@matteusan/sentro/-/sentro-0.1.21.tgz#ed8360dcc755040653939326b077b6d413707015"
+  integrity sha512-Cha0Adu9PqHURzexPIAu7d/fIbW7uduBpXFHm4FewSQ6O35lvVBLZYqiSjx5jDrfrqLyzJcv0dETFPNmVTaBow==
 
 "@mdx-js/mdx@^1.6.22":
   version "1.6.22"
