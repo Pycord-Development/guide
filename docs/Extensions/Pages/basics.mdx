@@ -47,7 +47,7 @@ my_pages = [
 paginator = Paginator(pages=my_pages)
 ```
 
-Attributes for the `Paginator` class which have default values are:
+Parameters for the `Paginator` class which have default values are:
 - `show_disabled` **:** `True`
   - Show buttons that are disabled (i.e. can't be clicked)
 - `author_check` **:** `True`
@@ -61,7 +61,39 @@ Attributes for the `Paginator` class which have default values are:
 - `show_indicator` **:** `True`
   - When using the default buttons, shows a middle 5th button with the current/total page numbers.
 
-Other attributes that can be set are:
+Other parameters that can be set on initialization:
+- `show_menu`
+  - Whether to show a select menu that allows the user to switch between groups of pages.
+  - Has no effect if PageGroups are not provided for the paginator.
+- `default_button_row`
+  - Which row should the default buttons be displayed in? 
+  - Defaults to 0 and has no effect if `use_default_buttons` is not `True`
+- `loop_pages`
+  - Whether to loop the pages when clicking prev/next while at the first/last page in the list.
+  - If this is `True`, you can also define a `loop_label` for any custom `PaginatorButton` objects you create. 
+- `custom_buttons`
+  - A list of PaginatorButtons to initialize the Paginator with.
+  - If `use_default_buttons` is `True`, this parameter is ignored.
+- `custom_view`
+  - A custom view whose items are added to the pagination components.
+
+Attributes that can be set or accessed after the paginator is created:
+- `pages`
+  - The only required parameter when creating a paginator instance.
+- `page_groups`
+  - List of `PageGroup` objects the user can switch between.
+- `menu`
+  - The page group select menu associated with this paginator.
+- `current_page`
+  - A zero-indexed value showing the current page number.
+- `page_count`
+  - A zero-indexed value showing the total number of pages.
+- `buttons`
+  - A dictionary containing the `PaginatorButton` objects included in this paginator.
+- `user`
+  - The user or member that invoked the paginator.
+- `message`
+  - The message the paginator is attached to.
 
 
 ### PaginatorButton
