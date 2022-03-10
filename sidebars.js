@@ -52,6 +52,7 @@ const sidebars = {
           ]
         },
         "Extensions/Tasks/tasks",
+        "Extensions/Pages/pages",
       ],
     },
     {

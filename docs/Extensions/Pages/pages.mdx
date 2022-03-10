@@ -1,5 +1,5 @@
 ---
-title: Paginator Basics
+title: Pages
 ---
 
 ## Paginator Components
@@ -9,7 +9,7 @@ This class contains two attributes: `content` and `embeds`, which correspond to 
 To create a new Page, use the following syntax:
 ```py
 import discord
-page= Page(content="My Page Content", embeds=[discord.Embed(title="My First Embed Title")])
+page = Page(content="My Page Content", embeds=[discord.Embed(title="My First Embed Title")])
 ```
 
 ### [PageGroup](https://docs.pycord.dev/en/master/ext/pages/index.html#pagegroup)
@@ -46,6 +46,20 @@ my_pages = [
 ]
 paginator = Paginator(pages=my_pages)
 ```
+
+The only required parameter for `Paginator` is the `pages` parameter, which is usually a list of `Page` objects.
+
+However, you can also pass in a list of `PageGroup` objects, a list of strings, a list of embeds, or a list of a list of embeds.
+
+Depending on what's passed to the `pages` parameter, the behavior of the paginator may differ:
+
+- Passing a list of `PageGroup` objects will essentially treat each `PageGroup` as its own Paginator, with most `Paginator` attributes able to be set independently for each `PageGroup`.
+  - Each `PageGroup` accepts its own `pages` parameter, which inherits the same behavior as the `pages` parameter of `Paginator`, except it cannot contain other `PageGroup` objects.
+- If a page is a `Page` object, this will allow you to specify both the `discord.Message.content` and `discord.Message.embeds` attributes for a page.
+  - **This is the preferred method of defining a page.**
+- If a page is a string, this will be used for the `discord.Message.content` attribute. This type of page cannot have any embeds.
+- If a page is a list of embeds, this will be used for the `discord.Message.embeds` attribute. This type of page cannot have any message content.
+- If a page is a list of lists of embeds, each parent list item will create a page containing all embeds from its child list. This type of page cannot have any message content.
 
 Parameters for the `Paginator` class which have default values are:
 - `show_disabled` **:** `True`
