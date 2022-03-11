@@ -144,3 +144,19 @@ See the difference? Now, which one looks more readable? Hopefully you answered t
 Python's [PEP8](https://www.python.org/dev/peps/pep-0008/) is a PEP (**Python Enhancement Proposal**)
 style guide for Python. It is the style guide that is used by most Python developers and programmers,
 providing a universal way to write and read code.
+
+### Databases
+
+As your bot grows, you'll inevitably have to store data for your bot. Now most people would probably just load up some JSON file on boot into a `dict`, modify it in memory then write to the file. However, JSON files aren't the solution. When you write to a JSON file, it rewrites the entire file instead of just rewriting the section that changed. It's also a configuration file format, not really a storage file format.
+
+Instead of using a JSON file or some other related format, you should instead use a database. There are many databases out there, like MongoDB, SQLite, and PostgreSQL to name a few.
+
+All of these databases I named do the job well, and which one you use depends on what features you want out of a database.
+
+<!--Maybe clarify these/add more options-->
+
+MongoDB is a JSON-like format and if you already use JSON files, it shouldn't be too hard to migrate over to.
+
+SQLite is based off of SQL, a common relational data model. It's a lightweight, easy-to-use, portable database solution that works entirely on files. However, if for some reason you cannot read/write to and from a file and you need to manage lots of data, SQLite might not be for you.
+
+PostgreSQL is also based off of SQL, but it also has more features than SQLite. It's compliant with the SQL standard, open-source, and extensible. However, it's not that fast or simple compared to SQLite.
