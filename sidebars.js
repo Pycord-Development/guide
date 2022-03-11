@@ -51,8 +51,21 @@ const sidebars = {
             "Extensions/Commands/help-command",
           ]
         },
-        "Extensions/Tasks/tasks",
-        "Extensions/Pages/pages",
+       {
+        type: "category",
+        label: "Tasks",
+        items: [
+           "Extensions/Tasks/tasks"
+        ]
+       },
+       {
+         type: "category",
+         label: "Pages",
+         items: [
+           "Extensions/Pages/pages"
+         ]
+       
+       }
       ],
     },
     {
