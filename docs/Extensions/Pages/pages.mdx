@@ -91,7 +91,7 @@ However, you can also pass in a list of `PageGroup` objects, a list of strings, 
 - `custom_view`
   - A custom view whose items are added to the pagination components.
 
-Attributes that can be set or accessed after the paginator is created:
+#### Attributes that can be set or accessed after the paginator is created:
 - `pages`
   - The only required parameter when creating a paginator instance.
 - `page_groups`
@@ -111,5 +111,8 @@ Attributes that can be set or accessed after the paginator is created:
 
 
 ### PaginatorButton
+This class represents a button used to navigate between the pages of a paginator. It's also used to create the page indicator.
+
+When creating your own custom buttons, you can either use this class directly, or subclass it to add any additional functionality you may need.
 
 ### PaginatorMenu
