@@ -15,11 +15,11 @@ import "@discord-message-components/react/styles";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-Pycord's `commands` extension comes with it's own build-in help commands. In this guide, we will take a look at them as well as learn how to create your own. Let's dive in!
+Pycord's `commands` extension comes with a built-in help command. In this guide, we will take a look at them as well as learn how to create your own. Let's dive in!
 
 :::note
 
-This guide demomstrates using object-oriented programming and subclassing to make a help command for your
+This guide demonstrates using object-oriented programming and subclassing to make a help command for your
 Pycord bot. It is important to understand these two concepts before continuing.
 
 **Learning Resources**:
@@ -184,7 +184,7 @@ Finally, we set this as our new help command using `bot.help_command = MyNewHelp
   </DiscordMessage>
 </DiscordMessages>
 
-## Creating Your Own Help Command
+## Creating Your Help Command
 
 Not satisfied with the built-in help commands? You can create your own!
 
@@ -222,7 +222,7 @@ Let's go through the code.
 - Next, we override the `send_bot_help` method. This method is responsible for sending the main help
 command to the user.
 
-- We create an embed with title "Help".
+- We create an embed with the title "Help".
 
 - We iterate through `mapping.items()`, which returns a list of tuples, the first element being the
 cog and the second element being a list of commands.
@@ -233,7 +233,7 @@ cog and the second element being a list of commands.
 - There is a chance that the cog is empty, so we use `if command_signatures:`.
 
 - We get the name of the cog using `getattr(cog, "qualified_name", "No Category")`. This calls the
-cog's attribute `qualified_name` that returns "No Category" if the cog has no name.
+cog's attribute `qualified_name` which returns "No Category" if the cog has no name.
 
 - We add a field to the embed with the name of the cog and the value of the command signatures.
 
@@ -264,7 +264,7 @@ bot.help_command = MyHelp()
 ```
 
 Now the help command won't show commands that the user can't use, as well as aliases for commands.
-Let's make the help command show command aliases.
+Let's get the help command to show command aliases.
 
 ### Command Help
 
@@ -287,11 +287,11 @@ bot.help_command = MyHelp()
 
 Let's quickly go through the code we haven't discussed yet.
 
-- In line 3, we create an embed with title the signature of the command (so that the title of the
+- In line 3, we create an embed with a title the signature of the command (so that the title of the
 embed looks like `<command> <parameter> [parameter]`), and a random color.
 
 - In lines 4 and 5, we get the command's `help` description and add it to the embed. The help description
-of a command can be specified in docstrings of a command function. For example:
+of a command can be specified in the docstrings of a command function. For example:
 
   ```python
   @bot.command()
@@ -438,7 +438,7 @@ bot.help_command = MyHelp(command_attrs=attributes)
 
 ## Error Handling
 
-When a user attempts to use a command that does not exist,, we need to inform the user.
+When a user attempts to use a command that does not exist, we need to inform the user.
 We can do this by overriding the `send_error_message` function.
 
 ```python title="Custom Help Error Example"

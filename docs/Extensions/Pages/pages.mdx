@@ -13,7 +13,7 @@ page = Page(content="My Page Content", embeds=[discord.Embed(title="My First Emb
 ```
 
 ### [PageGroup](https://docs.pycord.dev/en/master/ext/pages/index.html#pagegroup)
-This class represents a group of pages. It uses most of the same parameters as `Paginator`, which allows each `PageGroup` to effectively have its own settings and behaviors.
+This class represents a group of pages. It uses most of the same parameters as `Paginator`, which allows each `PageGroup` to effectively have its own settings and behaviours.
 
 ### [Paginator](https://docs.pycord.dev/en/master/ext/pages/index.html#paginator)
 This is the main class for `ext.pages`, and is used to control most of the functionality of the extension.
@@ -49,12 +49,12 @@ paginator = Paginator(pages=my_pages)
 
 The only required parameter for `Paginator` is the `pages` parameter, which is usually a list of `Page` objects.
 
-However, you can also pass in a list of `PageGroup` objects, a list of strings, a list of embeds, or a list of a list of embeds.
+However, you can also pass in a list of `PageGroup` objects, a list of strings, a list of embeds, or a list of embeds.
 
-#### Depending on what's being passed to the `pages` parameter, the behavior of the paginator may differ:
+#### Depending on what's being passed to the `pages` parameter, the behaviour of the paginator may differ:
 
 - Passing a list of `PageGroup` objects will essentially treat each `PageGroup` as its own Paginator, with most `Paginator` attributes able to be set independently for each `PageGroup`.
-  - Each `PageGroup` accepts its own `pages` parameter, which inherits the same behavior as the `pages` parameter of `Paginator`, except it cannot contain other `PageGroup` objects.
+  - Each `PageGroup` accepts its own `pages` parameter, which inherits the same behaviour as the `pages` parameter of `Paginator`, except it cannot contain other `PageGroup` objects.
 - If a page is a `Page` object, this will allow you to specify both the `discord.Message.content` and `discord.Message.embeds` attributes for a page.
   - **This is the preferred method of defining a page.**
 - If a page is a string, this will be used for the `discord.Message.content` attribute. This type of page cannot have any embeds.
@@ -99,11 +99,11 @@ However, you can also pass in a list of `PageGroup` objects, a list of strings, 
 - `menu`
   - The page group select menu associated with this paginator.
 - `current_page`
-  - A zero-indexed value showing the current page number.
+  - A zero-indexed value shows the current page number.
 - `page_count`
-  - A zero-indexed value showing the total number of pages.
+  - A zero-indexed value shows the total number of pages.
 - `buttons`
-  - A dictionary containing the `PaginatorButton` objects included in this paginator.
+  - A dictionary containing the `PaginatorButton` objects is included in this paginator.
 - `user`
   - The user or member that invoked the paginator.
 - `message`
@@ -113,7 +113,7 @@ However, you can also pass in a list of `PageGroup` objects, a list of strings, 
 ### PaginatorButton
 This class represents a button used to navigate between the pages of a paginator. It's also used to create the page indicator.
 
-When creating your own custom buttons, you can either use this class directly, or subclass it to add any additional functionality you may need.
+When creating your own custom buttons, you can either use this class directly or subclass it to add any additional functionality you may need.
 
 ### PaginatorMenu
-This class represents the `discord.Select` menu used to navigate between `PageGroup` instances. If subclassed, you'll most likely want to call `super()` in your `__init__` method.
+This class represents the `discord.Select` menu used to navigate between `PageGroup` instances. If it's subclassed, you'll most likely want to call `super()` in your `__init__` method.

@@ -6,7 +6,7 @@ description: All about the rules and common practices for coding a Discord bot
 # Rules and Common Practices of Creating a Bot
 
 When creating almost anything, there's always a certain set of rules to follow or common practices,
-such as [PEP8](https://www.python.org/dev/peps/pep-0008/) for Python. This applies for creating bots
+such as [PEP8](https://www.python.org/dev/peps/pep-0008/) for Python. This applies to creating bots
 with Pycord as well.
 
 :::note
@@ -30,7 +30,7 @@ This is so that Discord knows exactly what you are doing with its users' data.
 :::tip
 You don't need a lawyer or anyone special to write out a privacy policy for you, nor do you need
 it approved by some official entity. Simply writing out how you are going to use Discord user
-information in a neat way is enough.
+information neatly is all you need to do.
 :::
 
 Providing a Terms of Service for your bot is optional, though usually a best practice. It tells users
@@ -58,7 +58,7 @@ about it. I'm here to tell you that it isn't a good idea to shard your bot.
 
 *Wait a minute, why would it be an option if it wasn't a good idea?* It's simple. I lied. Sort of.
 I'm not going to go into the details of sharding a bot, so you can read about it on
-[this page](../Popular-Topics/sharding). Basically, though, sharding is the process of taking your bot
+[this page](../Popular-Topics/sharding). Sharding is the process of taking your bot
 and breaking it up into small pieces so it's easier to perform tasks. This is very useful for large
 bots, as it makes them faster and more reliable. Sharding is not a good practice for small bots.
 
@@ -106,13 +106,13 @@ the Creating Your First Bot guide.
 You always want to back up your bot's data. This includes both its code *and* its databases. This way,
 if something tragic happens, such as your host failing a data migration or you breaking your Raspberry
 Pi's SD card that held your bot, you'll still have its precious user data. I have a small program for
-my bot that uploads its databases to a remote GitHub repository every now and then to not lose any data.
+my bot that uploads its databases to a remote GitHub repository now and then to not lose any data.
 It may be smarter to find a bit more of a reliable way to do so, though.
 
 Public or private, having a local Git repository connected to a remote one is a good idea for making
 almost any application. For a lot of developers, it's like saving your work. If you do this, all of
 your bot's code won't be lost if your computer spontaneously combusts or you smash it to bits from 
-anger. You can simply grab the back-up computer that everyone has laying around and you're back
+anger. You can simply grab the backup computer that everyone has laying around and you're back
 in business. 
 
 ### Organization and Cleanliness
@@ -140,14 +140,14 @@ class MyClass:
         return num1-num2
 ```
 
-See the difference? Now, which one looks more readable? Hopefully you answered the second example. 
+See the difference? Now, which one looks more readable? Hopefully, you answered the second example. 
 Python's [PEP8](https://www.python.org/dev/peps/pep-0008/) is a PEP (**Python Enhancement Proposal**)
 style guide for Python. It is the style guide that is used by most Python developers and programmers,
 providing a universal way to write and read code.
 
 ### Databases
 
-As your bot grows, you'll inevitably have to store data for your bot. Now most people would probably just load up some JSON file on boot into a `dict`, modify it in memory then write to the file. However, JSON files aren't the solution. When you write to a JSON file, it rewrites the entire file instead of just rewriting the section that changed. It's also a configuration file format, not really a storage file format.
+As your bot grows, you'll inevitably have to store data for your bot. Now, most people would probably just load up some JSON file on boot into a `dict`, modify it in memory then write to the file. However, JSON files aren't the solution. When you write to a JSON file, it rewrites the entire file instead of just rewriting the section that changed. It's also a configuration file format, not a storage file format.
 
 Instead of using a JSON file or some other related format, you should instead use a database. There are many databases out there, like MongoDB, SQLite, and PostgreSQL to name a few.
 
@@ -157,6 +157,8 @@ All of these databases I named do the job well, and which one you use depends on
 
 MongoDB is a JSON-like format and if you already use JSON files, it shouldn't be too hard to migrate over to.
 
-SQLite is based off of SQL, a common relational data model. It's a lightweight, easy-to-use, portable database solution that works entirely on files. However, if for some reason you cannot read/write to and from a file and you need to manage lots of data, SQLite might not be for you.
+SQLite is based on SQL, a common relational data model. It's a lightweight, easy-to-use, portable database solution that works entirely on files. However, if for some reason you cannot read/write to and from a file and you need to manage lots of data, SQLite might not be for you.
 
-PostgreSQL is also based off of SQL, but it also has more features than SQLite. It's compliant with the SQL standard, open-source, and extensible. However, it's not that fast or simple compared to SQLite.
+PostgreSQL is also based on SQL, but it also has more features than SQLite. It's compliant with the SQL standard, open-source, and extensible. However, it's not that fast or simple compared to SQLite.
+
+MariaDB is also based on SQL and is a fork of the MySQL project. It's compliant with the SQL standard, it's also open source and is a complete drop-in replacement for any code with MySQL. You don't even need to change what package you're using!

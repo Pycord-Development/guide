@@ -23,12 +23,12 @@ themselves will let you know when your bot needs sharding so you won't need to w
 
 ## How Do I Shard in Pycord?
 
-Sharding in Pycord is straightforward and extremely easy.
+Sharding in Pycord is straightforward.
 
 Just replace your `discord.Client`, `discord.Bot`, `commands.Bot` objects
 with `discord.AutoShardedClient`, `discord.AutoShardedBot`, `commands.AutoShardedBot` respectively.
 
-These new objects are inherited from the original objects, so all of the functions from those other types should be present. 
+These new objects have been inherited from the original objects, so all of the functions from those other types should be present. 
 
 If you want to specify the number of shards your bot uses,
 just add the `shards` parameter, along with the number of shards you want.
