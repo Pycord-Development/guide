@@ -7,31 +7,31 @@ description: All about Sharding Discord Bots.
 
 ## What is Sharding?
 
-Sharding is the process of breaking up your bot into smaller pieces so it has a better time handling
+Sharding is the process of breaking up your bot into smaller pieces so that it has a better time handling
 events. As [Discord's Documentation](https://discord.com/developers/docs/topics/gateway#sharding) puts
 it, sharding is "a method of user-controlled guild sharding which allows for splitting events across
-a number of gateway connections."
+several gateway connections."
 
-Sharding is used only for large bots, and takes up additional resources for managing the new processes.
+Sharding is used only for large bots and takes up additional resources for managing the new processes.
 Pycord automatically shards your bot, so the only thing you need to do is use an `AutoShardedClient`
 or `AutoShardedBot` class instead of a plain `Client` or `Bot` class. Pretty cool, right?
 
 Just because you _can_ shard your bot doesn't mean you _should_. While Pycord makes it easy to shard
-your bot, it isn't necessary to actually shard unless your bot is large. Sharding a small bot isn't
-just useless, but actually _harmful_, as it uses extra resources and may slow down your bot. Discord
-themselves will actually let you know when your bot needs sharding.
+your bot, it isn't necessary to shard unless your bot is large. Sharding a small bot isn't
+just useless, but _harmful_, as it uses extra resources and may slow down your bot. Discord
+themselves will let you know when your bot needs sharding so you won't need to worry about this until they contact you.
 
 ## How Do I Shard in Pycord?
 
-Sharding in Pycord is straight-forward.
+Sharding in Pycord is straightforward and extremely easy.
 
 Just replace your `discord.Client`, `discord.Bot`, `commands.Bot` objects
 with `discord.AutoShardedClient`, `discord.AutoShardedBot`, `commands.AutoShardedBot` respectively.
 
-These new objects have inherit from the original objects, so all of the functions from those other types should be present. 
+These new objects have been inherited from the original objects, so all of the functions from those other types should be present. 
 
-If you want to specify the amount of shards your bot uses,
-just add the `shards` parameter, along with the amount of shards you want.
+If you want to specify the number of shards your bot uses,
+just add the `shards` parameter, along with the number of shards you want.
 
 ## Why Should I Shard my Bot?
 
