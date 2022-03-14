@@ -20,9 +20,9 @@ Since then, Discord has added and updated Interactions a lot. Different types of
 - [**Buttons**](https://discord.com/developers/docs/interactions/message-components#buttons):
 Buttons are attached to a message and can be clicked on to perform an action.
 - [**Select Menus**](https://discord.com/developers/docs/interactions/message-components#select-menus):
-Drop-down menus used to select a few options from a list.
+Drop-down menus are used to select a few options from a list.
 - [**Modals**](https://discord.com/developers/docs/interactions/message-components#text-inputs):
-Form-like modals that can be used to ask for input from a user.
+Form-like modals can be used to ask for input from a user.
 
 [**Application Commands**](https://discord.com/developers/docs/interactions/application-commands)
 
@@ -31,9 +31,9 @@ Commands that can be used with the `/` prefix.
 - **Context Menu Commands**:
 Commands that can be used from the right-click menu.
   - [**User Commands**](https://discord.com/developers/docs/interactions/application-commands#user-commands):
-  Commands that can be used on a user by alt-clicking/selecting on them.
+  Commands that can be used on a user by Alt-clicking/selecting on them.
   - [**Message Commands**](https://discord.com/developers/docs/interactions/application-commands#message-commands):
-   Commands that can be used on a message by alt-clicking/selecting on it.
+   Commands that can be used on a message by Alt-clicking/selecting on it.
 
 ## Message Components
 
@@ -139,7 +139,7 @@ message content Privileged Intent. Using this as a reason will get your applicat
 <br />
 
 This is what a slash command looks like. Very simple, not very different from a normal command other
-than the note telling you who used the command. Slash Commands support fields for the following:
+apart from the note telling you who used the command. Slash Commands support fields for the following:
 
 - Members
 - Roles
@@ -155,7 +155,7 @@ Message Commands and User Commands were both introduced around the same time, an
 each other, so we'll be introducing them together. These commands are found in the `apps` tab when
 alt-clicking. The only difference between the two is that Message Commands only appear in the apps tab
 of a message, while User Commands are only found in the apps tab of a user. Message Commands are
-useful for having function to report a message, warn a user for that message, and more. User Commands
+useful for having a function to report a message, warn a user for that message, and more. Whereas User Commands
 are useful for having a function to add a user to a ticket, warn a user, and more.
 
 Here's an example of a Message Command:
@@ -244,25 +244,25 @@ Pretty cool, right? To learn more about these two, please read the [Context Menu
 
 Ever since Discord was created, apps on it have used prefixes. This means that you'd have to put a
 certain character or string of characters in front of your command, such as `!ping`. The way this
-worked was that your bot listened for messages and picked out the ones that had its prefix, and then
+worked was that your bot listened for messages and picked out the ones that had their prefix, and then
 responded with the command. Now, Discord is forcing developers to switch their applications to
 Application Commands, a new system meant to preserve the privacy and safety of Discord's users. But
 why exactly is Discord making us switch? What's the better option, Application Commands or prefix
-commands? Following discusses everything you need to know.
+commands? Below we discuss everything you need to know.
 
 ### Discord's Decision
 
 You should be familiar with [Discord scams](https://discord.com/blog/common-scams-what-to-look-out-for)
-by now, right? The links people send in DMs and servers telling you it's Nitro or a game them and
+by now, right? The links people send in DMs and servers telling you it's Nitro or a game they and
 their friends have been working on, only to get not Nitro or a neat Indie game, but to get booted off
 of Discord and your account information changed. These are very common on Discord, and they still
-aren't under control. Discord is doing everything in their power to stop it, and this includes using
+aren't under control. Discord is doing everything in its power to stop it, and this includes using
 Application Commands rather than prefix commands.
 
 Prefix commands work by reading messages, as described before. Application Commands, however, don't
 work this way. Application Commands work by Discord sending your bot information for when a command
 was used. This way, Discord can limit message reading to only bots that _absolutely_ depend on it, such
-as auto moderation bots.
+as auto-moderation bots.
 
 ### Who has to Use Application Commands
 
@@ -281,7 +281,7 @@ with your bot, it'll have to use Application Commands.
 
 ### What's the Better Option
 
-At the beginning, when slash commands and the Message Content intent were being announced, developers
+In the beginning, when slash commands and the Message Content intent were being announced, developers
 _hated_ it. There were complaints everywhere. At the time, slash commands were thought to be clunky,
 slow, and inefficient. Since then, more Application Commands have been introduced and fixes to
 them have been applied. Slash commands aren't as terrible as when they first came out, and they

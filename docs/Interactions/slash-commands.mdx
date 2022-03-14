@@ -56,13 +56,13 @@ First, we import Pycord's `discord` package.
 
 Next, we create a [`discord.Bot`](https://docs.pycord.dev/en/master/api.html#discord.Bot) object and assign it to a variable `bot`. Notice how we pass the parameter [`debug_guilds`](https://docs.pycord.dev/en/master/api.html#discord.Bot.debug_guilds). Global Slash Commands take up to an hour to register, however, if we limit our bot commands to a few specific guilds, we can use them instantly on those guilds. This is useful for testing purposes. Once you have polished up your command and made it all shiny, you can share its shininess with all of the bot's servers by removing this parameter.
 
-We then go ahead to use the [`@bot.command`](https://docs.pycord.dev/en/master/api.html#discord.Bot.command) decorator, which registers a new Slash Command. We pass a `description` parameter to give a description to the Slash Command. We can also pass a `name` parameter to change the Slash Command's name. By default, the name of the Slash Command will be the name of the function, in this case, `/ping`.
+We then go ahead and use the [`@bot.command`](https://docs.pycord.dev/en/master/api.html#discord.Bot.command) decorator, which registers a new Slash Command. We pass a `description` parameter to give a description to the Slash Command. We can also pass a `name` parameter to change the Slash Command's name. By default, the name of the Slash Command will be the name of the function, in this case, `/ping`.
 
 We create an async function called `ping` with parameters `ctx`, which, when called, sends the bot's ping/latency using [`ctx.respond`](https://docs.pycord.dev/en/master/api.html#discord.ApplicationContext.respond).
 
 ## Subcommand Groups
 
-You might want to group certain commands together for organization. You could use a cog, but sometimes a better solution is to make a Command Group. A Command Group is exactly what it sounds like, a group of individual slash commands together.
+You might want to group certain commands together to make them more organised. You could use a cog, but sometimes a better solution is to make a Command Group. A Command Group is exactly what it sounds like, a group of individual slash commands together.
 
 In order to make a slash command group, you can either use the `bot.create_group` function or manually make a `SlashCommandGroup` class like this:
 
@@ -105,7 +105,7 @@ Here's what the registered subcommands will look like in the Slash Command Menu:
 
 ![Picture of the subcommands in the Slash Command Menu](../assets/groups-and-subcommands.jpg)
 
-You'll notice that there's the name of the Slash Command Group and then the name of the subcommand seperated by a space.
+You'll notice that there's the name of the Slash Command Group and then the name of the subcommand separated by a space.
 
 ## Sub-groups
 

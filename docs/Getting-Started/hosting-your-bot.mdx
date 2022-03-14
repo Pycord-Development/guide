@@ -23,7 +23,7 @@ Discord that your bot is indeed still alive. If Discord doesn't receive a heartb
 amount of time, your bot is pronounced dead and buried in the graveyard (not really). It is, though,
 taken offline and its connection with Discord is terminated. 
 
-Once you close your terminal that you've run your program on, the program is no longer running, and 
+Once you close the terminal that you've run your program on, the program is no longer running, and 
 the bot stops sending heartbeats and can no longer process commands. This is why you have to constantly
 keep the process running.
 
@@ -42,7 +42,7 @@ There are three types of hosts.
     <TabItem value="hosttype-shared" label="Shared Hosting">
         Shared hosting is a type of hosting where multiple people share one VPS. Getting a spot on
         a shared host is usually cheap, sometimes even free. Shared hosts do not give you a lot of 
-        resources, from less than a gigabyte of RAM (usually 512mb on free hosts) and half of a CPU 
+        resources, from less than a gigabyte of RAM (usually 512MB on free hosts) and half of a CPU 
         with very little storage. Shared hosting is usually used for website hosting and is not 
         recommended for hosting a Discord bot.
     </TabItem>
@@ -51,7 +51,7 @@ There are three types of hosts.
         customers. Most people use a VPS for hosting their projects such as Discord bots. You can get
         anywhere from less than a gigabyte of RAM and a less powerful CPU to just under one hundred
         gigabytes of RAM, a (or multiple) powerful CPU(s), and a fair amount of storage. A VPS is the
-        best choice for most users, and can be fairly cheap.
+        best choice for most users and can be fairly cheap.
     </TabItem>
     <TabItem value="hosttype-dedicated" label="Dedicated">
         A dedicated host is a physical computer. You can buy these yourself or rent one from a hosting
@@ -78,14 +78,14 @@ from a few dollars to hundreds or thousands of dollars.
 ## How to Host Your Bot
 
 Once you rent or buy a VPS, you can get to work. Most hosting providers allow you to choose from a 
-wide range of operating systems, most allowing you to choose one but some allowing you to choose 
+wide range of operating systems, most allow you to choose one but some allow you to choose 
 multiple. Once that's ready, you have to SSH into the system. We won't get into SSH here, but you can
 read [this article from DigitalOcean](https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys).
-You can also use VNC, which is a remote desktop software. If you are using an OS that does not have a
-GUI, and is only command line (a "server" OS), such as Ubuntu Server or Windows Server, you will most
-likely use SSH. If you are using an OS that has a GUI, you will most likely use VNC.
+You can also use VNC, which is remote desktop software. If you are using an OS that does not have a
+GUI, and is only a command line (a "server" OS), such as Ubuntu Server or most Linux Server Operating Servers, you will most
+likely use SSH. If you are using an OS that has a GUI, such as Windows Server, you will most likely use VNC.
 
-Once you've decided your operating system, you'll want to set it up and install Python. Once that's
+Once you've decided on your operating system, you'll want to set it up and install Python. Once that's
 done, you can copy your bot's files to your remote system, install the required packages, and run
 the bot. 
 
@@ -98,9 +98,9 @@ to make sure your file stays running after you disconnect.
 :::
 
 Now your bot is hosted, but that doesn't mean it can't go offline. If your bot encounters an error,
-it can often go offline or stop its own process. For this, make sure you have proper error handling.
+it can often go offline or stop its process. For this, make sure you have proper error handling.
 Also be sure to pay attention to your hosting provider's updates or news, as they usually notify
-users of when they plan on doing maintanence to their servers, making their services unavailable for
+users of when they plan on doing maintenance to their servers, making their services unavailable for
 a short time.
 
 :::info Related Topics

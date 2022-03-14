@@ -4,9 +4,9 @@ title: Select Menus
 
 # About
 
-Shortly after buttons, Discord added their second message component: Select Menus. Select Menus allow users
+Shortly after the buttons were added, Discord added their second message component: Select Menus. Select Menus allow users
 to choose from a list of items sent by a bot. These are a great substitute for having a user send a
-number that corresponds to an option. You can even allow users to select multiple options from Select
+number that corresponds to an option. You can even allow users to select multiple options from the Select
 Menus. This guide will show you the easy and painless ways of using them with Pycord.
 
 ## Concept
@@ -41,13 +41,13 @@ class MyView(discord.ui.View):
         await interaction.respond.send_message(f"Awesome! I like {self.values[0]} too!")
 ```
 
-This is a basic example of a Select Menu. Let's go over the code:
+Here is a basic example of a Select Menu. Let's go over the code:
 
 ```py
 class MyView(discord.ui.View):
 ```
 
-This defines the view. When sending the message, this would go in the `view` kwarg, like so:
+Here we define the view. When sending the message, this would go in the `view` kwarg, like so:
 
 ```py
 await ctx.send("Select Menus rock!", view=view)
@@ -93,7 +93,7 @@ async def select_callback(self, select, callback):
     await interaction.respond.send_message(f"Awesome! I like {self.values[0]} too!")
 ```
 
-Finally, the callback. This is what the Select Menu actually _does_ after being used. In this case,
+Finally, the callback. This is what the Select Menu _does_ after being used. In this case,
 it responds to the interactions with "Awesome! I like {The option you chose} too!"
 
 Once again, if you found any of these very hard to understand, we suggest freshening up your Python

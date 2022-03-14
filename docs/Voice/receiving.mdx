@@ -23,7 +23,7 @@ For users that want extra examples, you can find some in Pycord's
 
 ## Starting out
 
-The first thing you want to do is make a cache of your voice connections. This isn't difficult, as
+The first thing you want to do is make a cache of your voice connections. This is fairly easy; as
 it's just putting a variable with an empty dictionary in our code, such as `connections = {}`.
 
 You will now want to create your command for recording.
@@ -35,7 +35,7 @@ bot = discord.Bot(debug_guilds=[...])
 connections = {}
 
 @bot.command()
-async def record(ctx):  # If you're using commands.Bot this will also work.
+async def record(ctx):  # If you're using commands.Bot, this will also work.
     voice = ctx.author.voice
 
     if not voice:
@@ -95,7 +95,7 @@ async def once_done(sink: discord.Sink, channel: discord.TextChannel, *args):  #
 
 <br />
 
-Now that that's done, the only thing left to do is to make your stop command.
+Now that you've done this, the only thing left to do is make your stop command.
 
 ### Making a Stop Command
 
@@ -119,7 +119,7 @@ bot.run("token")
 
 Congratulations! You have now implemented voice recording into your bot! Most bots and Discord API
 wrappers don't have this as a feature, so this is quite an accomplishment. Thankfully, Pycord makes
-it easy to make complex bots.
+it easy to make complex bots so that you can get even the most advanced of ideas down.
 
 :::info Related Topics
 

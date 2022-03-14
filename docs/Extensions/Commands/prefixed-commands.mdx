@@ -179,7 +179,7 @@ Now let's look at the syntax.
 ```python title="A Simple Prefixed Bot"
 import discord
 from discord.ext import commands # Import the commands extension
-# discord.ext.commands is not the same as discord.commands!
+# discord.ext.commands are not the same as discord.commands!
 
 bot = commands.Bot(command_prefix="!") # You can change the command prefix to whatever you want.
 
@@ -254,7 +254,7 @@ async def echo(ctx, channel:discord.TextChannel, title, *, message):
 
 In the example above, `channel` is a parameter that is of type `discord.TextChannel`. When you
 specify the type of the parameter, Pycord will automatically try to convert the parameter to that type.
-That is why you are able to use `channel.send` directly without needing to convert it first.
+That is why you can use `channel.send` directly without needing to convert it first.
 
 We also have a new parameter, `title`. This does not have a type, so it will be a string. `*` means
 that the rest of the message belongs to the next parameter, in this case, `message`.

@@ -71,7 +71,7 @@ for cog in cogs_list:
 
 ## Cog Rules
 
-When using a cog instead of a main file, there are some changes you have to make to your code. This
+When using a cog instead of the main file, there are some changes you have to make to your code. This
 is because cogs work slightly different than a regular file.
 
 ### The `self` variable
@@ -101,7 +101,7 @@ your command becomes useless.
 
 When creating events, you can no longer use `@bot.event` as a decorator. This is because we cannot
 access the `bot` variable outside of a function. To make an event, you have to use the `ext.commands`
-method, `@commands.Cog.listener()`. Events also need `self` as its first parameter.
+method, `@commands.Cog.listener()`. Events also need `self` as their first parameter.
 
 And that's it! Cogs are a simple and easy way of organizing your code. Now you can check out how to
 create a help command [here](help-command)

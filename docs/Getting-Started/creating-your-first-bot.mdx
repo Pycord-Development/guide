@@ -44,7 +44,7 @@ your bot's permissions, click on <button class="blurplebutton">copy</button> to 
 
 When your bot is all ready to go, make sure that administrator permissions aren't selected unless
 your bot truly needs them. Try selecting only permissions the bot will need. For testing,
-administrator is fine.
+Administrator permissions are fine.
 
 :::
 
@@ -54,7 +54,7 @@ You can use this link to invite the bot.
 
 ## Tokens
 
-Now that you have an account for your bot, you need to login. In order to login, we need the bot's
+Now that you have an account for your bot, you need to log in. To log in, we need the bot's
 password. All users and bots have a "token." You may think of this token as a password, as this allows
 us to log our bot into Discord.
 
@@ -166,7 +166,7 @@ bot = discord.Bot(debug_guilds=[881207955029110855])
 
 In this line, we create a new instance of [`discord.Bot`](https://docs.pycord.dev/en/master/api.html#discord.Bot).
 In this object, we pass a `debug_guilds` argument, which is a list of guild IDs that the bot's application
-commands will appear in. This is beneficial for testing purposes, when we are testing a new command
+commands will appear in. This is beneficial for testing purposes when we are testing a new command
 or two and don't want everyone to be able to use it. If debug guilds are not specified, all of the 
 servers the bot is in will have access to your slash commands, which can take up to an hour to register.
 
@@ -194,7 +194,7 @@ be empty.
 
 Finally, you want to run the bot using the token specified in the `.env` file.
 
-Now you have finished creating your first Pycord bot! What we have showed you is just the basic structure
+Now you have finished creating your first Pycord bot! What we have shown you is just the basic structure
 of a bot. You can do a lot more with Python and Pycord knowledge, as well as your imagination! Pycord
 will not limit your bot's abilities.
 
@@ -202,7 +202,7 @@ will not limit your bot's abilities.
 
 ### How do I make prefixed commands?
 
-Prefixed commands are an older method of creating bot commands that listens for messages and replies
+Prefixed commands are an older method of creating bot commands that listen for messages and replies
 if the message starts with a certain character. You can read [this page](../Extensions/Commands/prefixed-commands)
 to learn more about prefixed commands.
 
