@@ -22,7 +22,8 @@ const sidebars = {
       items: [
         "Getting-Started/creating-your-first-bot",
         "Getting-Started/rules-and-common-practices",
-        "Getting-Started/hosting-your-bot"
+        "Getting-Started/hosting-your-bot",
+        "Getting-Started/more-features"
       ],
     },
     {
