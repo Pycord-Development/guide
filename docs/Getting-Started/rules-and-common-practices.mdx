@@ -137,7 +137,7 @@ class MyClass:
         return num1 + num2
 
     async def sub(self, num1, num2):
-        return num1-num2
+        return num1 - num2
 ```
 
 See the difference? Now, which one looks more readable? Hopefully, you answered the second example. 
@@ -155,10 +155,17 @@ All of these databases I named do the job well, and which one you use depends on
 
 <!--Maybe clarify these/add more options-->
 
+#### MongoDB
+
 MongoDB is a JSON-like format and if you already use JSON files, it shouldn't be too hard to migrate over to.
 
+#### SQLite
 SQLite is based on SQL, a common relational data model. It's a lightweight, easy-to-use, portable database solution that works entirely on files. However, if for some reason you cannot read/write to and from a file and you need to manage lots of data, SQLite might not be for you.
 
+SQLite is a part of the Python Standard Library, you can easily import it with `import sqlite3`.
+
+#### PostgreSQL
 PostgreSQL is also based on SQL, but it also has more features than SQLite. It's compliant with the SQL standard, open-source, and extensible. However, it's not that fast or simple compared to SQLite.
 
+#### MariaDB
 MariaDB is also based on SQL and is a fork of the MySQL project. It's compliant with the SQL standard, it's also open source and is a complete drop-in replacement for any code with MySQL. You don't even need to change what package you're using!
