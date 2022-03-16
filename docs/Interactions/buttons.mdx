@@ -47,7 +47,7 @@ class View(discord.ui.View): # Create a class called View that subclasses discor
 
 @bot.slash_command() # Create a slash command
 async def button(ctx):
-    await ctx.respond("This is a button!", view=View()) # Send a message with or View class that contains the button
+    await ctx.respond("This is a button!", view=View()) # Send a message with our View class that contains the button
 
 bot.run("TOKEN") # Run the bot
 ```
