@@ -94,25 +94,56 @@ the basics.
 Markdown is a type of markup language that's limited in terms of formatting yet simple. Discord allows
 for a watered-down version of markdown to be in their messages. This includes:
  
-- `*italics*`
-- `**bold**`
-- `***italics and bold***`
-- `~~strikethrough~~`
-- `__underlined__`
-- `___italics and underlined___`
-- \`Code Text\`
-- \```
-Code Blocks
-\```
- 
-Sadly, Discord does not support other types, such as hyperlinks. The only place hyperlinks are supported
-are in embeds and messages sent through webhooks.
- 
+<table>
+    <tr>
+        <td>*italics*</td>
+        <td>__*underlined italics*__</td>
+    </tr>
+    <tr>
+        <td>**bold**</td> 
+        <td>__**underlined bold**__</td>
+        
+    </tr>
+    <tr>
+        <td>***bold italics***</td>
+        <td>__***underlined bold italics***__</td>
+        
+    </tr>
+    <tr>
+        <td>__underlined__</td>
+        <td>~~strikethrough~~</td>
+    </tr>
+</table>
+
+Sadly, Discord does not support other types, such as hyperlinks. The only supported places for hyperlinks are
+in embeds and messages sent through webhooks.
+
 Adding markdown to your embeds or messages will give your bot the sparkle it needs.
- 
+
+Here is an example for a hyperlink in embeds.
+
+```
+[Click here!]("pycord.dev/guide")
+```
+Inside the embed, the example above will look like this: [`Click here!`]("pycord.dev/guide")
+
 :::caution
  
 Some embed fields, such as the footer, do not support markdown *at all*, including bold and italics.
  
 :::
+
+### Code Markdown
+
+For code markdown, you can choose between `Code Text` and `Code Blocks`.
+
+- \`Code Text\`
+- \```
+Code Blocks
+\```
+
+Code Blocks support different programming languages, such as Python.
+
+If you start your Code Block with ` ```python`, you can send readable Python code to Discord.
+
  
