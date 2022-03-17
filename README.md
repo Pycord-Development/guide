@@ -17,15 +17,15 @@ For contributing rules, please visit [this page](./.github/CONTRIBUTING.md).
 
 The Guide is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator. 
 
-[`/src`](./src) contains static files for styling.
+[`/src`](./src) contains styling (`.scss`) and the index (`.tsx`/`jsx`).
 
-[`/docs`](./docs) contains the pages for the guide. The Guide Pages are writtern in the `mdx` file format, a combination of Markdown syntax and JSX.
+[`/docs`](./docs) contains the pages for the guide. The Guide Pages are writtern in the `mdx` file format, a combination of Markdown syntax and JSX/React.
 
 ## Local Development
 
 First, you need to clone the repository:
 
-    git clone https://github.com/Pycord-Development/guide.git
+    git clone https://github.com/Pycord-Development/guide
 
 ### Installing Requirements
 
