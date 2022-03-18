@@ -35,7 +35,7 @@ const sidebars = {
         "Interactions/dropdowns",
         "Interactions/slash-commands",
         "Interactions/context-menus",
-        "Interactions/text-modals"
+        "Interactions/modal-dialogs"
       ],
     },
     {
@@ -63,7 +63,8 @@ const sidebars = {
          type: "category",
          label: "Pages",
          items: [
-           "Extensions/Pages/pages"
+           "Extensions/Pages/paginator-basics",
+           "Extensions/Pages/paginator-faq"
          ]
        
        }
