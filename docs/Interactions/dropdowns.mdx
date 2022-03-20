@@ -38,7 +38,7 @@ class MyView(discord.ui.View):
         ]
     )
     async def select_callback(self, select, callback):
-        await interaction.respond.send_message(f"Awesome! I like {self.values[0]} too!")
+        await interaction.respond.send_message(f"Awesome! I like {select.values[0]} too!")
 ```
 
 Here is a basic example of a Select Menu. Let's go over the code:
