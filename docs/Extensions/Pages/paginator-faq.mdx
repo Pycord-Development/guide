@@ -1,0 +1,18 @@
+---
+title: Paginator FAQ
+---
+
+# Paginator FAQ
+
+ - **What's the difference between `Paginator.send()` and `Paginator.respond()`?**
+   - `Paginator.send()` is used to send a channel message (DMChannel or TextChannel) with the paginator.
+   - `Paginator.respond()` is used to send an interaction response (or followup) message with the paginator.
+
+ - **How can the bot send a paginator to a different destination than where it was invoked?**
+   - Use the `target` parameter in `Paginator.send()` or `Paginator.respond()`.
+   - You can also set the `target_message` parameter to control what's shown as a response where the paginator was originally invoked.
+     - For `Paginator.respond()`, this parameter is required if `target` is set, as an interaction requires being responded to.
+ - **How can I change the paginator's behavior without re-creating and re-sending it?**
+   - Use the `Paginator.update()` method.
+ - **How can I make the bot actually do something with the contents of a page?**
+   - Use the (upcoming) `Paginator.page_action()` method.  <!-- This refers to an upcoming `ext.pages` feature that has not yet been released. -->
