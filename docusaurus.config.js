@@ -47,6 +47,7 @@ const config = {
     autoCollapseSidebarCategories: false,
     colorMode: {
       defaultMode: "dark",
+      disableSwitch: true,  // TODO: Support light mode (I know, I know. Eww. I'm sorry.)
     },
     navbar: {
       title: "Pycord Guide",
@@ -67,17 +68,20 @@ const config = {
           position: "left",
           href: "https://pycord.dev/github",
         },
-        // {  // Add this after we release v2
+        // TODO: Post v2.0: Version the docs
+        // {
         //   type: 'docsVersionDropdown',
         //   position: 'right',
         // },
-        // {  // Add this when we get locales working
+        // TODO: Locales
+        // {
         //   type: 'localeDropdown',
         //   position: 'right',
         // },
         {
           label: "Source",
-          href: 'https://github.com/Pycord-Development/guide',
+          // I think we should use href instead of to, but it creates a weird styling issue
+          to: 'https://github.com/Pycord-Development/guide',
           position: 'right',
           className: 'header-github-link',
           'aria-label': 'GitHub repository',
