@@ -44,7 +44,7 @@ const config = {
   ],
 
   themeConfig: {
-    autoCollapseSidebarCategories: false,
+    autoCollapseSidebarCategories: true,
     colorMode: {
       defaultMode: "dark",
       disableSwitch: true,  // TODO: Support light mode (I know, I know. Eww. I'm sorry.)
