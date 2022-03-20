@@ -82,6 +82,7 @@ async def once_done(sink: discord.Sink, channel: discord.TextChannel, *args):  #
         for user_id, audio in sink.audio_data.items()
     ]
     await sink.vc.disconnect()  # Disconnect from the voice channel.
+    del connections[ctx.guild.id]  # Remove the guild from the cache.
     files = [discord.File(audio.file, f"{user_id}.{sink.encoding}") for user_id, audio in sink.audio_data.items()]  # List down the files.
     await channel.send(f"finished recording audio for: {', '.join(recorded_users)}.", files=files)  # Send a message with the accumulated files.
 ```
@@ -109,7 +110,6 @@ async def stop_recording(ctx):
     if ctx.guild.id in connections:  # Check if the guild is in the cache.
         vc = connections[ctx.guild.id]
         vc.stop_recording()  # Stop recording, and call the callback (once_done).
-        del connections[ctx.guild.id]  # Remove the guild from the cache.
         await ctx.delete()  # And delete.
     else:
         await ctx.respond("I am currently not recording here.")  # Respond with this if we aren't recording.
