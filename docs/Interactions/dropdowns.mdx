@@ -90,7 +90,7 @@ Not so bad, was it?
 
 ```py
 async def select_callback(self, select, callback):
-    await interaction.respond.send_message(f"Awesome! I like {self.values[0]} too!")
+    await interaction.respond.send_message(f"Awesome! I like {select.values[0]} too!")
 ```
 
 Finally, the callback. This is what the Select Menu _does_ after being used. In this case,
