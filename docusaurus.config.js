@@ -46,7 +46,6 @@ const config = {
   themeConfig: {
     autoCollapseSidebarCategories: false,
     colorMode: {
-      defaultMode: "dark",
       disableSwitch: true,
     },
     navbar: {
