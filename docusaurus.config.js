@@ -41,10 +41,23 @@ const config = {
         language: ["en"],
       },
     ],
+    [
+      'docusaurus-live-brython',
+      {
+        brython_src: 'https://cdn.jsdelivr.net/npm/brython@3.9.5/brython.min.js', // default
+        brython_stdlib_src: 'https://cdn.jsdelivr.net/npm/brython@3.9.5/brython_stdlib.js' // default
+      }
+    ],
   ],
 
   themeConfig: {
-    autoCollapseSidebarCategories: false,
+    liveCodeBlock: {
+      /**
+       * The position of the live playground, above or under the editor
+       * Possible values: "top" | "bottom"
+       */
+      playgroundPosition: 'bottom',
+    },
     colorMode: {
       defaultMode: "dark",
       disableSwitch: true,  // TODO: Support light mode (I know, I know. Eww. I'm sorry.)
