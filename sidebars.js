@@ -14,7 +14,7 @@
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   sidebar: [
-    "index",
+    "introduction",
     "installation",
     {
       type: "category",
@@ -66,7 +66,6 @@ const sidebars = {
            "Extensions/Pages/paginator-basics",
            "Extensions/Pages/paginator-faq"
          ]
-       
        }
       ],
     },
