@@ -162,8 +162,6 @@ class LeaderboardCog(commands.Cog):
         self.update_leaderboard.restart()
         await ctx.respond("Restarted the leaderboard update.")
 
-    @leaderboard_config.command()
-
 def setup(bot):
     bot.add_cog(LeaderboardCog(bot))
 ```
