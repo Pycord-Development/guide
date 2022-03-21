@@ -21,9 +21,9 @@ const sidebars = {
       label: "Getting Started",
       items: [
         "Getting-Started/creating-your-first-bot",
-        "Getting-Started/rules-and-common-practices",
+        "Getting-Started/more-features",
         "Getting-Started/hosting-your-bot",
-        "Getting-Started/more-features"
+        "Getting-Started/rules-and-common-practices",
       ],
     },
     {
