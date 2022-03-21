@@ -24,90 +24,58 @@ Together, these two are called Context Menus or Context Menu Commands.
 Creating a user command is very simple.
 
 ```python
-@bot.user_command(name="Is User Sus", guild_ids=[...])  # create a user command for the supplied guilds
-async def is_this_user_sus(ctx, member: discord.Member):  # user commands return the member
-    await ctx.respond(f"{member.name} is {'not sus' if member.id == 543397958197182464 else 'sus'}")
+@bot.user_command(name="Account Creation Date", guild_ids=[...])  # create a user command for the supplied guilds
+async def account_creation_date(ctx, member: discord.Member):  # user commands return the member
+    await ctx.send(f"{member.name}'s account was created on {member.created_at}")
 ```
 
 <DiscordMessages>
   <DiscordMessage
-    author="BobDotCom"
-    avatar="https://cdn.discordapp.com/avatars/690420846774321221/4810eacf552fcbaf2e5541885b753705.png"
-  >
-    Clone is sus
-  </DiscordMessage>
-  <DiscordMessage
-    author="Pycord Manager"
-    avatar="https://cdn.discordapp.com/avatars/882631512829329448/32b7c23df364938574997fc86ef24cee.png"
+    author="Guide Bot"
+    avatar="red"
     bot
   >
     <div slot="interactions">
-      <DiscordInteraction
-        author="Clone"
-        avatar="https://cdn.discordapp.com/avatars/543397958197182464/fe1297ec629e24faeb2d293b7259f2ab.png"
-        command
-      >
-        Is User Sus
-      </DiscordInteraction>
+      <DiscordInteraction author="Guide Guy" avatar="blue">Account Creation Date</DiscordInteraction>
     </div>
-    Clone is not sus
-  </DiscordMessage>
-  <DiscordMessage
-    author="Pycord Manager"
-    avatar="https://cdn.discordapp.com/avatars/882631512829329448/32b7c23df364938574997fc86ef24cee.png"
-    bot
-  >
-    <div slot="interactions">
-      <DiscordInteraction
-        author="Clone"
-        avatar="https://cdn.discordapp.com/avatars/543397958197182464/fe1297ec629e24faeb2d293b7259f2ab.png"
-        command
-      >
-        Is User Sus
-      </DiscordInteraction>
-    </div>
-    BobDotCom is sus
-  </DiscordMessage>
-  <DiscordMessage
-    author="BobDotCom"
-    avatar="https://cdn.discordapp.com/avatars/690420846774321221/4810eacf552fcbaf2e5541885b753705.png"
-  >
-    sus
+    Guide Man's account was created on 2020-01-01
   </DiscordMessage>
 </DiscordMessages>
 
 ## Message Commands
 
 ```python title="Message Commands Example"
-@bot.message_command(name="Is Message Sus")  # creates a global message command. use guild_ids=[] to create guild-specific commands.
-async def is_this_msg_sus(ctx, message: discord.Message):  # message commands return the message
-    await ctx.respond(f"Message {message.id} sent by {member.name} is {'not sus' if message.id == 543397958197182464 else 'sus'}")
+@bot.message_command(name="Get Message ID")  # creates a global message command. use guild_ids=[] to create guild-specific commands.
+async def get_message_id(ctx, message: discord.Message):  # message commands return the message
+    await ctx.respond(f"Message ID: `{message.id}`")
 ```
 
 <DiscordMessages>
   <DiscordMessage
-    author="BobDotCom"
-    avatar="https://cdn.discordapp.com/avatars/690420846774321221/4810eacf552fcbaf2e5541885b753705.png"
+    author="Guide Guy"
+    avatar="blue"
   >
-    sus
+    Do. Or do not. There is no try.
   </DiscordMessage>
   <DiscordMessage
-    author="Pycord Manager"
-    avatar="https://cdn.discordapp.com/avatars/882631512829329448/32b7c23df364938574997fc86ef24cee.png"
+    author="Guide Bot"
+    avatar="red"
     bot
   >
     <div slot="interactions">
       <DiscordInteraction
-        author="Clone"
-        avatar="https://cdn.discordapp.com/avatars/543397958197182464/fe1297ec629e24faeb2d293b7259f2ab.png"
+        author="Guide Man"
+        avatar="green"
         command
       >
-        Is Message Sus
+        Get Message ID
       </DiscordInteraction>
     </div>
-    Message 930650407917748286 sent by BobDotCom is sus
+    Message ID: <code>930650407917748286</code>
   </DiscordMessage>
 </DiscordMessages>
+
+<br/>
 
 :::info Related Topics
 
