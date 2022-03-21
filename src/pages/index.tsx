@@ -6,7 +6,7 @@ import PYCButton from "@site/src/components/PYCButton";
 export default function Home(): JSX.Element {
   return (
     <Layout
-      description="The official Guide for Pycord"
+      description="The Official Guide for Pycord"
     >
       <PYCHero
         title="Pycord Guide"
