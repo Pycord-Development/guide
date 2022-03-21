@@ -14,16 +14,16 @@
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   sidebar: [
-    "index",
+    "introduction",
     "installation",
     {
       type: "category",
       label: "Getting Started",
       items: [
         "Getting-Started/creating-your-first-bot",
-        "Getting-Started/rules-and-common-practices",
+        "Getting-Started/more-features",
         "Getting-Started/hosting-your-bot",
-        "Getting-Started/more-features"
+        "Getting-Started/rules-and-common-practices",
       ],
     },
     {
@@ -66,7 +66,6 @@ const sidebars = {
            "Extensions/Pages/paginator-basics",
            "Extensions/Pages/paginator-faq"
          ]
-       
        }
       ],
     },

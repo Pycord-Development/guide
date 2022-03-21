@@ -3,15 +3,73 @@ title: More Features
 description: More features to make your bot cool and snazzy.
 ---
  
-# More Features to Make Your Bot Snazzy
-So you've created your first Pycord bot, but its messages are plain text and the formatting is rather
-bland. Luckily, Pycord supports features to make your bot good lookin'.
- 
-## Embeds
+So, you just created your first Pycord bot! Now, let's add some more features to it. This will include adding event handlers, waiting for user response, styling the messages, and more.
+
+## Events
+
+### Event Handlers
+
+
+Events in Discord are a way to listen for certain actions. For example, if you want to know when a user joins your server so you could send a welcome message, you can use the `on_member_join` event.
+
+#### Subscribing to Events
+
+First, you need to ask Discord to send you events. This is done via "Intents". Read up the [Intents](../Popular-Topics/intents) page for more information.
+
+Once you understand what intents are, you can enable the events you need, or just use the default ones with `discord.Intents.all()`.
+
+#### Adding Event Handlers
+
+Let's add an event handler for when a user joins the server. We will use the `on_member_join` event. We will send a private message to the user welcoming them to the server.
+
+```python
+@bot.event
+async def on_member_join(member):
+    await member.send(
+        f'Welcome to the server, {member.mention}! Enjoy your stay here.'
+    )
+```
+
+We use the [`discord.Bot.event` decorator](https://docs.pycord.dev/en/master/api.html#discord.Bot.event) to add the event handler. 
+
+The `on_member_join` event is called when a user joins the server. The `member` parameter is the user that joined. Different events have different names and parameters. You can find all of them [here](https://docs.pycord.dev/en/master/api.html#discord.Intents).
+
+So, that's how you add event handlers!
+
+### Waiting for User Response
+
+Let's say you want to create a Guess-the-Number game (where the user has to guess a number between 1-10). You need to send a message to a user and wait for them to respond. You can do this with the [`wait_for`](https://docs.pycord.dev/en/master/api.html#discord.Bot.wait_for) method.
+
+```python
+@bot.command()
+async def gtn(ctx):
+    """A Slash Command to play a Guess-the-Number game."""
+
+    await ctx.respond('Guess a number between 1 and 10.')
+    guess = await bot.wait_for('message', check=lambda message: message.author == ctx.author)
+
+    if int(guess.content) == 5:
+        await ctx.send('You guessed it!')
+    else:
+        await ctx.send('Nope, try again.')
+```
+
+`wait_for` takes one argument, which is the event type. The event type is the name of the event you want to wait for. In this case, it's `message`. It could also be `reaction` to wait for a reaction to be added.
+
+We pass a keyword argument to `wait_for` called `check`. The function may look complicated if you're a beginner. We pass a `lambda` function, which simplifies the code a bit.
+
+The lambda function takes one parameter, `message`. When Pycord receives a message, it passes it to the `check` function. If the function returns `True`, the message is returned. If the function returns `False`, the message is ignored and the bot waits for another message.
+
+Here, we check if the message is from the user that sent the command. We simply use `message.author == ctx.author`. This will check if the author of the message was the person who invoked the command.
+
+## Styling Messages
+
+### Embeds
 Embeds are a Discord feature that allows applications to format their messages in cool embedded format,
 enabling your bot to lay out messages with a lot of text into neat fields.
  
-### Creating an Embed
+#### Creating an Embed
+
 With Pycord, it's easy to create and send embeds. Here's an example:
  
 ```py
@@ -90,7 +148,7 @@ method, you can set an image to sit at the bottom of an embed. This has a single
 There are, of course, more methods and items you can use to configure embeds. Here, we just covered
 the basics. 
  
-## Markdown
+### Markdown
 Markdown is a type of markup language that's limited in terms of formatting yet simple. Discord allows
 for a watered-down version of markdown to be in their messages. This includes:
  
@@ -133,7 +191,7 @@ Some embed fields, such as the footer, do not support markdown *at all*, includi
  
 :::
 
-### Code Markdown
+#### Code Markdown
 
 For code markdown, you can choose between `Code Text` and `Code Blocks`.
 
