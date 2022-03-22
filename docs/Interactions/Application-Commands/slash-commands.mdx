@@ -103,7 +103,7 @@ bot.run("TOKEN")
 
 Here's what the registered subcommands will look like in the Slash Command Menu:
 
-![Picture of the subcommands in the Slash Command Menu](../assets/interactions/groups-and-subcommands.jpg)
+![Picture of the subcommands in the Slash Command Menu](../../assets/interactions/groups-and-subcommands.jpg)
 
 You'll notice that there's the name of the Slash Command Group and then the name of the subcommand separated by a space.
 
@@ -218,8 +218,8 @@ bot = discord.Bot()
 @bot.command()
 # this explicitly tells pycord what types the options are instead of it figuring it out by itself
 async def join(
-  ctx, 
-  first: discord.Option(discord.SlashCommandOptionType.string), 
+  ctx,
+  first: discord.Option(discord.SlashCommandOptionType.string),
   second: discord.Option(discord.SlashCommandOptionType.string)
 ):
   joined = first + second
