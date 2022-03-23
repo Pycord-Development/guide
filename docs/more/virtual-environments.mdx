@@ -1,0 +1,53 @@
+---
+title: Virtual Environments
+description: Learn how to set up a virtual environment for Pycord.
+---
+
+## Setup
+Sometimes you want to keep libraries from polluting system installs or use a different version of libraries than the ones installed on the system. You might also not have permissions to install libraries system-wide. For this purpose, the standard library as of Python 3.3 comes with a concept called “Virtual Environment”s to help maintain these separate versions.
+
+A more in-depth tutorial is found on [Virtual Environments and Packages](https://docs.python.org/3/tutorial/venv.html).
+
+However, for the quick and dirty:
+
+Go to your project’s working directory:
+
+```bash
+$ cd your-bot-source
+$ python3 -m venv bot-env
+```
+Activate the virtual environment:
+
+```bash
+$ source bot-env/bin/activate
+```
+On Windows you activate it with:
+
+```batch
+$ bot-env\Scripts\activate.bat
+```
+Use pip like usual:
+
+```bash
+$ pip install -U py-cord
+```
+Congratulations. You now have a virtual environment all set up.
+
+## Additional info
+It can be useful to set up a requirements.txt so you can just put all of your dependencies in there and have pip install it.
+For instance, if you wanted to have the latest 2.0 version of pycord and [pytz](https://github.com/stub42/pytz/blob/master/src/README.rst), just create a file named requirements.txt with the following contents:
+
+```
+py-cord>=2.0.0
+pytz
+```
+And then (in your virtual environment) you can just execute
+```bash
+pip install -r requirements.txt
+```
+
+To keep from committing your virtual environment to git, you can set up a .gitignore file with the following line
+(assuming you named your virtual environment bot-env like the above example):
+```
+bot-env/
+```
