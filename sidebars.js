@@ -31,11 +31,18 @@ const sidebars = {
       label: "Interactions",
       link: { type: "doc", id: "Interactions/index" },
       items: [
-        "Interactions/buttons",
-        "Interactions/dropdowns",
-        "Interactions/slash-commands",
-        "Interactions/context-menus",
-        "Interactions/modal-dialogs"
+        {
+          type: "category",
+          label: "Application Commands",
+          items: [
+            "Interactions/Application-Commands/slash-commands",
+            "Interactions/Application-Commands/context-menus",
+            "Interactions/Application-Commands/buttons",
+            "Interactions/Application-Commands/dropdowns",
+            "Interactions/Application-Commands/modal-dialogs"
+          ]
+        },
+        "Interactions/localizations"
       ],
     },
     {

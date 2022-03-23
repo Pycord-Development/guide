@@ -1,0 +1,55 @@
+---
+title: Localizations
+---
+
+Localizations are a way to make your bot more accessible to your users. You can localize the command
+name, the names of any arguments, and any text that is displayed to the user.
+
+## Syntax
+```python
+@commands.slash_command(
+    name="ping",
+    name_localizations={
+        "en-GB": "British_Ping"
+    },
+    description="Ping the bot",
+    description_localizations={
+        "en-GB": "British ping the bot"
+    },
+    options=[
+        Option(
+            name="Example",
+            name_localizations={
+                "en-GB": "British Example"
+            },
+            description="Example option that does nothing",
+            description_localizations={
+                "en-GB": "British example option that does nothing"
+            }
+        )
+    ]
+)
+async def ping(ctx, example):
+    responses = {"en-US": "Pong!",
+                "en-GB": "British Pong!"}
+    await ctx.respond(responses.get(ctx.interaction.locale, responses['en-US']))
+
+@commands.slash_command(
+    name="ping2",
+    name_localizations={
+        "en-GB": "British_Ping"
+    },
+    description="Ping the bot",
+    description_localizations={
+        "en-GB": "British ping the bot"
+    }
+)
+async def ping2(ctx, example: Option(str, "example", name_localizations={"en-GB": "British Example"}, description="Example option that does nothing", description_localizations={"en-GB": "British example option that does nothing"})):
+    responses = {"en-US": "Pong2!",
+                "en-GB": "British Pong2!"}
+    await ctx.respond(responses.get(ctx.interaction.locale, responses['en-US']))
+
+```
+
+
+- [`Locales`](https://discord.com/developers/docs/reference#locales) - List of valid locales recognized by Discord
