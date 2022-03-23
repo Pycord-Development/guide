@@ -16,7 +16,7 @@ class MyModal(Modal):
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
 
-        self.add_item(InputText(label="Short Input")
+        self.add_item(InputText(label="Short Input"))
         self.add_item(InputText(label="Long Input", style=discord.InputTextStyle.long))
 
     async def callback(self, interaction: discord.Interaction):
