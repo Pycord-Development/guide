@@ -37,18 +37,18 @@ const sidebars = {
           items: [
             "Interactions/Application-Commands/slash-commands",
             "Interactions/Application-Commands/context-menus",
-			  "Interactions/Application-Commands/localizations",
+			      "Interactions/Application-Commands/localizations",
           ]
         },
-		{
-			type: "category",
-			label: "Message Components",
-			items: [
-				"Interactions/Message-Components/buttons",
-            	"Interactions/Message-Components/dropdowns",
-            	"Interactions/Message-Components/modal-dialogs"	
-			]
-		}
+        {
+          type: "category",
+          label: "Message Components",
+          items: [
+            "Interactions/Message-Components/buttons",
+            "Interactions/Message-Components/dropdowns",
+            "Interactions/Message-Components/modal-dialogs",
+          ]
+        }
       ],
     },
     {
