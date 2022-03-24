@@ -37,16 +37,16 @@ const sidebars = {
           items: [
             "Interactions/Application-Commands/slash-commands",
             "Interactions/Application-Commands/context-menus",
-			      "Interactions/Application-Commands/localizations",
+			"Interactions/Application-Commands/localizations",
+			"Interactions/Application-Commands/modal-dialogs",
           ]
         },
         {
           type: "category",
-          label: "Message Components",
+          label: "UI Components",
           items: [
-            "Interactions/Message-Components/buttons",
-            "Interactions/Message-Components/dropdowns",
-            "Interactions/Message-Components/modal-dialogs",
+            "Interactions/UI-Components/buttons",
+            "Interactions/UI-Components/dropdowns",
           ]
         }
       ],
