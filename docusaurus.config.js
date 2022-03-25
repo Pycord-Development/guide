@@ -22,7 +22,6 @@ const config = {
       "classic",
       {
         docs: {
-          // sidebarPath: require.resolve("./sidebars.js"),
           editUrl:
             "https://github.com/Pycord-Development/guide/tree/master",
           routeBasePath: "/",
