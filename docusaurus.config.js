@@ -11,7 +11,7 @@ const config = {
     "Imagine a place... where you can learn how to add more features to your Pycord bot",
   url: "https://guide.pycord.dev",
   baseUrl: "/",
-  onBrokenLinks: "warn",
+  onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
   organizationName: "Pycord-Development", // Usually your GitHub org/user name.
@@ -22,7 +22,7 @@ const config = {
       "classic",
       {
         docs: {
-          sidebarPath: require.resolve("./sidebars.js"),
+          // sidebarPath: require.resolve("./sidebars.js"),
           editUrl:
             "https://github.com/Pycord-Development/guide/tree/master",
           routeBasePath: "/",
