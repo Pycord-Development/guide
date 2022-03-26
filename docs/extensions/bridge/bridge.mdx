@@ -2,6 +2,15 @@
 title: Bridge
 ---
 
+import {
+  DiscordButton,
+  DiscordButtons,
+  DiscordInteraction,
+  DiscordMessage,
+  DiscordMessages,
+} from "@discord-message-components/react";
+import "@discord-message-components/react/styles";
+
 ## Concept
 
 Let's say that you want to make a command that is both a Slash Command and a Prefixed Command. Now, you could just copy and paste the code from the first command callback to the other and make some adjustments, but that's not very efficient.
@@ -21,14 +30,33 @@ pip install git+https://github.com/Pycord-Development/pycord.git@ext-compat
 import discord
 from discord.ext import bridge
 
-bot = bridge.Bot(command_prefix='!')
+bot = bridge.Bot(command_prefix="!")
 
 @bot.bridge_command()
 async def hello(ctx):
-    await ctx.respond('Hello!')
+  await ctx.respond("Hello!")
 
 bot.run("TOKEN")
 ```
+
+<DiscordMessages>
+  <DiscordMessage author="Guide Bot" avatar="red" bot>
+    <div slot="interactions">
+      <DiscordInteraction author="Guide Man" avatar="green" command>
+        hello
+      </DiscordInteraction>
+    </div>
+    Hello!
+  </DiscordMessage>
+
+  <DiscordMessage author="Guide Man" avatar="green">
+    !hello
+  </DiscordMessage>
+
+  <DiscordMessage author="Guide Bot" avatar="red" bot>
+    Hello!
+  </DiscordMessage>
+</DiscordMessages>
 
 ## Syntax
 
@@ -37,3 +65,63 @@ Then, we define a command with `@bot.bridge_command()`. This makes a Bridge Comm
 Next, the callback has access to a `ctx` object, which is the context of the command. This context is either of `BridgeApplicationContext` type or `BridgeExtContext`. Because of that, it makes detecting how the function was called easier.
 
 ### Using Bridge Commands in a Cog
+
+Like Slash Commands and Prefixed Commands, you can use Bridge Commands in a Cog. You can do this by using the `bridge_command` decorator. Here's an example:
+
+```python
+import discord
+from discord.ext import commands
+from discord.ext import bridge
+
+class Greetings(commands.Cog):
+    def __init__(self, bot):
+        self.bot = bot
+
+    @bridge.bridge_command()
+    async def hello(ctx):
+        await ctx.respond("Hello!")
+
+    @bridge.bridge_command()
+    async def bye(ctx):
+        await ctx.respond("Bye!")
+```
+
+The cog will automatically split the Bridge Command into their Slash Command and Prefixed Command counterparts.
+
+<DiscordMessages>
+  <DiscordMessage author="Guide Bot" avatar="red" bot>
+    <div slot="interactions">
+      <DiscordInteraction author="Guide Man" avatar="green" command>
+        hello
+      </DiscordInteraction>
+    </div>
+    Hello!
+  </DiscordMessage>
+
+  <DiscordMessage author="Guide Man" avatar="green">
+    !hello
+  </DiscordMessage>
+
+  <DiscordMessage author="Guide Bot" avatar="red" bot>
+    Hello!
+  </DiscordMessage>
+
+  <DiscordMessage author="Guide Bot" avatar="red" bot>
+    <div slot="interactions">
+      <DiscordInteraction author="Guide Man" avatar="green" command>
+        bye
+      </DiscordInteraction>
+    </div>
+    Bye!
+  </DiscordMessage>
+
+  <DiscordMessage author="Guide Man" avatar="green">
+    !bye
+  </DiscordMessage>
+
+  <DiscordMessage author="Guide Bot" avatar="red" bot>
+    Bye!
+  </DiscordMessage>
+</DiscordMessages>
+
+<!-- TODO: Section about options -->
