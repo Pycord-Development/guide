@@ -1,0 +1,39 @@
+---
+title: Bridge
+---
+
+## Concept
+
+Let's say that you want to make a command that is both a Slash Command and a Prefixed Command. Now, you could just copy and paste the code from the first command callback to the other and make some adjustments, but that's not very efficient.
+
+This is where the `ext.bridge` comes in. It allows you to use one callback to make both a Slash Command and a Prefixed Command.
+
+:::note
+Currently, `ext.bridge` has not been merged to the main branch yet and it's somewhat experimental. So in order to use it, you'll have to install the `py-cord` package from that branch by running this:
+```
+pip install git+https://github.com/Pycord-Development/pycord.git@ext-compat
+```
+:::
+
+### Example Usage
+
+```python
+import discord
+from discord.ext import bridge
+
+bot = bridge.Bot(command_prefix='!')
+
+@bot.bridge_command()
+async def hello(ctx):
+    await ctx.respond('Hello!')
+
+bot.run("TOKEN")
+```
+
+## Syntax
+
+First, instead of using `discord.Bot` or `commands.Bot`, we use `bridge.Bot`. `bridge.Bot` does inherit from `commands.Bot`, so you can do anything with `bridge.Bot` that `commands.Bot` can do.
+Then, we define a command with `@bot.bridge_command()`. This makes a Bridge Command, which has both a Prefixed Command counterpart and a Slash Command counterpart.
+Next, the callback has access to a `ctx` object, which is the context of the command. This context is either of `BridgeApplicationContext` type or `BridgeExtContext`. Because of that, it makes detecting how the function was called easier.
+
+### Using Bridge Commands in a Cog
