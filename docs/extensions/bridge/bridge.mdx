@@ -54,6 +54,11 @@ bot.run("TOKEN")
   </DiscordMessage>
 
   <DiscordMessage author="Guide Bot" avatar="red" bot>
+    <div slot="interactions">
+      <DiscordInteraction author="@Guide Man" avatar="green">
+        !hello
+      </DiscordInteraction>
+    </div>
     Hello!
   </DiscordMessage>
 </DiscordMessages>
@@ -103,6 +108,11 @@ The cog will automatically split the Bridge Command into their Slash Command and
   </DiscordMessage>
 
   <DiscordMessage author="Guide Bot" avatar="red" bot>
+    <div slot="interactions">
+      <DiscordInteraction author="@Guide Man" avatar="green">
+        !hello
+      </DiscordInteraction>
+    </div>
     Hello!
   </DiscordMessage>
 
@@ -120,8 +130,19 @@ The cog will automatically split the Bridge Command into their Slash Command and
   </DiscordMessage>
 
   <DiscordMessage author="Guide Bot" avatar="red" bot>
+    <div slot="interactions">
+      <DiscordInteraction author="@Guide Man" avatar="green">
+        !bye
+      </DiscordInteraction>
+    </div>
     Bye!
   </DiscordMessage>
 </DiscordMessages>
+
+### Deferring
+
+You can defer if you want to communicate to the user that your bot is busy processing the command. This is done by using `ctx.defer()`. For the Slash Command implementation, `ctx.defer()` calls the function that gives out a "Bot is thinking" message. For the Prefixed Command implementation, `ctx.defer()` enables the typing indicator.
+
+<!-- TODO: Add example images of deferring at work -->
 
 <!-- TODO: Section about options -->
