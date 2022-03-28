@@ -299,12 +299,18 @@ To make a message authored by a slash command, do the following:
 
 ```md
 <DiscordMessages>
-    <DiscordMessage author="Guide Bot" avatar="red" bot>
-        <div slot="interactions">
-            <DiscordInteraction author="BobDotCom" avatar="https://cdn.discordapp.com/avatars/690420846774321221/4810eacf552fcbaf2e5541885b753705.png" command>update</DiscordInteraction>
-        </div>
-        Updated Pycord!
-    </DiscordMessage>
+  <DiscordMessage author="Guide Bot" avatar="red" bot>
+    <div slot="interactions">
+      <DiscordInteraction
+        author="Guide Man"
+        avatar="green"
+        command
+      >
+        update
+      </DiscordInteraction>
+    </div>
+    Updated dependencies to the latest version!
+  </DiscordMessage>
 </DiscordMessages>
 ```
 
@@ -312,14 +318,14 @@ To make a message authored by a slash command, do the following:
   <DiscordMessage author="Guide Bot" avatar="red" bot>
     <div slot="interactions">
       <DiscordInteraction
-        author="BobDotCom"
-        avatar="https://cdn.discordapp.com/avatars/690420846774321221/4810eacf552fcbaf2e5541885b753705.png"
+        author="Guide Man"
+        avatar="green"
         command
       >
         update
       </DiscordInteraction>
     </div>
-    Updated Pycord!
+    Updated dependencies to the latest version!
   </DiscordMessage>
 </DiscordMessages>
 
@@ -327,20 +333,26 @@ To make a message authored by a slash command, do the following:
 
 To make a message with buttons, do the following:
 
-```md
+```mdx
 <DiscordMessages>
-    <DiscordMessage author="Guide Bot" avatar="red" bot>
-        <div slot="interactions">
-            <DiscordInteraction author="BobDotCom" avatar="https://cdn.discordapp.com/avatars/690420846774321221/4810eacf552fcbaf2e5541885b753705.png" command>work</DiscordInteraction>
-        </div>
-        Work Done!
-        <div slot="actions">
-            <DiscordButtons>
-                <DiscordButton type="primary">Rest</DiscordButton>
-                <DiscordButton type="secondary">Sleep</DiscordButton>
-            </DiscordButtons>
-        </div>
-    </DiscordMessage>
+  <DiscordMessage author="Guide Bot" avatar="red" bot>
+    <div slot="interactions">
+      <DiscordInteraction
+        author="Guide Man"
+        avatar="green"
+        command
+      >
+        work
+      </DiscordInteraction>
+    </div>
+    Work Done!
+    <div slot="actions">
+      <DiscordButtons>
+        <DiscordButton type="primary">Rest</DiscordButton>
+        <DiscordButton type="secondary">Sleep</DiscordButton>
+      </DiscordButtons>
+    </div>
+  </DiscordMessage>
 </DiscordMessages>
 ```
 
@@ -348,8 +360,8 @@ To make a message with buttons, do the following:
   <DiscordMessage author="Guide Bot" avatar="red" bot>
     <div slot="interactions">
       <DiscordInteraction
-        author="BobDotCom"
-        avatar="https://cdn.discordapp.com/avatars/690420846774321221/4810eacf552fcbaf2e5541885b753705.png"
+        author="Guide Man"
+        avatar="green"
         command
       >
         work
