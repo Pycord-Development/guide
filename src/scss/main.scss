@@ -59,6 +59,14 @@
     $code: (
       'family': ('Fira Code', monospace),
       'weight': 400
+    ),
+    $discord: (
+      'font-primary': (Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif),
+      'font-display': (Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif),
+      'font-code': (
+        Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono",
+        "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace),
+      'font-headline': (Ginto Nord, Ginto, "Helvetica Neue", Helvetica, Arial, sans-serif)
     )
   );
   --ifm-color-primary: #5865f2;
@@ -70,14 +78,19 @@
   --ifm-color-primary-lightest: #b4baf9;
 }
 
+html {
+  font-family: sentro.token-get('global-family');
+  font-weight: sentro.token-get('global-weight');
+}
+
 * {
   margin: 0;
   padding: 0;
   color: inherit;
   box-sizing: inherit;
   
-  font-family: sentro.token-get('global-family');
-  font-weight: sentro.token-get('global-weight');
+  font-family: inherit;
+  font-weight: inherit;
   
   &::before,
   &::after {
@@ -209,6 +222,110 @@ body {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+.emoji {
+  -o-object-fit: contain;
+  object-fit: contain;
+  width: 1.375em;
+  height: 1.375em;
+  vertical-align: bottom;
+}
+
+@font-face {
+  font-family: Whitney;
+  font-weight: 300;
+  src: url(/static/fonts/whitney/whitney300.woff) format('woff');
+}
+
+@font-face {
+  font-family: Whitney;
+  font-weight: 400;
+  src: url(/static/fonts/whitney/whitney400.woff) format('woff');
+}
+
+@font-face {
+  font-family: Whitney;
+  font-weight: 500;
+  src: url(/static/fonts/whitney/whitney500.woff) format('woff');
+}
+
+@font-face {
+  font-family: Whitney;
+  font-weight: 600;
+  src: url(/static/fonts/whitney/whitney600.woff) format('woff');
+}
+
+@font-face {
+  font-family: Whitney;
+  font-weight: 700;
+  src: url(/static/fonts/whitney/whitney700.woff) format('woff');
+}
+
+.discord-messages {
+  font-family: sentro.token-get('discord-font-primary') !important;
+  // TODO: Figure out why this is necessary, and remove it.
+  //       We Should be able to remove everything below here, but for some reason it doesn't work without it. Also, some
+  //       of it hasn't been added to the component package yet anyways so that needs to be done.
+  .discord-message {
+    .discord-author-info {
+      .discord-author-username {
+        letter-spacing: unset;
+        cursor: pointer;
+      }
+      &:not(.discord-interaction-author-info) .discord-author-username:hover {
+        text-decoration: underline;
+      }
+      .discord-author-bot-tag {
+        font-weight: 500;
+
+      }
+    }
+    .discord-interaction {
+      .discord-interaction-reply {
+        cursor: pointer;
+      }
+      .discord-interaction-command {
+        cursor: default;
+        .discord-interaction-command-name {
+          font-weight: 500;
+          cursor: pointer;
+        }
+      }
+      .discord-interaction-context-menu {
+        .discord-interaction-command-name {
+          cursor: unset;
+        }
+        .discord-interaction-command-name:hover {
+          text-decoration: unset;
+          opacity: 0.65;
+        }
+      }
+    }
+    .discord-message-timestamp {
+      font-weight: 500;
+      cursor: default;
+    }
+    .discord-buttons .discord-button {
+      font-family: inherit;
+    }
+    font-weight: 400;
+  }
+}
+
+@font-face{font-family:Ginto;font-weight:300;src:url(/static/fonts/ginto/ginto300.woff) format("woff")}
+@font-face{font-family:Ginto;font-weight:400;src:url(/static/fonts/ginto/ginto400.woff) format("woff")}
+@font-face{font-family:Ginto;font-weight:500;src:url(/static/fonts/ginto/ginto500.woff) format("woff")}
+@font-face{font-family:Ginto;font-weight:600;src:url(/static/fonts/ginto/ginto600.woff) format("woff")}
+@font-face{font-family:Ginto;font-weight:700;src:url(/static/fonts/ginto/ginto700.woff) format("woff")}
+@font-face{font-family:Ginto;font-weight:300;font-style:italic;src:url(/static/fonts/ginto/ginto-italic300.woff) format("woff")}
+@font-face{font-family:Ginto;font-weight:400;font-style:italic;src:url(/static/fonts/ginto/ginto-italic400.woff) format("woff")}
+@font-face{font-family:Ginto;font-weight:500;font-style:italic;src:url(/static/fonts/ginto/ginto-italic500.woff) format("woff")}
+@font-face{font-family:Ginto;font-weight:600;font-style:italic;src:url(/static/fonts/ginto/ginto-italic600.woff) format("woff")}
+@font-face{font-family:Ginto;font-weight:700;font-style:italic;src:url(/static/fonts/ginto/ginto-italic700.woff) format("woff")}
+@font-face{font-family:Ginto Nord;font-weight:500;src:url(/static/fonts/ginto-nord/ginto-nord500.woff2) format("woff2"),url(/static/fonts/ginto-nord/ginto-nord500.woff) format("woff")}
+@font-face{font-family:Ginto Nord;font-weight:600;src:url(/static/fonts/ginto-nord/ginto-nord600.woff2) format("woff2"),url(/static/fonts/ginto-nord/ginto-nord600.woff) format("woff")}
+@font-face{font-family:Ginto Nord;font-weight:700;src:url(/static/fonts/ginto-nord/ginto-nord700.woff2) format("woff2"),url(/static/fonts/ginto-nord/ginto-nord700.woff) format("woff")}
+
 
 @include overrides.init();
 
