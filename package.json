@@ -30,7 +30,7 @@
     "@matteusan/sentro": "0.1.21",
     "@mdx-js/react": "1.6.22",
     "clsx": "1.1.1",
-    "discord-message-components": "https://gitpkg.now.sh/Pycord-Development/discord-message-components?23d137b842dd327273634e6ecde50bfe0ca9da2a&scripts.postinstall=yarn%20install%20--ignore-scripts%20%26%26%20node%20node_modules%2Fesbuild%2Finstall.js%20%26%26yarn%20build%3Amarkdown%20%26%26%20yarn%20build%3Acore%20%26%26%20yarn%20build%3Areact",
+    "discord-message-components": "https://gitpkg.now.sh/Pycord-Development/discord-message-components?aa468ada9b2b52986ae0aee4051660713c1e9095&scripts.postinstall=yarn%20install%20--ignore-scripts%20%26%26%20node%20node_modules%2Fesbuild%2Finstall.js%20%26%26yarn%20build%3Amarkdown%20%26%26%20yarn%20build%3Acore%20%26%26%20yarn%20build%3Areact",
     "docusaurus-plugin-sass": "0.2.2",
     "prism-react-renderer": "1.2.1",
     "react": "17.0.2",
