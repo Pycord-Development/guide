@@ -11,7 +11,7 @@ import {
 } from "discord-message-components/packages/react";
 import "discord-message-components/packages/react/dist/style.css";
 
-import DiscordComponent from "../../src/components/DiscordComponent";
+import DiscordComponent, { defaultOptions } from "../../src/components/DiscordComponent";
 
 In December 2020, Discord released their first interaction: the
 [slash command](https://discord.com/developers/docs/interactions/application-commands#slash-commands).
@@ -168,7 +168,7 @@ Here's an example of a Message Command:
   </DiscordMessage>
   <DiscordMessage profile="robocord">
     <div slot="interactions">
-      <DiscordInteraction author="Other Guide Man" avatar="orange" contextMenu>
+      <DiscordInteraction profile="clone" contextMenu>
         Reverse Message
       </DiscordInteraction>
     </div>
@@ -182,31 +182,26 @@ And here's an example of a User Command:
 
 <DiscordComponent>
   <DiscordMessage profile="bob">
-    Other Guide Man has been on Discord for a long time
+    {defaultOptions.profiles.clone.author} has been on Discord for a long time
   </DiscordMessage>
   <DiscordMessage profile="robocord">
     <div slot="interactions">
-      <DiscordInteraction
-        author="Other Guide Man"
-        avatar="orange"
-        contextMenu
-      >
+      <DiscordInteraction profile="clone" contextMenu>
         User Age
       </DiscordInteraction>
     </div>
-    Other Guide Man is 1 week old.
+      {defaultOptions.profiles.clone.author} is 1 week old.
   </DiscordMessage>
   <DiscordMessage profile="robocord">
     <div slot="interactions">
-      <DiscordInteraction
-        author="Other Guide Man"
-        avatar="orange"
-        contextMenu
-      >
+      <DiscordInteraction profile="clone" contextMenu>
         User Age
       </DiscordInteraction>
     </div>
-    Guide Man is 40 years old.
+    {defaultOptions.profiles.bob.author} is 40 years old.
+  </DiscordMessage>
+  <DiscordMessage profile="clone">
+    🤔
   </DiscordMessage>
 </DiscordComponent>
 
