@@ -11,7 +11,7 @@ Modal dialogs consist of a title, a custom ID, and up to 5 `discord.ui.InputText
 
 When creating a modal dialog, you will generally want to subclass the `discord.ui.Modal` class like so:
 
-```py title="Basic Modal"
+```py
 class MyModal(Modal):
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
@@ -44,12 +44,12 @@ The `style` parameter of an `InputText` field is used to determine whether it sh
 
 There are a number of aliases that can be used:
 
-```x title="Single-line InputTextStyle values:"
+```
 short
 singleline
 ```
 
-```x title="Multi-line InputTextStyle values:"
+```
 paragraph = 2
 multiline = 2
 long = 2

@@ -179,7 +179,7 @@ Whenever you're using Slash Commands, you might notice that you can specify para
 Since you want different inputs from Options, you'll have to specify the type for that Option. There are a few ways of doing this.
 
 <Tabs>
-  <TabItem value="0" label="Use type annotations and let Pycord figure out its type" default>
+  <TabItem value="0" label="Using Type Annotations" default>
 
 ```python
 import discord
@@ -208,9 +208,9 @@ bot.run("TOKEN")
 </DiscordMessages>
 
   </TabItem>
-  <TabItem value="1" label="Explicitly set the type using the SlashCommandOptionType enum">
+  <TabItem value="1" label="Using SlashCommandOptionType enum">
 
-```python title="Slash Command Type"
+```python
 import discord
 
 bot = discord.Bot()
@@ -243,8 +243,6 @@ bot.run("TOKEN")
 </Tabs>
 
 :::info Related Topics
-
+- [Prefixed Commands](../../extensions/commands/prefixed-commands.mdx)
 - [Interactions Index](../../interactions)
-- [Rules and Common Practices](../../getting-started/rules-and-common-practices)
-
 :::
