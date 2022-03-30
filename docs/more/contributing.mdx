@@ -9,8 +9,10 @@ import {
   DiscordInteraction,
   DiscordMessage,
   DiscordMessages,
-} from "@discord-message-components/react";
-import "@discord-message-components/react/styles";
+} from "discord-message-components/packages/react";
+import "discord-message-components/packages/react/dist/style.css";
+
+import DiscordComponent from "../../src/components/DiscordComponent";
 
 This page outlines some of the basic syntax you need to know to contribute to the guide. We recommend you also check out:
 
@@ -257,31 +259,31 @@ You can edit an admonition's title by adding text after the `:::` and name, like
 As most files already have the imports for these, it's not that hard to add them.
 The div starts like so:
 
-```md
-<DiscordMessages>
+```tsx
+<DiscordComponent>
 
-</DiscordMessages>
+</DiscordComponent>
 
 <br />
 ```
 
 This is where you list a `DiscordMessage`.
 
-```md
-<DiscordMessages>
-    <DiscordMessage author="Guide Bot" avatar="red">
+```tsx
+<DiscordComponent>
+    <DiscordMessage profile="bob">
         Hello!
     </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 
 <br />
 ```
 
-<DiscordMessages>
-  <DiscordMessage author="Guide Bot" avatar="red">
+<DiscordComponent>
+  <DiscordMessage profile="bob">
     Hello!
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 
 <br />
 
@@ -297,82 +299,66 @@ Add a `<br/>` to the end of a component to make it spaced out from the text belo
 
 To make a message authored by a slash command, do the following:
 
-```md
-<DiscordMessages>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+```tsx
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
     <div slot="interactions">
-      <DiscordInteraction
-        author="Guide Man"
-        avatar="green"
-        command
-      >
+      <DiscordInteraction profile="bob" command>
         update
       </DiscordInteraction>
     </div>
     Updated dependencies to the latest version!
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 ```
 
-<DiscordMessages>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
     <div slot="interactions">
-      <DiscordInteraction
-        author="Guide Man"
-        avatar="green"
-        command
-      >
+      <DiscordInteraction profile="bob" command>
         update
       </DiscordInteraction>
     </div>
     Updated dependencies to the latest version!
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 
 ### Buttons
 
 To make a message with buttons, do the following:
 
-```mdx
-<DiscordMessages>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+```tsx
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
     <div slot="interactions">
-      <DiscordInteraction
-        author="Guide Man"
-        avatar="green"
-        command
-      >
+      <DiscordInteraction profile="bob" command>
         work
       </DiscordInteraction>
     </div>
     Work Done!
     <div slot="actions">
       <DiscordButtons>
-        <DiscordButton type="primary">Rest</DiscordButton>
-        <DiscordButton type="secondary">Sleep</DiscordButton>
+        <DiscordButton type="primary" emoji="📝">Work More</DiscordButton>
+        <DiscordButton type="secondary" emoji="🛏️">Sleep</DiscordButton>
       </DiscordButtons>
     </div>
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 ```
 
-<DiscordMessages>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
     <div slot="interactions">
-      <DiscordInteraction
-        author="Guide Man"
-        avatar="green"
-        command
-      >
+      <DiscordInteraction profile="bob" command>
         work
       </DiscordInteraction>
     </div>
     Work Done!
     <div slot="actions">
       <DiscordButtons>
-        <DiscordButton type="primary">Rest</DiscordButton>
-        <DiscordButton type="secondary">Sleep</DiscordButton>
+        <DiscordButton type="primary" emoji="📝">Work More</DiscordButton>
+        <DiscordButton type="secondary" emoji="🛏️">Sleep</DiscordButton>
       </DiscordButtons>
     </div>
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>

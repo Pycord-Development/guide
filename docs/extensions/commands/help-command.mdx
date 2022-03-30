@@ -9,8 +9,10 @@ import {
   DiscordMessage,
   DiscordMessages,
   DiscordEmbed,
-} from "@discord-message-components/react";
-import "@discord-message-components/react/styles";
+} from "discord-message-components/packages/react";
+import "discord-message-components/packages/react/dist/style.css";
+
+import DiscordComponent from "../../../src/components/DiscordComponent";
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
@@ -64,7 +66,7 @@ There are two types of built-in help commands:
 import discord
 from discord.ext import commands
 
-bot = commands.Bot(command_prefix='!', help_command=commands.DefaultHelpCommand()) # help_command is DefaultHelpCommand by default so it isn't nessesary to enable it like this
+bot = commands.Bot(command_prefix='!', help_command=commands.DefaultHelpCommand()) # help_command is DefaultHelpCommand by default so it isn't necessary to enable it like this
 # We enable it here for the sake of understanding
 
 ...
@@ -72,11 +74,11 @@ bot = commands.Bot(command_prefix='!', help_command=commands.DefaultHelpCommand(
 bot.run("token")
 ```
 
-<DiscordMessages>
-  <DiscordMessage author="Guide Man" avatar="green">
+<DiscordComponent>
+  <DiscordMessage profile="bob">
     !help
   </DiscordMessage>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+  <DiscordMessage profile="robocord">
     <code>
       No Category:
       <br />
@@ -91,7 +93,7 @@ bot.run("token")
       You can also type !help category for more info on a category.
     </code>
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 
 </TabItem>
 <TabItem label="Minimal Help Command" value="minimal">
@@ -107,11 +109,11 @@ bot = commands.Bot(command_prefix='!', help_command=commands.MinimalHelpCommand(
 bot.run("token")
 ```
 
-<DiscordMessages>
-  <DiscordMessage author="Guide Man" avatar="green">
+<DiscordComponent>
+  <DiscordMessage profile="bob">
     !help
   </DiscordMessage>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+  <DiscordMessage profile="robocord">
     Use <code>!help [command]</code> for more info on a command.
     <br />
     You can also use <code>!help [category]</code> for more info on a category.
@@ -124,13 +126,13 @@ bot.run("token")
     <br />
     help ping
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 
 </TabItem>
 
 </Tabs>
 
-## Updating Build-in Help Commands
+## Updating Built-in Help Commands
 
 Let's try to make the `MinimalHelpCommand` look better. We can do this by putting its content in an
 embed.
@@ -165,8 +167,8 @@ in an embed, and then send the embed to the destination channel.
 
 Finally, we set this as our new help command using `bot.help_command = MyNewHelp()`.
 
-<DiscordMessages>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
     <DiscordEmbed>
       Use <code>!help [command]</code> for more info on a command.
       <br />
@@ -182,7 +184,7 @@ Finally, we set this as our new help command using `bot.help_command = MyNewHelp
       help ping
     </DiscordEmbed>
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 
 ## Creating Your Help Command
 
@@ -450,16 +452,16 @@ class MyHelp(commands.HelpCommand):
         await channel.send(embed=embed)
 ```
 
-<DiscordMessages>
-  <DiscordMessage author="Guide Bot" avatar="green">
+<DiscordComponent>
+  <DiscordMessage profile="bob">
     !help update_pycord
   </DiscordMessage>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+  <DiscordMessage profile="robocord">
     <DiscordEmbed embedTitle="Error" borderColor="#ff0000">
       Command 'update_pycord' not found.
     </DiscordEmbed>
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 
 ## Credits
 

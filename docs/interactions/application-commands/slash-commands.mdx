@@ -8,8 +8,10 @@ import {
   DiscordInteraction,
   DiscordMessage,
   DiscordMessages,
-} from "@discord-message-components/react";
-import "@discord-message-components/react/styles";
+} from "discord-message-components/packages/react";
+import "discord-message-components/packages/react/dist/style.css";
+
+import DiscordComponent from "../../../src/components/DiscordComponent";
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
@@ -37,16 +39,16 @@ async def ping(ctx): # a slash command will be created with the name "ping"
 bot.run("TOKEN")
 ```
 
-<DiscordMessages>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
     <div slot="interactions">
-      <DiscordInteraction author="Guide Man" avatar="green" command>
+      <DiscordInteraction profile="bob" command>
         ping
       </DiscordInteraction>
     </div>
     Pong! Latency is 335ms.
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 
 <br />
 
@@ -161,16 +163,16 @@ def setup(bot):
 
 The registered slash commands from the cog should be displayed as normal in the Slash Command menu.
 
-<DiscordMessages>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
     <div slot="interactions">
-      <DiscordInteraction author="Guide Man" avatar="green" command>
+      <DiscordInteraction profile="bob" command>
         hello
       </DiscordInteraction>
     </div>
     Hello, this is a slash command from a cog!
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 
 ## Options & Option Types
 
@@ -196,16 +198,16 @@ async def add(ctx, first: discord.Option(int), second: discord.Option(int)):
 bot.run("TOKEN")
 ```
 
-<DiscordMessages>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
     <div slot="interactions">
-      <DiscordInteraction author="Guide Man" avatar="green" command>
+      <DiscordInteraction profile="bob" command>
         add
       </DiscordInteraction>
     </div>
     The sum of 1 and 1 is 2.
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 
   </TabItem>
   <TabItem value="1" label="Explicitly set the type using the SlashCommandOptionType enum">
@@ -228,16 +230,16 @@ async def join(
 bot.run("TOKEN")
 ```
 
-<DiscordMessages>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
     <div slot="interactions">
-      <DiscordInteraction author="Guide Man" avatar="green" command>
+      <DiscordInteraction profile="bob" command>
         join
       </DiscordInteraction>
     </div>
     The joined string of "hi" and " mom" is "hi mom".
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 
   </TabItem>
 </Tabs>

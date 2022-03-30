@@ -9,8 +9,10 @@ import {
   DiscordMessage,
   DiscordMessages,
   DiscordMention,
-} from "@discord-message-components/react";
-import "@discord-message-components/react/styles";
+} from "discord-message-components/packages/react";
+import "discord-message-components/packages/react/dist/style.css";
+
+import DiscordComponent, { defaultOptions } from "../../src/components/DiscordComponent";
 
 # About
 
@@ -52,16 +54,16 @@ async def record(ctx):  # If you're using commands.Bot, this will also work.
     await ctx.respond("Started recording!")
 ```
 
-<DiscordMessages>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
     <div slot="interactions">
-      <DiscordInteraction author="Guide Man" avatar="green" command>
+      <DiscordInteraction profile="bob" command>
         record
       </DiscordInteraction>
     </div>
     Started recording!
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 
 <br />
 
@@ -86,12 +88,12 @@ async def once_done(sink: discord.Sink, channel: discord.TextChannel, *args):  #
     await channel.send(f"finished recording audio for: {', '.join(recorded_users)}.", files=files)  # Send a message with the accumulated files.
 ```
 
-<DiscordMessages>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
     finished recording audio for:{" "}
-    <DiscordMention highlight={true}>GuideMan</DiscordMention>
+    <DiscordMention highlight={true}>{defaultOptions.profiles.bob.author}</DiscordMention>
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 
 <br />
 
