@@ -12,6 +12,8 @@ import {
 } from "discord-message-components/packages/react";
 import "discord-message-components/packages/react/dist/style.css";
 
+import DiscordComponent, { defaultOptions } from "../../../src/components/DiscordComponent";
+
 When you right-click a message, you may see an option called "Apps". Hover over it and you can see
 commands a bot can run with that message. These are called message commands.
 
@@ -30,18 +32,16 @@ async def account_creation_date(ctx, member: discord.Member):  # user commands r
     await ctx.send(f"{member.name}'s account was created on {member.created_at}")
 ```
 
-<DiscordMessages>
-  <DiscordMessage
-    author="Guide Bot"
-    avatar="red"
-    bot
-  >
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
     <div slot="interactions">
-      <DiscordInteraction author="Guide Man" avatar="blue">Account Creation Date</DiscordInteraction>
+      <DiscordInteraction profile="bob" contextMenu>
+          Account Creation Date
+      </DiscordInteraction>
     </div>
-    Guide Man's account was created on 2020-01-01
+      {defaultOptions.profiles.bob.author}'s account was created on 2020-01-01
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 
 ## Message Commands
 
@@ -51,30 +51,23 @@ async def get_message_id(ctx, message: discord.Message):  # message commands ret
     await ctx.respond(f"Message ID: `{message.id}`")
 ```
 
-<DiscordMessages>
-  <DiscordMessage
-    author="Guide Man"
-    avatar="blue"
-  >
+<DiscordComponent>
+  <DiscordMessage profile="bob">
     Do. Or do not. There is no try.
   </DiscordMessage>
-  <DiscordMessage
-    author="Guide Bot"
-    avatar="red"
-    bot
-  >
+  <DiscordMessage profile="robocord">
     <div slot="interactions">
       <DiscordInteraction
         author="Other Guide Man"
         avatar="green"
-        command
+        contextMenu
       >
         Get Message ID
       </DiscordInteraction>
     </div>
     Message ID: <code>930650407917748286</code>
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 
 <br/>
 

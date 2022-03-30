@@ -127,7 +127,7 @@ class LeaderboardCog(commands.Cog):
 
     @update_leaderboard.error
     async def update_leaderboard_error(self, error):
-        print(f"Oh no, an error occured while updating the leaderboard. Error: {error}")
+        print(f"Oh no, an error occurred while updating the leaderboard. Error: {error}")
 
     @leaderboard.command()
     async def view(self, ctx):

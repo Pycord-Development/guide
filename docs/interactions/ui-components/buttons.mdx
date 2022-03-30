@@ -12,6 +12,8 @@ import {
 } from "discord-message-components/packages/react";
 import "discord-message-components/packages/react/dist/style.css";
 
+import DiscordComponent from "../../../src/components/DiscordComponent";
+
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
@@ -55,21 +57,21 @@ bot.run("TOKEN") # Run the bot
 
 Using this command should return the following message:
 
-<DiscordMessages>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
     <div slot="interactions">
-      <DiscordInteraction author="Guide Man" avatar="green" command>
+      <DiscordInteraction profile="bob" command>
         button
       </DiscordInteraction>
     </div>
     This is a button!
     <div slot="actions">
       <DiscordButtons>
-        <DiscordButton type="primary">😎 Click me!</DiscordButton>
+        <DiscordButton type="primary" emoji="😎">Click me!</DiscordButton>
       </DiscordButtons>
     </div>
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 
 <br />
 
