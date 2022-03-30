@@ -105,7 +105,7 @@ enabling your bot to lay out messages with a lot of text into neat fields.
                     We have so much more! Just explore, and you will find everything you need. If you want another page added, open an issue on the <a href="https://github.com/Pycord-Development/guide">GitHub</a>.
                 </DiscordEmbedField>
             </DiscordEmbedFields>
-            <span slot="footer">Created with 💖 by the Pycord Team & Contributers</span>
+            <span slot="footer">Created with 💖 by the Pycord Team & Contributors</span>
         </DiscordEmbed>
     </DiscordMessage>
 </DiscordComponent>
@@ -123,7 +123,7 @@ bot = discord.Bot()
 async def hello(ctx):
     embed = discord.Embed(
         title="My Amazing Embed",
-        description="Embeds are super easy, barely an inconvinience.",
+        description="Embeds are super easy, barely an inconvenience.",
         color=discord.Colour.blurple(), # Pycord provides a class with default colors you can choose from
     )
     embed.add_field(title="A Normal Field", value="A really nice field with some information. **The description as well as the fields support markdown!**")
@@ -185,7 +185,7 @@ embed = discord.Embed(
 ```
  
 This command creates an embed. We use the [`Embed`](https://docs.pycord.dev/en/master/api.html#discord.Embed)
-class to create an embed object with the title "My Amazing Embed", the description "Embeds are super easy, barely an inconvinience.", and the color `blurple`, Discord's main theme color.
+class to create an embed object with the title "My Amazing Embed", the description "Embeds are super easy, barely an inconvenience.", and the color `blurple`, Discord's main theme color.
  
 [discord.Colour](https://docs.pycord.dev/en/master/api.html#colour) is a class full of [classmethods](https://docs.python.org/3/library/functions.html#classmethod)
 that return color values. While the official, documented name of this is `discord.Colour`, `discord.Color`
