@@ -3,13 +3,15 @@ title: Discord Interactions
 ---
 
 import {
-  DiscordButton,
-  DiscordButtons,
-  DiscordInteraction,
-  DiscordMessage,
-  DiscordMessages,
-} from "@discord-message-components/react";
-import "@discord-message-components/react/styles";
+    DiscordButton,
+    DiscordButtons,
+    DiscordInteraction,
+    DiscordMessage,
+    DiscordMessages,
+} from "discord-message-components/packages/react";
+import "discord-message-components/packages/react/dist/style.css";
+
+import DiscordComponent from "../../src/components/DiscordComponent";
 
 In December 2020, Discord released their first interaction: the
 [slash command](https://discord.com/developers/docs/interactions/application-commands#slash-commands).
@@ -65,16 +67,16 @@ Buttons are the first of the Message Components. They allow for quick responses 
 a "cancel" or "continue" button. Of course, these aren't the only uses. People have created awesome
 things with buttons, such as calculators, games, and more!
 
-<DiscordMessages>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
     Discord buttons are awesome!
     <div slot="actions">
       <DiscordButtons>
-        <DiscordButton type="primary">😎 Click me!</DiscordButton>
+        <DiscordButton type="primary" emoji="😎">Click me!</DiscordButton>
       </DiscordButtons>
     </div>
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 
 <br />
 
@@ -125,16 +127,16 @@ message content Privileged Intent. Using this as a reason will get your applicat
 
 :::
 
-<DiscordMessages>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
     <div slot="interactions">
-      <DiscordInteraction author="Guide Man" avatar="green" command>
+      <DiscordInteraction profile="bob" command>
         ping
       </DiscordInteraction>
     </div>
     Pong! Latency is 335ms.
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 
 <br />
 
@@ -160,36 +162,25 @@ are useful for having a function to add a user to a ticket, warn a user, and mor
 
 Here's an example of a Message Command:
 
-<DiscordMessages>
-  <DiscordMessage
-    author="Guide Man"
-    avatar="green"
-  >
-    I'm sus
+<DiscordComponent>
+  <DiscordMessage profile="bob">
+    Hello World!
   </DiscordMessage>
-  <DiscordMessage
-    author="Guide Bot"
-    avatar="red"
-    bot
-  >
+  <DiscordMessage profile="robocord">
     <div slot="interactions">
-      <DiscordInteraction
-        author="Other Guide Man"
-        avatar="orange"
-        command
-      >
+      <DiscordInteraction author="Other Guide Man" avatar="orange" contextMenu>
         Reverse Message
       </DiscordInteraction>
     </div>
-    Message 930650407917748286 sent by Guide Man reversed is "sus m'I"
+    Message 930650407917748286 reversed is "!dlroW olleH"
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 
 <br />
 
 And here's an example of a User Command:
 
-<DiscordMessages>
+<DiscordComponent>
   <DiscordMessage
     author="Guide Man"
     avatar="green"
@@ -205,7 +196,7 @@ And here's an example of a User Command:
       <DiscordInteraction
         author="Other Guide Man"
         avatar="orange"
-        command
+        contextMenu
       >
         User Age
       </DiscordInteraction>
@@ -221,7 +212,7 @@ And here's an example of a User Command:
       <DiscordInteraction
         author="Other Guide Man"
         avatar="orange"
-        command
+        contextMenu
       >
         User Age
       </DiscordInteraction>
@@ -234,7 +225,7 @@ And here's an example of a User Command:
   >
     sus
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 
 <br />
 

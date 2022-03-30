@@ -9,8 +9,8 @@ import {
   DiscordInteraction,
   DiscordMessage,
   DiscordMessages,
-} from "@discord-message-components/react";
-import "@discord-message-components/react/styles";
+} from "discord-message-components/packages/react";
+import "discord-message-components/packages/react/dist/style.css";
 
 This page outlines some of the basic syntax you need to know to contribute to the guide. We recommend you also check out:
 
@@ -299,12 +299,18 @@ To make a message authored by a slash command, do the following:
 
 ```md
 <DiscordMessages>
-    <DiscordMessage author="Guide Bot" avatar="red" bot>
-        <div slot="interactions">
-            <DiscordInteraction author="BobDotCom" avatar="https://cdn.discordapp.com/avatars/690420846774321221/4810eacf552fcbaf2e5541885b753705.png" command>update</DiscordInteraction>
-        </div>
-        Updated Pycord!
-    </DiscordMessage>
+  <DiscordMessage author="Guide Bot" avatar="red" bot>
+    <div slot="interactions">
+      <DiscordInteraction
+        author="Guide Man"
+        avatar="green"
+        command
+      >
+        update
+      </DiscordInteraction>
+    </div>
+    Updated dependencies to the latest version!
+  </DiscordMessage>
 </DiscordMessages>
 ```
 
@@ -312,14 +318,14 @@ To make a message authored by a slash command, do the following:
   <DiscordMessage author="Guide Bot" avatar="red" bot>
     <div slot="interactions">
       <DiscordInteraction
-        author="BobDotCom"
-        avatar="https://cdn.discordapp.com/avatars/690420846774321221/4810eacf552fcbaf2e5541885b753705.png"
+        author="Guide Man"
+        avatar="green"
         command
       >
         update
       </DiscordInteraction>
     </div>
-    Updated Pycord!
+    Updated dependencies to the latest version!
   </DiscordMessage>
 </DiscordMessages>
 
@@ -327,29 +333,13 @@ To make a message authored by a slash command, do the following:
 
 To make a message with buttons, do the following:
 
-```md
-<DiscordMessages>
-    <DiscordMessage author="Guide Bot" avatar="red" bot>
-        <div slot="interactions">
-            <DiscordInteraction author="BobDotCom" avatar="https://cdn.discordapp.com/avatars/690420846774321221/4810eacf552fcbaf2e5541885b753705.png" command>work</DiscordInteraction>
-        </div>
-        Work Done!
-        <div slot="actions">
-            <DiscordButtons>
-                <DiscordButton type="primary">Rest</DiscordButton>
-                <DiscordButton type="secondary">Sleep</DiscordButton>
-            </DiscordButtons>
-        </div>
-    </DiscordMessage>
-</DiscordMessages>
-```
-
+```mdx
 <DiscordMessages>
   <DiscordMessage author="Guide Bot" avatar="red" bot>
     <div slot="interactions">
       <DiscordInteraction
-        author="BobDotCom"
-        avatar="https://cdn.discordapp.com/avatars/690420846774321221/4810eacf552fcbaf2e5541885b753705.png"
+        author="Guide Man"
+        avatar="green"
         command
       >
         work
@@ -364,137 +354,25 @@ To make a message with buttons, do the following:
     </div>
   </DiscordMessage>
 </DiscordMessages>
-
-### Examples
-
-```md
-<DiscordMessages>
-    <DiscordMessage author="Pycord Manager" avatar="https://cdn.discordapp.com/avatars/882631512829329448/32b7c23df364938574997fc86ef24cee.png" bot>
-        <div slot="interactions">
-            <DiscordInteraction author="BobDotCom" avatar="https://cdn.discordapp.com/avatars/690420846774321221/4810eacf552fcbaf2e5541885b753705.png" command>update</DiscordInteraction>
-        </div>
-        Updating Pycord ... <br /> <br />
-        Pushing local commits to GitHub ... <br />
-        Building ... <br />
-        Deploying to PyPi ... <br />
-        Successfully deployed. <br />
-        Making announcement with @everyone ping ...  <br />
-        <br />
-        v3.3.5 deployed to PyPi, check it out <a href="https://pypi.org/project/Pycord/">here</a>!
-    </DiscordMessage>
-    <DiscordMessage author="Clone" avatar="https://cdn.discordapp.com/avatars/543397958197182464/fe1297ec629e24faeb2d293b7259f2ab.png">
-    It's stable, right?
-    </DiscordMessage>
-    <DiscordMessage author="BobDotCom" avatar="https://cdn.discordapp.com/avatars/690420846774321221/4810eacf552fcbaf2e5541885b753705.png">
-    Well ... 
-    </DiscordMessage>
-</DiscordMessages>
-
-<br />
 ```
 
 <DiscordMessages>
-  <DiscordMessage
-    author="Pycord Manager"
-    avatar="https://cdn.discordapp.com/avatars/882631512829329448/32b7c23df364938574997fc86ef24cee.png"
-    bot
-  >
+  <DiscordMessage author="Guide Bot" avatar="red" bot>
     <div slot="interactions">
       <DiscordInteraction
-        author="BobDotCom"
-        avatar="https://cdn.discordapp.com/avatars/690420846774321221/4810eacf552fcbaf2e5541885b753705.png"
-        command
-      >
-        update
-      </DiscordInteraction>
-    </div>
-    Updating Pycord ... <br /> <br />
-    Pushing local commits to GitHub ... <br />
-    Building ... <br />
-    Deploying to PyPi ... <br />
-    Successfully deployed. <br />
-    Making announcement with @everyone ping ... <br />
-    <br />
-    v3.3.5 deployed to PyPi, check it out{" "}
-    <a href="https://pypi.org/project/Pycord/">here</a>!
-  </DiscordMessage>
-  <DiscordMessage
-    author="Clone"
-    avatar="https://cdn.discordapp.com/avatars/543397958197182464/fe1297ec629e24faeb2d293b7259f2ab.png"
-  >
-    It's stable, right?
-  </DiscordMessage>
-  <DiscordMessage
-    author="BobDotCom"
-    avatar="https://cdn.discordapp.com/avatars/690420846774321221/4810eacf552fcbaf2e5541885b753705.png"
-  >
-    Well ...
-  </DiscordMessage>
-</DiscordMessages>
-
-<br />
-
-```md
-<DiscordMessages>
-    <DiscordMessage author="Pycord Manager" avatar="https://cdn.discordapp.com/avatars/882631512829329448/32b7c23df364938574997fc86ef24cee.png" bot>
-        <div slot="interactions">
-            <DiscordInteraction author="BobDotCom" avatar="https://cdn.discordapp.com/avatars/690420846774321221/4810eacf552fcbaf2e5541885b753705.png" command>work</DiscordInteraction>
-        </div>
-        Working ... <br/> <br/>
-        Made 6 commits! <br/>
-        Started a new branch! <br/>
-        Started a PR! <br/>
-        Reverted a revert! <br/>
-        Procastinated! You decide to fix bugs in your PR later!
-        <div slot="actions">
-            <DiscordButtons>
-                <DiscordButton type="primary">😎 Go inactive for 2 days</DiscordButton>
-                <DiscordButton type="danger">Work More</DiscordButton>
-            </DiscordButtons>
-        </div>
-    </DiscordMessage>
-    <DiscordMessage author="Catra" avatar="https://cdn.discordapp.com/avatars/856780995629154305/a_7e12da98f634a9d658b868c38b8a68b2.png">
-    Please, no more chaos.
-    </DiscordMessage>
-</DiscordMessages>
-
-<br />
-```
-
-<DiscordMessages>
-  <DiscordMessage
-    author="Pycord Manager"
-    avatar="https://cdn.discordapp.com/avatars/882631512829329448/32b7c23df364938574997fc86ef24cee.png"
-    bot
-  >
-    <div slot="interactions">
-      <DiscordInteraction
-        author="BobDotCom"
-        avatar="https://cdn.discordapp.com/avatars/690420846774321221/4810eacf552fcbaf2e5541885b753705.png"
+        author="Guide Man"
+        avatar="green"
         command
       >
         work
       </DiscordInteraction>
     </div>
-    Working ... <br /> <br />
-    Made 6 commits! <br />
-    Started a new branch! <br />
-    Started a PR! <br />
-    Reverted a revert! <br />
-    Procastinated! You decide to fix bugs in your PR later!
+    Work Done!
     <div slot="actions">
       <DiscordButtons>
-        <DiscordButton type="primary">😎 Go inactive for 2 days</DiscordButton>
-        <DiscordButton type="danger">Work More</DiscordButton>
+        <DiscordButton type="primary">Rest</DiscordButton>
+        <DiscordButton type="secondary">Sleep</DiscordButton>
       </DiscordButtons>
     </div>
   </DiscordMessage>
-  <DiscordMessage
-    author="Catra"
-    avatar="https://cdn.discordapp.com/avatars/856780995629154305/a_7e12da98f634a9d658b868c38b8a68b2.png"
-  >
-    Please, no more chaos.
-  </DiscordMessage>
 </DiscordMessages>
-
-<br />
