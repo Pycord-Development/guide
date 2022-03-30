@@ -20,7 +20,12 @@ export const defaultOptions: DiscordMessageOptions = {
             avatar: '/img/robocord.png',
             roleColor: '#9b59b6',
             bot: true,
-        }
+        },
+		clone: {
+			author: 'Clone',
+			avatar: '/img/clone.png',
+			roleColor: '#5865f2',
+		}
 	},
 };
 
