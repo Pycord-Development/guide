@@ -181,17 +181,10 @@ Here's an example of a Message Command:
 And here's an example of a User Command:
 
 <DiscordComponent>
-  <DiscordMessage
-    author="Guide Man"
-    avatar="green"
-  >
-    Other Guide Man has been on Discord for so long
+  <DiscordMessage profile="bob">
+    Other Guide Man has been on Discord for a long time
   </DiscordMessage>
-  <DiscordMessage
-    author="Guide Bot"
-    avatar="red"
-    bot
-  >
+  <DiscordMessage profile="robocord">
     <div slot="interactions">
       <DiscordInteraction
         author="Other Guide Man"
@@ -203,11 +196,7 @@ And here's an example of a User Command:
     </div>
     Other Guide Man is 1 week old.
   </DiscordMessage>
-  <DiscordMessage
-    author="Guide Bot"
-    avatar="red"
-    bot
-  >
+  <DiscordMessage profile="robocord">
     <div slot="interactions">
       <DiscordInteraction
         author="Other Guide Man"
@@ -218,12 +207,6 @@ And here's an example of a User Command:
       </DiscordInteraction>
     </div>
     Guide Man is 40 years old.
-  </DiscordMessage>
-  <DiscordMessage
-    author="Guide Man"
-    avatar="green"
-  >
-    sus
   </DiscordMessage>
 </DiscordComponent>
 

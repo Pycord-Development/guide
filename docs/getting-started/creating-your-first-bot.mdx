@@ -11,6 +11,8 @@ import {
 } from "discord-message-components/packages/react";
 import "discord-message-components/packages/react/dist/style.css";
 
+import DiscordComponent from "../../src/components/DiscordComponent";
+
 Excited to create your first bot? Once you [install Pycord](installation.mdx), you can start right
 away!
 
@@ -133,16 +135,16 @@ async def hello(ctx):
 bot.run(os.getenv('TOKEN')) # run the bot with the token
 ```
 
-<DiscordMessages>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
     <div slot="interactions">
-      <DiscordInteraction author="Guide Man" avatar="green" command>
+      <DiscordInteraction profile="bob" command>
         hello
       </DiscordInteraction>
     </div>
     Hey!
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 
 Let's go through the code. First, the imports.
 
