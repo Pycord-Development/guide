@@ -7969,10 +7969,10 @@ remark-mdx@1.6.22:
     remark-parse "8.0.3"
     unified "9.2.0"
 
-remark-mdx@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/remark-mdx/-/remark-mdx-2.1.0.tgz#ae29ccd4c974a39ca671cd533acf9c7560a8bba4"
-  integrity sha512-J6Yqw566SaEy6A9Neni1JJTaEjbjsM3OsKqL04TtCvZhevRtFi8CG8GIQPzvxIRKRCAOnWw1Vpk1AInB1OpNqA==
+remark-mdx@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/remark-mdx/-/remark-mdx-2.1.1.tgz#14021be9ecbc9ad0310f4240980221328aa7ed55"
+  integrity sha512-0wXdEITnFyjLquN3VvACNLzbGzWM5ujzTvfgOkONBZgSFJ7ezLLDaTWqf6H9eUgVITEP8asp6LJ0W/X090dXBg==
   dependencies:
     mdast-util-mdx "^2.0.0"
     micromark-extension-mdxjs "^1.0.0"
