@@ -147,25 +147,34 @@ providing a universal way to write and read code.
 
 ### Databases
 
-As your bot grows, you'll inevitably have to store data for your bot. Now, most people would probably just load up some JSON file on boot into a `dict`, modify it in memory then write to the file. However, JSON files aren't the solution. When you write to a JSON file, it rewrites the entire file instead of just rewriting the section that changed. It's also a configuration file format, not a storage file format.
+As your bot grows, you'll inevitably have to store data for your bot. Now, most people would probably just load up some
+JSON file on boot into a `dict`, modify it in memory then write to the file. However, JSON files aren't the solution.
+When you write to a JSON file, it rewrites the entire file instead of just rewriting the section that changed. It's also
+a configuration file format, not a storage file format.
 
-Instead of using a JSON file or some other related format, you should instead use a database. There are many databases out there, like MongoDB, SQLite, and PostgreSQL to name a few.
+Instead of using a JSON file or some other related format, you should instead use a database. There are many databases
+out there, like MongoDB, SQLite, and PostgreSQL to name a few.
 
 All of these databases I named do the job well, and which one you use depends on what features you want out of a database.
 
-<!--Maybe clarify these/add more options-->
+<>{/* Maybe clarify these/add more options */}</>
 
 #### MongoDB
 
 MongoDB is a JSON-like format and if you already use JSON files, it shouldn't be too hard to migrate over to.
 
 #### SQLite
-SQLite is based on SQL, a common relational data model. It's a lightweight, easy-to-use, portable database solution that works entirely on files. However, if for some reason you cannot read/write to and from a file and you need to manage lots of data, SQLite might not be for you.
+SQLite is based on SQL, a common relational data model. It's a lightweight, easy-to-use, portable database solution that
+works entirely on files. However, if for some reason you cannot read/write to and from a file and you need to manage
+lots of data, SQLite might not be for you.
 
 SQLite is a part of the Python Standard Library, you can easily import it with `import sqlite3`.
 
 #### PostgreSQL
-PostgreSQL is also based on SQL, but it also has more features than SQLite. It's compliant with the SQL standard, open-source, and extensible. However, it's not that fast or simple compared to SQLite.
+PostgreSQL is also based on SQL, but it also has more features than SQLite. It's compliant with the SQL standard,
+open-source, and extensible. However, it's not that fast or simple compared to SQLite.
 
 #### MariaDB
-MariaDB is also based on SQL and is a fork of the MySQL project. It's compliant with the SQL standard, it's also open source and is a complete drop-in replacement for any code with MySQL. You don't even need to change what package you're using!
+MariaDB is also based on SQL and is a fork of the MySQL project. It's compliant with the SQL standard, it's also open
+source and is a complete drop-in replacement for any code with MySQL. You don't even need to change what package you're
+using!
