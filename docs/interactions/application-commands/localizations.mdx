@@ -8,7 +8,7 @@ name, the names of any arguments, and any text that is displayed to the user.
 
 ## Syntax
 ```python
-@commands.slash_command(
+@bot.slash_command(
     name="ping",
     name_localizations={
         "en-GB": "British_Ping"
@@ -35,7 +35,7 @@ async def ping(ctx, example):
                 "en-GB": "British Pong!"}
     await ctx.respond(responses.get(ctx.interaction.locale, responses['en-US']))
 
-@commands.slash_command(
+@bot.slash_command(
     name="ping2",
     name_localizations={
         "en-GB": "British_Ping"

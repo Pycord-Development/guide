@@ -181,7 +181,9 @@ Whenever you're using Slash Commands, you might notice that you can specify para
 Since you want different inputs from Options, you'll have to specify the type for that Option. There are a few ways of doing this.
 
 <Tabs>
-  <TabItem value="0" label="Use type annotations and let Pycord figure out its type" default>
+  <TabItem value="0" label="Using Type Annotations" default>
+
+You could use Type Annotations and let Pycord figure out the option type, like shown below.
 
 ```python
 import discord
@@ -189,7 +191,7 @@ import discord
 bot = discord.Bot()
 
 @bot.command()
-# pycord will then figure out the types for you
+# pycord will figure out the types for you
 async def add(ctx, first: discord.Option(int), second: discord.Option(int)):
   # you can use them as they were actual integers
   sum = first + second
@@ -210,7 +212,9 @@ bot.run("TOKEN")
 </DiscordComponent>
 
   </TabItem>
-  <TabItem value="1" label="Explicitly set the type using the SlashCommandOptionType enum">
+  <TabItem value="1" label="Using the SlashCommandOptionType enum">
+
+You could also explicitly declare the type using the [`SlashCommandOptionType`](https://docs.pycord.dev/en/master/api.html#discord.SlashCommandOptionType) enum.
 
 ```python title="Slash Command Type"
 import discord
@@ -225,7 +229,7 @@ async def join(
   second: discord.Option(discord.SlashCommandOptionType.string)
 ):
   joined = first + second
-  await ctx.respond(f"The joined string of \"{first}\" and \"{second}\" is \"{joined}\".")
+  await ctx.respond(f"When you join \"{first}\" and \"{second}\", you get: \"{joined}\".")
 
 bot.run("TOKEN")
 ```
@@ -237,7 +241,7 @@ bot.run("TOKEN")
         join
       </DiscordInteraction>
     </div>
-    The joined string of "hi" and " mom" is "hi mom".
+    When you join "Hello" and "World!", you get: "Hello World!"
   </DiscordMessage>
 </DiscordComponent>
 
