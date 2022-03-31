@@ -93,13 +93,13 @@ You can store your tokens in `.env` files. This is a simple way to store sensiti
 1. Create a file with the name `.env`. Just `.env`, with the dot/period at the start.
 2. Define the token in the file, like so:
 
-   ```env title=".env"
+   ```env
    TOKEN = [PASTE YOUR TOKEN HERE]
    ```
 
    for example:
 
-   ```env title=".env"
+   ```env
    TOKEN = NzkyNzE1NDU0MTk2MDg4ODQy.X-hvzA.Ovy4MCQywSkoMRRclStW4xAYK7I
    ```
 
@@ -116,7 +116,7 @@ will not be pushed to a remote Git repository. It will stay secure on your local
 
 Here's an example of code you'll write with Pycord:
 
-```py
+```py title="The Basics"
 import discord
 import os # default module
 from dotenv import load_dotenv
@@ -145,7 +145,6 @@ bot.run(os.getenv('TOKEN')) # run the bot with the token
     Hey!
   </DiscordMessage>
 </DiscordComponent>
-<br/>
 
 Let's go through the code. First, the imports.
 
@@ -201,35 +200,6 @@ Now you have finished creating your first Pycord bot! What we have shown you is 
 of a bot. You can do a lot more with Python and Pycord knowledge, as well as your imagination! Pycord
 will not limit your bot's abilities.
 
-:::note
-
-The part where we load the token from the enviormental variables is not required. You may use another way to keep your token secure, or, although not recommended, simply specify the token normally as a string, as shown below.
-
-<details>
-<summary>A Basic Bot without securing the token</summary>
-<div class="markdown-body">
-
-```py
-import discord
-
-bot = discord.Bot()
-
-@bot.event
-async def on_ready():
-    print(f"{bot.user} is ready and online!")
-
-@bot.slash_command(name = "hello", description = "Say hello to the bot")
-async def hello(ctx):
-    await ctx.send("Hey!")
-
-bot.run("TOKEN")
-```
-
-</div>
-</details>
-
-:::
-
 ## FAQ
 
 ### How do I make prefixed commands?
@@ -238,7 +208,7 @@ Prefixed commands are an older method of creating bot commands that listen for m
 if the message starts with a certain character. You can read [this page](../Extensions/Commands/prefixed-commands)
 to learn more about prefixed commands.
 
-### How do I setup modules/cogs?
+### I have a lot of commands. How can I organize them?
 
 [Cogs](../Extensions/Commands/cogs) are a great way to organize your commands by putting them into
 groups called cogs. Cogs are separate files that your bot loads to get the commands inside.
@@ -249,9 +219,3 @@ You can read more about cogs, as well as learn how to use them and their benefit
 
 Pycord makes it very easy to use Message Commands with your bot by using the `discord.ui` module.
 To learn more, read about Message Commands in our [interactions directory](../Interactions).
-
-:::info Related Topics
-
-- [Prefixed Commands](../../extensions/commands/prefixed-commands)
-
-:::
