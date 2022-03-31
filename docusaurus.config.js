@@ -32,15 +32,6 @@ const config = {
       },
     ],
   ],
-  themes: [
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      {
-        hashed: true,
-        language: ["en"],
-      },
-    ],
-  ],
 
   themeConfig: {
     autoCollapseSidebarCategories: true,
@@ -96,6 +87,11 @@ const config = {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
     },
+    algolia: {
+      appId: "B3W8ZM9HW4",
+      apiKey: "1bf03e7f2ea8fef3ab0c70f50c65e063",  // Public key
+      indexName: "pycord",
+    }
   },
 };
 
