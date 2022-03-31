@@ -2,25 +2,30 @@
 title: More Features
 description: More features to make your bot cool and snazzy.
 ---
- 
+
+import {
+  DiscordInteraction,
+  DiscordMessage,
+  DiscordMessages,
+  DiscordEmbed,
+  DiscordEmbedField,
+  DiscordEmbedFields,
+} from "discord-message-components/packages/react";
+import "discord-message-components/packages/react/dist/style.css";
+
 So, you just created your first Pycord bot! Now, let's add some more features to it. This will include adding event handlers, waiting for user response, styling the messages, and more.
 
 ## Events
 
 ### Event Handlers
 
-
 Events in Discord are a way to listen for certain actions. For example, if you want to know when a user joins your server so you could send a welcome message, you can use the `on_member_join` event.
-
-#### Subscribing to Events
 
 First, you need to ask Discord to send you events. This is done via "Intents". Read up the [Intents](../Popular-Topics/intents) page for more information.
 
 Once you understand what intents are, you can enable the events you need, or just use the default ones with `discord.Intents.all()`.
 
-#### Adding Event Handlers
-
-Let's add an event handler for when a user joins the server. We will use the `on_member_join` event. We will send a private message to the user welcoming them to the server.
+Now that that's done, let's add an event handler for when a user joins the server. We will use the `on_member_join` event. We will send a private message to the user welcoming them to the server.
 
 ```python
 @bot.event
@@ -68,85 +73,154 @@ Here, we check if the message is from the user that sent the command. We simply 
 Embeds are a Discord feature that allows applications to format their messages in cool embedded format,
 enabling your bot to lay out messages with a lot of text into neat fields.
  
-#### Creating an Embed
+<DiscordComponent>
+    <DiscordMessage author="Guide Bot" avatar="red" bot>
+        <DiscordEmbed
+        embedTitle="Pycord Guide"
+        url="https://guide.pycord.dev"
+        authorIcon="/img/logo.png"
+        authorName="Pycord Team"
+        authorUrl="https://github.com/Pycord-Development/guide"
+        thumbnail="/img/logo.png"
+        borderColor="#5865F2"
+        timestamp="01/09/2021"
+        footerIcon="/img/logo.png"
+        image="/img/banner-v3.png"
+        >
+            The Pycord Guide is a detailed guide that explains how to use Pycord and all of its features.
+            <DiscordEmbedFields slot="fields">
+                <DiscordEmbedField fieldTitle="Getting Started">
+                    The <a href="/category/getting-started">Getting Started section</a> explains how you can get a brand new bot created and running from scratch.
+                </DiscordEmbedField>
+                <DiscordEmbedField fieldTitle="Interactions" inline="true">
+                    <a href="/interactions">Interactions</a> with Pycord
+                </DiscordEmbedField>
+                <DiscordEmbedField fieldTitle="Extensions" inline="true">
+                    Pycord's various <a href="/category/extensions">Extensions</a>
+                </DiscordEmbedField>
+                <DiscordEmbedField fieldTitle="Popular Topics" inline="true">
+                    <a href="/category/popular-topics">Other Popular Topics</a>
+                </DiscordEmbedField>
+                <DiscordEmbedField fieldTitle="And More!">
+                    We have so much more! Just explore, and you will find everything you need. If you want another page added, open an issue on the <a href="https://github.com/Pycord-Development/guide">GitHub</a>.
+                </DiscordEmbedField>
+            </DiscordEmbedFields>
+            <span slot="footer">Created with 💖 by the Pycord Team & Contributors</span>
+        </DiscordEmbed>
+    </DiscordMessage>
+</DiscordComponent>
 
-With Pycord, it's easy to create and send embeds. Here's an example:
- 
-```py
+<br/>
+
+Creating embeds is simple! Just create an instance of [`discord.Embed`](https://docs.pycord.dev/en/master/api.html#discord.Embed) and edit it to your liking. Once you're done, send it!
+
+```python
 import discord
- 
+
 bot = discord.Bot()
- 
-@bot.command(description="Sends an Embed!")
-async def send_embed(ctx)
+
+@bot.command()
+async def hello(ctx):
     embed = discord.Embed(
-        title="My Embed",
-        description="Pycord makes embeds easy to use and create!",
-        color=discord.Colour.blue()
+        title="My Amazing Embed",
+        description="Embeds are super easy, barely an inconvenience.",
+        color=discord.Colour.blurple(), # Pycord provides a class with default colors you can choose from
     )
+    embed.add_field(title="A Normal Field", value="A really nice field with some information. **The description as well as the fields support markdown!**")
+
+    embed.add_field(title="Inline Field 1", value="Inline Field 1", inline=True)
+    embed.add_field(title="Inline Field 2", value="Inline Field 2", inline=True)
+    embed.add_field(title="Inline Field 3", value="Inline Field 3", inline=True)
  
-    embed.add_field(title="The Best Lib", value="Pycord is the best lib!")
-    embed.add_field(title="Inline Fields?", value="Of course we support inline fields!", inline=True)
+    embed.set_footer(text="Footer! No markdown here.") # footers can have icons too
+    embed.set_author(name="Pycord Team", icon="https://example.com/link-to-my-image.png")
+    embed.set_thumbnail(url="https://example.com/link-to-my-thumbnail.png")
+    embed.set_image(url="https://example.com/link-to-my-banner.png")
  
-    embed.set_footer(text="This is an embed generated with Pycord.")
-    embed.set_author(name="Pycord Embed", icon="https://avatars.githubusercontent.com/u/89700626")
-    embed.set_thumbnail(url="https://avatars.githubusercontent.com/u/89700626")
-    embed.set_image(url="pycord-banner")
- 
-    await ctx.respond(embed=embed)
+    await ctx.respond("Hello! Here's a cool embed.", embed=embed) # Send the embed with some text
  
 bot.run("TOKEN")
 ```
- 
+
+<DiscordComponent>
+    <DiscordMessage author="Guide Bot" avatar="red" bot>
+        <div slot="interactions">
+            <DiscordInteraction author="Guide Man" avatar="green" command>hello</DiscordInteraction>
+        </div>
+        <DiscordEmbed
+        embedTitle="My Amazing Embed"
+        authorIcon="/img/logo.png"
+        authorName="Pycord Team"
+        authorUrl="https://github.com/Pycord-Development/guide"
+        thumbnail="/img/logo.png"
+        borderColor="#5865F2"
+        footerIcon="/img/logo.png"
+        image="/img/banner-v3.png"
+        >
+            Embeds are super easy, barely an inconvenience.
+            <DiscordEmbedFields slot="fields">
+                <DiscordEmbedField fieldTitle="A Normal Field">
+                    A really nice field with some information. <strong>The description as well as the fields support markdown!</strong>
+                </DiscordEmbedField>
+                <DiscordEmbedField fieldTitle="Inline Field 1" inline="true">Inline Field 1</DiscordEmbedField>
+                <DiscordEmbedField fieldTitle="Inline Field 2" inline="true">Inline Field 2</DiscordEmbedField>
+                <DiscordEmbedField fieldTitle="Inline Field 3" inline="true">Inline Field 3</DiscordEmbedField>
+            </DiscordEmbedFields>
+            <span slot="footer">Footer! No markdown here.</span>
+        </DiscordEmbed>
+    </DiscordMessage>
+</DiscordComponent>
+
+<br/>
+
 This simple command sends replies to a [slash command](../interactions/application-commands/slash-commands) with an embed.
 Let's break it down:
  
 ```py
 embed = discord.Embed(
-    title="My Embed",
-    description="Pycord makes embeds easy to use and create!",
-    color=discord.Colour.blue()
-)
+        title="My Amazing Embed",
+        description="Embeds are super easy, barely an inconvenience.",
+        color=discord.Colour.blurple(),
+    )
 ```
  
 This command creates an embed. We use the [`Embed`](https://docs.pycord.dev/en/master/api.html#discord.Embed)
-class to create an embed object with the title "MyEmbed," the description "Pycord makes embeds easy
-to use and create!," and the color blue.
+class to create an embed object with the title "My Amazing Embed", the description "Embeds are super easy, barely an inconvenience.", and the color `blurple`, Discord's main theme color.
  
 [discord.Colour](https://docs.pycord.dev/en/master/api.html#colour) is a class full of [classmethods](https://docs.python.org/3/library/functions.html#classmethod)
 that return color values. While the official, documented name of this is `discord.Colour`, `discord.Color`
 works as well. 
  
 ```py
-embed.add_field(title="The Best Lib", value="Pycord is the best lib!")
-embed.add_field(title="Inline Fields?", value="Of course we support inline fields!", inline=True)
+embed.add_field(title="A Normal Field", value="A really nice field with some information. **The description as well as the fields support markdown!**")
+embed.add_field(title="Inline Field 1", value="Inline Field 1", inline=True)
+embed.add_field(title="Inline Field 2", value="Inline Field 2", inline=True)
+embed.add_field(title="Inline Field 3", value="Inline Field 3", inline=True)
 ```
  
 This small section shows off embed fields. You can add fields to embeds with the [`add_field` method](https://docs.pycord.dev/en/master/api.html#discord.Embed.add_field)
 of the [`discord.Embed`](https://docs.pycord.dev/en/master/api.html#embed) class. These consist of three 
-keyword arguments: `title`, `value`, and `inline`. `title` and `value` are both required arguments, While
-`inline` defaults to `False` if not specified.
+keyword arguments: `title`, `value`, and `inline`. `title` and `value` are both required arguments, which inline defaults to `False` if it's not defined. The `inline` argument specifies whether or not space will be divided among the inline fields. There could be a mix of fields where inline has different values too.
  
 ```py
-embed.set_footer(text="This is an embed generated with Pycord.")
-embed.set_author(name="Pycord Embed", icon="https://avatars.githubusercontent.com/u/89700626")
-embed.set_thumbnail(url="https://avatars.githubusercontent.com/u/89700626")
-embed.set_image(url="pycord-banner")
+embed.set_footer(text="Footer! No markdown here.") # footers can have icons too
+embed.set_author(name="Pycord Team", icon="https://example.com/link-to-my-image.png")
+embed.set_thumbnail(url="https://example.com/link-to-my-thumbnail.png")
+embed.set_image(url="https://example.com/link-to-my-banner.png")
 ```
  
 In this section, we're adding unique items to the embed. These items are:
-- Footer - With the [`set_footer()`](https://docs.pycord.dev/en/master/api.html#discord.Embed.set_footer)
+-   Footer - With the [`set_footer()`](https://docs.pycord.dev/en/master/api.html#discord.Embed.set_footer)
 method, you can set a small footer that holds a message. This has `text` and `icon_url` kwargs.
-- Author - With the [`set_author`](https://docs.pycord.dev/en/master/api.html#discord.Embed.set_author)
+-   Author - With the [`set_author`](https://docs.pycord.dev/en/master/api.html#discord.Embed.set_author)
 method, you can set an author for the embed. This is a small text field at the top of the embed. This
 includes `name`, `url` and `icon_url` kwargs.
-- Thumbnail - With the [`set_thumbnial`](https://docs.pycord.dev/en/master/api.html#discord.Embed.set_thumbnail)
+-   Thumbnail - With the [`set_thumbnial`](https://docs.pycord.dev/en/master/api.html#discord.Embed.set_thumbnail)
 method, you can set a small image to reside at the top-right of the embed. This has a single `url` kwarg.
-- Image - With the [`set_image`](https://docs.pycord.dev/en/master/api.html#discord.Embed.set_image)
+-   Image - With the [`set_image`](https://docs.pycord.dev/en/master/api.html#discord.Embed.set_image)
 method, you can set an image to sit at the bottom of an embed. This has a single `url` kwarg.
  
-There are, of course, more methods and items you can use to configure embeds. Here, we just covered
-the basics. 
+There are a lot more methods and attributes you can use to configure embeds. Here, we just covered the basics. Also remember that all of these values are not necessary in an embed. An embed may only contain a few of these, for example, only a description, or a title and a description, and so on.
  
 ### Markdown
 Markdown is a type of markup language that's limited in terms of formatting yet simple. Discord allows
@@ -158,7 +232,7 @@ for a watered-down version of markdown to be in their messages. This includes:
         <td>__*underlined italics*__</td>
     </tr>
     <tr>
-        <td>**bold**</td> 
+        <td>**bold**</td>
         <td>__**underlined bold**__</td>
         
     </tr>
@@ -195,13 +269,12 @@ Some embed fields, such as the footer, do not support markdown *at all*, includi
 
 For code markdown, you can choose between `Code Text` and `Code Blocks`.
 
-- \`Code Text\`
-- \```
+-   \`Code Text\`
+-   \`\`\`
+
 Code Blocks
-\```
+\`\`\`
 
 Code Blocks support different programming languages, such as Python.
 
-If you start your Code Block with ` ```python`, you can send readable Python code to Discord.
-
- 
+If you start your Code Block with <code>```python</code>, you can send readable Python code to Discord.

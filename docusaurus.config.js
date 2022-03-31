@@ -8,7 +8,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/vsDark");
 const config = {
   title: "Pycord Guide",
   tagline:
-    "Imagine a place... where you can learn how to add more features to your Pycord bot",
+    "Imagine a place where you can learn how to create a Discord Bot",
   url: "https://guide.pycord.dev",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -29,15 +29,6 @@ const config = {
         theme: {
           customCss: require.resolve("./src/scss/main.scss"),
         },
-      },
-    ],
-  ],
-  themes: [
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      {
-        hashed: true,
-        language: ["en"],
       },
     ],
   ],
@@ -96,6 +87,11 @@ const config = {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
     },
+    algolia: {
+      appId: "B3W8ZM9HW4",
+      apiKey: "1bf03e7f2ea8fef3ab0c70f50c65e063",  // Public key
+      indexName: "pycord",
+    }
   },
 };
 

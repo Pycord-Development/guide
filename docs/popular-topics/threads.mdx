@@ -55,17 +55,17 @@ await thread.delete()
 
 **Parameters**
 
-- `name` (str) – The new name of the thread
+-   `name` (str) – The new name of the thread
 
-- `archived` (bool) – Whether to archive the thread or not.
+-   `archived` (bool) – Whether to archive the thread or not.
 
-- `locked` (bool) – Whether to lock the thread or not.
+-   `locked` (bool) – Whether to lock the thread or not.
 
-- `invitable` (bool) – Whether non-moderators can add other non-moderators to this thread. Only available for private threads.
+-   `invitable` (bool) – Whether non-moderators can add other non-moderators to this thread. Only available for private threads.
 
-- `auto_archive_duration` (int) – The new duration in minutes before a thread gets automatically archived for inactivity. Must be one of 60, 1440, 4320, or 10080.
+-   `auto_archive_duration` (int) – The new duration in minutes before a thread gets automatically archived for inactivity. Must be one of 60, 1440, 4320, or 10080.
 
-- `slowmode_delay` (int) – Specifies the slow-mode rate limit for users in the thread, in seconds. A value of 0 disables slow-mode. The maximum value possible is 21600.
+-   `slowmode_delay` (int) – Specifies the slow-mode rate limit for users in the thread, in seconds. A value of 0 disables slow-mode. The maximum value possible is 21600.
 
 ```python title="Editing a Thread"
 thread = bot.get_channel(id)
@@ -93,13 +93,13 @@ raised an exception: HTTPException: 400 Bad Request (error code: 10008): Unknown
 
 There could be multiple reasons, some of them being:
 
-- The message does not exist
-- The message already has a thread
-- The message is in channel x, you are trying to start a thread in channel y.
-- The message was deleted.
+-   The message does not exist
+-   The message already has a thread
+-   The message is in channel x, you are trying to start a thread in channel y.
+-   The message was deleted.
 
 :::info Related Topics
 
-<!-- I can't think of any related topics for this at the moment-->
+<>{/* I can't think of any related topics for this at the moment. */}</>
 
 :::

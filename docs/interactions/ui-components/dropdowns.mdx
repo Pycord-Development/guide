@@ -1,8 +1,7 @@
 ---
 title: Select Menus
+description: Learn all about implementing Select Menus or Dropdowns in your Discord Bot with Pycord.
 ---
-
-# About
 
 Shortly after the buttons were added, Discord added their second message component: Select Menus. Select Menus allow users
 to choose from a list of items sent by a bot. These are a great substitute for having a user send a
@@ -79,12 +78,12 @@ This would send a message that reads "Select Menus rock!" along with the view.
 
 This is a big section, and it's only the decorator! Don't worry, though, it's very simple.
 
-- `pleaceholder` is what goes in the select before any value is selected.
-- `min_values` is the minimum amount of values a user has to choose.
-- `max_values` is the maximum amount of values a user can choose.
-- `options` is a list of discord.SelectOption objects that make up a Select Menu Option.
-  - `label` in a Select Option is the label of the option.
-  - `description` in a Select Option is the description of the option.
+-   `placeholder` is what goes in the select before any value is selected.
+-   `min_values` is the minimum amount of values a user has to choose.
+-   `max_values` is the maximum amount of values a user can choose.
+-   `options` is a list of discord.SelectOption objects that make up a Select Menu Option.
+    -   `label` in a Select Option is the label of the option.
+    -   `description` in a Select Option is the description of the option.
 
 Not so bad, was it?
 
@@ -94,14 +93,12 @@ async def select_callback(self, select, callback):
 ```
 
 Finally, the callback. This is what the Select Menu _does_ after being used. In this case,
-it responds to the interactions with "Awesome! I like {The option you chose} too!"
+it responds to the interactions with "Awesome! I like \{The option you chose} too!"
 
 Once again, if you found any of these very hard to understand, we suggest freshening up your Python
 skills, as Pycord requires a bit of Python experience.
 
 :::info Related Topics
 
-- [Slash Commands](../application-commands/slash-commands)
-- [Interactions Index](../../interactions)
-
-:::
+-   [Slash Commands](../application-commands/slash-commands)
+-   [Interactions Index](../../interactions)

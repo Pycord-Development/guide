@@ -73,28 +73,38 @@ As you've seen tasks can work in both outer scope and class contexts and the han
 ### [Creating a task](https://docs.pycord.dev/en/master/ext/tasks/index.html#discord.ext.tasks.loop)
 
 A look at `discord.ext.tasks.loop`'s definition in the documentation reveals that:
-1. As you've seen before it expects the time between each execution, that however doesn't have to be in seconds as there are `seconds`, `minutes` and `hours` parameters to make it easier for us, they can also be floats in case you want ultra-precision.
-2. You can also pass in a `datetime.time` object or a sequence of them in the `time` parameter which will make it run at the specified time(s).
-3. You can pass in how many times a loop runs before it stops by passing in the `count` parameter, you can use `None` to make it run forever which is also the default.
-4. The loop function ***must*** be a coroutine.
+1.  As you've seen before it expects the time between each execution, that however doesn't have to be in seconds as
+there are `seconds`, `minutes` and `hours` parameters to make it easier for us, they can also be floats in case you want
+ultra-precision.
+2.  You can also pass in a `datetime.time` object or a sequence of them in the `time` parameter which will make it run
+at the specified time(s).
+3.  You can pass in how many times a loop runs before it stops by passing in the `count` parameter, you can use `None`
+to make it run forever which is also the default.
+4.  The loop function ***must*** be a coroutine.
 
-These are all really useful and they aren't the only parameters so if you wanna know more about them check out the [docs](https://docs.pycord.dev/en/master/ext/tasks/index.html#discord.ext.tasks.loop)!
+These are all really useful and they aren't the only parameters so if you wanna know more about them check out the
+[docs](https://docs.pycord.dev/en/master/ext/tasks/index.html#discord.ext.tasks.loop)!
 
 ### Attributes
 
 A task has the following attributes:
-- `current_loop`: The current loop the task is on.
-- `hours`, `minutes`, `seconds`: attributes that represent the time between each execution.
-- `time`: A list of datetime.time objects that represent the times the task will run, returns `None` if no datetime objects were passed.
-- `next_iteration`: A `datetime.datetime` object that represents the next time the next iteration of the task will run, can return `None` if the task stopped running.
+-   `current_loop`: The current loop the task is on.
+-   `hours`, `minutes`, `seconds`: attributes that represent the time between each execution.
+-   `time`: A list of datetime.time objects that represent the times the task will run, returns `None` if no datetime
+objects were passed.
+-   `next_iteration`: A `datetime.datetime` object that represents the next time the next iteration of the task will
+run, can return `None` if the task stopped running.
 
 These attributes serve as a really powerful asset to get info about your loop.
 
 ### Example
 
-Now let's create a cog that handles a leaderboard we have in our bot using Tasks then explain what we did after that and also provide a refresher of how slash commands groups work in cogs.
+Now let's create a cog that handles a leaderboard we have in our bot using Tasks then explain what we did after that and
+also provide a refresher of how slash commands groups work in cogs.
 
-For the sake of this example let's pretend that we have a leaderboard module that does all the leaderboard handling for us and that computing the leaderboard is very expensive computationally wise so we want to store one version of it that gets regularly updated instead of generating it every time someone calls the `/leaderboard view` command.
+For the sake of this example let's pretend that we have a leaderboard module that does all the leaderboard handling for
+us and that computing the leaderboard is very expensive computationally wise so we want to store one version of it that
+gets regularly updated instead of generating it every time someone calls the `/leaderboard view` command.
 ```py
 from discord.ext import tasks, commands
 from discord.commands import SlashCommandGroup, CommandPermissions
@@ -127,7 +137,7 @@ class LeaderboardCog(commands.Cog):
 
     @update_leaderboard.error
     async def update_leaderboard_error(self, error):
-        print(f"Oh no, an error occured while updating the leaderboard. Error: {error}")
+        print(f"Oh no, an error occurred while updating the leaderboard. Error: {error}")
 
     @leaderboard.command()
     async def view(self, ctx):
@@ -166,26 +176,37 @@ def setup(bot):
     bot.add_cog(LeaderboardCog(bot))
 ```
 
-Few, that was quite a bit of code.
+Phew, that was quite a bit of code.
 
 Now to explain what's going on:
 
-First things first we create a cog and in its `__init__` function we start the `update_leaderboard` task and generate the first instance of our leaderboard's embed.
+First things first we create a cog and in its `__init__` function we start the `update_leaderboard` task and generate
+the first instance of our leaderboard's embed.
 
-After that, we define the `update_leaderboard` task using the `loop` decorator and we make it run every ten minutes by passing 10 to the `minutes` parameter.
+After that, we define the `update_leaderboard` task using the `loop` decorator and we make it run every ten minutes by
+passing 10 to the `minutes` parameter.
 
-Then that we define the `before_update_leaderboard` task using the `before_loop` decorator and we make it wait until the bot is ready before starting the task.
+Then that we define the `before_update_leaderboard` task using the `before_loop` decorator and we make it wait until the
+bot is ready before starting the task.
 
-Next up we define the `after_update_leaderboard` task using the `after_loop` decorator and we make it clean up the leaderboard when the loop finally stops running.
+Next up we define the `after_update_leaderboard` task using the `after_loop` decorator and we make it clean up the
+leaderboard when the loop finally stops running.
 
-Then we define the `update_leaderboard_error` task using the `error` decorator and we make it print any errors that may occur while we update our leaderboard to the console.
+Then we define the `update_leaderboard_error` task using the `error` decorator and we make it print any errors that may
+occur while we update our leaderboard to the console.
 
-Then we get into the fun stuff, we create a slash command group using the `SlashCommandGroup` class and name it `leaderboard`, we then create the `view` sub-command which sends the embed generated when the leaderboard is updated and `update_info` which shows a lot of data about the task using some of the attributes and functions available to us.
+Then we get into the fun stuff, we create a slash command group using the `SlashCommandGroup` class and name it
+`leaderboard`, we then create the `view` sub-command which sends the embed generated when the leaderboard is updated and
+`update_info` which shows a lot of data about the task using some of the attributes and functions available to us.
 
 We also create a slash command group called `leaderboard_config` which is only available to the owner of the bot.
 
-Then we create the `set_time_between_updates` sub-command which takes in the time in minutes and changes the time between updates of the leaderboard using the `change_interval` method, the `stop` sub-command which stops the task using the `stop` method and `restart` which restarts the task using the `restart` method.
+Then we create the `set_time_between_updates` sub-command which takes in the time in minutes and changes the time
+between updates of the leaderboard using the `change_interval` method, the `stop` sub-command which stops the task using
+the `stop` method and `restart` which restarts the task using the `restart` method.
 
 Finally, we add the `LeaderboardCog` cog to the bot and we're done!
 
-I'd highly recommend you check the tasks extension [documentation](https://docs.pycord.dev/en/master/ext/tasks/index.html) for more info on how to use them and what other functions they have.
+I'd highly recommend you check the tasks extension
+[documentation](https://docs.pycord.dev/en/master/ext/tasks/index.html) for more info on how to use them and what other
+functions they have.

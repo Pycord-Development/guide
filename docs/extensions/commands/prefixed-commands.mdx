@@ -9,8 +9,10 @@ import {
   DiscordInteraction,
   DiscordMessage,
   DiscordMessages,
-} from "@discord-message-components/react";
-import "@discord-message-components/react/styles";
+} from "discord-message-components/packages/react";
+import "discord-message-components/packages/react/dist/style.css";
+
+import DiscordComponent from "../../../src/components/DiscordComponent";
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
@@ -25,11 +27,11 @@ The syntax becomes a little more complicated when you want to have multiple comm
 disadvantages to this system. This is where the commands extension comes in. `ext.commands` has
 various advantages, such as:
 
-- Simpler syntax
-- Easier to use
-- Easier to parse user input
-- Comes with built-in help commands
-- Comes with a built-in system for categorizing commands
+-   Simpler syntax
+-   Easier to use
+-   Easier to parse user input
+-   Comes with built-in help commands
+-   Comes with a built-in system for categorizing commands
 
 <Tabs>
   <TabItem value="0" label="Using Events to Create Prefixed Commands" default>
@@ -59,28 +61,28 @@ async def on_message(message):
         await message.channel.send("Unknown command.")
 ```
 
-<DiscordMessages>
-  <DiscordMessage author="Guide Man" avatar="blue">
+<DiscordComponent>
+  <DiscordMessage profile="bob">
     !ping
   </DiscordMessage>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+  <DiscordMessage profile="robocord">
     Pong!
   </DiscordMessage>
-  <DiscordMessage author="Guide Man" avatar="blue">
+  <DiscordMessage profile="bob">
     !announce Hello Hello World!
   </DiscordMessage>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+  <DiscordMessage profile="robocord"t>
     <strong>Hello</strong>
     <br />
     Hello World!
   </DiscordMessage>
-  <DiscordMessage author="Guide Man" avatar="blue">
+  <DiscordMessage profile="bob">
     !help
   </DiscordMessage>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+  <DiscordMessage profile="robocord">
     Unknown Command.
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 
   </TabItem>
   <TabItem value="1" label="Using the Commands Extension">
@@ -105,31 +107,31 @@ async def on_command_error(ctx, error):
         await ctx.send("Unknown command.")
 ```
 
-<DiscordMessages>
-  <DiscordMessage author="Guide Man" avatar="blue">
+<DiscordComponent>
+  <DiscordMessage profile="bob">
     !ping
   </DiscordMessage>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+  <DiscordMessage profile="robocord">
     Pong!
   </DiscordMessage>
-  <DiscordMessage author="Guide Man" avatar="blue">
+  <DiscordMessage profile="bob">
     !announce Hello Hello World!
   </DiscordMessage>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+  <DiscordMessage profile="robocord">
     <strong>Hello</strong>
     <br />
     Hello World!
   </DiscordMessage>
-  <DiscordMessage author="Guide Man" avatar="blue">
+  <DiscordMessage profile="bob">
     !pycord
   </DiscordMessage>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+  <DiscordMessage profile="robocord">
     Unknown command.
   </DiscordMessage>
-  <DiscordMessage author="Guide Man" avatar="blue">
+  <DiscordMessage profile="bob">
     !help
   </DiscordMessage>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+  <DiscordMessage profile="robocord">
     <code>
       No Category:
       <br />
@@ -146,7 +148,7 @@ async def on_command_error(ctx, error):
       You can also type !help category for more info on a category.
     </code>
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 
 <br />
 
@@ -191,17 +193,17 @@ async def ping(ctx): # This is the function we will use to create the command.
 bot.run("token") # Run the bot with your token.
 ```
 
-<DiscordMessages>
-  <DiscordMessage author="Guide Man" avatar="blue">
+<DiscordComponent>
+  <DiscordMessage profile="bob">
     !ping
   </DiscordMessage>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+  <DiscordMessage profile="robocord">
     Pong!
   </DiscordMessage>
-  <DiscordMessage author="Guide Woman" avatar="green">
+  <DiscordMessage profile="bob">
     !help
   </DiscordMessage>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+  <DiscordMessage profile="robocord">
     <code>
       No Category:
       <br />
@@ -216,7 +218,7 @@ bot.run("token") # Run the bot with your token.
       You can also type !help category for more info on a category.
     </code>
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 
 <br />
 
@@ -268,7 +270,8 @@ However, since Pycord parses the message at whitespaces, the title will end up b
 message "Greetings! Greetings to you all!". The user can prevent this by typing `!echo "Holiday
 Greetings!" Greetings to you all!`.
 
-<DiscordMessages>
+<!-- TODO: Change this to a non-holiday example, lots of people aren't religious. -->
+<DiscordComponent>
   <DiscordMessage author="Santa Claus" avatar="blue">
     !echo #general Holiday Greetings! Greetings to you all!
   </DiscordMessage>
@@ -285,7 +288,7 @@ Greetings!" Greetings to you all!`.
     <br />
     Greetings to you all!
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 
 Let's check out another example for parameters and parameter types.
 
@@ -308,7 +311,7 @@ with `int(guess)`.
 
 :::info Related Topics
 
-- [Command Groups](groups)
-- [Rules and Common Practices](../../Getting-Started/rules-and-common-practices)
+-   [Command Groups](groups)
+-   [Rules and Common Practices](../../Getting-Started/rules-and-common-practices)
 
 :::
