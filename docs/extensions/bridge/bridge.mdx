@@ -51,7 +51,7 @@ bot.run("TOKEN")
 
   <DiscordMessage profile="robocord" bot>
     <div slot="interactions">
-      <DiscordInteraction profile="bob">
+      <DiscordInteraction profile="bob" highlight>
         !hello
       </DiscordInteraction>
     </div>
@@ -156,3 +156,27 @@ async def sum(ctx, a: int, b: int):
 
 bot.run("TOKEN")
 ```
+
+<DiscordComponent>
+  <DiscordMessage profile="robocord" bot>
+    <div slot="interactions">
+      <DiscordInteraction profile="bob" command>
+        sum
+      </DiscordInteraction>
+    </div>
+    4
+  </DiscordMessage>
+
+  <DiscordMessage profile="bob">
+    !sum 2 2
+  </DiscordMessage>
+
+  <DiscordMessage profile="robocord" bot>
+    <div slot="interactions">
+      <DiscordInteraction profile="bob" highlight>
+        !sum 2 2
+      </DiscordInteraction>
+    </div>
+    4
+  </DiscordMessage>
+</DiscordComponent>
