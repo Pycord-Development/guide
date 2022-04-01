@@ -8,8 +8,10 @@ import {
   DiscordInteraction,
   DiscordMessage,
   DiscordMessages,
-} from "@discord-message-components/react";
-import "@discord-message-components/react/styles";
+} from "discord-message-components/packages/react";
+import "discord-message-components/packages/react/dist/style.css";
+
+import DiscordComponent from "../../../src/components/DiscordComponent";
 
 ## Concept
 
@@ -33,29 +35,29 @@ async def hello(ctx):
 bot.run("TOKEN")
 ```
 
-<DiscordMessages>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+<DiscordComponent>
+  <DiscordMessage profile="robocord" bot>
     <div slot="interactions">
-      <DiscordInteraction author="Guide Man" avatar="green" command>
+      <DiscordInteraction profile="bob" command>
         hello
       </DiscordInteraction>
     </div>
     Hello!
   </DiscordMessage>
 
-  <DiscordMessage author="Guide Man" avatar="green">
+  <DiscordMessage profile="bob">
     !hello
   </DiscordMessage>
 
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+  <DiscordMessage profile="robocord" bot>
     <div slot="interactions">
-      <DiscordInteraction author="@Guide Man" avatar="green">
+      <DiscordInteraction profile="bob">
         !hello
       </DiscordInteraction>
     </div>
     Hello!
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 
 ## Syntax
 
@@ -86,51 +88,51 @@ class Greetings(commands.Cog):
 
 The cog will automatically split the Bridge Command into their Slash Command and Prefixed Command counterparts.
 
-<DiscordMessages>
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+<DiscordComponent>
+  <DiscordMessage profile="robocord" bot>
     <div slot="interactions">
-      <DiscordInteraction author="Guide Man" avatar="green" command>
+      <DiscordInteraction profile="bob" command>
         hello
       </DiscordInteraction>
     </div>
     Hello!
   </DiscordMessage>
 
-  <DiscordMessage author="Guide Man" avatar="green">
+  <DiscordMessage profile="bob">
     !hello
   </DiscordMessage>
 
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+  <DiscordMessage profile="robocord" bot>
     <div slot="interactions">
-      <DiscordInteraction author="Guide Man" avatar="green" highlight>
+      <DiscordInteraction profile="bob" highlight>
         !hello
       </DiscordInteraction>
     </div>
     Hello!
   </DiscordMessage>
 
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+  <DiscordMessage profile="robocord" bot>
     <div slot="interactions">
-      <DiscordInteraction author="Guide Man" avatar="green" command>
+      <DiscordInteraction profile="bob" command>
         bye
       </DiscordInteraction>
     </div>
     Bye!
   </DiscordMessage>
 
-  <DiscordMessage author="Guide Man" avatar="green">
+  <DiscordMessage profile="bob">
     !bye
   </DiscordMessage>
 
-  <DiscordMessage author="Guide Bot" avatar="red" bot>
+  <DiscordMessage profile="robocord" bot>
     <div slot="interactions">
-      <DiscordInteraction author="Guide Man" avatar="green" highlight={true}>
+      <DiscordInteraction profile="bob" highlight>
         !bye
       </DiscordInteraction>
     </div>
     Bye!
   </DiscordMessage>
-</DiscordMessages>
+</DiscordComponent>
 
 ### Deferring
 
@@ -138,4 +140,19 @@ You can defer if you want to communicate to the user that your bot is busy proce
 
 <!-- TODO: Add example images of deferring at work -->
 
-<!-- TODO: Section about options -->
+### Options
+
+Options are pretty straightforward. You just specify them like you do with prefixed commands, and you're all set!
+
+```python
+import discord
+from discord.ext import bridge
+
+bot = bridge.Bot(command_prefix="!")
+
+@bot.bridge_command()
+async def sum(ctx, a: int, b: int):
+  await ctx.respond(a + b)
+
+bot.run("TOKEN")
+```
