@@ -1,0 +1,182 @@
+---
+title: Bridge
+---
+
+import {
+  DiscordButton,
+  DiscordButtons,
+  DiscordInteraction,
+  DiscordMessage,
+  DiscordMessages,
+} from "discord-message-components/packages/react";
+import "discord-message-components/packages/react/dist/style.css";
+
+import DiscordComponent from "../../../src/components/DiscordComponent";
+
+## Concept
+
+Let's say that you want to make a command that is both a Slash Command and a Prefixed Command. Now, you could just copy and paste the code from the first command callback to the other and make some adjustments, but that's not very efficient.
+
+This is where the `ext.bridge` module comes in. It allows you to use one callback to make both a Slash Command and a Prefixed Command.
+
+
+### Example Usage
+
+```python
+import discord
+from discord.ext import bridge
+
+bot = bridge.Bot(command_prefix="!")
+
+@bot.bridge_command()
+async def hello(ctx):
+  await ctx.respond("Hello!")
+
+bot.run("TOKEN")
+```
+
+<DiscordComponent>
+  <DiscordMessage profile="robocord" bot>
+    <div slot="interactions">
+      <DiscordInteraction profile="bob" command>
+        hello
+      </DiscordInteraction>
+    </div>
+    Hello!
+  </DiscordMessage>
+
+  <DiscordMessage profile="bob">
+    !hello
+  </DiscordMessage>
+
+  <DiscordMessage profile="robocord" bot>
+    <div slot="interactions">
+      <DiscordInteraction profile="bob" highlight>
+        !hello
+      </DiscordInteraction>
+    </div>
+    Hello!
+  </DiscordMessage>
+</DiscordComponent>
+
+## Syntax
+
+First, instead of using `discord.Bot` or `commands.Bot`, we use `bridge.Bot`. `bridge.Bot` does inherit from `commands.Bot`, so you can do anything with `bridge.Bot` that `commands.Bot` can do.
+Then, we define a command with `@bot.bridge_command()`. This makes a Bridge Command, which has both a Prefixed Command counterpart and a Slash Command counterpart.
+Next, the callback has access to a `ctx` object, which is the context of the command. This context is either of `BridgeApplicationContext` type or `BridgeExtContext`. Because of that, it makes detecting how the function was called easier.
+
+### Using Bridge Commands in a Cog
+
+Like Slash Commands and Prefixed Commands, you can use Bridge Commands in a Cog. You can do this by using the `bridge_command` decorator. Here's an example:
+
+```python
+import discord
+from discord.ext import bridge, commands
+
+class Greetings(commands.Cog):
+    def __init__(self, bot):
+        self.bot = bot
+
+    @bridge.bridge_command()
+    async def hello(ctx):
+        await ctx.respond("Hello!")
+
+    @bridge.bridge_command()
+    async def bye(ctx):
+        await ctx.respond("Bye!")
+```
+
+The cog will automatically split the Bridge Command into their Slash Command and Prefixed Command counterparts.
+
+<DiscordComponent>
+  <DiscordMessage profile="robocord" bot>
+    <div slot="interactions">
+      <DiscordInteraction profile="bob" command>
+        hello
+      </DiscordInteraction>
+    </div>
+    Hello!
+  </DiscordMessage>
+
+  <DiscordMessage profile="bob">
+    !hello
+  </DiscordMessage>
+
+  <DiscordMessage profile="robocord" bot>
+    <div slot="interactions">
+      <DiscordInteraction profile="bob" highlight>
+        !hello
+      </DiscordInteraction>
+    </div>
+    Hello!
+  </DiscordMessage>
+
+  <DiscordMessage profile="robocord" bot>
+    <div slot="interactions">
+      <DiscordInteraction profile="bob" command>
+        bye
+      </DiscordInteraction>
+    </div>
+    Bye!
+  </DiscordMessage>
+
+  <DiscordMessage profile="bob">
+    !bye
+  </DiscordMessage>
+
+  <DiscordMessage profile="robocord" bot>
+    <div slot="interactions">
+      <DiscordInteraction profile="bob" highlight>
+        !bye
+      </DiscordInteraction>
+    </div>
+    Bye!
+  </DiscordMessage>
+</DiscordComponent>
+
+### Deferring
+
+You can defer if you want to communicate to the user that your bot is busy processing the command. This is done by using `ctx.defer()`. For the Slash Command implementation, `ctx.defer()` calls the function that gives out a "Bot is thinking" message. For the Prefixed Command implementation, `ctx.defer()` enables the typing indicator.
+
+<!-- TODO: Add example images of deferring at work -->
+
+### Options
+
+Options are pretty straightforward. You just specify them like you do with prefixed commands, and you're all set!
+
+```python
+import discord
+from discord.ext import bridge
+
+bot = bridge.Bot(command_prefix="!")
+
+@bot.bridge_command()
+async def sum(ctx, a: int, b: int):
+  await ctx.respond(a + b)
+
+bot.run("TOKEN")
+```
+
+<DiscordComponent>
+  <DiscordMessage profile="robocord" bot>
+    <div slot="interactions">
+      <DiscordInteraction profile="bob" command>
+        sum
+      </DiscordInteraction>
+    </div>
+    4
+  </DiscordMessage>
+
+  <DiscordMessage profile="bob">
+    !sum 2 2
+  </DiscordMessage>
+
+  <DiscordMessage profile="robocord" bot>
+    <div slot="interactions">
+      <DiscordInteraction profile="bob" highlight>
+        !sum 2 2
+      </DiscordInteraction>
+    </div>
+    4
+  </DiscordMessage>
+</DiscordComponent>
