@@ -1,3 +1,6 @@
 {
-  "label": "Bridge"
+  "label": "Bridge",
+  "link": {
+    "type": "generated-index"
+  }
 }
