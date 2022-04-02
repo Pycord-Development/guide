@@ -3,20 +3,37 @@ title: Modal Dialogs
 description: Learn how you can implement Modals in your Discord Bot with Pycord!
 ---
 
-Modal dialogs, also known as "modals," provide bot developers with a way to obtain input from users. For bots without the
-Message Content intent, modals are the primary way of obtaining text input from users.
+import {
+  DiscordButton,
+  DiscordButtons,
+  DiscordInteraction,
+  DiscordMessage,
+  DiscordMessages,
+} from "discord-message-components/packages/react";
+import "discord-message-components/packages/react/dist/style.css";
 
-Modal dialogs consist of a title, a custom ID, and up to 5 `discord.ui.InputText` components.
+import DiscordComponent from "../../../src/components/DiscordComponent";
 
-When creating a modal dialog, you will generally want to subclass the `discord.ui.Modal` class like so:
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
-```py title="Basic Modal"
-class MyModal(Modal):
+Modal Dialogs, also known as "modals", provide a form-like structure for bots to recieve input from users. No extra permissions are needed for bots to send modal dialogs, so it becomes a convinient workaround for bots to recieve longer input without needing the Message Content [intent](../../popular-topics/intents). 
+
+## Concept
+
+Modal Dialogs consist of a title, custom ID, and up to 5 [`discord.ui.InputText`](https://docs.pycord.dev/en/master/api.html#discord.ui.InputText) components. While creating modals, we generally subclass [`discord.ui.Modal`](https://docs.pycord.dev/en/master/api.html#discord.ui.Modal), as we'll see later.
+
+Unlike other UI Components, Modals cannot be sent with messages. They must be invoked by an Application Command or another UI Component.
+
+## Usage Syntax
+
+```py
+class MyModal(discord.ui.Modal):
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
 
-        self.add_item(InputText(label="Short Input"))
-        self.add_item(InputText(label="Long Input", style=discord.InputTextStyle.long))
+        self.add_item(discord.ui.InputText(label="Short Input"))
+        self.add_item(discord.ui.InputText(label="Long Input", style=discord.InputTextStyle.long))
 
     async def callback(self, interaction: discord.Interaction):
         embed = discord.Embed(title="Modal Results")
@@ -25,21 +42,48 @@ class MyModal(Modal):
         await interaction.response.send_message(embeds=[embed])
 ```
 
-When sending the modal to a user, you can use `ApplicationContext.send_modal()` or `InteractionResponse.send_modal()`:
+<Tabs>
+<TabItem value="application-commands" label="Sending Modals through Application Commands" default>
+
+The `ctx` parameter we define in Application Commands recieves an [`ApplicationContext`](https://docs.pycord.dev/en/master/api.html#discord.ApplicationContext) object. Using its `send_modal()` coroutine, you can send a Modal dialog to the user invoking the Application Command.
+
 ```py
-@slash_command()
+@bot.slash_command()
 async def modal_slash(ctx: discord.ApplicationContext):
     """Shows an example of a modal dialog being invoked from a slash command."""
-    modal = MyModal(title="Slash Command Modal")
+    modal = MyModal(title="Modal via Slash Command")
     await ctx.send_modal(modal)
 ```
+
+</TabItem>
+<TabItem value="ui-components" label="Sending Modals through UI Components">
+
+The `interaction` parameter we define in UI Components recieves an [`Interaction`](https://docs.pycord.dev/en/master/api.html#discord.Interaction) object. The `response` attribute of the object contains an [`InteractionResponse`](https://docs.pycord.dev/en/master/api.html#discord.InteractionResponse) object, with various coroutines such as `send_message()` and `send_modal()`, which we utilize. 
+
+```py
+class MyView(discord.ui.View):
+    @discord.ui.button(label="Send Modal")
+    async def button_callback(self, button, interaction):
+        await interaction.response.send_modal(MyModal(title="Modal via Button"))
+
+@bot.slash_command()
+async def send_modal(ctx):
+    await ctx.respond(view=MyView())
+```
+
+</TabItem>
+</Tabs>
 
 The above example uses an embed to display the results of the modal submission, but you can do anything you want with the text provided by the user.
 Each input field can be accessed in the order it was added to the modal dialog, via `Modal.children`.
 
-## InputText Component
+## Customization
 
-The `style` parameter of an `InputText` field is used to determine whether it should be a short (single-line) or long (multi-line) input field.
+A Modal can have up to 5 [`InputText`](https://docs.pycord.dev/en/master/api.html#discord.ui.InputText) fields. These fields offer some customization.
+
+Each field has a label which is shown to the user. This is defined with `label`.
+
+The `style` parameter is used to determine whether it should be a short (single-line) or long (multi-line) input field.
 
 There are a number of aliases that can be used:
 
@@ -57,4 +101,5 @@ long = 2
 :::info Related Topics
 
 - [Slash Commands](../application-commands/slash-commands)
+- [Buttons](./buttons)
 - [Interactions Index](../../interactions)

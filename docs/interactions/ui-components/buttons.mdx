@@ -27,8 +27,7 @@ So, let's learn how you can add buttons to your bot!
 
 ## Concept
 
-Buttons weren't the only update to the interactions system in Discord. Discord also added [drop-down menus](./dropdowns)
-called Select Menus. Discord is also still working on more interaction elements!
+Buttons weren't the only update to the interactions system in Discord. Discord also added [Select Menus](./dropdowns) and [Modal Dialogs](./modal-dialogs), both of which work very similarly to buttons.
 
 These UI elements reside in a "view". To learn more about views, please refer to the
 [interactions page](../../interactions).
@@ -39,7 +38,6 @@ Let's see how to create a simple responsive button.
 
 ```python
 import discord
-from discord import commands
 
 bot = discord.Bot() # Create a bot object
 
@@ -76,7 +74,7 @@ Using this command should return the following message:
 <br />
 
 As you can see, we create a class called `View` that [subclasses](#oop)
-[`discord.ui.View`](https://docs.pycord.dev/en/master/api.html#discord.ui.Button).
+[`discord.ui.View`](https://docs.pycord.dev/en/master/api.html#discord.ui.View).
 
 Then, we add a function called `button_callback` to the `View` class with the decorator
 [`discord.ui.button`](https://docs.pycord.dev/en/master/api.html#discord.ui.button).
@@ -124,14 +122,19 @@ So, how do we move the buttons to another row?
 This can be done by specifying the `row` argument in the [`discord.ui.button`](https://docs.pycord.dev/en/master/api.html#discord.ui.button)
 decorator.
 
+:::info The `row` argument
+
+The row argument specifies the relative row this button belongs to. A Discord component can only have 5 rows. By default, items are arranged automatically into those 5 rows. If you’d like to control the relative positioning of the row then passing an index is advised. For example, row=1 will show up before row=2. Defaults to None, which is automatic ordering. The row number must be between 0 and 4 (i.e. zero indexed).
+
+:::
+
 ```python
 class MyView(discord.ui.View):
-
-    @discord.ui.button(label="Button 1", row=1, style=discord.ButtonStyle.primary)
+    @discord.ui.button(label="Button 1", row=0, style=discord.ButtonStyle.primary)
     async def first_button_callback(self, button, interaction):
         await interaction.response.send_message("You pressed me!")
 
-    @discord.ui.button(label="Button 2", row=2, style=discord.ButtonStyle.primary)
+    @discord.ui.button(label="Button 2", row=1, style=discord.ButtonStyle.primary)
     async def second_button_callback(self, button, interaction):
         await interaction.response.send_message("You pressed me!")
 ```
@@ -154,7 +157,7 @@ async def button(ctx):
 ### Disabling Buttons on Press
 
 <Tabs>
-  <TabItem value="disabling-a-single-component" label="Disabling a single component on press" default>
+  <TabItem value="disabling-a-single-component" label="Disabling a single component" default>
 
 ```python
 class MyView(discord.ui.View):
@@ -167,11 +170,10 @@ class MyView(discord.ui.View):
 
   </TabItem>
 
-  <TabItem value="disabling-all-children" label="Disabling all of a view's children">
+  <TabItem value="disabling-all-children" label="Disabling all the components of a view">
 
 ```python
 class MyView(discord.ui.View):
-
     @discord.ui.button(emoji="😀", label="Button 1", style=discord.ButtonStyle.primary)
     async def button_callback(self, button, interaction):
         for child in self.children: # loop through all the children of the view
@@ -192,54 +194,54 @@ class MyView(discord.ui.View):
 
 Sometimes, you want to have a button that is disabled after a certain amount of time. This is where timeouts come in.
 
+<Tabs>
+<TabItem value="0" label="Specifing time when creating a view object">
+
 ```python
 class MyView(discord.ui.View):
+    async def on_timeout(self):
+        for child in self.children:
+            child.disabled = True
+        await self.message.edit(content="You took too long! Disabled all the components.", view=self)
 
-    @discord.ui.button(label="A button", style=discord.ButtonStyle.primary, emoji="😎")
+    @discord.ui.button()
     async def button_callback(self, button, interaction):
-        await interaction.response.send_message("Button was pressed", ephemeral=True)
+        ...
 
 @bot.command()
 async def button(ctx):
     await ctx.send("Press the button!", view=MyView(timeout=30))
 ```
 
-As you can see in the last line, we set a timeout of 30 seconds to the view. If you are reusing the
-view and want the timeout to stay the same, you can also define the timeout in the view itself.
+</TabItem>
+<TabItem value="1" label="Specifing the time when subclassing">
 
 ```python
 class MyView(discord.ui.View):
     def __init__(self):
-        super().__init__(timeout=10)
-
-    @discord.ui.button(style=discord.ButtonStyle.primary)
-    async def callback(self, button, interaction):
-        await interaction.response.send_message("Button was pressed", ephemeral=True)
-```
-
-However, in both of the above examples, the view will simply stop working. The button will not be
-disabled, but it will not respond anymore. If someone tries to use it, it will simply show "Interaction Failed".
-
-To prevent this, we can create `on_timeout` function in the view. This function will be called when
-the timeout is reached.
-
-```python
-class MyView(discord.ui.View):
-    def __init__(self):
-        super().__init__(timeout=10)
+        super().__init__(timeout=10) # specify the timeout here
 
     async def on_timeout(self):
         for child in self.children:
             child.disabled = True
-        await self.message.edit(content="You took too long! Disabling all the buttons.", view=self)
+        await self.message.edit(content="You took too long! Disabled all the components.", view=self)
 
-    @discord.ui.button(style=discord.ButtonStyle.primary)
-    async def callback(self, button, interaction):
-        await interaction.response.send_message("Button was pressed", ephemeral=True)
+    @discord.ui.button()
+    async def button_callback(self, button, interaction):
+        ...
 ```
 
-Here, we loop through all the children of the view (buttons and dropdowns in the view) and disable
-them. Then, we edit the message to show that the timeout was reached.
+</TabItem>
+</Tabs>
+
+Here, we loop through all the children of the view (buttons and select menus in the view) and disable
+them. Then, we edit the message to show that the timeout was reached. 
+
+:::note
+
+If the `on_timeout` coroutine is not present, the components will simply stop working after the specified time.
+
+:::
 
 ## Persistent Views
 
@@ -257,13 +259,13 @@ In a Persistent View, the timeout must be set to `None` and all the children in 
 ```python
 @bot.event
 async def on_ready():
-    bot.add_view(MyView()) # Registers a View for persistent listening.
+    bot.add_view(MyView()) # Registers a View for persistent listening
 
 class MyView(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None) # timeout of the view must be set to None
-    @discord.ui.button(label="A button", custom_id="button-1", style=discord.ButtonStyle.primary, emoji="😎") # the button has a custom_id set
 
+    @discord.ui.button(label="A button", custom_id="button-1", style=discord.ButtonStyle.primary, emoji="😎") # the button has a custom_id set
     async def button_callback(self, button, interaction):
         await interaction.response.send_message("Button was pressed", ephemeral=True)
 
@@ -274,30 +276,21 @@ async def button(ctx):
 
 ## FAQ
 
-### How many buttons can I have in a message?
+#### How many buttons can I have in a message?
 
-Each message can have a maximum of 25 buttons. Views can have up to 5 rows, and each row has 5 slots. A button takes up one slot, while a dropdown takes up all five slots.
+Each message can have a maximum of 25 buttons. Views can have up to 5 rows, and each row has 5 slots. A button takes up one slot, while a select menu takes up all five slots.
 
-### Can I add more than one view to a message?
+#### Can I add more than one view to a message?
 
 No. As a Discord limitation, you can only have one view per message.
 
-### Why are buttons so confusing?
+#### Why are UI Components so confusing?
 
-Buttons cannot be simple like commands. This system makes them flexible, object-oriented and doesn't limit your imagination. There are loads of different ways you can use views and buttons.
+They cannot be simple like commands. This system makes them flexible and doesn't limit your imagination. There are loads of different ways you can use UI Components. For example, you could subclass Buttons or Select Menus and add them to a view using the view's `add_item` function.
 
-You could create a view with `view = discord.ui.View()` and create classes for each button instead.
-These button classes can be added to the view with `view.add_item(MyButton())`. If you are creating
-a link button that opens a website once pressed, you could use something like what's shown below.
+UI Components aren't hard to use if you know Python. We recommend learning [Object Oriented Programming with Python](#oop).
 
-```python
-view = discord.ui.View()
-view.add_item(discord.ui.Button(label="Go to website", url="https://pycord.dev/", style=discord.ButtonStyle.url))
-```
-
-The point is, buttons aren't hard to use if you know Python. We recommend learning [Object Oriented Programming with Python](#oop).
-
-### <e id="oop">What is OOP? What is subclassing?</e>
+#### <span id="oop">What is OOP? What is subclassing?</span>
 
 OOP (object-oriented programming) is a programming paradigm that allows you to create objects that have
 their own properties and methods. Almost everything in python is an object or a class. `discord.Embed` and `discord.ui.View` are both classes. When you use `view = discord.ui.View()` to create a view, you are actually creating an object of type `discord.ui.View`.
@@ -311,11 +304,11 @@ We highly recommend you learn about basic Python concepts like classes and inher
 - [W3Schools's Guide to Python Classes & Objects](https://www.w3schools.com/python/python_classes.asp)
 - [W3Schools's Guide to Python Inheritance](https://www.w3schools.com/python/python_inheritance.asp)
 
-### Do buttons need any special permissions?
+#### Do buttons need any special permissions?
 
 No new permissions are needed for either the bot or the server to allow bots to use buttons.
 
-### Should I replace reactions with buttons for my bot?
+#### Should I replace reactions with buttons for my bot?
 
 That is up to you. Buttons do provide a cleaner interface for your bot and are easier to use.
 

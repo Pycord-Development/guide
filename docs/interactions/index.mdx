@@ -17,7 +17,7 @@ In December 2020, Discord released their first interaction: the
 [slash command](https://discord.com/developers/docs/interactions/application-commands#slash-commands).
 Since then, Discord has added and updated Interactions a lot. Different types of Interactions include:
 
-[**Message Components**](https://discord.com/developers/docs/interactions/message-components)
+[**UI Components**](https://discord.com/developers/docs/interactions/message-components)
 
 - [**Buttons**](https://discord.com/developers/docs/interactions/message-components#buttons):
 Buttons are attached to a message and can be clicked on to perform an action.
@@ -95,14 +95,12 @@ This is what a Select Menu looks like. While not looking as good as Buttons, the
 and have even greater possibilities. To learn more about Select Menus, please refer to our [Select
 Menus page](./ui-components/dropdowns).
 
-### [Text Modals](https://docs.pycord.dev/en/master/api.html#discord.ui.Modal)
+### [Modal Dialogs](https://docs.pycord.dev/en/master/api.html#discord.ui.Modal)
 
 Text Modals are the most recent Message Component in Discord. They're useful for text input and
 filling out forms such as a sign-up for your bot's service. These are meant to replace long bot setup
 processes by allowing users to fill out a form, as well as replace having to make the user send
-messages that the bot uses in general. Due to the upcoming [Message Content Intent](../Popular-Topics/intents),
-verified bots will be forced to use Discord's new interactions system instead of messages. Text Modals
-are opened by clicking on a button.
+messages that the bot uses in general. Modals are accessed by invoking an application command or by interacting with another UI Component.
 
 ![Text Modal Example Image](../assets/interactions/modal-example.png)
 
@@ -207,7 +205,7 @@ And here's an example of a User Command:
 
 <br />
 
-Pretty cool, right? To learn more about these two, please read the [Context Menus guide](./Application-Commands/context-menus)
+Pretty cool, right? To learn more about these two, please read the [Context Menus guide](./Application-Commands/context-menus).
 
 ## [Application Commands](#application-commands) vs. [Prefix Commands](../extensions/commands/prefixed-commands)
 

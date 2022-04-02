@@ -3,25 +3,45 @@ title: Select Menus
 description: Learn all about implementing Select Menus or Dropdowns in your Discord Bot with Pycord.
 ---
 
-Shortly after the buttons were added, Discord added their second message component: Select Menus. Select Menus allow users
-to choose from a list of items sent by a bot. These are a great substitute for having a user send a
-number that corresponds to an option. You can even allow users to select multiple options from the Select
-Menus. This guide will show you the easy and painless ways of using them with Pycord.
+import {
+  DiscordButton,
+  DiscordButtons,
+  DiscordInteraction,
+  DiscordMessage,
+  DiscordMessages,
+} from "discord-message-components/packages/react";
+import "discord-message-components/packages/react/dist/style.css";
+
+import DiscordComponent from "../../../src/components/DiscordComponent";
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+
+Shortly after the buttons were added, Discord added their second message component: Select Menus. Select Menus allow users to choose from a list of items sent by a bot. These are a great substitute for having a user send a number that corresponds to an option. You can even allow users to select multiple options from the Select Menus. This guide will show you the easy and painless ways of using them with Pycord.
 
 ## Concept
 
-Select Menus aren't the only message component in Discord. There are also [Buttons](./buttons) and
-[Modal Dialogs](./modal-dialogs). Select Menus make it easy for users to pick one or multiple
-options from a list provided by a bot.
+Select Menus aren't the only message component in Discord. There's also [Buttons](./buttons) and [Modal Dialogs](./modal-dialogs). Select Menus make it easy for users to pick one or multiple options from a list provided by a bot.
 
-```py title="Select Menu Example"
+These UI elements reside in a "view". To learn more about views, please refer to the
+[interactions page](../../interactions).
+
+## Usage Syntax
+
+Let's see how to create a simple responsive button.
+
+```python
+import discord
+
+bot = discord.Bot()
+
 class MyView(discord.ui.View):
-
-    @discord.ui.select(
-        placeholder = "Choose a Flavor!",
-        min_values = 1,
-        max_values = 1,
-        options = [
+    @discord.ui.select( # the decorator that lets you specify the properties of the select menu
+        placeholder = "Choose a Flavor!", # the placeholder text that will be displayed if nothing is selected
+        min_values = 1, # the minimum number of values that must be selected by the users
+        max_values = 1, # the maxmimum number of values that can be selected by the users
+        options = [ # the list of options from which users can choose, a required field
             discord.SelectOption(
                 label="Vanilla",
                 description="Pick this if you like vanilla!"
@@ -36,67 +56,259 @@ class MyView(discord.ui.View):
             )
         ]
     )
-    async def select_callback(self, select, callback):
-        await interaction.respond.send_message(f"Awesome! I like {select.values[0]} too!")
+    async def select_callback(self, select, interaction): # the function called when the user is done selecting options
+        await interaction.response.send_message(f"Awesome! I like {select.values[0]} too!")
+
+@bot.command()
+async def flavor(ctx):
+    await ctx.send("Choose a flavor!", view=MyView())
+
+bot.run("TOKEN")
 ```
 
-Here is a basic example of a Select Menu. Let's go over the code:
+There's a lot going on over here! Don't worry, we will go over the code and explain it.
 
-```py
+As you can see, we create a class called `MyView` that subclasses
+[`discord.ui.View`](https://docs.pycord.dev/en/master/api.html#discord.ui.View).
+
+Then, we add a function called `select_callback` to the `View` class with the decorator
+[`discord.ui.select`](https://docs.pycord.dev/en/master/api.html#discord.ui.select).
+This decorator adds a select menu to the view. This decorator takes a few arguments to customize your select menu. Read them in the [Customization section](#customization).
+
+That was the decorator. Now, the function itself is pretty simple. It takes two parameters, not including `self`. The parameters are `select`: The select menu, and `interaction`: a [`discord.InteractionResponse`](https://docs.pycord.dev/en/master/api.html#discord.InteractionResponse) object. Both of these are passed by Pycord, so you just need to specify them in the function!
+
+<!-- TODO: The values are sorted in the order the user selected them (?). The selected values are (?) -->
+
+In the callback, you could do anything you want. You get the two parameters `select` and `interaction` to play around with. Here, we send a message using `await interaction.response.send_message` (where interaction is [`discord.InteractionResponse`](https://docs.pycord.dev/en/master/api.html#discord.InteractionResponse)) with content `select.values[0]`, which sends the label of the first/only option the user selected. Obviously, this is only an example and you could do just about anything you want.
+
+Finally, we create a global slash command called `flavour` that sends a message "Choose a flavor!" along with the view
+that contains our select menu.
+
+This is the basic syntax of creating a select menu. What you create with it is up to you. You can worry
+about making your code do amazing things, while Pycord handles the rest!
+
+## Customization
+
+#### Select Menu Properties
+
+- `options`*: A list of [`discord.SelectOption`](https://docs.pycord.dev/en/master/api.html#discord.SelectOption) values. These are the options that can be selected in this menu.
+- `custom_id`: The ID of the select menu that gets received during an interaction. It is recommended not to set this to anything unless you are trying to create a persistent view.
+- `row`: The relative row this select menu belongs to. A Discord component can only have 5 rows. By default, items are arranged automatically into those 5 rows. If you’d like to control the relative positioning of the row then passing an index is advised. For example, row=1 will show up before row=2. Defaults to None, which is automatic ordering. The row number must be between 0 and 4 (i.e. zero indexed).
+- `min_values`: The minimum number of items that must be chosen for this select menu. Defaults to 1 and must be between 1 and 25.
+- `max_values`: The maximum number of items that must be chosen for this select menu. Defaults to 1 and must be between 1 and 25.
+- `disabled`: Whether the select is disabled or not. Defaults to False.
+
+\* means that the parameter is required.
+
+#### Select Option Properties
+
+In the `options` parameter, you pass a list of [`discord.SelectOption`](https://docs.pycord.dev/en/master/api.html#discord.SelectOption) values. This class also has a few parameters:
+- `default` (whether the option is selected by default)
+- `description` (an additional description, if any)
+- `emoji` (a string or an emoji object, if any)
+- `label` (the name displayed to users, can be up to 100 characters)
+- `value` (a special value of the option, defaults to the label).
+
+## Action Rows
+
+We have discussed that Views can have 5 rows. Each row has 5 slots. A button takes a single slot, while a select menu takes up all 5 of them. This means a view can have a maximum of 5 select menus, or any possible combination of select menus and buttons.
+
+The arrangement of buttons and select menus is generally adjusted by Pycord. However, it is possible to move them to specific relative rows. This is done by specifying the `row` argument.
+
+:::info The `row` argument
+
+The row argument specifies the relative row this select menu belongs to. A Discord component can only have 5 rows. By default, items are arranged automatically into those 5 rows. If you’d like to control the relative positioning of the row then passing an index is advised. For example, row=1 will show up before row=2. Defaults to None, which is automatic ordering. The row number must be between 0 and 4 (i.e. zero indexed).
+
+:::
+
+```python
 class MyView(discord.ui.View):
+    @discord.ui.button(label="Button 1", row=0, style=discord.ButtonStyle.primary)
+    async def first_button_callback(self, button, interaction):
+        await interaction.response.send_message("You pressed me!")
+
+    @discord.ui.button(label="Button 2", row=0, style=discord.ButtonStyle.primary)
+    async def second_button_callback(self, button, interaction):
+        await interaction.response.send_message("You pressed me!")
+
+    @discord.ui.select(
+        row = 1,
+        options = [...]
+    )
+    async def select_callback(self, select, interaction):
+        await interaction.response.send_message(f"Awesome! I like {select.values[0]} too!")
 ```
 
-Here we define the view. When sending the message, this would go in the `view` kwarg, like so:
+## Disabling Select Menus
 
-```py
-await ctx.send("Select Menus rock!", view=view)
+### Pre-Disabled Menus
+
+```python
+class MyView(discord.ui.View):
+    @discord.ui.select(
+        disabled = True, # pass disabled=True to set the button as disabled
+        options = [...]
+    )
+    async def select_callback(self, select, interaction):
+        ...
+
+@bot.command()
+async def button(ctx):
+    await ctx.send("Press the button!", view=MyView())
 ```
 
-This would send a message that reads "Select Menus rock!" along with the view.
+### Disabling Buttons on Press
 
-```py
-@discord.ui.select(
-    placeholder = "Choose a Flavor!",
-    min_values = 1,
-    max_values = 1,
-    options = [
-        discord.SelectOption(
-            label="Vanilla",
-            description="Pick this if you like vanilla!"
-        ),
-        discord.SelectOption(
-            label="Chocolate",
-            description="Pick this if you like chocolate!"
-        ),
-        discord.SelectOption(
-            label="Strawberry",
-            description="Pick this if you like strawberry!"
-        )
-    ]
-)
+<Tabs>
+  <TabItem value="disabling-a-single-component" label="Disabling a single component" default>
+
+```python
+class MyView(discord.ui.View):
+  @discord.ui.select(options = [...])
+    async def select_callback(self, select, interaction):
+        select.disabled = True # set the status of the select as disabled
+        await interaction.response.edit_message(view=self) # edit the message to show the changes
 ```
 
-This is a big section, and it's only the decorator! Don't worry, though, it's very simple.
+  </TabItem>
 
-- `pleaceholder` is what goes in the select before any value is selected.
-- `min_values` is the minimum amount of values a user has to choose.
-- `max_values` is the maximum amount of values a user can choose.
-- `options` is a list of discord.SelectOption objects that make up a Select Menu Option.
-  - `label` in a Select Option is the label of the option.
-  - `description` in a Select Option is the description of the option.
+  <TabItem value="disabling-all-children" label="Disabling all the components of a view">
 
-Not so bad, was it?
+```python
+class MyView(discord.ui.View):
+    @discord.ui.select(options = [...])
+    async def first_select_callback(self, select, interaction):
+        for child in self.children: # loop through all the children of the view
+            child.disabled = True # set the component to disabled
+        await interaction.response.edit_message(view=self) # edit the message to show the changes
 
-```py
-async def select_callback(self, select, callback):
-    await interaction.respond.send_message(f"Awesome! I like {select.values[0]} too!")
+    @discord.ui.select(options = [...])
+    async def second_select_callback(self, select, interaction):
+        for child in self.children:
+            child.disabled = True
+        await interaction.response.edit_message(view=self)
 ```
 
-Finally, the callback. This is what the Select Menu _does_ after being used. In this case,
-it responds to the interactions with "Awesome! I like {The option you chose} too!"
+  </TabItem>
+</Tabs>
 
-Once again, if you found any of these very hard to understand, we suggest freshening up your Python
-skills, as Pycord requires a bit of Python experience.
+## Timeouts
+
+You may want a select menu to automatically stop working after a certain amount of time. This is where timeouts come in.
+
+<Tabs>
+<TabItem value="0" label="Specifing time when creating a view object">
+
+```python
+class MyView(discord.ui.View):
+    async def on_timeout(self):
+        for child in self.children:
+            child.disabled = True
+        await self.message.edit(content="You took too long! Disabled all the components.", view=self)
+
+    @discord.ui.select(options = [...])
+    async def select_callback(self, select, callback):
+        ...
+
+@bot.command()
+async def select(ctx):
+    await ctx.send(view=MyView(timeout=30)) # specify the timeout here
+```
+
+</TabItem>
+<TabItem value="1" label="Specifing the time when subclassing">
+
+```python
+class MyView(discord.ui.View):
+    def __init__(self):
+        super().__init__(timeout=10) # specify the timeout here
+
+    async def on_timeout(self):
+        for child in self.children:
+            child.disabled = True
+        await self.message.edit(content="You took too long! Disabled all the components.", view=self)
+
+    @discord.ui.select(options = [...])
+    async def select_callback(self, select, callback):
+        ...
+```
+
+</TabItem>
+</Tabs>
+
+Here, we loop through all the children of the view (buttons and select menus in the view) and disable
+them. Then, we edit the message to show that the timeout was reached. 
+
+:::note
+
+If the `on_timeout` coroutine is not present, the components will simply stop working after the specified time.
+
+:::
+
+## Persistent Views
+
+Sometimes, instead of a select menu that is disabled after a certain amount of time, you want to have a
+select menu that is always working.
+
+Normally, when the bot goes offline, all of its views stop working, even if they don't have a timeout. You will be able to see the
+views, but nothing will happen when you try to interact with them. This is a problem
+if you are trying to create a self-role system, for example. This is where persistent views come in.
+
+Persistent views work forever. When the bot goes offline, the buttons will stop working. However, when the bot comes back online, the buttons will start working again.
+
+In a Persistent View, the timeout must be set to `None` and all the children in the view much have a `custom_id` attribute set.
+
+```python
+@bot.event
+async def on_ready():
+    bot.add_view(MyView()) # Registers a View for persistent listening
+
+class MyView(discord.ui.View):
+    def __init__(self):
+        super().__init__(timeout=None) # timeout of the view must be set to None
+
+    @discord.ui.select(custom_id="select-1", options = [...]) # a custom_id must be set
+    async def select_callback(self, select, callback):
+        ...
+
+@bot.command()
+async def button(ctx):
+    await ctx.send(f"View persistence status: {MyView.is_persistent(MyView())}", view=MyView())
+```
+
+## FAQ
+
+#### How many select menus can I have in a message?
+
+Each message can have a maximum of 5 select menus. Views can have up to 5 rows, and each row has 5 slots. A button takes up one slot, while a select menu takes up all five slots.
+
+#### Can I add more than one view to a message?
+
+No. As a Discord limitation, you can only have one view per message.
+
+#### Why are UI Components so confusing?
+
+They cannot be simple like commands. This system makes them flexible and doesn't limit your imagination. There are loads of different ways you can use UI Components. For example, you could subclass Buttons or Select Menus and add them to a view using the view's `add_item` function.
+
+UI Components aren't hard to use if you know Python. We recommend learning [Object Oriented Programming with Python](#oop).
+
+#### <e id="oop">What is OOP? What is subclassing?</e>
+
+OOP (object-oriented programming) is a programming paradigm that allows you to create objects that have
+their own properties and methods. Almost everything in python is an object or a class. `discord.Embed` and `discord.ui.View` are both classes. When you use `view = discord.ui.View()` to create a view, you are actually creating an object of type `discord.ui.View`.
+
+Subclassing is a Python OOP concept. It means that you can create a class that inherits from another class. In other words, the class that subclasses another class can inherit all the methods and attributes of that class.
+
+We highly recommend you learn about basic Python concepts like classes and inheritance before you start learning Pycord.
+
+**Resources**:
+
+- [W3Schools's Guide to Python Classes & Objects](https://www.w3schools.com/python/python_classes.asp)
+- [W3Schools's Guide to Python Inheritance](https://www.w3schools.com/python/python_inheritance.asp)
+
+#### Do select menus need any special permissions?
+
+No new permissions are needed in the bot or in the server.
 
 :::info Related Topics
 
