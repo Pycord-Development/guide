@@ -91,24 +91,24 @@ about making your code do amazing things, while Pycord handles the rest!
 
 #### Select Menu Properties
 
-- `options`\*: A list of [`discord.SelectOption`](https://docs.pycord.dev/en/master/api.html#discord.SelectOption) values. These are the options that can be selected in this menu.
-- `placeholder` is the placeholder text shown in the select menu if no option is selected.
-- `custom_id`: The ID of the select menu that gets received during an interaction. It is recommended not to set this to anything unless you are trying to create a persistent view.
-- `row`: The relative row this select menu belongs to. A Discord component can only have 5 rows. By default, items are arranged automatically into those 5 rows. If you’d like to control the relative positioning of the row then passing an index is advised. For example, row=1 will show up before row=2. Defaults to None, which is automatic ordering. The row number must be between 0 and 4 (i.e. zero indexed).
-- `min_values`: The minimum number of items that must be chosen for this select menu. Defaults to 1 and must be between 1 and 25.
-- `max_values`: The maximum number of items that must be chosen for this select menu. Defaults to 1 and must be between 1 and 25.
-- `disabled`: Whether the select is disabled or not. Defaults to False.
+-   `options`\*: A list of [`discord.SelectOption`](https://docs.pycord.dev/en/master/api.html#discord.SelectOption) values. These are the options that can be selected in this menu.
+-   `placeholder` is the placeholder text shown in the select menu if no option is selected.
+-   `custom_id`: The ID of the select menu that gets received during an interaction. It is recommended not to set this to anything unless you are trying to create a persistent view.
+-   `row`: The relative row this select menu belongs to. A Discord component can only have 5 rows. By default, items are arranged automatically into those 5 rows. If you’d like to control the relative positioning of the row then passing an index is advised. For example, row=1 will show up before row=2. Defaults to None, which is automatic ordering. The row number must be between 0 and 4 (i.e. zero indexed).
+-   `min_values`: The minimum number of items that must be chosen for this select menu. Defaults to 1 and must be between 1 and 25.
+-   `max_values`: The maximum number of items that must be chosen for this select menu. Defaults to 1 and must be between 1 and 25.
+-   `disabled`: Whether the select is disabled or not. Defaults to False.
 
 \* means that the parameter is required.
 
 #### Select Option Properties
 
 In the `options` parameter, you pass a list of [`discord.SelectOption`](https://docs.pycord.dev/en/master/api.html#discord.SelectOption) values. This class also has a few parameters:
-- `default` (whether the option is selected by default)
-- `description` (an additional description, if any)
-- `emoji` (a string or an emoji object, if any)
-- `label` (the name displayed to users, can be up to 100 characters)
-- `value` (a special value of the option, defaults to the label).
+-   `default` (whether the option is selected by default)
+-   `description` (an additional description, if any)
+-   `emoji` (a string or an emoji object, if any)
+-   `label` (the name displayed to users, can be up to 100 characters)
+-   `value` (a special value of the option, defaults to the label).
 
 ## Action Rows
 
@@ -304,8 +304,8 @@ We highly recommend you learn about basic Python concepts like classes and inher
 
 **Resources**:
 
-- [W3Schools's Guide to Python Classes & Objects](https://www.w3schools.com/python/python_classes.asp)
-- [W3Schools's Guide to Python Inheritance](https://www.w3schools.com/python/python_inheritance.asp)
+-   [W3Schools's Guide to Python Classes & Objects](https://www.w3schools.com/python/python_classes.asp)
+-   [W3Schools's Guide to Python Inheritance](https://www.w3schools.com/python/python_inheritance.asp)
 
 #### Do select menus need any special permissions?
 
@@ -313,7 +313,7 @@ No new permissions are needed in the bot or in the server.
 
 :::info Related Topics
 
-- [Slash Commands](../application-commands/slash-commands)
-- [Interactions Index](../../interactions)
+-   [Slash Commands](../application-commands/slash-commands)
+-   [Interactions Index](../../interactions)
 
 :::
