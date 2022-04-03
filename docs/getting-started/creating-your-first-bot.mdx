@@ -13,7 +13,7 @@ import "discord-message-components/packages/react/dist/style.css";
 
 import DiscordComponent from "../../src/components/DiscordComponent";
 
-Excited to create your first bot? Once you [install Pycord](installation.mdx), you can start right
+Excited to create your first bot? Once you [install Pycord](../installation.mdx), you can start right
 away!
 
 ## Creating the Bot Application
@@ -21,14 +21,14 @@ away!
 Just like how you need to sign up to use Discord, your bot also has to be signed up. To do this,
 you should:
 
-1. Go to the [Discord Developer Portal](https://discord.com/developers/applications) and click
-   on <button class="blurplebutton">New Application</button>.
-2. Give your bot a name, and click <button class="blurplebutton">Create</button>.
-3. Now, you should see a page like this.
-   ![image](https://gblobscdn.gitbook.com/assets%2F-MjPk-Yu4sOq8KGrr_yG%2F-MjdW3OQnwUhacopqSWw%2F-Mjd_-mxrJCrzmaXrAg8%2Fimage.png?alt=media&token=b8e2ae6c-2290-4d37-ad7c-eb412f3fb00e)
-4. Click on <button class="greybutton">Bot</button> tab on the left side of the screen.
-5. Click on <button class="blurplebutton">Add bot</button>.
-6. You can give it a name, change the Avatar, etc.
+1.  Go to the [Discord Developer Portal](https://discord.com/developers/applications) and click
+    on <button class="blurplebutton">New Application</button>.
+2.  Give your bot a name, and click <button class="blurplebutton">Create</button>.
+3.  Now, you should see a page like this.
+    ![image](https://gblobscdn.gitbook.com/assets%2F-MjPk-Yu4sOq8KGrr_yG%2F-MjdW3OQnwUhacopqSWw%2F-Mjd_-mxrJCrzmaXrAg8%2Fimage.png?alt=media&token=b8e2ae6c-2290-4d37-ad7c-eb412f3fb00e)
+4.  Click on <button class="greybutton">Bot</button> tab on the left side of the screen.
+5.  Click on <button class="blurplebutton">Add bot</button>.
+6.  You can give it a name, change the Avatar, etc.
 
 ## Inviting the bot
 
@@ -66,9 +66,9 @@ considered a snowflake. A Discord user ID is also a snowflake.
 
 Now, lets get your bot's token. To do this, you want to:
 
-1. Go back to the <button class="greybutton">Bot</button> tab.
-2. Click on the <button class="blurplebutton">Copy</button> button in the "Token" section.
-   ![image](https://gblobscdn.gitbook.com/assets%2F-MjPk-Yu4sOq8KGrr_yG%2F-MjdbU12JISJorAZxrKH%2F-MjdbpUsapzb5n15Po5P%2Fimage.png?alt=media&token=118e259f-940a-4f6c-b3a3-c29f3a54100d)
+1.  Go back to the <button class="greybutton">Bot</button> tab.
+2.  Click on the <button class="blurplebutton">Copy</button> button in the "Token" section.
+    ![image](https://gblobscdn.gitbook.com/assets%2F-MjPk-Yu4sOq8KGrr_yG%2F-MjdbU12JISJorAZxrKH%2F-MjdbpUsapzb5n15Po5P%2Fimage.png?alt=media&token=118e259f-940a-4f6c-b3a3-c29f3a54100d)
 
 Now, you have your bot's token copied to your clipboard.
 
@@ -90,23 +90,24 @@ getting leaked is to store it in `.env` files.
 
 You can store your tokens in `.env` files. This is a simple way to store sensitive information.
 
-1. Create a file with the name `.env`. Just `.env`, with the dot/period at the start.
-2. Define the token in the file, like so:
+1.  Create a file with the name `.env`. Just `.env`, with the dot/period at the start.
+2.  Define the token in the file, like so:
 
-   ```env title=".env"
-   TOKEN = [PASTE YOUR TOKEN HERE]
-   ```
 
-   for example:
+    ```env title=".env"
+    TOKEN = [PASTE YOUR TOKEN HERE]
+    ```
 
-   ```env title=".env"
-   TOKEN = NzkyNzE1NDU0MTk2MDg4ODQy.X-hvzA.Ovy4MCQywSkoMRRclStW4xAYK7I
-   ```
+    for example:
 
-3. Install [`python-dotenv`](https://pypi.org/project/python-dotenv/)
-   ```bash
-   python -m pip install python-dotenv
-   ```
+
+    ```env title=".env"
+    TOKEN = NzkyNzE1NDU0MTk2MDg4ODQy.X-hvzA.Ovy4MCQywSkoMRRclStW4xAYK7I
+    ```
+3.  Install [`python-dotenv`](https://pypi.org/project/python-dotenv/)
+    ```bash
+    python -m pip install python-dotenv
+    ```
 
 If you are using Git to track your bot's changes, you should create a file called `.gitignore` and add
 `.env` to it. This stops your `.env` file from getting tracked along with the rest of your code, and
@@ -203,7 +204,7 @@ will not limit your bot's abilities.
 
 :::note
 
-The part where we load the token from the enviormental variables is not required. You may use another way to keep your token secure, or, although not recommended, simply specify the token normally as a string, as shown below.
+The part where we load the token from the environmental variables is not required. You may use another way to keep your token secure, or, although not recommended, simply specify the token normally as a string, as shown below.
 
 <details>
 <summary>A Basic Bot without securing the token</summary>
@@ -235,23 +236,23 @@ bot.run("TOKEN")
 ### How do I make prefixed commands?
 
 Prefixed commands are an older method of creating bot commands that listen for messages and replies
-if the message starts with a certain character. You can read [this page](../Extensions/Commands/prefixed-commands)
+if the message starts with a certain character. You can read [this page](../extensions/commands/prefixed-commands.mdx)
 to learn more about prefixed commands.
 
 ### How do I setup modules/cogs?
 
-[Cogs](../Extensions/Commands/cogs) are a great way to organize your commands by putting them into
+[Cogs](../extensions/commands/cogs.mdx) are a great way to organize your commands by putting them into
 groups called cogs. Cogs are separate files that your bot loads to get the commands inside.
 You can read more about cogs, as well as learn how to use them and their benefits, 
-[here](../Extensions/Commands/cogs).
+[here](../extensions/commands/cogs.mdx).
 
 ### How do I add components, such as buttons and dropdown menus, to my bot?
 
 Pycord makes it very easy to use Message Commands with your bot by using the `discord.ui` module.
-To learn more, read about Message Commands in our [interactions directory](../Interactions).
+To learn more, read about Message Commands in our [interactions directory](../interactions).
 
 :::info Related Topics
 
-- [Prefixed Commands](../../extensions/commands/prefixed-commands)
+-   [Prefixed Commands](../../extensions/commands/prefixed-commands)
 
 :::

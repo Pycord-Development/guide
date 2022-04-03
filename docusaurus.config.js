@@ -25,6 +25,8 @@ const config = {
           editUrl:
             "https://github.com/Pycord-Development/guide/tree/master",
           routeBasePath: "/",
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
         },
         theme: {
           customCss: require.resolve("./src/scss/main.scss"),
