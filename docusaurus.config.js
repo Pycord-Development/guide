@@ -72,7 +72,7 @@ const config = {
         // },
         {
           label: "Source",
-          // I think we should use href instead of to, but it creates a weird styling issue
+          // We should use href instead of to, but it creates a strange styling issue
           to: 'https://github.com/Pycord-Development/guide',
           position: 'right',
           className: 'header-github-link',
