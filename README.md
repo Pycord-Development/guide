@@ -1,4 +1,5 @@
 # Pycord Guide
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c6976714-2c3d-4ff5-a30f-cf784045062a/deploy-status)](https://app.netlify.com/sites/pycord/deploys)
 
 The official Guide for Pycord, explaining Pycord's features and how to use them.
 
