@@ -1,6 +1,6 @@
 ---
 title: Contributing to the Guide
-description: How you can contribute to the guide.
+description: Learn how to contribute to Pycord Guide.
 ---
 
 import {
@@ -25,18 +25,37 @@ We use [Docusaurus v2](https://docusaurus.io/) to generate our guide. All of the
 from `mdx` files in the [`docs/`](https://github.com/Pycord-Development/guide/tree/master/docs) directory.
 MDX allows you to use JSX in your markdown content.
 
+## Structure
+
+Let's visit the [`docs/`](https://github.com/Pycord-Development/guide/tree/master/docs) directory and check its file structure.
+
+We can see various folders and a few files in it. Let's talk a bit about the `introduction.mdx` file. At the top, you can see something like:
+```md
+---
+title: Introduction
+description: ...
+sidebar_position: 1
+---
+```
+
+Most pages have this at the top. The `title` defaults to the file name. Since the titles need to be Capitalized according to need while the file names are lowercased (sometimes, the file names are shorter than the title!), we set a title ourselves.
+
+The `description` field is also important. This is the text shown in an embed when the page's link is shared on Discord, Twitter or other websites that support embedded links. Make sure to give a nice an interesting description!
+
+The `sidebar_position` field is pretty self-explanatory. It sets the position of the page in the sidebar. Most files in categories do not need this since they are sorted alphabetically.
+
 ## Markdown Syntax
 
 This page quickly outlines some of the syntax that is used in markdown.
 
-````md
+````mdx
 Markdown syntax is pretty easy. You can add **bold**, _italic_ and _underline_ text. You can use ~~strikethrough~~. You can use `inline code blocks`.
 
     ```python
     print("We can use code blocks like this.")
     ```
 
-You can add [links to other websites](https://pycord.dev). You can add images by adding ![alt text](https://pycord.dev/image.png).
+You can add [links to other websites](https://pycord.dev). You can add images like this: ![alternate text that describes the image](https://pycord.dev/image.png).
 
 - You can create
 - unordered lists like this
@@ -103,7 +122,7 @@ Markdown syntax is pretty easy. You can add **bold**, _italic_ and _underline_ t
 print("We can use code blocks like this.")
 ```
 
-You can add [links to other websites](https://pycord.dev). You can add images by adding ![alt text](https://pycord.dev/image.png).
+You can add [links to other websites](https://pycord.dev). You can add images by adding ![alt text](../../static/img/favicon.ico).
 
 -   You can create
 -   unordered lists like this
@@ -125,7 +144,7 @@ You can add [links to other websites](https://pycord.dev). You can add images by
 You can even use HTML in Markdown.
 
 <samp>This text is monospaced</samp>
-Use <br /> to add a break line.
+Use <br/> to add a break line.
 
 > We can use blockquotes too.
 
@@ -257,6 +276,22 @@ You can edit an admonition's title by adding text after the `:::` and name, like
 ## Discord Message Components
 
 As most files already have the imports for these, it's not that hard to add them.
+
+First, import the nessesary components:
+
+```tsx
+import {
+  DiscordButton,
+  DiscordButtons,
+  DiscordInteraction,
+  DiscordMessage,
+  DiscordMessages,
+} from "discord-message-components/packages/react";
+import "discord-message-components/packages/react/dist/style.css";
+
+import DiscordComponent from "../../src/components/DiscordComponent";
+```
+
 The div starts like so:
 
 ```tsx
@@ -264,7 +299,7 @@ The div starts like so:
 
 </DiscordComponent>
 
-<br />
+<br/>
 ```
 
 This is where you list a `DiscordMessage`.
@@ -276,7 +311,7 @@ This is where you list a `DiscordMessage`.
     </DiscordMessage>
 </DiscordComponent>
 
-<br />
+<br/>
 ```
 
 <DiscordComponent>
@@ -285,13 +320,13 @@ This is where you list a `DiscordMessage`.
   </DiscordMessage>
 </DiscordComponent>
 
-<br />
+<br/>
 
 It has a pretty straightforward syntax.
 
 :::tip
 
-Add a `<br/>` to the end of a component to make it spaced out from the text below it.
+Add a `<br/>` to the end of a component to make the content below it look better.
 
 :::
 
@@ -362,3 +397,56 @@ To make a message with buttons, do the following:
     </div>
   </DiscordMessage>
 </DiscordComponent>
+
+## Page Format
+
+There are a few things you need to take care of:
+
+1. Make sure that the spelling and grammar is perfect. We have a GitHub action configured that will warn you about spelling errors when you start a pull request. Make sure to commit your changes accordingly. 
+
+  As for the grammar, you should try reading the changes you have done and wait for reviews from others.
+
+2. A common mistake people make is incorrect header style. People often think that the less the important the topic is, the lower it's heading style should be.
+
+  ```md
+  [PAGE STARTS]
+  # Topic
+  ## Less Important Topic
+  ## Subtopic
+  ```
+  ```md
+  [PAGE STARTS]
+  # About
+  [Introduction]
+
+  ## Installation
+  [Content]
+
+  ### Windows
+  [Content]
+  ```
+
+  That's VERY wrong. Here's the correct example:
+
+  ```md
+  [PAGE STARTS]
+  [Introduction]
+  ## Topic
+  ## Less Important Topic
+  ### Subtopic
+  ```
+  ```md
+  [PAGE STARTS]
+  [Introduction]
+
+  ## About
+  [More Information]
+
+  ## Installation
+  [Content]
+
+  ### Windows
+  [Content]
+  ```
+
+  Note that the `---`s at the beginning have been skipped here.
