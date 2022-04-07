@@ -21,7 +21,8 @@
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
     "postinstall": "yarn add react@17.0.2 --ignore-scripts",
-    "check": "remark docs/*.mdx docs/**/*.mdx docs/**/**/*.mdx docs/**/**/**/*.mdx --quiet --frail"
+    "check": "remark docs/*.mdx docs/**/*.mdx docs/**/**/*.mdx docs/**/**/**/*.mdx --quiet --frail",
+    "format": "remark docs/*.mdx docs/**/*.mdx docs/**/**/*.mdx docs/**/**/**/*.mdx --quiet -o"
   },
   "dependencies": {
     "@discordapp/twemoji": "discord/twemoji",
