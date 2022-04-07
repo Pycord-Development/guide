@@ -51,7 +51,7 @@ not work on its own. In your main bot file, you must add the following code:
 bot.load_extension('cogs.greetings')
 ```
 
-This loads the file `cogs/greetings.py` and adds it to the bot. 
+This loads the file `cogs/greetings.py` and adds it to the bot.
 The argument of `load_extension` should be your cog's path (eg. cogs/greetings.py) without the file
 extension and with the `/` replaced with `.`
 
@@ -76,9 +76,9 @@ is because cogs work slightly different than a regular file.
 
 ### The `self` variable
 
-The self variable is a variable that represents a class. In the case of cogs, `self` represents 
+The self variable is a variable that represents a class. In the case of cogs, `self` represents
 the cog. In the `__init__` function, you can see that we have `self.bot = bot`. `bot` represents your
-`discord.Bot` or `discord.ext.commands.Bot` instance, which is used for some functions. 
+`discord.Bot` or `discord.ext.commands.Bot` instance, which is used for some functions.
 
 This means that instead of using functions that would usually be accessed via `bot`, you now need
 to access them via `self.bot`
@@ -90,7 +90,7 @@ wouldn't be able to access our bot instance.
 ### Creating Commands
 
 When creating commands, your decorator would usually be something like `@bot.command()`. If you're using
-cogs, this isn't the case. In a cog, you can't access the bot instance outside of functions, so to 
+cogs, this isn't the case. In a cog, you can't access the bot instance outside of functions, so to
 register a function as a command, you must instead use `@commands.command()`.
 
 Also, when creating a command, make sure that it is indented. If we want a command to be actually
@@ -108,9 +108,9 @@ create a help command [here](./help-command.mdx)
 
 :::info Related Topics
 
--   [Slash commands in Cogs](../../interactions/application-commands/slash-commands.mdx#slash-commands-in-cogs)
--   [Creating a Help Command](./help-command.mdx)
--   [Rules and Common Practices](../../getting-started/rules-and-common-practices.mdx)
--   [Prefixed Commands](./prefixed-commands.mdx)
+*   [Slash commands in Cogs](../../interactions/application-commands/slash-commands.mdx#slash-commands-in-cogs)
+*   [Creating a Help Command](./help-command.mdx)
+*   [Rules and Common Practices](../../getting-started/rules-and-common-practices.mdx)
+*   [Prefixed Commands](./prefixed-commands.mdx)
 
 :::

@@ -35,7 +35,7 @@ async def on_member_join(member):
     )
 ```
 
-We use the [`discord.Bot.event` decorator](https://docs.pycord.dev/en/master/api.html#discord.Bot.event) to add the event handler. 
+We use the [`discord.Bot.event` decorator](https://docs.pycord.dev/en/master/api.html#discord.Bot.event) to add the event handler.
 
 The `on_member_join` event is called when a user joins the server. The `member` parameter is the user that joined. Different events have different names and parameters. You can find all of them [here](https://docs.pycord.dev/en/master/api.html#discord.Intents).
 
@@ -70,47 +70,43 @@ Here, we check if the message is from the user that sent the command. We simply 
 ## Styling Messages
 
 ### Embeds
+
 Embeds are a Discord feature that allows applications to format their messages in cool embedded format,
 enabling your bot to lay out messages with a lot of text into neat fields.
- 
+
 <DiscordComponent>
-    <DiscordMessage author="Guide Bot" avatar="red" bot>
-        <DiscordEmbed
-        embedTitle="Pycord Guide"
-        url="https://guide.pycord.dev"
-        authorIcon="/img/logo.png"
-        authorName="Pycord Team"
-        authorUrl="https://github.com/Pycord-Development/guide"
-        thumbnail="/img/logo.png"
-        borderColor="#5865F2"
-        timestamp="01/09/2021"
-        footerIcon="/img/logo.png"
-        image="/img/banner-v3.png"
-        >
-            The Pycord Guide is a detailed guide that explains how to use Pycord and all of its features.
-            <DiscordEmbedFields slot="fields">
-                <DiscordEmbedField fieldTitle="Getting Started">
-                    The <a href="/category/getting-started">Getting Started section</a> explains how you can get a brand new bot created and running from scratch.
-                </DiscordEmbedField>
-                <DiscordEmbedField fieldTitle="Interactions" inline="true">
-                    <a href="/interactions">Interactions</a> with Pycord
-                </DiscordEmbedField>
-                <DiscordEmbedField fieldTitle="Extensions" inline="true">
-                    Pycord's various <a href="/category/extensions">Extensions</a>
-                </DiscordEmbedField>
-                <DiscordEmbedField fieldTitle="Popular Topics" inline="true">
-                    <a href="/category/popular-topics">Other Popular Topics</a>
-                </DiscordEmbedField>
-                <DiscordEmbedField fieldTitle="And More!">
-                    We have so much more! Just explore, and you will find everything you need. If you want another page added, open an issue on the <a href="https://github.com/Pycord-Development/guide">GitHub</a>.
-                </DiscordEmbedField>
-            </DiscordEmbedFields>
-            <span slot="footer">Created with 💖 by the Pycord Team & Contributors</span>
-        </DiscordEmbed>
-    </DiscordMessage>
+  <DiscordMessage author="Guide Bot" avatar="red" bot>
+    <DiscordEmbed embedTitle="Pycord Guide" url="https://guide.pycord.dev" authorIcon="/img/logo.png" authorName="Pycord Team" authorUrl="https://github.com/Pycord-Development/guide" thumbnail="/img/logo.png" borderColor="#5865F2" timestamp="01/09/2021" footerIcon="/img/logo.png" image="/img/banner-v3.png">
+      The Pycord Guide is a detailed guide that explains how to use Pycord and all of its features.
+
+      <DiscordEmbedFields slot="fields">
+        <DiscordEmbedField fieldTitle="Getting Started">
+          The <a href="/category/getting-started">Getting Started section</a> explains how you can get a brand new bot created and running from scratch.
+        </DiscordEmbedField>
+
+        <DiscordEmbedField fieldTitle="Interactions" inline="true">
+          <a href="/interactions">Interactions</a> with Pycord
+        </DiscordEmbedField>
+
+        <DiscordEmbedField fieldTitle="Extensions" inline="true">
+          Pycord's various <a href="/category/extensions">Extensions</a>
+        </DiscordEmbedField>
+
+        <DiscordEmbedField fieldTitle="Popular Topics" inline="true">
+          <a href="/category/popular-topics">Other Popular Topics</a>
+        </DiscordEmbedField>
+
+        <DiscordEmbedField fieldTitle="And More!">
+          We have so much more! Just explore, and you will find everything you need. If you want another page added, open an issue on the <a href="https://github.com/Pycord-Development/guide">GitHub</a>.
+        </DiscordEmbedField>
+      </DiscordEmbedFields>
+
+      <span slot="footer">Created with 💖 by the Pycord Team & Contributors</span>
+    </DiscordEmbed>
+  </DiscordMessage>
 </DiscordComponent>
 
-<br/>
+<br />
 
 Creating embeds is simple! Just create an instance of [`discord.Embed`](https://docs.pycord.dev/en/master/api.html#discord.Embed) and edit it to your liking. Once you're done, send it!
 
@@ -143,39 +139,34 @@ bot.run("TOKEN")
 ```
 
 <DiscordComponent>
-    <DiscordMessage author="Guide Bot" avatar="red" bot>
-        <div slot="interactions">
-            <DiscordInteraction author="Guide Man" avatar="green" command>hello</DiscordInteraction>
-        </div>
-        <DiscordEmbed
-        embedTitle="My Amazing Embed"
-        authorIcon="/img/logo.png"
-        authorName="Pycord Team"
-        authorUrl="https://github.com/Pycord-Development/guide"
-        thumbnail="/img/logo.png"
-        borderColor="#5865F2"
-        footerIcon="/img/logo.png"
-        image="/img/banner-v3.png"
-        >
-            Embeds are super easy, barely an inconvenience.
-            <DiscordEmbedFields slot="fields">
-                <DiscordEmbedField fieldTitle="A Normal Field">
-                    A really nice field with some information. <strong>The description as well as the fields support markdown!</strong>
-                </DiscordEmbedField>
-                <DiscordEmbedField fieldTitle="Inline Field 1" inline="true">Inline Field 1</DiscordEmbedField>
-                <DiscordEmbedField fieldTitle="Inline Field 2" inline="true">Inline Field 2</DiscordEmbedField>
-                <DiscordEmbedField fieldTitle="Inline Field 3" inline="true">Inline Field 3</DiscordEmbedField>
-            </DiscordEmbedFields>
-            <span slot="footer">Footer! No markdown here.</span>
-        </DiscordEmbed>
-    </DiscordMessage>
+  <DiscordMessage author="Guide Bot" avatar="red" bot>
+    <div slot="interactions">
+      <DiscordInteraction author="Guide Man" avatar="green" command>hello</DiscordInteraction>
+    </div>
+
+    <DiscordEmbed embedTitle="My Amazing Embed" authorIcon="/img/logo.png" authorName="Pycord Team" authorUrl="https://github.com/Pycord-Development/guide" thumbnail="/img/logo.png" borderColor="#5865F2" footerIcon="/img/logo.png" image="/img/banner-v3.png">
+      Embeds are super easy, barely an inconvenience.
+
+      <DiscordEmbedFields slot="fields">
+        <DiscordEmbedField fieldTitle="A Normal Field">
+          A really nice field with some information. <strong>The description as well as the fields support markdown!</strong>
+        </DiscordEmbedField>
+
+        <DiscordEmbedField fieldTitle="Inline Field 1" inline="true">Inline Field 1</DiscordEmbedField>
+        <DiscordEmbedField fieldTitle="Inline Field 2" inline="true">Inline Field 2</DiscordEmbedField>
+        <DiscordEmbedField fieldTitle="Inline Field 3" inline="true">Inline Field 3</DiscordEmbedField>
+      </DiscordEmbedFields>
+
+      <span slot="footer">Footer! No markdown here.</span>
+    </DiscordEmbed>
+  </DiscordMessage>
 </DiscordComponent>
 
-<br/>
+<br />
 
 This simple command sends replies to a [slash command](../interactions/application-commands/slash-commands) with an embed.
 Let's break it down:
- 
+
 ```py
 embed = discord.Embed(
         title="My Amazing Embed",
@@ -183,68 +174,71 @@ embed = discord.Embed(
         color=discord.Colour.blurple(),
     )
 ```
- 
+
 This command creates an embed. We use the [`Embed`](https://docs.pycord.dev/en/master/api.html#discord.Embed)
 class to create an embed object with the title "My Amazing Embed", the description "Embeds are super easy, barely an inconvenience.", and the color `blurple`, Discord's main theme color.
- 
+
 [discord.Colour](https://docs.pycord.dev/en/master/api.html#colour) is a class full of [classmethods](https://docs.python.org/3/library/functions.html#classmethod)
 that return color values. While the official, documented name of this is `discord.Colour`, `discord.Color`
-works as well. 
- 
+works as well.
+
 ```py
 embed.add_field(title="A Normal Field", value="A really nice field with some information. **The description as well as the fields support markdown!**")
 embed.add_field(title="Inline Field 1", value="Inline Field 1", inline=True)
 embed.add_field(title="Inline Field 2", value="Inline Field 2", inline=True)
 embed.add_field(title="Inline Field 3", value="Inline Field 3", inline=True)
 ```
- 
+
 This small section shows off embed fields. You can add fields to embeds with the [`add_field` method](https://docs.pycord.dev/en/master/api.html#discord.Embed.add_field)
-of the [`discord.Embed`](https://docs.pycord.dev/en/master/api.html#embed) class. These consist of three 
+of the [`discord.Embed`](https://docs.pycord.dev/en/master/api.html#embed) class. These consist of three
 keyword arguments: `title`, `value`, and `inline`. `title` and `value` are both required arguments, which inline defaults to `False` if it's not defined. The `inline` argument specifies whether or not space will be divided among the inline fields. There could be a mix of fields where inline has different values too.
- 
+
 ```py
 embed.set_footer(text="Footer! No markdown here.") # footers can have icons too
 embed.set_author(name="Pycord Team", icon="https://example.com/link-to-my-image.png")
 embed.set_thumbnail(url="https://example.com/link-to-my-thumbnail.png")
 embed.set_image(url="https://example.com/link-to-my-banner.png")
 ```
- 
+
 In this section, we're adding unique items to the embed. These items are:
--   Footer - With the [`set_footer()`](https://docs.pycord.dev/en/master/api.html#discord.Embed.set_footer)
-method, you can set a small footer that holds a message. This has `text` and `icon_url` kwargs.
--   Author - With the [`set_author`](https://docs.pycord.dev/en/master/api.html#discord.Embed.set_author)
-method, you can set an author for the embed. This is a small text field at the top of the embed. This
-includes `name`, `url` and `icon_url` kwargs.
--   Thumbnail - With the [`set_thumbnial`](https://docs.pycord.dev/en/master/api.html#discord.Embed.set_thumbnail)
-method, you can set a small image to reside at the top-right of the embed. This has a single `url` kwarg.
--   Image - With the [`set_image`](https://docs.pycord.dev/en/master/api.html#discord.Embed.set_image)
-method, you can set an image to sit at the bottom of an embed. This has a single `url` kwarg.
- 
+
+*   Footer - With the [`set_footer()`](https://docs.pycord.dev/en/master/api.html#discord.Embed.set_footer)
+    method, you can set a small footer that holds a message. This has `text` and `icon_url` kwargs.
+*   Author - With the [`set_author`](https://docs.pycord.dev/en/master/api.html#discord.Embed.set_author)
+    method, you can set an author for the embed. This is a small text field at the top of the embed. This
+    includes `name`, `url` and `icon_url` kwargs.
+*   Thumbnail - With the [`set_thumbnial`](https://docs.pycord.dev/en/master/api.html#discord.Embed.set_thumbnail)
+    method, you can set a small image to reside at the top-right of the embed. This has a single `url` kwarg.
+*   Image - With the [`set_image`](https://docs.pycord.dev/en/master/api.html#discord.Embed.set_image)
+    method, you can set an image to sit at the bottom of an embed. This has a single `url` kwarg.
+
 There are a lot more methods and attributes you can use to configure embeds. Here, we just covered the basics. Also remember that all of these values are not necessary in an embed. An embed may only contain a few of these, for example, only a description, or a title and a description, and so on.
- 
+
 ### Markdown
+
 Markdown is a type of markup language that's limited in terms of formatting yet simple. Discord allows
 for a watered-down version of markdown to be in their messages. This includes:
- 
+
 <table>
-    <tr>
-        <td>*italics*</td>
-        <td>__*underlined italics*__</td>
-    </tr>
-    <tr>
-        <td>**bold**</td>
-        <td>__**underlined bold**__</td>
-        
-    </tr>
-    <tr>
-        <td>***bold italics***</td>
-        <td>__***underlined bold italics***__</td>
-        
-    </tr>
-    <tr>
-        <td>__underlined__</td>
-        <td>~~strikethrough~~</td>
-    </tr>
+  <tr>
+    <td>*italics*</td>
+    <td>***underlined italics***</td>
+  </tr>
+
+  <tr>
+    <td>**bold**</td>
+    <td>****underlined bold****</td>
+  </tr>
+
+  <tr>
+    <td>***bold italics***</td>
+    <td>*****underlined bold italics*****</td>
+  </tr>
+
+  <tr>
+    <td>**underlined**</td>
+    <td>~~strikethrough~~</td>
+  </tr>
 </table>
 
 Sadly, Discord does not support other types, such as hyperlinks. The only supported places for hyperlinks are
@@ -257,24 +251,25 @@ Here is an example for a hyperlink in embeds.
 ```
 [Click here!](https://pycord.dev/)
 ```
+
 Inside the embed, the example above will look like this: [`Click here!`](https://pycord.dev/)
 
 :::caution
- 
+
 Some embed fields, such as the footer, do not support markdown *at all*, including bold and italics.
- 
+
 :::
 
 #### Code Markdown
 
 For code markdown, you can choose between `Code Text` and `Code Blocks`.
 
--   \`Code Text\`
--   \`\`\`
+*   \`Code Text\`
+*   \`\`\`
 
 Code Blocks
 \`\`\`
 
 Code Blocks support different programming languages, such as Python.
 
-If you start your Code Block with <code>```python</code>, you can send readable Python code to Discord.
+If you start your Code Block with <code>\`\`\`python</code>, you can send readable Python code to Discord.
