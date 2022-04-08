@@ -20,7 +20,7 @@ commands a bot can run with that message. These are called message commands.
 When you right-click a message in the user list, you can once again see an option called "Apps". 
 Hover over it and you can see commands a bot can run with that message. These are called user commands.
 
-Together, these two are called Context Menus or Context Menu Commands.
+Together, these two are called Context Menus or Context Menu Commands. These commands work very much like normal commands, except they take a member or message.
 
 ## User Commands
 
@@ -29,7 +29,7 @@ Creating a user command is very simple.
 ```python
 @bot.user_command(name="Account Creation Date", guild_ids=[...])  # create a user command for the supplied guilds
 async def account_creation_date(ctx, member: discord.Member):  # user commands return the member
-    await ctx.send(f"{member.name}'s account was created on {member.created_at}")
+    await ctx.respond(f"{member.name}'s account was created on {member.created_at}")
 ```
 
 <DiscordComponent>
