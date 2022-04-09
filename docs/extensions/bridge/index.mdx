@@ -78,11 +78,11 @@ class Greetings(commands.Cog):
         self.bot = bot
 
     @bridge.bridge_command()
-    async def hello(ctx):
+    async def hello(self, ctx):
         await ctx.respond("Hello!")
 
     @bridge.bridge_command()
-    async def bye(ctx):
+    async def bye(self, ctx):
         await ctx.respond("Bye!")
 ```
 
