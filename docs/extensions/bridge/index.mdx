@@ -84,6 +84,9 @@ class Greetings(commands.Cog):
     @bridge.bridge_command()
     async def bye(self, ctx):
         await ctx.respond("Bye!")
+        
+def setup(bot):
+    bot.add_cog(Greetings(bot))
 ```
 
 The cog will automatically split the Bridge Command into their Slash Command and Prefixed Command counterparts.
