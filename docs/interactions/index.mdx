@@ -19,22 +19,22 @@ Since then, Discord has added and updated Interactions a lot. Different types of
 
 [**UI Components**](https://discord.com/developers/docs/interactions/message-components)
 
--   [**Buttons**](https://discord.com/developers/docs/interactions/message-components#buttons):
-Buttons are attached to a message and can be clicked on to perform an action.
--   [**Select Menus**](https://discord.com/developers/docs/interactions/message-components#select-menus):
-Drop-down menus are used to select a few options from a list.
--   [**Modals**](https://discord.com/developers/docs/interactions/message-components#text-inputs):
-Form-like modals can be used to ask for input from a user.
+*   [**Buttons**](https://discord.com/developers/docs/interactions/message-components#buttons):
+    Buttons are attached to a message and can be clicked on to perform an action.
+*   [**Select Menus**](https://discord.com/developers/docs/interactions/message-components#select-menus):
+    Drop-down menus are used to select a few options from a list.
+*   [**Modals**](https://discord.com/developers/docs/interactions/message-components#text-inputs):
+    Form-like modals can be used to ask for input from a user.
 
 [**Application Commands**](https://discord.com/developers/docs/interactions/application-commands)
 
--   [**Slash Commands**](https://discord.com/developers/docs/interactions/application-commands#slash-commands):
-Commands that can be used with the `/` prefix.
--   **Context Menu Commands**:Commands that can be used from the right-click menu.
-    -   [**User Commands**](https://discord.com/developers/docs/interactions/application-commands#user-commands):
-   Commands that can be used on a user by Alt-clicking/selecting on them.
-    -   [**Message Commands**](https://discord.com/developers/docs/interactions/application-commands#message-commands):
-   Commands that can be used on a message by Alt-clicking/selecting on it.
+*   [**Slash Commands**](https://discord.com/developers/docs/interactions/application-commands#slash-commands):
+    Commands that can be used with the `/` prefix.
+*   **Context Menu Commands**:Commands that can be used from the right-click menu.
+    *   [**User Commands**](https://discord.com/developers/docs/interactions/application-commands#user-commands):
+        Commands that can be used on a user by Alt-clicking/selecting on them.
+    *   [**Message Commands**](https://discord.com/developers/docs/interactions/application-commands#message-commands):
+        Commands that can be used on a message by Alt-clicking/selecting on it.
 
 ## Message Components
 
@@ -45,7 +45,7 @@ sleek, and downright awesome.
 ### [Views](https://docs.pycord.dev/en/master/api.html#discord.ui.View)
 
 Views are not an Application Command nor are they a Message Component. Views are the invisible
-placeholders or grid that Message Components lie in. Views can have up to 5 
+placeholders or grid that Message Components lie in. Views can have up to 5
 [`Action Rows`](https://docs.pycord.dev/en/master/api.html#discord.ActionRow). `Action 
 Rows` can have a maximum of 5 slots. Below you can find a table of how many slots a Message
 Interaction takes up.
@@ -69,6 +69,7 @@ things with buttons, such as calculators, games, and more!
 <DiscordComponent>
   <DiscordMessage profile="robocord">
     Discord buttons are awesome!
+
     <div slot="actions">
       <DiscordButtons>
         <DiscordButton type="primary" emoji="😎">Click me!</DiscordButton>
@@ -131,6 +132,7 @@ message content Privileged Intent. Using this as a reason will get your applicat
         ping
       </DiscordInteraction>
     </div>
+
     Pong! Latency is 335ms.
   </DiscordMessage>
 </DiscordComponent>
@@ -140,11 +142,11 @@ message content Privileged Intent. Using this as a reason will get your applicat
 This is what a slash command looks like. Very simple, not very different from a normal command other
 apart from the note telling you who used the command. Slash Commands support fields for the following:
 
--   Members
--   Roles
--   Channels
--   Attachments
--   Text
+*   Members
+*   Roles
+*   Channels
+*   Attachments
+*   Text
 
 Just about as good as it gets.
 
@@ -163,12 +165,14 @@ Here's an example of a Message Command:
   <DiscordMessage profile="bob">
     Hello World!
   </DiscordMessage>
+
   <DiscordMessage profile="robocord">
     <div slot="interactions">
       <DiscordInteraction profile="clone" contextMenu>
         Reverse Message
       </DiscordInteraction>
     </div>
+
     Message 930650407917748286 reversed is "!dlroW olleH"
   </DiscordMessage>
 </DiscordComponent>
@@ -181,22 +185,27 @@ And here's an example of a User Command:
   <DiscordMessage profile="bob">
     {defaultOptions.profiles.clone.author} has been on Discord for a long time
   </DiscordMessage>
+
   <DiscordMessage profile="robocord">
     <div slot="interactions">
       <DiscordInteraction profile="clone" contextMenu>
         User Age
       </DiscordInteraction>
     </div>
-      {defaultOptions.profiles.clone.author} is 1 week old.
+
+    {defaultOptions.profiles.clone.author} is 1 week old.
   </DiscordMessage>
+
   <DiscordMessage profile="robocord">
     <div slot="interactions">
       <DiscordInteraction profile="clone" contextMenu>
         User Age
       </DiscordInteraction>
     </div>
+
     {defaultOptions.profiles.bob.author} is 40 years old.
   </DiscordMessage>
+
   <DiscordMessage profile="clone">
     🤔
   </DiscordMessage>
@@ -219,7 +228,7 @@ commands? Below we discuss everything you need to know.
 ### Discord's Decision
 
 Application Commands became a thing because of privacy concerns. When Discord was young and new, they weren't
-very concerned about how bots have access to message content with every message event with the API. 
+very concerned about how bots have access to message content with every message event with the API.
 However, as Discord grew, this became more of a problem. Hypothetically, bots could simply listen to every
 message they receive via the Discord API and give off that information to a company. Maybe an advertisement company
 like Google or Facebook. This is a problem since that data is supposed to be private to Discord. As such, they
@@ -227,15 +236,15 @@ locked down message content into a privileged intent and introduced Application 
 
 Prefix commands work by reading messages, as described before. Application Commands, however, don't
 work this way. Application Commands work by Discord sending your bot information for when a command
-was used. This way, Discord can limit message reading to only bots that _absolutely_ depend on it, such
+was used. This way, Discord can limit message reading to only bots that *absolutely* depend on it, such
 as auto-moderation bots.
 
 ### Who has to Use Application Commands
 
 Any verified bot without a reason that Discord deems acceptable must use Application Commands. Discord
 is allowing applications for the Message Content intent, however they don't want to support prefix commands
-for privacy reasons, so they will automatically decline any application for message content intent used only for 
-prefix commands. So, if your bot doesn't have an automoderator, message detector, or anything that reads messages, 
+for privacy reasons, so they will automatically decline any application for message content intent used only for
+prefix commands. So, if your bot doesn't have an automoderator, message detector, or anything that reads messages,
 you're out of luck.
 
 Unverified bots, however, don't have to use Application Commands. This is because the Message Content

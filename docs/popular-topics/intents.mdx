@@ -20,25 +20,21 @@ Remember that [Privileged Intents](#what-are-privileged-intents) require you to 
 
 <Tabs>
   <TabItem value="enabling-all-intents" label="Enabling all intents" default>
+    ```python
+    import discord
 
-```python
-import discord
-
-bot = discord.Bot(intents=discord.intents.all())
-```
-
+    bot = discord.Bot(intents=discord.intents.all())
+    ```
   </TabItem>
-    
+
   <TabItem value="enabling-specific-intents" label="Enabling specific intents">
+    You can view a list of intents and the events they subscribe to [here](https://docs.pycord.dev/en/master/api.html#discord.Intents).
 
-You can view a list of intents and the events they subscribe to [here](https://docs.pycord.dev/en/master/api.html#discord.Intents).
+    ```python title="Enabling Intents"
+    import discord
 
-```python title="Enabling Intents"
-import discord
-
-bot = discord.Bot(intents=discord.intents.members(bans=True, guilds=True))
-```
-
+    bot = discord.Bot(intents=discord.intents.members(bans=True, guilds=True))
+    ```
   </TabItem>
 </Tabs>
 
@@ -56,7 +52,7 @@ Not enabling these intents doesn't mean you won't be able to ban users, but you 
 
 :::info Related Topics
 
--   [Sharding Bots](sharding)
--   [Rules and Common Practices](../Getting-Started/rules-and-common-practices)
+*   [Sharding Bots](sharding)
+*   [Rules and Common Practices](../Getting-Started/rules-and-common-practices)
 
 :::

@@ -26,8 +26,8 @@ Pycord bot. It is important to understand these two concepts before continuing.
 
 **Learning Resources**:
 
--   [W3Schools - Python Subclassing](https://www.w3schools.com/python/python_classes.asp)
--   [W3Schools - Python Inheritance](https://www.w3schools.com/python/python_inheritance.asp)
+*   [W3Schools - Python Subclassing](https://www.w3schools.com/python/python_classes.asp)
+*   [W3Schools - Python Inheritance](https://www.w3schools.com/python/python_inheritance.asp)
 
 :::
 
@@ -54,82 +54,96 @@ of making one with Pycord. Making a help command with subclassing and OOP will s
 
 There are two types of built-in help commands:
 
--   [`DefaultHelpCommand`](https://docs.pycord.dev/en/master/api.html#discord.ext.commands.DefaultHelpCommand)
--   [`MinimalHelpCommand`](https://docs.pycord.dev/en/master/api.html#discord.ext.commands.MinimalHelpCommand)
+*   [`DefaultHelpCommand`](https://docs.pycord.dev/en/master/api.html#discord.ext.commands.DefaultHelpCommand)
+*   [`MinimalHelpCommand`](https://docs.pycord.dev/en/master/api.html#discord.ext.commands.MinimalHelpCommand)
 
 `DefaultHelpCommand` is the command enabled by default. It isn't the best looking, but `MinimalHelpCommand` can help make it look a bit better.
 
 <Tabs>
-<TabItem label="Default Help Command" value="default">
+  <TabItem label="Default Help Command" value="default">
+    ```python title="Default Help Command"
+    import discord
+    from discord.ext import commands
 
-```python title="Default Help Command"
-import discord
-from discord.ext import commands
+    bot = commands.Bot(command_prefix='!', help_command=commands.DefaultHelpCommand()) # help_command is DefaultHelpCommand by default so it isn't necessary to enable it like this
+    # We enable it here for the sake of understanding
 
-bot = commands.Bot(command_prefix='!', help_command=commands.DefaultHelpCommand()) # help_command is DefaultHelpCommand by default so it isn't necessary to enable it like this
-# We enable it here for the sake of understanding
+    ...
 
-...
+    bot.run("token")
+    ```
 
-bot.run("token")
-```
+    <DiscordComponent>
+      <DiscordMessage profile="bob">
+        !help
+      </DiscordMessage>
 
-<DiscordComponent>
-  <DiscordMessage profile="bob">
-    !help
-  </DiscordMessage>
-  <DiscordMessage profile="robocord">
-    <code>
-      No Category:
-      <br />
-      <div style={{ paddingLeft: "2em" }}>
-        !help Shows this message
+      <DiscordMessage profile="robocord">
+        <code>
+          No Category:
+
+          <br />
+
+          <div style={{ paddingLeft: "2em" }}>
+            !help Shows this message
+
+            <br />
+
+            !ping
+          </div>
+
+          <br />
+
+          Type !help command for more info on a command.
+
+          <br />
+
+          You can also type !help category for more info on a category.
+        </code>
+      </DiscordMessage>
+    </DiscordComponent>
+  </TabItem>
+
+  <TabItem label="Minimal Help Command" value="minimal">
+    ```python title="Minimal Help Command"
+    import discord
+    from discord.ext import commands
+
+    bot = commands.Bot(command_prefix='!', help_command=commands.MinimalHelpCommand())
+
+    ...
+
+    bot.run("token")
+    ```
+
+    <DiscordComponent>
+      <DiscordMessage profile="bob">
+        !help
+      </DiscordMessage>
+
+      <DiscordMessage profile="robocord">
+        Use <code>!help \[command]</code> for more info on a command.
+
         <br />
-        !ping
-      </div>
-      <br />
-      Type !help command for more info on a command.
-      <br />
-      You can also type !help category for more info on a category.
-    </code>
-  </DiscordMessage>
-</DiscordComponent>
 
-</TabItem>
-<TabItem label="Minimal Help Command" value="minimal">
+        You can also use <code>!help \[category]</code> for more info on a category.
 
-```python title="Minimal Help Command"
-import discord
-from discord.ext import commands
+        <br />
 
-bot = commands.Bot(command_prefix='!', help_command=commands.MinimalHelpCommand())
+        <br />
 
-...
+        <strong>
+          {" "}
 
-bot.run("token")
-```
+          <u>No Category</u>{" "}
+        </strong>
 
-<DiscordComponent>
-  <DiscordMessage profile="bob">
-    !help
-  </DiscordMessage>
-  <DiscordMessage profile="robocord">
-    Use <code>!help \[command]</code> for more info on a command.
-    <br />
-    You can also use <code>!help \[category]</code> for more info on a category.
-    <br />
-    <br />
-    <strong>
-      {" "}
-      <u>No Category</u>{" "}
-    </strong>
-    <br />
-    help ping
-  </DiscordMessage>
-</DiscordComponent>
+        <br />
 
-</TabItem>
-
+        help ping
+      </DiscordMessage>
+    </DiscordComponent>
+  </TabItem>
 </Tabs>
 
 ## Updating Built-in Help Commands
@@ -171,16 +185,24 @@ Finally, we set this as our new help command using `bot.help_command = MyNewHelp
   <DiscordMessage profile="robocord">
     <DiscordEmbed>
       Use <code>!help \[command]</code> for more info on a command.
+
       <br />
+
       You can also use <code>!help \[category]</code> for more info on a
       category.
+
       <br />
+
       <br />
+
       <strong>
         {" "}
+
         <u>No Category</u>{" "}
       </strong>
+
       <br />
+
       help ping
     </DiscordEmbed>
   </DiscordMessage>
@@ -194,10 +216,10 @@ For this, we will subclass the `HelpCommand` class.
 
 There are 4 methods that we need to override:
 
--   `HelpCommand.send_bot_help(mapping)` that gets called with `<prefix>help`
--   `HelpCommand.send_command_help(command)` that gets called with `<prefix>help <command>`
--   `HelpCommand.send_group_help(group)` that gets called with `<prefix>help <group>`
--   `HelpCommand.send_cog_help(cog)` that gets called with `<prefix>help <cog>`
+*   `HelpCommand.send_bot_help(mapping)` that gets called with `<prefix>help`
+*   `HelpCommand.send_command_help(command)` that gets called with `<prefix>help <command>`
+*   `HelpCommand.send_group_help(group)` that gets called with `<prefix>help <group>`
+*   `HelpCommand.send_cog_help(cog)` that gets called with `<prefix>help <cog>`
 
 ### Bot Help
 
@@ -219,27 +241,27 @@ bot.help_command = MyHelp()
 
 Let's go through the code.
 
--   First, we create a new class called `MyHelp`. This class is a subclass of `HelpCommand`.
+*   First, we create a new class called `MyHelp`. This class is a subclass of `HelpCommand`.
 
--   Next, we override the `send_bot_help` method. This method is responsible for sending the main help
-command to the user.
+*   Next, we override the `send_bot_help` method. This method is responsible for sending the main help
+    command to the user.
 
--   We create an embed with the title "Help".
+*   We create an embed with the title "Help".
 
--   We iterate through `mapping.items()`, which returns a list of tuples, the first element being the
-cog and the second element being a list of commands.
+*   We iterate through `mapping.items()`, which returns a list of tuples, the first element being the
+    cog and the second element being a list of commands.
 
--   By using `self.get_command_signature(c)` we get the signature of the command, also known as the
-`parameters` or `arguments`.
+*   By using `self.get_command_signature(c)` we get the signature of the command, also known as the
+    `parameters` or `arguments`.
 
--   There is a chance that the cog is empty, so we use `if command_signatures:`.
+*   There is a chance that the cog is empty, so we use `if command_signatures:`.
 
--   We get the name of the cog using `getattr(cog, "qualified_name", "No Category")`. This calls the
-cog's attribute `qualified_name` which returns "No Category" if the cog has no name.
+*   We get the name of the cog using `getattr(cog, "qualified_name", "No Category")`. This calls the
+    cog's attribute `qualified_name` which returns "No Category" if the cog has no name.
 
--   We add a field to the embed with the name of the cog and the value of the command signatures.
+*   We add a field to the embed with the name of the cog and the value of the command signatures.
 
--   Finally, we send the embed to the channel.
+*   Finally, we send the embed to the channel.
 
 Let's improve the code a little.
 
@@ -289,11 +311,11 @@ bot.help_command = MyHelp()
 
 Let's quickly go through the code we haven't discussed yet.
 
--   In line 3, we create an embed with a title the signature of the command (so that the title of the
-embed looks like `<command> <parameter> [parameter]`), and a random color.
+*   In line 3, we create an embed with a title the signature of the command (so that the title of the
+    embed looks like `<command> <parameter> [parameter]`), and a random color.
 
--   In lines 4 and 5, we get the command's `help` description and add it to the embed. The help description
-of a command can be specified in the docstrings of a command function. For example:
+*   In lines 4 and 5, we get the command's `help` description and add it to the embed. The help description
+    of a command can be specified in the docstrings of a command function. For example:
 
     ```python
     @bot.command()
@@ -301,7 +323,8 @@ of a command can be specified in the docstrings of a command function. For examp
       """Returns the latency of the bot."""
       await ctx.send(f"Pong! {round(bot.latency * 1000)}ms")
     ```
--   Line 6 is shorthand for
+
+*   Line 6 is shorthand for
 
     ```python
     alias = command.aliases
@@ -316,7 +339,7 @@ of a command can be specified in the docstrings of a command function. For examp
 
     A very helpful (but not well-known) Python shorthand!
 
--   In line 7, we get the aliases of the command and add them to the embed.
+*   In line 7, we get the aliases of the command and add them to the embed.
 
 ### Cog Help
 
@@ -361,64 +384,63 @@ class MyHelp(commands.HelpCommand):
 Add all of these methods together and you have a fully functioning help command!
 
 <details>
-<summary>Click to see the final code for this section</summary>
-<div class="markdown-body">
+  <summary>Click to see the final code for this section</summary>
 
-:::note
+  <div class="markdown-body">
+    :::note
 
-The following code has been slightly edited from the tutorial version.
+    The following code has been slightly edited from the tutorial version.
 
-:::
+    :::
 
-```python title="Custom Help Command Example"
-class SupremeHelpCommand(commands.HelpCommand):
-    def get_command_signature(self, command):
-        return '%s%s %s' % (self.context.clean_prefix, command.qualified_name, command.signature)
+    ```python title="Custom Help Command Example"
+    class SupremeHelpCommand(commands.HelpCommand):
+        def get_command_signature(self, command):
+            return '%s%s %s' % (self.context.clean_prefix, command.qualified_name, command.signature)
 
-    async def send_bot_help(self, mapping):
-        embed = discord.Embed(title="Help", color=discord.Color.blurple())
-        for cog, commands in mapping.items():
-            filtered = await self.filter_commands(commands, sort=True)
-            if command_signatures := [
-                self.get_command_signature(c) for c in filtered
-            ]:
-                cog_name = getattr(cog, "qualified_name", "No Category")
-                embed.add_field(name=cog_name, value="\n".join(command_signatures), inline=False)
+        async def send_bot_help(self, mapping):
+            embed = discord.Embed(title="Help", color=discord.Color.blurple())
+            for cog, commands in mapping.items():
+                filtered = await self.filter_commands(commands, sort=True)
+                if command_signatures := [
+                    self.get_command_signature(c) for c in filtered
+                ]:
+                    cog_name = getattr(cog, "qualified_name", "No Category")
+                    embed.add_field(name=cog_name, value="\n".join(command_signatures), inline=False)
 
-        channel = self.get_destination()
-        await channel.send(embed=embed)
+            channel = self.get_destination()
+            await channel.send(embed=embed)
 
-    async def send_command_help(self, command):
-        embed = discord.Embed(title=self.get_command_signature(command) , color=discord.Color.blurple())
-        if command.help:
-            embed.description = command.help
-        if alias := command.aliases:
-            embed.add_field(name="Aliases", value=", ".join(alias), inline=False)
+        async def send_command_help(self, command):
+            embed = discord.Embed(title=self.get_command_signature(command) , color=discord.Color.blurple())
+            if command.help:
+                embed.description = command.help
+            if alias := command.aliases:
+                embed.add_field(name="Aliases", value=", ".join(alias), inline=False)
 
-        channel = self.get_destination()
-        await channel.send(embed=embed)
+            channel = self.get_destination()
+            await channel.send(embed=embed)
 
-    async def send_help_embed(self, title, description, commands): # a helper function to add commands to an embed
-        embed = discord.Embed(title=title, description=description or "No help found...")
+        async def send_help_embed(self, title, description, commands): # a helper function to add commands to an embed
+            embed = discord.Embed(title=title, description=description or "No help found...")
 
-        if filtered_commands := await self.filter_commands(commands):
-            for command in filtered_commands:
-                embed.add_field(name=self.get_command_signature(command), value=command.help or "No help found...")
+            if filtered_commands := await self.filter_commands(commands):
+                for command in filtered_commands:
+                    embed.add_field(name=self.get_command_signature(command), value=command.help or "No help found...")
 
-        await self.get_destination().send(embed=embed)
+            await self.get_destination().send(embed=embed)
 
-    async def send_group_help(self, group):
-        title = self.get_command_signature(group)
-        await self.send_help_embed(title, group.help, group.commands)
+        async def send_group_help(self, group):
+            title = self.get_command_signature(group)
+            await self.send_help_embed(title, group.help, group.commands)
 
-    async def send_cog_help(self, cog):
-        title = cog.qualified_name or "No"
-        await self.send_help_embed(f'{title} Category', cog.description, cog.get_commands())
+        async def send_cog_help(self, cog):
+            title = cog.qualified_name or "No"
+            await self.send_help_embed(f'{title} Category', cog.description, cog.get_commands())
 
-bot.help_command = SupremeHelpCommand()
-```
-
-</div>
+    bot.help_command = SupremeHelpCommand()
+    ```
+  </div>
 </details>
 
 ## Command Attributes
@@ -454,11 +476,12 @@ class MyHelp(commands.HelpCommand):
 
 <DiscordComponent>
   <DiscordMessage profile="bob">
-    !help update_pycord
+    !help update\_pycord
   </DiscordMessage>
+
   <DiscordMessage profile="robocord">
     <DiscordEmbed embedTitle="Error" borderColor="#ff0000">
-      Command 'update_pycord' not found.
+      Command 'update\_pycord' not found.
     </DiscordEmbed>
   </DiscordMessage>
 </DiscordComponent>
@@ -471,8 +494,8 @@ Thanks to InterStella0 for making this guide amazing.
 
 :::info Related Topics
 
--   [Subclassing Bots](../../Popular-Topics/subclassing-bots)
--   [Prefixed Commands](prefixed-commands)
--   [Cogs](cogs)
+*   [Subclassing Bots](../../Popular-Topics/subclassing-bots)
+*   [Prefixed Commands](prefixed-commands)
+*   [Cogs](cogs)
 
 :::

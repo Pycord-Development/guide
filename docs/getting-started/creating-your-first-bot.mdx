@@ -25,7 +25,7 @@ you should:
     on <button class="blurplebutton">New Application</button>.
 2.  Give your bot a name, and click <button class="blurplebutton">Create</button>.
 3.  Now, you should see a page like this.
-    ![image](https://gblobscdn.gitbook.com/assets%2F-MjPk-Yu4sOq8KGrr_yG%2F-MjdW3OQnwUhacopqSWw%2F-Mjd_-mxrJCrzmaXrAg8%2Fimage.png?alt=media&token=b8e2ae6c-2290-4d37-ad7c-eb412f3fb00e)
+    ![image](https://gblobscdn.gitbook.com/assets%2F-MjPk-Yu4sOq8KGrr_yG%2F-MjdW3OQnwUhacopqSWw%2F-Mjd_-mxrJCrzmaXrAg8%2Fimage.png?alt=media\&token=b8e2ae6c-2290-4d37-ad7c-eb412f3fb00e)
 4.  Click on <button class="greybutton">Bot</button> tab on the left side of the screen.
 5.  Click on <button class="blurplebutton">Add bot</button>.
 6.  You can give it a name, change the Avatar, etc.
@@ -50,7 +50,7 @@ Administrator permissions are fine.
 
 :::
 
-![image](https://gblobscdn.gitbook.com/assets%2F-MjPk-Yu4sOq8KGrr_yG%2F-Mk6tNY3LfDkjd6pqdpL%2F-Mk6tkdpddEWoa2jczZk%2Fimage.png?alt=media&token=52c8a29f-a798-48f8-a8c7-4ecca2681f79)
+![image](https://gblobscdn.gitbook.com/assets%2F-MjPk-Yu4sOq8KGrr_yG%2F-Mk6tNY3LfDkjd6pqdpL%2F-Mk6tkdpddEWoa2jczZk%2Fimage.png?alt=media\&token=52c8a29f-a798-48f8-a8c7-4ecca2681f79)
 
 You can use this link to invite the bot.
 
@@ -68,13 +68,13 @@ Now, lets get your bot's token. To do this, you want to:
 
 1.  Go back to the <button class="greybutton">Bot</button> tab.
 2.  Click on the <button class="blurplebutton">Copy</button> button in the "Token" section.
-    ![image](https://gblobscdn.gitbook.com/assets%2F-MjPk-Yu4sOq8KGrr_yG%2F-MjdbU12JISJorAZxrKH%2F-MjdbpUsapzb5n15Po5P%2Fimage.png?alt=media&token=118e259f-940a-4f6c-b3a3-c29f3a54100d)
+    ![image](https://gblobscdn.gitbook.com/assets%2F-MjPk-Yu4sOq8KGrr_yG%2F-MjdbU12JISJorAZxrKH%2F-MjdbpUsapzb5n15Po5P%2Fimage.png?alt=media\&token=118e259f-940a-4f6c-b3a3-c29f3a54100d)
 
 Now, you have your bot's token copied to your clipboard.
 
 :::danger
 
-Do not, under any circumstances, give your token to anyone. Even if you are contacted by someone 
+Do not, under any circumstances, give your token to anyone. Even if you are contacted by someone
 claiming to be Discord staff, do not give them your bot's token. They are lying to you to try and
 gain access to your bot. If an unauthorized user gains access to your bot's token, they can access
 your bot and use it in malicious ways.
@@ -93,13 +93,11 @@ You can store your tokens in `.env` files. This is a simple way to store sensiti
 1.  Create a file with the name `.env`. Just `.env`, with the dot/period at the start.
 2.  Define the token in the file, like so:
 
-
     ```env title=".env"
     TOKEN = [PASTE YOUR TOKEN HERE]
     ```
 
     for example:
-
 
     ```env title=".env"
     TOKEN = NzkyNzE1NDU0MTk2MDg4ODQy.X-hvzA.Ovy4MCQywSkoMRRclStW4xAYK7I
@@ -143,10 +141,12 @@ bot.run(os.getenv('TOKEN')) # run the bot with the token
         hello
       </DiscordInteraction>
     </div>
+
     Hey!
   </DiscordMessage>
 </DiscordComponent>
-<br/>
+
+<br />
 
 Let's go through the code. First, the imports.
 
@@ -171,9 +171,8 @@ bot = discord.Bot(debug_guilds=[881207955029110855])
 In this line, we create a new instance of [`discord.Bot`](https://docs.pycord.dev/en/master/api.html#discord.Bot).
 In this object, we pass a `debug_guilds` argument, which is a list of guild IDs that the bot's application
 commands will appear in. This is beneficial for testing purposes when we are testing a new command
-or two and don't want everyone to be able to use it. If debug guilds are not specified, all of the 
+or two and don't want everyone to be able to use it. If debug guilds are not specified, all of the
 servers the bot is in will have access to your slash commands, which can take up to an hour to register.
-
 
 ```py
 @bot.event
@@ -207,26 +206,25 @@ will not limit your bot's abilities.
 The part where we load the token from the environmental variables is not required. You may use another way to keep your token secure, or, although not recommended, simply specify the token normally as a string, as shown below.
 
 <details>
-<summary>A Basic Bot without securing the token</summary>
-<div class="markdown-body">
+  <summary>A Basic Bot without securing the token</summary>
 
-```py
-import discord
+  <div class="markdown-body">
+    ```py
+    import discord
 
-bot = discord.Bot()
+    bot = discord.Bot()
 
-@bot.event
-async def on_ready():
-    print(f"{bot.user} is ready and online!")
+    @bot.event
+    async def on_ready():
+        print(f"{bot.user} is ready and online!")
 
-@bot.slash_command(name = "hello", description = "Say hello to the bot")
-async def hello(ctx):
-    await ctx.send("Hey!")
+    @bot.slash_command(name = "hello", description = "Say hello to the bot")
+    async def hello(ctx):
+        await ctx.send("Hey!")
 
-bot.run("TOKEN")
-```
-
-</div>
+    bot.run("TOKEN")
+    ```
+  </div>
 </details>
 
 :::
@@ -243,7 +241,7 @@ to learn more about prefixed commands.
 
 [Cogs](../extensions/commands/cogs.mdx) are a great way to organize your commands by putting them into
 groups called cogs. Cogs are separate files that your bot loads to get the commands inside.
-You can read more about cogs, as well as learn how to use them and their benefits, 
+You can read more about cogs, as well as learn how to use them and their benefits,
 [here](../extensions/commands/cogs.mdx).
 
 ### How do I add components, such as buttons and dropdown menus, to my bot?
@@ -253,6 +251,6 @@ To learn more, read about Message Commands in our [interactions directory](../in
 
 :::info Related Topics
 
--   [Prefixed Commands](../../extensions/commands/prefixed-commands)
+*   [Prefixed Commands](../../extensions/commands/prefixed-commands)
 
 :::
