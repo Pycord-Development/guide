@@ -26,7 +26,10 @@ This is where the `ext.bridge` module comes in. It allows you to use one callbac
 import discord
 from discord.ext import bridge
 
-bot = bridge.Bot(command_prefix="!")
+intents = discord.Intents()
+intents.message_content = True
+
+bot = bridge.Bot(command_prefix="!", intents=intents)
 
 @bot.bridge_command()
 async def hello(ctx):
@@ -151,7 +154,10 @@ Options are pretty straightforward. You just specify them like you do with prefi
 import discord
 from discord.ext import bridge
 
-bot = bridge.Bot(command_prefix="!")
+intents = discord.Intents()
+intents.message_content = True
+
+bot = bridge.Bot(command_prefix="!", intents=intents)
 
 @bot.bridge_command()
 async def sum(ctx, a: int, b: int):
