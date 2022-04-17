@@ -133,7 +133,7 @@ async def hello(ctx):
     embed.add_field(name="Inline Field 3", value="Inline Field 3", inline=True)
  
     embed.set_footer(text="Footer! No markdown here.") # footers can have icons too
-    embed.set_author(name="Pycord Team", icon="https://example.com/link-to-my-image.png")
+    embed.set_author(name="Pycord Team", icon_url="https://example.com/link-to-my-image.png")
     embed.set_thumbnail(url="https://example.com/link-to-my-thumbnail.png")
     embed.set_image(url="https://example.com/link-to-my-banner.png")
  
@@ -204,7 +204,7 @@ keyword arguments: `title`, `value`, and `inline`. `title` and `value` are both 
  
 ```py
 embed.set_footer(text="Footer! No markdown here.") # footers can have icons too
-embed.set_author(name="Pycord Team", icon="https://example.com/link-to-my-image.png")
+embed.set_author(name="Pycord Team", icon_url="https://example.com/link-to-my-image.png")
 embed.set_thumbnail(url="https://example.com/link-to-my-thumbnail.png")
 embed.set_image(url="https://example.com/link-to-my-banner.png")
 ```
