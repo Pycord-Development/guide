@@ -402,53 +402,51 @@ To make a message with buttons, do the following:
 
 There are a few things you need to take care of:
 
-1.
-Make sure that the spelling and grammar is perfect. We have a GitHub action configured that will warn you about spelling errors when you start a pull request. Make sure to commit your changes accordingly. 
+1.  Make sure that the spelling and grammar is perfect. We have a GitHub action configured that will warn you about spelling errors when you start a pull request. Make sure to commit your changes accordingly. 
 
-  As for the grammar, you should try reading the changes you have done and wait for reviews from others.
+    As for the grammar, you should try reading the changes you have done and wait for reviews from others.
 
-2.
-A common mistake people make is incorrect header style. People often think that the less the important the topic is, the lower it's heading style should be.
+2.  A common mistake people make is incorrect header style. People often think that the less the important the topic is, the lower it's heading style should be.
 
-  ```md
-  [PAGE STARTS]
-  # Topic
-  ## Less Important Topic
-  ## Subtopic
-  ```
-  ```md
-  [PAGE STARTS]
-  # About
-  [Introduction]
+    ```md
+    [PAGE STARTS]
+    # Topic
+    ## Less Important Topic
+    ## Subtopic
+    ```
+    ```md
+    [PAGE STARTS]
+    # About
+    [Introduction]
 
-  ## Installation
-  [Content]
+    ## Installation
+    [Content]
 
-  ### Windows
-  [Content]
-  ```
+    ### Windows
+    [Content]
+    ```
 
-  That's VERY wrong. Here's the correct example:
+    That's VERY wrong. Here's the correct example:
 
-  ```md
-  [PAGE STARTS]
-  [Introduction]
-  ## Topic
-  ## Less Important Topic
-  ### Subtopic
-  ```
-  ```md
-  [PAGE STARTS]
-  [Introduction]
+    ```md
+    [PAGE STARTS]
+    [Introduction]
+    ## Topic
+    ## Less Important Topic
+    ### Subtopic
+    ```
+    ```md
+    [PAGE STARTS]
+    [Introduction]
 
-  ## About
-  [More Information]
+    ## About
+    [More Information]
 
-  ## Installation
-  [Content]
+    ## Installation
+    [Content]
 
-  ### Windows
-  [Content]
-  ```
+    ### Windows
+    [Content]
+    ```
 
-  Note that the `---`s at the beginning have been skipped here.
+    Note that the `---`s at the beginning have been skipped here.
