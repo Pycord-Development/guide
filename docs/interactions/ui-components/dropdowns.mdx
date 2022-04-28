@@ -208,7 +208,7 @@ class MyView(discord.ui.View):
         await self.message.edit(content="You took too long! Disabled all the components.", view=self)
 
     @discord.ui.select(options = [...])
-    async def select_callback(self, select, callback):
+    async def select_callback(self, select, interaction):
         ...
 
 @bot.command()
@@ -230,7 +230,7 @@ class MyView(discord.ui.View):
         await self.message.edit(content="You took too long! Disabled all the components.", view=self)
 
     @discord.ui.select(options = [...])
-    async def select_callback(self, select, callback):
+    async def select_callback(self, select, interaction):
         ...
 ```
 
@@ -269,7 +269,7 @@ class MyView(discord.ui.View):
         super().__init__(timeout=None) # timeout of the view must be set to None
 
     @discord.ui.select(custom_id="select-1", options = [...]) # a custom_id must be set
-    async def select_callback(self, select, callback):
+    async def select_callback(self, select, interaction):
         ...
 
 @bot.command()
