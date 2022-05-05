@@ -26,8 +26,8 @@
   },
   "dependencies": {
     "@discordapp/twemoji": "discord/twemoji",
-    "@docusaurus/core": "2.0.0-beta.18",
-    "@docusaurus/preset-classic": "2.0.0-beta.18",
+    "@docusaurus/core": "2.0.0-beta.19",
+    "@docusaurus/preset-classic": "2.0.0-beta.19",
     "@easyops-cn/docusaurus-search-local": "0.23.2",
     "@matteusan/sentro": "0.1.21",
     "@mdx-js/react": "1.6.22",
@@ -42,7 +42,7 @@
     "yarn": "^1.22.18"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "2.0.0-beta.18",
+    "@docusaurus/module-type-aliases": "2.0.0-beta.19",
     "@tsconfig/docusaurus": "1.0.5",
     "micromark-extension-mdx-md": "^1.0.0",
     "remark-cli": "^10.0.1",
