@@ -135,51 +135,6 @@ bot.add_application_command(math)
 
 The command created above can be invoked by typing `/math advanced square_root`.
 
-## Slash Commands in Cogs
-
-As seen with the [commands extension](../../extensions/commands/cogs), cogs are a useful feature to group commands together. Fortunately, cogs can also work with Slash Commands!
-
-In order to use Slash Commands with cogs, you'll have to use the `slash_command` decorator instead of the `bot.command` decorator. This is imported with the `discord` module, so you don't have to import anything else.
-
-Here's a cog with slash commands instead of prefix commands.
-
-```python title="./cogs/greetings.py"
-import discord
-from discord.ext import commands
-
-class Greetings(commands.Cog):
-    def __init__(self, bot):
-        self.bot = bot
-
-    @discord.slash_command()
-    async def hello(self, ctx):
-        await ctx.respond("Hello, this is a slash command from a cog!")
-
-    @discord.slash_command()
-    async def bye(self, ctx):
-        await ctx.respond("Bye, remember that this is a slash command from a cog!")
-
-    @discord.slash_command(guild_ids=[...])
-    async def restricted(self, ctx):
-        await ctx.respond("Hi, this is a restricted slash command from a cog!")
-
-def setup(bot):
-    bot.add_cog(Greetings(bot))
-```
-
-The registered slash commands from the cog should be displayed as normal in the Slash Command menu.
-
-<DiscordComponent>
-  <DiscordMessage profile="robocord">
-    <div slot="interactions">
-      <DiscordInteraction profile="bob" command>
-        hello
-      </DiscordInteraction>
-    </div>
-    Hello, this is a slash command from a cog!
-  </DiscordMessage>
-</DiscordComponent>
-
 ## Options & Option Types
 
 Whenever you're using Slash Commands, you might notice that you can specify parameters that the user has to set or can optionally set. These are called Options.
@@ -258,5 +213,6 @@ bot.run("TOKEN")
 
 -   [Interactions Index](../../interactions)
 -   [Rules and Common Practices](../../getting-started/rules-and-common-practices)
+-   [Cogs](../../popular-topics/cogs)
 
 :::

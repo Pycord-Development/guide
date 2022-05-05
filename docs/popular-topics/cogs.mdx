@@ -33,6 +33,18 @@ class Greetings(commands.Cog): # create a class for our cog that inherits from c
     async def goodbye(self, ctx):
         await ctx.send('Goodbye!')
 
+    @discord.slash_command() # we can also add application commands
+    async def hello(self, ctx):
+        await ctx.respond('Hello!')
+
+    @discord.slash_command()
+    async def goodbye(self, ctx):
+        await ctx.respond('Goodbye!')
+
+    @discord.user_command()
+    async def greet(self, ctx, member: discord.Member):
+        await ctx.respond(f'{ctx.author.mention} says hello to {member.mention}!')
+
     @commands.Cog.listener() # we can add event listeners to our cog
     async def on_member_join(self, member): # this is called when a member joins the server
     # you must enable the proper intents
@@ -89,9 +101,12 @@ wouldn't be able to access our bot instance.
 
 ### Creating Commands
 
-When creating commands, your decorator would usually be something like `@bot.command()`. If you're using
+When creating prefixed commands, your decorator would usually be something like `@bot.command()`. If you're using
 cogs, this isn't the case. In a cog, you can't access the bot instance outside of functions, so to 
 register a function as a command, you must instead use `@commands.command()`.
+
+Similar to prefixed commands, you'll have to use either the `@discord.slash_command()`, `@discord.user_command()`,
+or `@discord.message_command()` decorators for Application Commands.
 
 Also, when creating a command, make sure that it is indented. If we want a command to be actually
 inside of a cog, it has to be inside of your cog's class. If the command is not inside of the cog,
@@ -104,13 +119,13 @@ access the `bot` variable outside of a function. To make an event, you have to u
 method, `@commands.Cog.listener()`. Events also need `self` as their first parameter.
 
 And that's it! Cogs are a simple and easy way of organizing your code. Now you can check out how to
-create a help command [here](./help-command.mdx)
+create a help command [here](../extensions/commands/help-command).
 
 :::info Related Topics
 
--   [Slash commands in Cogs](../../interactions/application-commands/slash-commands.mdx#slash-commands-in-cogs)
--   [Creating a Help Command](./help-command.mdx)
--   [Rules and Common Practices](../../getting-started/rules-and-common-practices.mdx)
--   [Prefixed Commands](./prefixed-commands.mdx)
+-   [Creating a Help Command](../extensions/commands/help-command)
+-   [Rules and Common Practices](../getting-started/rules-and-common-practices)
+-   [Prefixed Commands](../extensions/commands/prefixed-commands)
+-   [Application Commands](../interactions#application-commands)
 
 :::
