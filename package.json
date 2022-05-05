@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@discordapp/twemoji": "discord/twemoji",
-    "@docusaurus/core": "2.0.0-beta.19",
+    "@docusaurus/core": "2.0.0-beta.20",
     "@docusaurus/preset-classic": "2.0.0-beta.19",
     "@easyops-cn/docusaurus-search-local": "0.23.2",
     "@matteusan/sentro": "0.1.21",
