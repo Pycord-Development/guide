@@ -70,9 +70,9 @@ We create an async function called `ping` with parameters `ctx`, which, when cal
 
 ## Subcommand Groups
 
-You might want to group certain commands together to make them more organised. You could use a cog, but sometimes a better solution is to make a Command Group. A Command Group is exactly what it sounds like, a group of individual slash commands together.
+You might want to group certain commands together to make them more organised. A command group is exactly what it sounds like, a group of individual slash commands together.
 
-In order to make a slash command group, you can either use the `bot.create_group` function or manually make a `SlashCommandGroup` class like this:
+In order to make a slash command group, you can use the `bot.create_group` function.
 
 ```python
 import discord
@@ -90,7 +90,11 @@ async def hello(ctx):
 async def bye(ctx):
   await ctx.respond(f"Bye, {ctx.author}!")
 
-# or create a slash command group manually
+bot.run("TOKEN")
+```
+
+Or, you can instead manually make a `SlashCommandGroup` class like so:
+```python
 math = SlashCommandGroup("math", "Math related commands")
 
 @math.command()
@@ -105,8 +109,6 @@ async def subtract(ctx, num1: int, num2: int):
 
 # you'll have to manually add the manually created slash command group
 bot.add_application_command(math)
-
-bot.run("TOKEN")
 ```
 
 Here's what the registered subcommands will look like in the Slash Command Menu:
