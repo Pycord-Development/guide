@@ -168,7 +168,8 @@ SQLite is based on SQL, a common relational data model. It's a lightweight, easy
 works entirely on files. However, if for some reason you cannot read/write to and from a file and you need to manage
 lots of data, SQLite might not be for you.
 
-SQLite is a part of the Python Standard Library, you can easily import it with `import sqlite3`.
+While SQLite is a part of the Python Standard Library as the `sqlite3` package, we recommend not using it as it is 
+synchronous and blocking. You should use an asynchronous alternative, such as `aiosqlite`.
 
 #### PostgreSQL
 PostgreSQL is also based on SQL, but it also has more features than SQLite. It's compliant with the SQL standard,
