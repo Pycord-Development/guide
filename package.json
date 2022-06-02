@@ -52,7 +52,7 @@
     "remark-mdx": "^2.1.1",
     "remark-preset-lint-consistent": "^5.1.1",
     "remark-preset-lint-recommended": "^6.1.2",
-    "typescript": "4.6.4"
+    "typescript": "4.7.2"
   },
   "browserslist": {
     "production": [
