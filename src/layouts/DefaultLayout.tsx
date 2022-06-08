@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from '@docusaurus/Head';
+import Layout from "@theme/Layout";
 
 import { site } from '@site/src/constants/site';
 // import '../scss/main.scss';
@@ -20,9 +21,9 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, child
                 <meta property="og:image" content="https://guide.pycord.dev/img/logo.png" />
                 <meta name="theme-color" content="#5865F2" />
             </Head>
-            <main className="content-wrap">
+            <Layout>
                 { children }
-            </main>
+            </Layout>
         </>
     );
 };
