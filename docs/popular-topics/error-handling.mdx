@@ -38,7 +38,7 @@ import asyncio
 import discord
 
 intents = discord.Intents.default()
-intents.message_content = True  # To use this, the message content privileged intent must be on in the dev portal.
+intents.message_content = True
 
 bot = discord.Bot(debug_guilds=[...], intents=intents)
 
@@ -223,7 +223,7 @@ import discord
 from discord.ext import commands
 
 intents = discord.Intents.default()
-intents.message_content = True  # To use this, the message content privileged intent must be on in the dev portal.
+intents.message_content = True 
 
 bot = commands.Bot(command_prefix=commands.when_mentioned_or("!"))
 bot.load_extension("cogs.dm")
