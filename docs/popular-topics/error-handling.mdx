@@ -17,16 +17,9 @@ failing your bot's request due to missing permissions or an invalid syntax error
 
 Before going into error handling, it's best that you learn the basic ways of handling errors. A good resource is:
 
--   [W3School's Guide to Python Try-Except Statements](https://www.w3schools.com/python/python_try_except.asp)
+*   [W3Schools' Guide to Python Try-Except Statements](https://www.w3schools.com/python/python_try_except.asp)
 
-:::note
-As of writing this guide page, bridge commands do not currently support per-command error handling. 
-
-For these types of commands, it is recommended to utilize global error handling 
-until [the feature](https://github.com/Pycord-Development/pycord/issues/1388) is added.
-:::
-
-## Basic Handling
+## <span id="basic">Basic Handling</span>
 
 The most basic way to handle errors is to tackle it at the source. This can be done like so:
 
@@ -103,18 +96,18 @@ Otherwise, if you don't respond in time, the interaction will go as follows:
 This basic method of error handling can be extended to handle 
 many other errors including ones raised directly by py-cord.
 
-## Per-Command Handling
+## <span id="percommand">Per-Command Handling</span>
 
 This type of error handling allows you to handle errors per each command you have on your bot.
 Each and every command can have it's own error handler made to handle specific errors that each command may raise!
 
 An example of per-command error handling is as follows:
 
-:::note
-Although some of these examples use slash commands, the same behavior can be achieved with prefixed commands in 
-per-command, per-cog, and global error handling. Instead of using `on_application_command_error`, which is for slash
-commands, you will use `on_command_error(ctx: commands.Context, error: commands.CommandError)` for any prefix command
-error handling.
+:::note Bridge Commands
+As of writing this guide page, bridge commands do not currently support per-command error handling. 
+
+For these types of commands, it is recommended to utilize global error handling 
+until [the feature](https://github.com/Pycord-Development/pycord/issues/1388) is added.
 :::
 
 ```python title="./main.py"
@@ -172,7 +165,7 @@ Any other user whose ID doesn't match the bot owner's will get the following:
 This local (per-command) error handler can also be used to handle the same types of errors that standard try-except
 statements can handle. This is done by using the same method as above with the `isinstance` built-in function.
 
-## Per-Cog Handling
+## <span id="percog">Per-Cog Handling</span>
 
 Adding error handlers per-command can be quite the task in terms of work if you have a lot. If you have happened to
 group your commands in cogs, then you're in luck! You can create an error handler that is specific to a cog and 
@@ -269,7 +262,7 @@ Otherwise, if used in a guild context:
 Per-cog error handling comes in very handy as you can relegate all of your error handling to a single function instead
 of spreading it out across several per-command error handlers or inside of the commands themselves.
 
-## Global Handling
+## <span id="global">Global Handling</span>
 
 If separating your error handling is not how you would like to handle errors, then global error handling is the way to
 go. This method of handling allows you to relegate all handling to a single function that resides within your bot 
@@ -332,35 +325,59 @@ start to get crammed with a lot of code. This is where all of the previously men
 
 ## FAQ
 
+#### Why does the example in per-cog handling have self at the start of its function signatures?
+
+This is a feature of classes and allows you to reference the cog object as `self` and get access to the bot object
+passed at initialization through `self.bot`.
+
+If this is new to you, we recommend checking out these helpful resources to learn more about classes and cogs:
+
+*   [W3Schools' Guide to Python Classes & Objects](https://www.w3schools.com/python/python_classes.asp)
+*   [Our Cogs Guide Page](./cogs)
+
 #### How many errors can I handle in a single error handler?
 
 While all of the examples in this guide page only handle one specific error and re-raise all others, all of these 
 error handlers can be extended to catch many different errors. 
 
-In basic handling (i.e. try/except statements) you can do one of two things:
-* Explicitly handle the errors you know might get raised and then have a broad `except Exception as exc:` statement as
-a catch-all.
-* Catch any and all errors via the catch-all statement mentioned above.
+In [basic handling](#basic) (i.e. try/except statements) you can do one of two things:
+*   Explicitly handle the errors you know might get raised and then have a broad `except Exception as exc:` statement
+as a catch-all.
+*   Catch any and all errors via the catch-all statement mentioned above.
 
-In per-command, per-cog, and global handling, you can use elif clauses with the built-in isinstance function to catch
-specific errors. Atop of this, an else clause can be used to catch any other errors you either don't want to handle or
-want to relegate to a different error handler.
+In [per-command](#percommand), [per-cog](#percog), and [global handling](#global), you can use elif clauses with the
+built-in isinstance function to catch specific errors. Atop of this, an else clause can be used to catch any other
+errors you either don't want to handle or want to relegate to a different error handler.
 
 #### Can I use more than one type of error handler at once?
 
 Thankfully, all of these different ways of error handling can be mixed together, so you don't have to pick just one!
-For commands that raise specific errors that no other commands will raise, you can use per-command. For cogs that 
-raise specific errors that no other cogs will raise, use per-cog! Lastly, for errors that occur frequently across all 
-commands and cogs, use global handling! 
+For commands that raise specific errors that no other commands will raise, you can use [per-command](#percommand). 
+For cogs that raise specific errors that no other cogs will raise, use [per-cog](#percog)! Lastly, for errors that
+occur frequently across all commands and cogs, use [global handling](#global)! 
 
 However, one important note to remember is that you should always raise the error again in an error handler if it 
 isn't handled there! If you don't do this, the error will go ignored and your other handlers won't have a chance to
 do their work!
 
+#### What's the difference between slash and prefixed command error handling?
+
+Althought most examples shown here use slash commands, the [per-cog handling](#percog) section presents a prefixed
+command. The main difference you may notice is the change in command signature. 
+
+To make the distinguishing features apparent:
+*   Slash commands use `on_application_command_error(ctx: discord.ApplicationContext, error: discord.DiscordException)`
+as presented in the [per-command](#percommand) and [global handling](#global) examples.
+*   Prefixed commands use `on_command_error(ctx: commands.Context, error: commands.CommandError)` as presented in the
+[per-cog handling](#percog) example.
+
+This distinction is made as both types of commands need their own system for handling errors that are specific to
+themselves.
+
 :::info Related Topics
 
--   [Slash Commands](../interactions/application-commands/slash-commands)
--   [Prefixed Commands](../extensions/commands/prefixed-commands)
--   [Cogs](./cogs)
+*   [Slash Commands](../interactions/application-commands/slash-commands)
+*   [Prefixed Commands](../extensions/commands/prefixed-commands)
+*   [Cogs](./cogs)
 
 :::
