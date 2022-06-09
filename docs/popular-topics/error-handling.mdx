@@ -30,12 +30,6 @@ until [the feature](https://github.com/Pycord-Development/pycord/issues/1388) is
 
 The most basic way to handle errors is to tackle it at the source. This can be done like so:
 
-:::tip Multiple Errors
-While all of the examples in this guide page only handle one specific error, all of these error handlers can be 
-extended to catch many different errors via using elif and else statements for per-command, per-cog and global, and
-using `except Exception as e:` for this type of handling.
-:::
-
 ```python title="./main.py"
 # This code requires the `message_content` privileged intent for prefixed commands.
 
@@ -53,7 +47,7 @@ bot = discord.Bot(debug_guilds=[...], intents=intents)
 @discord.option("name", description="Enter your name.")
 async def feedback(ctx: discord.ApplicationContext, name: str):
     try:
-        await ctx.respond(f"Hey, {name}! Send a message within the next 30 seconds please!")
+        await ctx.respond(f"Hey, {name}! Send your feedback within the next 30 seconds please!")
 
         def is_author(m: discord.Message):
             return m.author.id == ctx.author.id
@@ -98,7 +92,7 @@ Otherwise, if you don't respond in time, the interaction will go as follows:
                 feedback
             </DiscordInteraction>
         </div>
-        Hey, Dorukyum! Send a message within the next 30 seconds please!
+        Hey, Dorukyum! Send your feedback within the next 30 seconds please!
     </DiscordMessage>
     <DiscordMessage profile="robocord">
         Timed out, please try again!
@@ -139,7 +133,7 @@ async def secret(ctx: discord.ApplicationContext):
 @secret.error
 async def on_application_command_error(ctx: discord.ApplicationContext, error: discord.DiscordException):
     if isinstance(error, commands.NotOwner):
-        await ctx.respond("Sorry, you can't use this command!")
+        await ctx.respond("Sorry, only the bot owner can use this command!")
     else:
         raise error  # Here we raise other errors to ensure they aren't ignored
 
@@ -170,7 +164,7 @@ Any other user whose ID doesn't match the bot owner's will get the following:
                 secret
             </DiscordInteraction>
         </div>
-        Sorry, you can't use this command!
+        Sorry, only the bot owner can use this command!
     </DiscordMessage>
 </DiscordComponent>
 <br />
@@ -336,16 +330,32 @@ The error handling used above will yield this interaction if the command is used
 The only issue regarding global error handling is that, if you have a large amount of commands, the global handler may
 start to get crammed with a lot of code. This is where all of the previously mentioned handlers can take their place!
 
-:::tip Mixing Handlers
-As a side note, all of these different ways of error handling can be mixed together, you don't have to pick just one!
+## FAQ
+
+#### How many errors can I handle in a single error handler?
+
+While all of the examples in this guide page only handle one specific error and re-raise all others, all of these 
+error handlers can be extended to catch many different errors. 
+
+In basic handling (i.e. try/except statements) you can do one of two things:
+* Explicitly handle the errors you know might get raised and then have a broad `except Exception as exc:` statement as
+a catch-all.
+* Catch any and all errors via the catch-all statement mentioned above.
+
+In per-command, per-cog, and global handling, you can use elif clauses with the built-in isinstance function to catch
+specific errors. Atop of this, an else clause can be used to catch any other errors you either don't want to handle or
+want to relegate to a different error handler.
+
+#### Can I use more than one type of error handler at once?
+
+Thankfully, all of these different ways of error handling can be mixed together, so you don't have to pick just one!
 For commands that raise specific errors that no other commands will raise, you can use per-command. For cogs that 
 raise specific errors that no other cogs will raise, use per-cog! Lastly, for errors that occur frequently across all 
 commands and cogs, use global handling! 
 
-However, one important note to remember, you should always raise the error again in an error handler if it isn't 
-handled there! If you don't do this, the error will go ignored and your other handlers won't have a chance to do 
-their work!
-:::
+However, one important note to remember is that you should always raise the error again in an error handler if it 
+isn't handled there! If you don't do this, the error will go ignored and your other handlers won't have a chance to
+do their work!
 
 :::info Related Topics
 
