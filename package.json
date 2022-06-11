@@ -27,7 +27,7 @@
   "dependencies": {
     "@discordapp/twemoji": "discord/twemoji",
     "@docusaurus/core": "2.0.0-beta.18",
-    "@docusaurus/preset-classic": "2.0.0-beta.18",
+    "@docusaurus/preset-classic": "2.0.0-beta.21",
     "@easyops-cn/docusaurus-search-local": "0.23.2",
     "@matteusan/sentro": "0.1.22",
     "@mdx-js/react": "1.6.22",
@@ -38,7 +38,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-twemoji": "^0.5.0",
-    "sass": "1.51.0",
+    "sass": "1.52.2",
     "yarn": "^1.22.18"
   },
   "devDependencies": {
@@ -52,7 +52,7 @@
     "remark-mdx": "^2.1.1",
     "remark-preset-lint-consistent": "^5.1.1",
     "remark-preset-lint-recommended": "^6.1.2",
-    "typescript": "4.6.4"
+    "typescript": "4.7.3"
   },
   "browserslist": {
     "production": [

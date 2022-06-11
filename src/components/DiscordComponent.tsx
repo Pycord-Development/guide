@@ -21,10 +21,10 @@ export const defaultOptions: DiscordMessageOptions = {
             roleColor: '#9b59b6',
             bot: true,
         },
-		clone: {
-			author: 'Clone',
-			avatar: '/img/clone.png',
-			roleColor: '#5865f2',
+		dorukyum: {
+			author: 'Dorukyum',
+			avatar: '/img/dorukyum.png',
+			roleColor: '#2cd6f7',
 		}
 	},
 };
