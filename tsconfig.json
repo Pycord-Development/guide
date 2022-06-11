@@ -3,5 +3,8 @@
   "extends": "@tsconfig/docusaurus/tsconfig.json",
   "compilerOptions": {
     "baseUrl": "."
+  },
+  "paths": {
+    "react": [ "./node_modules/@types/react" ]
   }
 }
