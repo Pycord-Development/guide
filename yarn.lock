@@ -1586,28 +1586,6 @@
     url-loader "^4.1.1"
     webpack "^5.72.1"
 
-"@docusaurus/module-type-aliases@2.0.0-beta.18":
-  version "2.0.0-beta.18"
-  resolved "https://registry.yarnpkg.com/@docusaurus/module-type-aliases/-/module-type-aliases-2.0.0-beta.18.tgz#001379229c58cbc3ed565e19437cbda86d5e8742"
-  integrity sha512-e6mples8FZRyT7QyqidGS6BgkROjM+gljJsdOqoctbtBp+SZ5YDjwRHOmoY7eqEfsQNOaFZvT2hK38ui87hCRA==
-  dependencies:
-    "@docusaurus/types" "2.0.0-beta.18"
-    "@types/react" "*"
-    "@types/react-router-config" "*"
-    "@types/react-router-dom" "*"
-    react-helmet-async "*"
-
-"@docusaurus/module-type-aliases@2.0.0-beta.21":
-  version "2.0.0-beta.21"
-  resolved "https://registry.yarnpkg.com/@docusaurus/module-type-aliases/-/module-type-aliases-2.0.0-beta.21.tgz#345f1c1a99407775d1d3ffc1a90c2df93d50a9b8"
-  integrity sha512-gRkWICgQZiqSJgrwRKWjXm5gAB+9IcfYdUbCG0PRPP/G8sNs9zBIOY4uT4Z5ox2CWFEm44U3RTTxj7BiLVMBXw==
-  dependencies:
-    "@docusaurus/types" "2.0.0-beta.21"
-    "@types/react" "*"
-    "@types/react-router-config" "*"
-    "@types/react-router-dom" "*"
-    react-helmet-async "*"
-
 "@docusaurus/module-type-aliases@2.0.0-beta.21":
   version "2.0.0-beta.21"
   resolved "https://registry.yarnpkg.com/@docusaurus/module-type-aliases/-/module-type-aliases-2.0.0-beta.21.tgz#345f1c1a99407775d1d3ffc1a90c2df93d50a9b8"
@@ -1814,17 +1792,6 @@
   dependencies:
     fs-extra "^10.1.0"
     tslib "^2.4.0"
-
-"@docusaurus/types@2.0.0-beta.18":
-  version "2.0.0-beta.18"
-  resolved "https://registry.yarnpkg.com/@docusaurus/types/-/types-2.0.0-beta.18.tgz#9446928a6b751eefde390420b39eac32ba26abb2"
-  integrity sha512-zkuSmPQYP3+z4IjGHlW0nGzSSpY7Sit0Nciu/66zSb5m07TK72t6T1MlpCAn/XijcB9Cq6nenC3kJh66nGsKYg==
-  dependencies:
-    commander "^5.1.0"
-    joi "^17.6.0"
-    utility-types "^3.10.0"
-    webpack "^5.70.0"
-    webpack-merge "^5.8.0"
 
 "@docusaurus/types@2.0.0-beta.21":
   version "2.0.0-beta.21"
@@ -9875,10 +9842,10 @@ yaml@^1.10.0, yaml@^1.10.2, yaml@^1.7.2:
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.10.2.tgz#2301c5ffbf12b467de8da2333a459e29e7920e4b"
   integrity sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==
 
-yarn@^1.22.18:
-  version "1.22.18"
-  resolved "https://registry.yarnpkg.com/yarn/-/yarn-1.22.18.tgz#05b822ade8c672987bab8858635145da0850f78a"
-  integrity sha512-oFffv6Jp2+BTUBItzx1Z0dpikTX+raRdqupfqzeMKnoh7WD6RuPAxcqDkMUy9vafJkrB0YaV708znpuMhEBKGQ==
+yarn@^1.22.19:
+  version "1.22.19"
+  resolved "https://registry.yarnpkg.com/yarn/-/yarn-1.22.19.tgz#4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
+  integrity sha512-/0V5q0WbslqnwP91tirOvldvYISzaqhClxzyUKXYxs07yUILIs5jx/k6CFe8bvKSkds5w+eiOqta39Wk3WxdcQ==
 
 yocto-queue@^0.1.0:
   version "0.1.0"
