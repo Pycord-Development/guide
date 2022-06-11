@@ -1,11 +1,12 @@
 import React from "react";
-import Layout from "@theme/Layout";
+import DefaultLayout from "../layouts/DefaultLayout";
 import PYCHero from "@site/src/components/PYCHero";
 import PYCButton from "@site/src/components/PYCButton";
 
 export default function Home(): JSX.Element {
   return (
-    <Layout
+    <DefaultLayout
+      title="Pycord Guide"
       description="The Official Guide for Pycord"
     >
       <PYCHero
@@ -31,6 +32,6 @@ export default function Home(): JSX.Element {
           <li>And Much More!</li>
         </ul>
       </main>
-    </Layout>
+    </DefaultLayout>
   );
 }
