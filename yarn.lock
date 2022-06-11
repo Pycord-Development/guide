@@ -2482,6 +2482,17 @@
     "@types/react-router-dom" "*"
     react-helmet-async "*"
 
+"@docusaurus/module-type-aliases@2.0.0-beta.21":
+  version "2.0.0-beta.21"
+  resolved "https://registry.yarnpkg.com/@docusaurus/module-type-aliases/-/module-type-aliases-2.0.0-beta.21.tgz#345f1c1a99407775d1d3ffc1a90c2df93d50a9b8"
+  integrity sha512-gRkWICgQZiqSJgrwRKWjXm5gAB+9IcfYdUbCG0PRPP/G8sNs9zBIOY4uT4Z5ox2CWFEm44U3RTTxj7BiLVMBXw==
+  dependencies:
+    "@docusaurus/types" "2.0.0-beta.21"
+    "@types/react" "*"
+    "@types/react-router-config" "*"
+    "@types/react-router-dom" "*"
+    react-helmet-async "*"
+
 "@docusaurus/plugin-content-blog@2.0.0-beta.21":
   version "2.0.0-beta.21"
   resolved "https://registry.yarnpkg.com/@docusaurus/plugin-content-blog/-/plugin-content-blog-2.0.0-beta.21.tgz#86211deeea901ddcd77ca387778e121e93ee8d01"
