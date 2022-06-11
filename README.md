@@ -3,8 +3,6 @@
 
 The official Guide for Pycord, explaining Pycord's features and how to use them.
 
-The website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator. 
-
 ## Purpose
 
 The Guide is meant to serve as a professional guide to **all** of Pycord's features.
