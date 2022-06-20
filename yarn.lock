@@ -1769,10 +1769,10 @@
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz#b2ac626d6cb9c8718ab459166d4bb405b8ffa78b"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
-"@matteusan/sentro@0.1.22":
-  version "0.1.22"
-  resolved "https://registry.yarnpkg.com/@matteusan/sentro/-/sentro-0.1.22.tgz#0caff06245426db6ca58c7817ba3c0ed08ea2674"
-  integrity sha512-j7XFgzKiPB8Az9cJVdfeFBP4VHiJu5y9zGPMg9JtzG5ILQwmg29rWzgTWotigeGix/iK1pQCQ8T97wDWyYRwsQ==
+"@matteusan/sentro@0.1.23":
+  version "0.1.23"
+  resolved "https://registry.yarnpkg.com/@matteusan/sentro/-/sentro-0.1.23.tgz#9554653f6d7eba7a6358c4dabb21b320b5bd4547"
+  integrity sha512-lVnDTSy/xjn7KHPkAXEGMCOHKSEY3OBMtbhfXxZu9ZcDWWbU57pttojVV/XMW7Wkr7BGOlM1hbBggzV22adTnA==
 
 "@mdx-js/mdx@^1.6.22":
   version "1.6.22"
@@ -8612,10 +8612,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@4.7.3:
-  version "4.7.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.3.tgz#8364b502d5257b540f9de4c40be84c98e23a129d"
-  integrity sha512-WOkT3XYvrpXx4vMMqlD+8R8R37fZkjyLGlxavMc4iB8lrl8L0DeTcHbYgw/v0N/z9wAFsgBhcsF0ruoySS22mA==
+typescript@4.7.4:
+  version "4.7.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.4.tgz#1a88596d1cf47d59507a1bcdfb5b9dfe4d488235"
+  integrity sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==
 
 ua-parser-js@^0.7.30:
   version "0.7.31"
