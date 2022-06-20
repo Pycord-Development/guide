@@ -1769,10 +1769,10 @@
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz#b2ac626d6cb9c8718ab459166d4bb405b8ffa78b"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
-"@matteusan/sentro@0.1.22":
-  version "0.1.22"
-  resolved "https://registry.yarnpkg.com/@matteusan/sentro/-/sentro-0.1.22.tgz#0caff06245426db6ca58c7817ba3c0ed08ea2674"
-  integrity sha512-j7XFgzKiPB8Az9cJVdfeFBP4VHiJu5y9zGPMg9JtzG5ILQwmg29rWzgTWotigeGix/iK1pQCQ8T97wDWyYRwsQ==
+"@matteusan/sentro@0.1.23":
+  version "0.1.23"
+  resolved "https://registry.yarnpkg.com/@matteusan/sentro/-/sentro-0.1.23.tgz#9554653f6d7eba7a6358c4dabb21b320b5bd4547"
+  integrity sha512-lVnDTSy/xjn7KHPkAXEGMCOHKSEY3OBMtbhfXxZu9ZcDWWbU57pttojVV/XMW7Wkr7BGOlM1hbBggzV22adTnA==
 
 "@mdx-js/mdx@^1.6.22":
   version "1.6.22"
