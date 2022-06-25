@@ -23,7 +23,7 @@ const config = {
       {
         docs: {
           editUrl:
-            "https://github.com/Pycord-Development/guide/tree/master",
+            "https://github.com/Pycord-Development/guide/tree/main",
           routeBasePath: "/",
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
