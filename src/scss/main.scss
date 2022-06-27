@@ -14,7 +14,7 @@
 
 :root {
   color-scheme: dark;
-  @include sentro.token-add(
+  @include sentro.token-config(
     $blurple: (
       'light': #909aff,
       'default': #5865f2,
