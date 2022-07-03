@@ -29,15 +29,7 @@ class Greetings(commands.Cog): # create a class for our cog that inherits from c
     async def hello(self, ctx): # all methods now must have both self and ctx parameters
         await ctx.send('Hello!')
 
-    @commands.command()
-    async def goodbye(self, ctx):
-        await ctx.send('Goodbye!')
-
     @discord.slash_command() # we can also add application commands
-    async def hello(self, ctx):
-        await ctx.respond('Hello!')
-
-    @discord.slash_command()
     async def goodbye(self, ctx):
         await ctx.respond('Goodbye!')
 
