@@ -13,16 +13,16 @@ import "discord-message-components/packages/react/dist/style.css";
 
 import DiscordComponent, { defaultOptions } from "../../src/components/DiscordComponent";
 
-In December 2020, Discord released their first interaction: the
-[slash command](https://discord.com/developers/docs/interactions/application-commands#slash-commands).
-Since then, Discord has added and updated Interactions a lot. Different types of Interactions include:
+In December 2020, Discord released their first Interaction: the
+[Slash Command](https://discord.com/developers/docs/interactions/application-commands#slash-commands).
+Since then, Discord has added many different types of Interactions, including:
 
 [**UI Components**](https://discord.com/developers/docs/interactions/message-components)
 
 -   [**Buttons**](https://discord.com/developers/docs/interactions/message-components#buttons):
 Buttons are attached to a message and can be clicked on to perform an action.
 -   [**Select Menus**](https://discord.com/developers/docs/interactions/message-components#select-menus):
-Drop-down menus are used to select a few options from a list.
+Drop-down menus are used to select a number of options from a list.
 -   [**Modals**](https://discord.com/developers/docs/interactions/message-components#text-inputs):
 Form-like modals can be used to ask for input from a user.
 
@@ -32,9 +32,9 @@ Form-like modals can be used to ask for input from a user.
 Commands that can be used with the `/` prefix.
 -   **Context Menu Commands**: Commands that can be used from the right-click menu.
     -   [**User Commands**](https://discord.com/developers/docs/interactions/application-commands#user-commands):
-   Commands that can be used on a user by Alt-clicking/selecting on them.
+   Commands that can be used on a user by alt-clicking/selecting them.
     -   [**Message Commands**](https://discord.com/developers/docs/interactions/application-commands#message-commands):
-   Commands that can be used on a message by Alt-clicking/selecting on it.
+   Commands that can be used on a message by alt-clicking/selecting it.
 
 ## Message Components
 
@@ -44,31 +44,28 @@ sleek, and downright awesome.
 
 ### [Views](https://docs.pycord.dev/en/master/api.html#discord.ui.View)
 
-Views are not an Application Command nor are they a Message Component. Views are the invisible
-placeholders or grid that Message Components lie in. Views can have up to 5 
-[`Action Rows`](https://docs.pycord.dev/en/master/api.html#discord.ActionRow). `Action 
-Rows` can have a maximum of 5 slots. Below you can find a table of how many slots a Message
-Interaction takes up.
+Views are not an Application Command nor are they a Message Component. Views are the invisible placeholders, or grid, 
+that Message Components lie in. Views can have up to 5 [`Action Rows`](https://docs.pycord.dev/en/master/api.html#discord.ActionRow), 
+and Action Rows can have a maximum of 5 slots. Below, you can find a table showing how many slots a Message Interaction takes up.
 
 | Component    | Slots                        |
 | ------------ | ---------------------------- |
 | Buttons      | 1 Slot                       |
 | Select Menus | 5 Slots                      |
-| Text Modals  | 1 Slot (opened via a button) |
+| Text Modals  | 1 Slot (opened via a Button) |
 
-So, based on this, you could have a maximum of 25 buttons in a View with no Select Menus and 5 Select
-Menus with no Buttons in a View. This doesn't mean you can't have them both in a View. You can have
-a combination, such as 20 Buttons and a Select Menu or 10 Buttons and 3 Select Menus.
+So, based on this, you could have a maximum of 25 Buttons in a View with no Select Menus, and 5 Select
+Menus in a View with no Buttons. This doesn't mean you can't have them both in a View, however. You can have
+a combination of them, such as 20 Buttons and a Select Menu or 10 Buttons and 3 Select Menus.
 
 ### [Buttons](https://docs.pycord.dev/en/master/api.html#discord.ui.Button)
 
-Buttons are the first of the Message Components. They allow for quick responses to prompts, such as
-a "cancel" or "continue" button. Of course, these aren't the only uses. People have created awesome
-things with buttons, such as calculators, games, and more!
+Buttons are the first of the Message Components. They allow for quick responses to prompts, such as for canceling or continuing an action. 
+Of course, these aren't their only uses; people have created awesome things with Buttons, such as calculators, games, and more!
 
 <DiscordComponent>
   <DiscordMessage profile="robocord">
-    Discord buttons are awesome!
+    Discord Buttons are awesome!
     <div slot="actions">
       <DiscordButtons>
         <DiscordButton type="primary" emoji="😎">Click me!</DiscordButton>
@@ -79,14 +76,13 @@ things with buttons, such as calculators, games, and more!
 
 <br />
 
-This is what a Button looks like. Very simple and modern. To learn more about buttons, refer to our
-[buttons page](./ui-components/buttons).
+This is what a Button looks like, very simple and modern. To learn more about Buttons, refer to our
+[Buttons page](./ui-components/buttons).
 
 ### [Select Menus](https://docs.pycord.dev/en/master/api.html#discord.ui.Select)
 
-Select Menus are the second of Discord's Message Components. They allow for quick choices by the
-user that your bot can use. Select Menus are good for things such as choosing features, pages of a
-help menu, and more.
+Select Menus are the second of Discord's Message Components. They allow users to select from a list of choices, which your bot can then use. 
+Select Menus are good for things such as choosing features, pages of a help menu, and more.
 
 ![Select Menu Example Image](../assets/interactions/select-menus-example.png)
 
@@ -96,31 +92,30 @@ Menus page](./ui-components/dropdowns).
 
 ### [Modal Dialogs](https://docs.pycord.dev/en/master/api.html#discord.ui.Modal)
 
-Text Modals are the most recent Message Component in Discord. They're useful for text input and
-filling out forms such as a sign-up for your bot's service. These are meant to replace long bot setup
-processes by allowing users to fill out a form, as well as replace having to make the user send
-messages that the bot uses in general. Modals are accessed by invoking an application command or by interacting with another UI Component.
+Text Modals are the most recently added Message Component in Discord. They're useful for text input and filling out forms, such as a 
+sign-up for your bot's service. These are meant to replace long bot setup processes by allowing users to fill out multiple text fields, 
+which avoids having the user send multiple messages for the bot. Modals can accessed by either invoking an Application Command or by 
+interacting with another UI Component.
 
 ![Text Modal Example Image](../assets/interactions/modal-example.png)
 
-This is what a Text Modal looks like. Easy to use and one of the most useful Message Components yet. To
-learn more about text modals, please visit our [Modal Dialogs page](./ui-components/modal-dialogs)
+This is what a Text Modal looks like, easy to use and one of the most useful Message Components yet. To learn more about Text Modals, 
+please visit our [Modal Dialogs page](./ui-components/modal-dialogs).
 
 ## Application Commands
 
-Application Commands are also a new feature to Discord that allow easier ways to use commands
-that don't compromise Discord safety and privacy. Application Commands are easy to add to your bot
-and give users an easier and safer way to use commands.
+Application Commands are another set of new features that are intended to avoid compromising users' safety and privacy. 
+They're relatively easy to add to your bot, and give people a simpler and safer way to use commands.
 
 ### [Slash Commands](https://docs.pycord.dev/en/master/api.html#slashcommand)
 
-Slash Commands were the first Discord Interaction. Slash Commands are easy to use and create. They
-allow for an alternative to prefix commands without the need for the message content intent.
+Slash Commands were the first Interaction added to Discord. They're easy to use and create, and
+is the only prefix commands alternative that does not need Message Content intent.
 
 :::note
 
 Preferring prefix commands over Application Commands is **not** a valid reason to apply for the
-message content Privileged Intent. Using this as a reason will get your application denied.
+Message Content intent. Using that as a reason will get your application denied.
 
 :::
 
@@ -137,8 +132,8 @@ message content Privileged Intent. Using this as a reason will get your applicat
 
 <br />
 
-This is what a slash command looks like. Very simple, not very different from a normal command other
-apart from the note telling you who used the command. Slash Commands support fields for the following:
+This is what a Slash Command looks like. Not too different from a prefix command,
+apart from the note telling you who invoked it. A Slash Command's fields can accept any of the following:
 
 -   Members
 -   Roles
@@ -150,12 +145,11 @@ Just about as good as it gets.
 
 ### [Message](https://docs.pycord.dev/en/master/api.html#messagecommand) and [User](https://docs.pycord.dev/en/master/api.html#usercommand) Commands
 
-Message Commands and User Commands were both introduced around the same time, and are very similar to
-each other, so we'll be introducing them together. These commands are found in the `apps` tab when
-alt-clicking. The only difference between the two is that Message Commands only appear in the apps tab
-of a message, while User Commands are only found in the apps tab of a user. Message Commands are
-useful for having a function to report a message, warn a user for that message, and more. Whereas User Commands
-are useful for having a function to add a user to a ticket, warn a user, and more.
+Message Commands and User Commands were both introduced at around the same time, and are very similar to each other, so we'll be 
+introducing them together. These commands can be found in the `Apps` tab when alt-clicking. The only difference between the two is that 
+Message Commands only appear in the `Apps` tab of a message, while User Commands are found in the `Apps` tab of a user. Message Commands 
+can be used to quickly report a message, warn a user for a message, and other functions. Likewise, User Commands can be used to add a 
+user to a ticket, warn a user, and more.
 
 Here's an example of a Message Command:
 
@@ -208,46 +202,41 @@ Pretty cool, right? To learn more about these two, please read the [Context Menu
 
 ## [Application Commands](#application-commands) vs. [Prefix Commands](../extensions/commands/prefixed-commands)
 
-Ever since Discord was created, apps on it have used prefixes. This means that you'd have to put a
-certain character or string of characters in front of your command, such as `!ping`. The way this
-worked was that your bot listened for messages and picked out the ones that had their prefix, and then
-responded with the command. Now, Discord is encouraging developers to switch their applications to
-Application Commands, a new system meant to preserve the privacy and safety of Discord's users. But
-why exactly is Discord making us switch? What's the better option, Application Commands or prefix
-commands? Below we discuss everything you need to know.
+Ever since Discord was created, apps on it have used prefix commands. Using prefixes meant that you would have to put a
+certain character (or string of characters) in front of your command, such as the exclamation mark in `!ping`. The way this
+worked was that your bot would listen for messages, pick out the ones that had their specific prefix, and then respond to the command. 
+Now, Discord is encouraging developers to switch their bots over to Application Commands, which is a new system meant to preserve the 
+privacy and safety of their users. But why exactly is Discord making us switch? What's the better option, Application Commands or prefix 
+commands? Below, we'll discuss everything you need to know.
 
 ### Discord's Decision
 
-Application Commands became a thing because of privacy concerns. When Discord was young and new, they weren't
-very concerned about how bots have access to message content with every message event with the API. 
-However, as Discord grew, this became more of a problem. Hypothetically, bots could simply listen to every
-message they receive via the Discord API and give off that information to a company. Maybe an advertisement company
-like Google or Facebook. This is a problem since that data is supposed to be private to Discord. As such, they
-locked down message content into a privileged intent and introduced Application Commands for bot devs to use.
+Application Commands were conceptualized partly due to privacy concerns. When Discord first began, they weren't entirely concerned about bots 
+having access to the content of every message that was being sent. However, as Discord grew, this became more of a problem. Hypothetically, bots 
+could simply log every message they're able to receive via the Discord API and hand their contents over to a company or other third party. This is 
+a problem, since that data is meant to be used only by Discord. As such, they locked down Message Content, and introduced Application Commands for 
+bot developers to use instead.
 
 Prefix commands work by reading messages, as described before. Application Commands, however, don't
-work this way. Application Commands work by Discord sending your bot information for when a command
-was used. This way, Discord can limit message reading to only bots that _absolutely_ depend on it, such
-as auto-moderation bots.
+work this way; instead, they work by having your bot get information from Discord about when a command was used. This way, Discord can limit 
+Message Content only to bots that _absolutely_ depend on it, such as auto-moderation bots.
 
 ### Who has to Use Application Commands
 
-Any verified bot without a reason that Discord deems acceptable must use Application Commands. Discord
-is allowing applications for the Message Content intent, however they don't want to support prefix commands
-for privacy reasons, so they will automatically decline any application for message content intent used only for 
-prefix commands. So, if your bot doesn't have an automoderator, message detector, or anything that reads messages, 
-you're out of luck.
+Any verified bot that does not have the Message Content intent must use Application Commands. Discord is allowing developers to submit 
+applications for the ability to use the intent; however, since they don't want to keep supporting prefix commands due to privacy concerns, 
+they will automatically decline any application that includes only that as a reason. So, if your bot doesn't have an auto-moderation feature 
+(or any other functionality that requires Message Content), you're out of luck.
 
-Unverified bots, however, don't have to use Application Commands. This is because the Message Content
-intent is a `Privileged Intent`, meaning that you must apply for it and it only needs to be applied
-for if your bot is verified or going to be verified. Unverified bots don't have to apply for intents
-until they need to get verified, so they can use Privileged Intents freely.
+Unverified bots, however, don't have to use Application Commands. This is because the Message Content intent is a `Privileged Intent`, meaning that 
+it must be applied for only if your bot is verified or about to be verified. Unverified bots don't have to apply for Privileged Intents, so they can 
+use them freely.
 
-So if your bot is for a couple of servers, you can use prefix commands. If you plan on going somewhere
-with your bot, it'll have to use Application Commands.
+So, if your bot is made only for a couple of servers, you can choose between prefix commands and Application Commands. However, if you plan on expanding
+your bot's reach, it'll have to use Application Commands.
 
 ### What's the Better Option
 
-What's truly the better option is up to you as a developer. But, there isn't really an option. If
-you plan on growing your bot, you have to use Application Commands. Developers with bigger bots don't
-have a choice, so we'll just have to get used to it.
+Choosing which is the better option is up to you, if you're starting small. If
+you plan on growing your bot, however, you will have to use Application Commands. Since prefix commands are slowly being phased out by Discord, 
+there isn't much of a choice for developers of larger bots.
