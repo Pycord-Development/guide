@@ -47,7 +47,7 @@ async def record(ctx):  # If you're using commands.Bot, this will also work.
     connections.update({ctx.guild.id: vc})  # Updating the cache with the guild and channel.
 
     vc.start_recording(
-        discord.WaveSink(),  # The sink type to use.
+        discord.sinks.WaveSink(),  # The sink type to use.
         once_done,  # What to do once done.
         ctx.channel  # The channel to disconnect from.
     )
@@ -78,8 +78,8 @@ To make a callback, you will want to define the currently undefined `once_done` 
 our command, like so:
 
 ```py title="Recorder Callback"
-async def once_done(sink: discord.Sink, channel: discord.TextChannel, *args):  # Our voice client already passes these in.
-    user_recorded = [  # A list of recorded users
+async def once_done(sink: discord.sinks, channel: discord.TextChannel, *args):  # Our voice client already passes these in.
+    recorded_users = [  # A list of recorded users
         f"<@{user_id}>"
         for user_id, audio in sink.audio_data.items()
     ]
