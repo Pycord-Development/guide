@@ -42,7 +42,7 @@ class AlphaBot(Bot):  # subclasses Bot
 
 bot = AlphaBot()
 
-@bot.slash_command()  # adds a new slash command on this class
+@bot.slash_command()  # adds a new slash command to this subclassed bot
 async def alpha_feature(ctx):
     await ctx.respond("Alpha Feature!")
 
