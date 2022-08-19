@@ -54,16 +54,16 @@ const config = {
           position: "left",
           href: "https://pycord.dev/",
         },
-        {
-          label: "Docs",
-          position: "left",
-          href: "https://docs.pycord.dev",
-        },
-        {
-          label: "GitHub",
-          position: "left",
-          href: "https://pycord.dev/github",
-        },
+//         {
+//           label: "Docs",
+//           position: "left",
+//           href: "https://docs.pycord.dev",
+//         },
+//         {
+//           label: "GitHub",
+//           position: "left",
+//           href: "https://pycord.dev/github",
+//         },
         // TODO: Post v2.0: Version the docs
         // {
         //   type: 'docsVersionDropdown',
