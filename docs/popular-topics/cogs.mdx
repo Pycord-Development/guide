@@ -17,27 +17,18 @@ We can then create the cog.
 
 ```python title="./cogs/greetings.py"
 import discord
-from discord.ext import commands
 
-class Greetings(commands.Cog): # create a class for our cog that inherits from commands.Cog
+class Greetings(discord.Cog): # create a class for our cog that inherits from commands.Cog
     # this class is used to create a cog, which is a module that can be added to the bot
 
     def __init__(self, bot): # this is a special method that is called when the cog is loaded
         self.bot = bot
 
-    @commands.command() # create a command
+    @commands.command() # creates a prefixed command
     async def hello(self, ctx): # all methods now must have both self and ctx parameters
         await ctx.send('Hello!')
 
-    @commands.command()
-    async def goodbye(self, ctx):
-        await ctx.send('Goodbye!')
-
     @discord.slash_command() # we can also add application commands
-    async def hello(self, ctx):
-        await ctx.respond('Hello!')
-
-    @discord.slash_command()
     async def goodbye(self, ctx):
         await ctx.respond('Goodbye!')
 

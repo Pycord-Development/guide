@@ -37,13 +37,15 @@ Some developers may need to run multiple instances of their bot (perhaps on diff
 ```python title="./alpha_bot.py"
 from src import Bot
 
-
-class AlphaBot(Bot): # subclasses Bot
-    @slash_command() # adds a new slash command on this class
-    async def alpha_feature(self, ctx):
-        await ctx.respond("Alpha Feature!")
+class AlphaBot(Bot):  # subclasses Bot
+    ...  # insert any custom configuration
 
 bot = AlphaBot()
+
+@bot.slash_command()  # adds a new slash command to this subclassed bot
+async def alpha_feature(ctx):
+    await ctx.respond("Alpha Feature!")
+
 bot.run("TOKEN")
 ```
 
