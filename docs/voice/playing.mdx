@@ -72,7 +72,7 @@ async def play(ctx, search: str):
   vc = ctx.voice_client # define our voice client
 
   if not vc: # check if the bot is not in a voice channel
-    vc = await ctx.author.voice.channel.connect() # connect to the voice channel
+    vc = await ctx.author.voice.channel.connect(cls=wavelink.Player) # connect to the voice channel
 
   if ctx.author.voice.channel.id != vc.channel.id: # check if the bot is not in the voice channel
     return await ctx.respond("You must be in the same voice channel as the bot.") # return an error message
