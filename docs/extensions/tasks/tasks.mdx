@@ -141,7 +141,7 @@ class LeaderboardCog(commands.Cog):
 
     @leaderboard.command()
     async def view(self, ctx):
-        await ctx.respond(emebed=self.leaderboard_embed)
+        await ctx.respond(embed=self.leaderboard_embed)
 
     @leaderboard.command()
     async def update_info(self, ctx):
