@@ -1,0 +1,130 @@
+---
+title: Wavelink Audio Player
+---
+
+import {
+  DiscordButton,
+  DiscordButtons,
+  DiscordInteraction,
+  DiscordMessage,
+  DiscordMessages,
+  DiscordMention,
+} from "discord-message-components/packages/react";
+import "discord-message-components/packages/react/dist/style.css";
+
+import DiscordComponent, {
+  defaultOptions,
+} from "../../src/components/DiscordComponent";
+
+# About
+
+Pycord and Wavelink try to keep the playing of audio as simple and easy as possible, to keep making Discord
+bots of any kind easy for all audiences. This guide provides simple and easy examples of using the
+audio playing feature.
+
+For users that want extra examples, you can find some in Pycord's
+[GitHub repository](https://github.com/Pycord-Development/pycord/blob/master/examples/).
+
+## Starting out
+First you need to run a [Lavalink Server](https://github.com/freyacodes/Lavalink) to connect with.
+There a multiple documentations to do this so we are not covering that here.
+
+You also need to install the [wavelink](https://github.com/PythonistaGuild/Wavelink) library.
+
+```py title="Installing wavelink"
+python3 -m pip install wavelink
+```
+
+You will now want to connect to your server via a node.
+
+```py title="Connect Node with Lavalink"
+import discord
+import wavelink
+
+bot = discord.Bot(debug_guilds=[...])
+
+async def connect_nodes():
+  """Connect to our Lavalink nodes."""
+  await bot.wait_until_ready() # wait until the bot is ready
+
+  await wavelink.NodePool.create_node(
+    bot=bot,
+    host='0.0.0.0',
+    port=2333,
+    password='youshallnotpass'
+  ) # create a node
+```
+
+<br />
+
+Now you are finished making your node! Next, you will want to:
+
+1.  Making a play command
+2.  Adding connect events
+
+### Making a play command
+
+To make a play command, you will need to make a function to connect and play audio in a voice channel.
+
+```py title="Play Command Example"
+@bot.slash_command(name="play")
+async def play(ctx, search: str):
+  vc = ctx.voice_client # define our voice client
+
+  if not vc: # check if the bot is not in a voice channel
+    vc = await ctx.author.voice.channel.connect() # connect to the voice channel
+
+  if ctx.author.voice.channel.id != vc.channel.id: # check if the bot is not in the voice channel
+    return await ctx.respond("You must be in the same voice channel as the bot.") # return an error message
+
+  song = await wavelink.YouTubeTrack.search(query=search, return_first=True) # search for the song
+
+  if not song: # check if the song is not found
+    return await ctx.respond("No song found.") # return an error message
+
+  await vc.play(song) # play the song
+  await ctx.respond(f"Now playing: `{vc.source.title}`") # return a message
+```
+
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
+    <div slot="interactions">
+      <DiscordInteraction profile="bob" command>
+        play
+      </DiscordInteraction>
+    </div>
+    Now playing:  <code>Never Gonna Give You Up</code>
+  </DiscordMessage>
+</DiscordComponent>
+
+<br />
+
+Now that you've done this, the only thing left to do is make your connect events.
+
+### Adding connect events
+
+The final step to this guide is connecting the node to your server when the bot goes online.
+
+To make it, you will want to do the following:
+
+```py title="Adding connect events"
+@bot.event
+async def on_ready():
+  await connect_nodes() # connect to the server
+
+@bot.event
+async def on_wavelink_node_ready(node: wavelink.Node):
+  print(f"{node.identifier} is ready.") # print a message
+
+bot.run("token")
+```
+
+Congratulations! You have now implemented voice playing into your bot! Most bots and Discord API
+wrappers don't have this as a feature, so this is quite an accomplishment. Thankfully, Pycord makes
+it easy to make complex bots so that you can get even the most advanced of ideas down.
+
+:::info Related Topics
+
+-   [Rules and Common Practices](../getting-started/rules-and-common-practices)
+
+:::
