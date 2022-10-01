@@ -32,8 +32,8 @@ class MyModal(discord.ui.Modal):
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
 
-        self.add_item(discord.ui.TextInput(label="Short Input"))
-        self.add_item(discord.ui.TextInput(label="Long Input", style=discord.TextStyle.long))
+        self.add_item(discord.ui.InputText(label="Short Input"))
+        self.add_item(discord.ui.InputText(label="Long Input", style=discord.InputTextStyle.long))
 
     async def callback(self, interaction: discord.Interaction):
         embed = discord.Embed(title="Modal Results")
@@ -63,7 +63,7 @@ The `interaction` parameter we define in UI Components receives an [`Interaction
 ```py
 class MyView(discord.ui.View):
     @discord.ui.button(label="Send Modal")
-    async def button_callback(self, interaction, button):
+    async def button_callback(self, button, interaction):
         await interaction.response.send_modal(MyModal(title="Modal via Button"))
 
 @bot.slash_command()
