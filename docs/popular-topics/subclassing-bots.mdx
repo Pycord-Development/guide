@@ -63,11 +63,12 @@ class MyBot(discord.Bot): # subclass discord.Bot
         print(self.user.id)
         print('------')
 
-    @slash_command() # create a slash command
-    async def ping(self, ctx):
-        await ctx.respond('Pong!')
-
 bot = MyBot()
+
+@bot.slash_command() # create a slash command
+async def ping(ctx):
+    await ctx.respond('Pong!')
+
 bot.run('token')
 ```
 
@@ -84,10 +85,6 @@ class MyBot(discord.Bot): # subclass discord.Bot
         print(self.user.name)
         print(self.user.id)
         print('------')
-
-    @slash_command() # create a slash command
-    async def ping(self, ctx):
-        await ctx.respond('Pong!')
 ```
 ```python title="./src/__init__.py"
 from .bot import MyBot # import the MyBot class from the bot.py file
@@ -96,6 +93,10 @@ from .bot import MyBot # import the MyBot class from the bot.py file
 from src import MyBot # import MyBot from /src
 
 bot = MyBot() # create an instance of MyBot
+
+@bot.slash_command()
+async def ping(ctx):
+    await ctx.respond('Pong!')
 
 bot.run("TOKEN") # run the bot
 ```
