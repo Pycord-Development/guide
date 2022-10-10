@@ -90,28 +90,31 @@ getting leaked is to store it in `.env` files.
 
 You can store your tokens in `.env` files. This is a simple way to store sensitive information.
 
-1.  Create a file with the name `.env`. Just `.env`, with the dot/period at the start.
-2.  Define the token in the file, like so:
-
-
-    ```env title=".env"
-    TOKEN = [PASTE YOUR TOKEN HERE]
-    ```
-
-    for example:
-
-
+1.  Create a file with the name `.env` (only the extension, with a dot/period at the start and without a name before it).
+2.  Define the token in the `.env` file (replace the example value with your token).
     ```env title=".env"
     TOKEN = NzkyNzE1NDU0MTk2MDg4ODQy.X-hvzA.Ovy4MCQywSkoMRRclStW4xAYK7I
     ```
-3.  Install [`python-dotenv`](https://pypi.org/project/python-dotenv/)
+3.  Install [`python-dotenv`](https://pypi.org/project/python-dotenv/).
     ```bash
     python -m pip install python-dotenv
     ```
+4. Load the token from the `.env` file.
+   ```python
+   dotenv.load_dotenv()
+   token = str(os.getenv("TOKEN"))
+5. Pass your token as parameter when rurnning the bot.
+   ```python
+   client.run(token)
+   ```
+
+:::tip
 
 If you are using Git to track your bot's changes, you should create a file called `.gitignore` and add
 `.env` to it. This stops your `.env` file from getting tracked along with the rest of your code, and
-will not be pushed to a remote Git repository. It will stay secure on your local machine.
+will not be pushed to a remote Git repository. As a consequence, it will stay secure on your local machine.
+
+:::
 
 ## Coding the Basics
 
