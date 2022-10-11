@@ -101,9 +101,10 @@ You can store your tokens in `.env` files. This is a simple way to store sensiti
     ```
 4. Load the token from the `.env` file.
    ```python
+   import dotenv
    dotenv.load_dotenv()
    token = str(os.getenv("TOKEN"))
-5. Pass your token as parameter when rurnning the bot.
+5. Pass your token as parameter when running the bot.
    ```python
    client.run(token)
    ```
