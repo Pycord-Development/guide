@@ -22,7 +22,7 @@ On March 24, 2021, Discord added Slash Commands to Discord as an easier, more ef
 
 :::important
 
-Remember that slash commands require your bot to be invited with the `application.commands` scope or slash commands will not show up. Bots already in the guild can simply be invited again with the scope; there is no need to kick the bot.
+Remember that Slash Commands require your bot to be invited with the `application.commands` scope or Slash Commands will not show up. Bots already in the guild can simply be invited again with the scope; there is no need to kick the bot.
 
 :::
 
@@ -70,16 +70,16 @@ We create an async function called `ping` with parameters `ctx`, which, when cal
 
 ## Subcommand Groups
 
-You might want to group certain commands together to make them more organised. A command group is exactly what it sounds like, a group of individual slash commands together.
+You might want to group certain commands together to make them more organised. A command group is exactly what it sounds like, a group of individual Slash Commands together.
 
-In order to make a slash command group, you can use the `bot.create_group` function.
+In order to make a Slash Command group, you can use the `bot.create_group` function.
 
 ```python
 import discord
 
 bot = discord.Bot(debug_guilds=[...]) # specify the guild IDs in debug_guilds
 
-# create slash command group with bot.create_group
+# create Slash Command group with bot.create_group
 greetings = bot.create_group("greetings", "Greet people")
 
 @greetings.command()
@@ -109,7 +109,7 @@ async def subtract(ctx, num1: int, num2: int):
   sum = num1 - num2
   await ctx.respond(f"{num1} minus {num2} is {sum}.")
 
-# you'll have to manually add the manually created slash command group
+# you'll have to manually add the manually created Slash Command group
 bot.add_application_command(math)
 ```
 

@@ -27,7 +27,7 @@ First, you need to ask Discord to send you events. This is done via "Intents". R
 
 Once you understand what intents are, you can enable the events you need, or just use the default ones with `discord.Intents.all()`.
 
-Now that that's done, let's add an event handler for when a user joins the server. We will use the `on_member_join` event. We will send a private message to the user welcoming them to the server.
+Now that that's done, let's add an event handler for when a user joins the server. We will use the [`on_member_join` event](https://docs.pycord.dev/en/master/api.html#discord.on_member_join). We will send a private message to the user welcoming them to the server.
 
 ```python
 @bot.event
@@ -223,7 +223,7 @@ method, you can set a small image to reside at the top-right of the embed. This 
 -   Image - With the [`set_image`](https://docs.pycord.dev/en/master/api.html#discord.Embed.set_image)
 method, you can set an image to sit at the bottom of an embed. This has a single `url` kwarg.
  
-There are a lot more methods and attributes you can use to configure embeds. Here, we just covered the basics. Also remember that all of these values are not necessary in an embed. An embed may only contain a few of these, for example, only a description, or a title and a description, and so on.
+There are a lot more methods and attributes you can use to configure embeds. Here, we just covered the basics. Also, remember that all of these values are not necessary in an embed. An embed may only contain a few of these. For example, only a description, a title and a description, and so on.
  
 ### Markdown
 Markdown is a type of markup language that's limited in terms of formatting yet simple. Discord allows
@@ -274,7 +274,6 @@ For code markdown, you can choose between `Code Text` and `Code Blocks`.
 
 -   \`Code Text\`
 -   \`\`\`
-
 Code Blocks
 \`\`\`
 
