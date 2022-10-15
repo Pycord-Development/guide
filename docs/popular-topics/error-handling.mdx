@@ -33,7 +33,7 @@ import discord
 intents = discord.Intents.default()
 intents.message_content = True
 
-bot = discord.Bot(debug_guilds=[...], intents=intents)
+bot = discord.Bot(intents=intents)
 
 
 @bot.slash_command(description="Gets some feedback.")
@@ -114,7 +114,7 @@ until [the feature](https://github.com/Pycord-Development/pycord/issues/1388) is
 import discord
 from discord.ext import commands
 
-bot = discord.Bot(debug_guilds=[...], owner_id=...)  # Your Discord user ID goes in owner_id
+bot = discord.Bot(owner_id=...)  # Your Discord user ID goes in owner_id
 
 
 @bot.slash_command(description="A private command...")
@@ -273,7 +273,7 @@ A non-subclassed bot would implement this like so:
 import discord
 from discord.ext import commands
 
-bot = discord.Bot(debug_guilds=[...])
+bot = discord.Bot()
 
 
 @bot.slash_command(description="Get the bot's current latency!")

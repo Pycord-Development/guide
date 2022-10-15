@@ -33,7 +33,7 @@ Let's create a simple Slash Command.
 ```py
 import discord
 
-bot = discord.Bot(debug_guilds=[...]) # specify the guild IDs in debug_guilds
+bot = discord.Bot()
 
 # we need to limit the guilds for testing purposes
 # so other users wouldn't see the command that we're testing
@@ -62,7 +62,7 @@ Let's go through the code.
 
 First, we import Pycord's `discord` package.
 
-Next, we create a [`discord.Bot`](https://docs.pycord.dev/en/master/api.html#discord.Bot) object and assign it to a variable `bot`. Notice how we pass the parameter [`debug_guilds`](https://docs.pycord.dev/en/master/api.html#discord.Bot.debug_guilds). Global Slash Commands take up to an hour to register, however, if we limit our bot commands to a few specific guilds, we can use them instantly on those guilds. This is useful for testing purposes. Once you have polished up your command and made it all shiny, you can share its shininess with all of the bot's servers by removing this parameter.
+Next, we create a [`discord.Bot`](https://docs.pycord.dev/en/master/api.html#discord.Bot) object and assign it to a variable `bot`.
 
 We then go ahead and use the [`@bot.command`](https://docs.pycord.dev/en/master/api.html#discord.Bot.command) decorator, which registers a new Slash Command. We pass a `description` parameter to give a description to the Slash Command. We can also pass a `name` parameter to change the Slash Command's name. By default, the name of the Slash Command will be the name of the function, in this case, `/ping`.
 
@@ -77,7 +77,7 @@ In order to make a Slash Command group, you can use the `bot.create_group` funct
 ```python
 import discord
 
-bot = discord.Bot(debug_guilds=[...]) # specify the guild IDs in debug_guilds
+bot = discord.Bot()
 
 # create Slash Command group with bot.create_group
 greetings = bot.create_group("greetings", "Greet people")
