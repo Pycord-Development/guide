@@ -27,7 +27,7 @@ First, you need to ask Discord to send you events. This is done via "Intents". R
 
 Once you understand what intents are, you can enable the events you need, or just use the default ones with `discord.Intents.all()`.
 
-Now that that's done, let's add an event handler for when a user joins the server. We will use the `on_member_join` event. We will send a private message to the user welcoming them to the server.
+Now that that's done, let's add an event handler for when a user joins the server. We will use the [`on_member_join` event](https://docs.pycord.dev/en/master/api.html#discord.on_member_join). We will send a private message to the user welcoming them to the server.
 
 ```python
 @bot.event
@@ -218,16 +218,21 @@ method, you can set a small footer that holds a message. This has `text` and `ic
 -   Author - With the [`set_author`](https://docs.pycord.dev/en/master/api.html#discord.Embed.set_author)
 method, you can set an author for the embed. This is a small text field at the top of the embed. This
 includes `name`, `url` and `icon_url` kwargs.
--   Thumbnail - With the [`set_thumbnial`](https://docs.pycord.dev/en/master/api.html#discord.Embed.set_thumbnail)
+-   Thumbnail - With the [`set_thumbnail`](https://docs.pycord.dev/en/master/api.html#discord.Embed.set_thumbnail)
 method, you can set a small image to reside at the top-right of the embed. This has a single `url` kwarg.
 -   Image - With the [`set_image`](https://docs.pycord.dev/en/master/api.html#discord.Embed.set_image)
 method, you can set an image to sit at the bottom of an embed. This has a single `url` kwarg.
  
-There are a lot more methods and attributes you can use to configure embeds. Here, we just covered the basics. Also remember that all of these values are not necessary in an embed. An embed may only contain a few of these, for example, only a description, or a title and a description, and so on.
+There are a lot more methods and attributes you can use to configure embeds. Here, we just covered the basics. Also, remember that all of these values are not necessary in an embed. An embed may only contain a few of these. For example, only a description, a title and a description, and so on.
  
 ### Markdown
 Markdown is a type of markup language that's limited in terms of formatting yet simple. Discord allows
-for a watered-down version of markdown to be in their messages. This includes:
+for a watered-down version of markdown to be in their messages.
+
+#### Text Markdown
+
+Text formatting can be used in messages and in most embed parts,
+as explained in the dedicated section below.
  
 <table>
     <tr>
@@ -250,34 +255,122 @@ for a watered-down version of markdown to be in their messages. This includes:
     </tr>
 </table>
 
-Sadly, Discord does not support other types, such as hyperlinks. The only supported places for hyperlinks are
-in embeds and messages sent through webhooks.
-
-Adding markdown to your embeds or messages will give your bot the sparkle it needs.
-
-Here is an example for a hyperlink in embeds.
-
-```
-[Click here!](https://pycord.dev/)
-```
-Inside the embed, the example above will look like this: [`Click here!`](https://pycord.dev/)
-
-:::caution
- 
-Some embed fields, such as the footer, do not support markdown *at all*, including bold and italics.
- 
-:::
-
 #### Code Markdown
 
-For code markdown, you can choose between `Code Text` and `Code Blocks`.
+To create a single-line code block without syntax highlight, wrap the text between single backticks.
+This code block will only add a dark background to the text.
 
--   \`Code Text\`
--   \`\`\`
+```
+\`print("Hello world!")\`
+```
 
-Code Blocks
+To create a multi-line code block without syntax highlight, wrap the text between triple backticks
+on first and last line. This type of code block will encase the code inside a box.
+
+```
 \`\`\`
+message = "Hello world!"
+print(message)
+\`\`\`
+```
 
-Code Blocks support different programming languages, such as Python.
+To create a multi-line block with syntax highlight, add the name of the language you are using right after
+the triple backticks on the first line. For example, for Python you can write either "python" or "py".
 
-If you start your Code Block with <code>```python</code>, you can send readable Python code to Discord.
+```
+\`\`\`python
+message = "Hello world!"
+print(message)
+\`\`\`
+```
+
+If you want to use syntax highlight for a single line of code, you still have to format it
+like a multi-line block but the code must be on a separate line than the triple backticks.
+
+#### Quote Markdown
+
+To create a single-line quote block, start the line with `>` followed by a space.
+
+```
+> This is a single-line quote.
+```
+
+To create a multi-line quote block, write `>>>` followed by a space. All text
+from that point onwards will be included in that quote block.
+
+```
+>>> This is a
+multi-line quote.
+```
+
+#### Spoiler Markdown
+
+To hide a spoiler, encase the text between double pipes. The users
+will have to click on it before being able to see the text contained in it.
+
+```
+||spoiler||
+```
+
+#### Link Markdown
+
+Link formatting only works in embeds and messages sent through webhooks,
+by using the following syntax:
+
+```
+[Pycord](https://pycord.dev/)
+```
+
+Inside the supported elements that have just been mentioned,
+the example above will look like this: [`Pycord`](https://pycord.dev/)
+
+Outside of them, the link will still be clickable but the formatting will be ignored,
+therefore the example above will look similarly to this: `[Pycord](https://pycord.dev/)`
+
+#### Embed Markdown
+ 
+Adding markdown to your embeds or messages will give your bot the sparkle it needs,
+however, markdown is limited inside embeds. Use the following table as a reference
+and keep in mind that embed title and filed names will always show in **bold**.
+
+<table>
+<thead>
+  <tr>
+    <th>Part</th>
+    <th>Text</th>
+    <th>Link</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Embed Author</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>Embed Title</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>Embed Description</td>
+    <td>Yes</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>Field Name</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>Field Value</td>
+    <td>Yes</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>Embed Footer</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+</tbody>
+</table>

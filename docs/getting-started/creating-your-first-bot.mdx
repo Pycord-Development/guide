@@ -90,28 +90,33 @@ getting leaked is to store it in `.env` files.
 
 You can store your tokens in `.env` files. This is a simple way to store sensitive information.
 
-1.  Create a file with the name `.env`. Just `.env`, with the dot/period at the start.
-2.  Define the token in the file, like so:
-
-
-    ```env title=".env"
-    TOKEN = [PASTE YOUR TOKEN HERE]
-    ```
-
-    for example:
-
-
+1.  Create a file with the name `.env` (only the extension, with a dot/period at the start and without a name before it).
+2.  Define the token in the `.env` file (replace the example value with your token).
     ```env title=".env"
     TOKEN = NzkyNzE1NDU0MTk2MDg4ODQy.X-hvzA.Ovy4MCQywSkoMRRclStW4xAYK7I
     ```
-3.  Install [`python-dotenv`](https://pypi.org/project/python-dotenv/)
+3.  Install [`python-dotenv`](https://pypi.org/project/python-dotenv/).
     ```bash
     python -m pip install python-dotenv
     ```
+4.  Load the token from the `.env` file.
+    ```python
+    import dotenv
+    dotenv.load_dotenv()
+    token = str(os.getenv("TOKEN"))
+    ```
+5.  Pass your token as parameter when running the bot.
+    ```python
+    client.run(token)
+    ```
+
+:::tip
 
 If you are using Git to track your bot's changes, you should create a file called `.gitignore` and add
 `.env` to it. This stops your `.env` file from getting tracked along with the rest of your code, and
-will not be pushed to a remote Git repository. It will stay secure on your local machine.
+will not be pushed to a remote Git repository. As a consequence, it will stay secure on your local machine.
+
+:::
 
 ## Coding the Basics
 
@@ -123,7 +128,7 @@ import os # default module
 from dotenv import load_dotenv
 
 load_dotenv() # load all the variables from the env file
-bot = discord.Bot(debug_guilds=[...])
+bot = discord.Bot()
 
 @bot.event
 async def on_ready():
@@ -165,14 +170,13 @@ is a module that we will use to load the env file. You installed this with `pip 
 Next, we load the env file with `load_dotenv()`.
 
 ```py
-bot = discord.Bot(debug_guilds=[...])
+bot = discord.Bot()
 ```
 
 In this line, we create a new instance of [`discord.Bot`](https://docs.pycord.dev/en/master/api.html#discord.Bot).
-In this object, we pass a `debug_guilds` argument, which is a list of guild IDs that the bot's application
-commands will appear in. This is beneficial for testing purposes when we are testing a new command
-or two and don't want everyone to be able to use it. If debug guilds are not specified, all of the 
-servers the bot is in will have access to your slash commands.
+In this object, we can pass various parameters for configuration purposes, such as `owner_ids`
+and [`intents`](https://docs.pycord.dev/en/stable/api.html?highlight=get_message#discord.Intents).
+
 
 
 ```py
