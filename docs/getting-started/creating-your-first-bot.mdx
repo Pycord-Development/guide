@@ -175,14 +175,6 @@ and [`intents`](https://docs.pycord.dev/en/stable/api.html?highlight=get_message
 
 :::caution
 
-Considering that Discord no longer takes 1 hour to update Slash Commands,
-we do not recommend passing `debug_guilds` as parameter because
-it will prevent any global Slash Command to be registered. Instead,
-set [`guild_ids`](https://docs.pycord.dev/en/stable/api.html?highlight=get_message#discord.SlashCommand.guild_ids)
-for the [Application Command](https://docs.pycord.dev/en/stable/api.html?highlight=get_message#application-commands)
-that you intend to test.
-
-:::
 
 ```py
 @bot.event
