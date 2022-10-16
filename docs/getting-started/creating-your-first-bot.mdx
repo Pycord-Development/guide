@@ -128,7 +128,7 @@ import os # default module
 from dotenv import load_dotenv
 
 load_dotenv() # load all the variables from the env file
-bot = discord.Bot(debug_guilds=[...])
+bot = discord.Bot()
 
 @bot.event
 async def on_ready():
@@ -170,14 +170,13 @@ is a module that we will use to load the env file. You installed this with `pip 
 Next, we load the env file with `load_dotenv()`.
 
 ```py
-bot = discord.Bot(debug_guilds=[...])
+bot = discord.Bot()
 ```
 
 In this line, we create a new instance of [`discord.Bot`](https://docs.pycord.dev/en/master/api.html#discord.Bot).
-In this object, we pass a `debug_guilds` argument, which is a list of guild IDs that the bot's application
-commands will appear in. This is beneficial for testing purposes when we are testing a new command
-or two and don't want everyone to be able to use it. If debug guilds are not specified, all of the 
-servers the bot is in will have access to your slash commands.
+In this object, we can pass various parameters for configuration purposes, such as `owner_ids`
+and [`intents`](https://docs.pycord.dev/en/stable/api.html?highlight=get_message#discord.Intents).
+
 
 
 ```py
