@@ -37,14 +37,14 @@ Providing a Terms of Service for your bot is optional, though usually a best pra
 what they can and cannot do with your service, and makes it easier to settle disputes if someone 
 disagrees with you.
 
-Read more in Discord's official [Legal Docs](https://discord.com/developers/docs/legal)
+Read more in Discord's official [Legal Docs](https://discord.com/developers/docs/legal).
 
 ### Developer Policy
 
 We could list almost every rule about using Discord's API here. *Or* we could simply link Discord's
-developer policy to make it easier on us. You can find Discord's developer policy
+Developer Policy to make it easier on us. You can find Discord's Developer Policy
 [here](https://discord.com/developers/docs/policy). This outlines what you can and cannot do with
-Discord's developer API. And, don't worry, it's completely readable and understandable.
+Discord's Developer API. And, don't worry, it's completely readable and understandable.
 
 ## Best Practices
 
@@ -78,8 +78,8 @@ bot verification, so verifying as soon as possible gives them enough time to ver
 reaches the 100 server cap. If a bot is not verified, it cannot grow beyond 100 servers.
 
 It's also a good idea to only apply for the privileged intents that you need. Applying for intents
-your bot doesn't use wastes both your time and Discord's time, as your whole verification request
-can be denied simply because you applied for an intent you didn't need.
+your bot doesn't use wastes both your time and Discord's time, as your privileged intent request
+will be denied simply because you applied for an intent you didn't need.
 
 ### Subclassing
 
@@ -106,7 +106,7 @@ the Creating Your First Bot guide.
 You always want to back up your bot's data. This includes both its code *and* its databases. This way,
 if something tragic happens, such as your host failing a data migration or you breaking your Raspberry
 Pi's SD card that held your bot, you'll still have its precious user data. I have a small program for
-my bot that uploads its databases to a remote GitHub repository now and then to not lose any data.
+my bot that uploads its databases to a remote GitHub repository every now and then to not lose any data.
 It may be smarter to find a bit more of a reliable way to do so, though.
 
 Public or private, having a local Git repository connected to a remote one is a good idea for making
@@ -169,7 +169,7 @@ works entirely on files. However, if for some reason you cannot read/write to an
 lots of data, SQLite might not be for you.
 
 While SQLite is a part of the Python Standard Library as the `sqlite3` package, we recommend not using it as it is 
-synchronous and blocking. You should use an asynchronous alternative, such as `aiosqlite`.
+synchronous and blocking. You should use an asynchronous alternative, such as [`aiosqlite`](https://pypi.org/project/aiosqlite/).
 
 #### PostgreSQL
 PostgreSQL is also based on SQL, but it also has more features than SQLite. It's compliant with the SQL standard,
