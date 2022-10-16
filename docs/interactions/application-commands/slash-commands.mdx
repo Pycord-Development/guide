@@ -95,7 +95,9 @@ bot.run("TOKEN")
 
 Or, you can instead manually make a `SlashCommandGroup` class like so:
 ```python
-math = SlashCommandGroup("math", "Math related commands")
+import discord
+
+math = discord.SlashCommandGroup("math", "Math related commands")
 
 @math.command()
 async def add(ctx, num1: int, num2: int):
