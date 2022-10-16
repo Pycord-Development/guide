@@ -1,0 +1,160 @@
+---
+title: Markdown
+description: Markdown syntax usable to format text on Discord.
+---
+
+# Markdown
+Markdown is a type of markup language that's limited in terms of formatting yet simple. Discord allows
+for a watered-down version of markdown to be in their messages.
+
+## Text Markdown
+
+Text formatting can be used in messages and in most embed parts,
+as explained in the dedicated section below.
+ 
+<table>
+    <tr>
+        <td>*italics*</td>
+        <td>__*underlined italics*__</td>
+    </tr>
+    <tr>
+        <td>**bold**</td>
+        <td>__**underlined bold**__</td>
+        
+    </tr>
+    <tr>
+        <td>***bold italics***</td>
+        <td>__***underlined bold italics***__</td>
+        
+    </tr>
+    <tr>
+        <td>__underlined__</td>
+        <td>~~strikethrough~~</td>
+    </tr>
+</table>
+
+## Code Markdown
+
+To create a single-line code block without syntax highlight, wrap the text between single backticks.
+This code block will only add a dark background to the text.
+
+```
+`print("Hello world!")`
+```
+
+To create a multi-line code block without syntax highlight, wrap the text between triple backticks
+on first and last line. This type of code block will encase the code inside a box.
+
+````
+```
+message = "Hello world!"
+print(message)
+```
+````
+
+To create a multi-line block with syntax highlight, add the name of the language you are using right after
+the triple backticks on the first line. For example, for Python you can write either "python" or "py".
+
+````
+```python
+message = "Hello world!"
+print(message)
+```
+````
+
+If you want to use syntax highlight for a single line of code, you still have to format it
+like a multi-line block but the code must be on a separate line than the triple backticks.
+
+## Quote Markdown
+
+To create a single-line quote block, start the line with `>` followed by a space.
+
+```
+> This is a single-line quote.
+```
+
+To create a multi-line quote block, write `>>>` followed by a space. All text
+from that point onwards will be included in that quote block.
+
+```
+>>> This is a
+multi-line quote.
+```
+
+## Spoiler Markdown
+
+To hide a spoiler, encase the text between double pipes. The users
+will have to click on it before being able to see the text contained in it.
+
+```
+||spoiler||
+```
+
+#### Link Markdown
+
+Link formatting only works in embeds and messages sent through webhooks,
+by using the following syntax:
+
+```
+[Pycord](https://pycord.dev/)
+```
+
+Inside the supported elements that have just been mentioned,
+the example above will look like this: [`Pycord`](https://pycord.dev/)
+
+Outside of them, the link will still be clickable but the formatting will be ignored,
+therefore the example above will look similarly to this: `[Pycord](https://pycord.dev/)`
+
+## Embed Markdown
+ 
+Adding markdown to your embeds or messages will give your bot the sparkle it needs,
+however, markdown is limited inside embeds. Use the following table as a reference
+and keep in mind that embed title and filed names will always show in **bold**.
+
+<table>
+<thead>
+  <tr>
+    <th>Part</th>
+    <th>Text</th>
+    <th>Link</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Embed Author</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>Embed Title</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>Embed Description</td>
+    <td>Yes</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>Field Name</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>Field Value</td>
+    <td>Yes</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>Embed Footer</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+</tbody>
+</table>
+
+:::info Related Topics
+
+-   [Embeds](embeds)
+
+:::
