@@ -10,12 +10,13 @@ const config = {
   tagline:
     "Imagine a place where you can learn how to create a Discord Bot",
   url: "https://guide.pycord.dev",
+  trailingSlash: false,
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
   organizationName: "Pycord-Development", // Usually your GitHub org/user name.
-  projectName: "Guide", // Usually your repo name.
+  projectName: "guide", // Usually your repo name.
   plugins: ["docusaurus-plugin-sass"],
   presets: [
     [
