@@ -3,6 +3,19 @@ title: Markdown
 description: Markdown syntax usable to format text on Discord.
 ---
 
+import {
+    DiscordInteraction,
+    DiscordMessage,
+    DiscordMessages,
+    DiscordEmbed,
+    DiscordEmbedField,
+    DiscordEmbedFields,
+    DiscordMarkdown,
+} from "discord-message-components/packages/react";
+import "discord-message-components/packages/react/dist/style.css";
+
+import DiscordComponent from "../../../src/components/DiscordComponent";
+
 # Markdown
 Markdown is a type of markup language that's limited in terms of formatting yet simple. Discord allows
 for a watered-down version of markdown to be in their messages.
@@ -42,6 +55,16 @@ This code block will only add a dark background to the text.
 `print("Hello world!")`
 ```
 
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
+    <DiscordMarkdown>
+        `print("Hello world!")`
+    </DiscordMarkdown>
+  </DiscordMessage>
+</DiscordComponent>
+
+<br/>
+
 To create a multi-line code block without syntax highlight, wrap the text between triple backticks
 on first and last line. This type of code block will encase the code inside a box.
 
@@ -51,6 +74,19 @@ message = "Hello world!"
 print(message)
 ```
 ````
+
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
+    <DiscordMarkdown>
+```
+message = "Hello world!"
+print(message)
+```
+    </DiscordMarkdown>
+  </DiscordMessage>
+</DiscordComponent>
+
+<br/>
 
 To create a multi-line block with syntax highlight, add the name of the language you are using right after
 the triple backticks on the first line. For example, for Python you can write either "python" or "py".
@@ -62,6 +98,19 @@ print(message)
 ```
 ````
 
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
+    <DiscordMarkdown>
+```python
+message = "Hello world!"
+print(message)
+```
+    </DiscordMarkdown>
+  </DiscordMessage>
+</DiscordComponent>
+
+<br/>
+
 If you want to use syntax highlight for a single line of code, you still have to format it
 like a multi-line block but the code must be on a separate line than the triple backticks.
 
@@ -69,9 +118,19 @@ like a multi-line block but the code must be on a separate line than the triple 
 
 To create a single-line quote block, start the line with `>` followed by a space.
 
-```
+```text
 > This is a single-line quote.
 ```
+
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
+    <DiscordMarkdown>
+      > This is a single-line quote.
+    </DiscordMarkdown>
+  </DiscordMessage>
+</DiscordComponent>
+
+<br/>
 
 To create a multi-line quote block, write `>>>` followed by a space. All text
 from that point onwards will be included in that quote block.
@@ -80,6 +139,17 @@ from that point onwards will be included in that quote block.
 >>> This is a
 multi-line quote.
 ```
+
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
+    <DiscordMarkdown>
+      >>> This is a
+      multi-line quote.
+    </DiscordMarkdown>
+  </DiscordMessage>
+</DiscordComponent>
+
+<br/>
 
 ## Spoiler Markdown
 
@@ -90,6 +160,16 @@ will have to click on it before being able to see the text contained in it.
 ||spoiler||
 ```
 
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
+    <DiscordMarkdown>
+      ||spoiler||
+    </DiscordMarkdown>
+  </DiscordMessage>
+</DiscordComponent>
+
+<br/>
+
 #### Link Markdown
 
 Link formatting only works in embeds and messages sent through webhooks,
@@ -99,10 +179,18 @@ by using the following syntax:
 [Pycord](https://pycord.dev/)
 ```
 
-Inside the supported elements that have just been mentioned,
-the example above will look like this: [`Pycord`](https://pycord.dev/)
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
+    <a href={"https://pycord.dev/"}>Pycord</a>
+  </DiscordMessage>
+</DiscordComponent>
 
-Outside of them, the link will still be clickable but the formatting will be ignored,
+<br/>
+
+Inside the supported elements that have just been mentioned,
+the example above will create a link with the text "Pycord" and the URL "https://pycord.dev/".
+
+Outside them, the link will still be clickable but the formatting will be ignored,
 therefore the example above will look similarly to this: `[Pycord](https://pycord.dev/)`
 
 ## Embed Markdown

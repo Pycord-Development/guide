@@ -272,6 +272,25 @@ body {
   //       We Should be able to remove everything below here, but for some reason it doesn't work without it. Also, some
   //       of it hasn't been added to the component package yet anyways so that needs to be done.
   .discord-message {
+    .discord-markdown .discord-markdown-content {
+      & > code {
+        border: unset;
+        vertical-align: unset;
+      }
+      & > pre {
+        background-color: unset;
+        color: unset;
+        font: unset;
+        overflow: unset;
+        padding: unset;
+      }
+      & > blockquote {
+        border-left: unset;
+        box-shadow: unset;
+        color: unset;
+        font-size: unset;
+      }
+    }
     .discord-author-info {
       .discord-author-username {
         letter-spacing: unset;
