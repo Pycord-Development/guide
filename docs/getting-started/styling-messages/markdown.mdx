@@ -48,10 +48,15 @@ as explained in the dedicated section below.
 
 ## Code Markdown
 
+This formatting can be used not only for code but also for normal text,
+when you want the text to have a different background or to be encased in a box.
+
+### Single-Line Code Block
+
 To create a single-line code block without syntax highlight, wrap the text between single backticks.
 This code block will only add a dark background to the text.
 
-```
+```text
 `print("Hello world!")`
 ```
 
@@ -65,10 +70,16 @@ This code block will only add a dark background to the text.
 
 <br/>
 
-To create a multi-line code block without syntax highlight, wrap the text between triple backticks
-on first and last line. This type of code block will encase the code inside a box.
+### Multi-Line Code Block
 
-````
+This type of code block, created by using triple backticks, will encase the text inside a box.
+
+#### Without Syntax Highlight
+
+To create a multi-line code block without syntax highlight, wrap the text between triple backticks
+on first and last line.
+
+````text
 ```
 message = "Hello world!"
 print(message)
@@ -87,6 +98,8 @@ print(message)
 </DiscordComponent>
 
 <br/>
+
+#### With Syntax Highlight
 
 To create a multi-line block with syntax highlight, add the name of the language you are using right after
 the triple backticks on the first line. For example, for Python you can write either "python" or "py".
@@ -111,10 +124,33 @@ print(message)
 
 <br/>
 
+### Single-Line Code Block
+
 If you want to use syntax highlight for a single line of code, you still have to format it
-like a multi-line block but the code must be on a separate line than the triple backticks.
+like a multi-line block, however, you cannot start writing the encased text on the same line
+where you declare which language to use.
+
+````
+```python
+print("Hello world!")
+```
+````
+
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
+    <DiscordMarkdown>
+```python
+print("Hello world!")
+```
+    </DiscordMarkdown>
+  </DiscordMessage>
+</DiscordComponent>
+
+<br/>
 
 ## Quote Markdown
+
+### Single-Line Quote Block
 
 To create a single-line quote block, start the line with `>` followed by a space.
 
@@ -132,10 +168,12 @@ To create a single-line quote block, start the line with `>` followed by a space
 
 <br/>
 
+### Multi-Line Quote Block
+
 To create a multi-line quote block, write `>>>` followed by a space. All text
 from that point onwards will be included in that quote block.
 
-```
+```text
 >>> This is a
 multi-line quote.
 ```
@@ -189,9 +227,7 @@ by using the following syntax:
 
 Inside the supported elements that have just been mentioned,
 the example above will create a link with the text "Pycord" and the URL "https://pycord.dev/".
-
-Outside them, the link will still be clickable but the formatting will be ignored,
-therefore the example above will look similarly to this: `[Pycord](https://pycord.dev/)`
+Outside of them, the link will still be clickable but the formatting will be ignored.
 
 ## Embed Markdown
  

@@ -148,7 +148,7 @@ embed.add_field(title="Inline Field 3", value="Inline Field 3", inline=True)
  
 This small section shows off embed fields. You can add up to 25 fields to embeds with the [`add_field` method](https://docs.pycord.dev/en/master/api.html#discord.Embed.add_field)
 of the [`discord.Embed`](https://docs.pycord.dev/en/master/api.html#embed) class. These consist of three 
-keyword arguments: `title`, `value`, and `inline`. `title` and `value` are both required arguments, which inline defaults to `False` if it's not defined. The `inline` argument specifies whether or not space will be divided among the inline fields. There could be a mix of fields where inline has different values too.
+keyword arguments: `title`, `value`, and `inline`. `title` and `value` are both required arguments, whereas `inline` is optional and defaults to `False` when not defined. The `inline` argument specifies whether or not space will be divided among the inline fields. There could be a mix of fields where inline has different values too.
  
 ```py
 embed.set_footer(text="Footer! No markdown here.") # footers can have icons too
