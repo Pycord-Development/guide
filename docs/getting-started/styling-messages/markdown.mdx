@@ -1,0 +1,284 @@
+---
+title: Markdown
+description: Markdown syntax usable to format text on Discord.
+---
+
+import {
+    DiscordInteraction,
+    DiscordMessage,
+    DiscordMessages,
+    DiscordEmbed,
+    DiscordEmbedField,
+    DiscordEmbedFields,
+    DiscordMarkdown,
+} from "discord-message-components/packages/react";
+import "discord-message-components/packages/react/dist/style.css";
+
+import DiscordComponent from "../../../src/components/DiscordComponent";
+
+# Markdown
+Markdown is a type of markup language that's limited in terms of formatting yet simple. Discord allows
+for a watered-down version of markdown to be in their messages.
+
+## Text Markdown
+
+Text formatting can be used in messages and in most embed parts,
+as explained in the dedicated section below.
+ 
+<table>
+    <tr>
+        <td>*italics*</td>
+        <td>__*underlined italics*__</td>
+    </tr>
+    <tr>
+        <td>**bold**</td>
+        <td>__**underlined bold**__</td>
+        
+    </tr>
+    <tr>
+        <td>***bold italics***</td>
+        <td>__***underlined bold italics***__</td>
+        
+    </tr>
+    <tr>
+        <td>__underlined__</td>
+        <td>~~strikethrough~~</td>
+    </tr>
+</table>
+
+## Code Markdown
+
+This formatting can be used not only for code but also for normal text,
+when you want the text to have a different background or to be encased in a box.
+
+### Single-Line Code Block
+
+To create a single-line code block without syntax highlight, wrap the text between single backticks.
+This code block will only add a dark background to the text.
+
+```text
+`print("Hello world!")`
+```
+
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
+    <DiscordMarkdown>
+`print("Hello world!")`
+    </DiscordMarkdown>
+  </DiscordMessage>
+</DiscordComponent>
+
+<br/>
+
+### Multi-Line Code Block
+
+This type of code block, created by using triple backticks, will encase the text inside a box.
+
+#### Without Syntax Highlight
+
+To create a multi-line code block without syntax highlight, wrap the text between triple backticks
+on first and last line.
+
+````text
+```
+message = "Hello world!"
+print(message)
+```
+````
+
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
+    <DiscordMarkdown>
+```
+message = "Hello world!"
+print(message)
+```
+    </DiscordMarkdown>
+  </DiscordMessage>
+</DiscordComponent>
+
+<br/>
+
+#### With Syntax Highlight
+
+To create a multi-line block with syntax highlight, add the name of the language you are using right after
+the triple backticks on the first line. For example, for Python you can write either "python" or "py".
+
+````
+```python
+message = "Hello world!"
+print(message)
+```
+````
+
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
+    <DiscordMarkdown>
+```python
+message = "Hello world!"
+print(message)
+```
+    </DiscordMarkdown>
+  </DiscordMessage>
+</DiscordComponent>
+
+<br/>
+
+### Single-Line Code Block
+
+If you want to use syntax highlight for a single line of code, you still have to format it
+like a multi-line block, however, you cannot start writing the encased text on the same line
+where you declare which language to use.
+
+````
+```python
+print("Hello world!")
+```
+````
+
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
+    <DiscordMarkdown>
+```python
+print("Hello world!")
+```
+    </DiscordMarkdown>
+  </DiscordMessage>
+</DiscordComponent>
+
+<br/>
+
+## Quote Markdown
+
+### Single-Line Quote Block
+
+To create a single-line quote block, start the line with `>` followed by a space.
+
+```text
+> This is a single-line quote.
+```
+
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
+    <DiscordMarkdown>
+> This is a single-line quote.
+    </DiscordMarkdown>
+  </DiscordMessage>
+</DiscordComponent>
+
+<br/>
+
+### Multi-Line Quote Block
+
+To create a multi-line quote block, write `>>>` followed by a space. All text
+from that point onwards will be included in that quote block.
+
+```text
+>>> This is a
+multi-line quote.
+```
+
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
+    <DiscordMarkdown>
+>>> This is a
+multi-line quote.
+    </DiscordMarkdown>
+  </DiscordMessage>
+</DiscordComponent>
+
+<br/>
+
+## Spoiler Markdown
+
+To hide a spoiler, encase the text between double pipes. The users
+will have to click on it before being able to see the text contained in it.
+
+```
+||spoiler||
+```
+
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
+    <DiscordMarkdown>
+||spoiler||
+    </DiscordMarkdown>
+  </DiscordMessage>
+</DiscordComponent>
+
+<br/>
+
+## Link Markdown
+
+Link formatting only works in messages sent through webhooks end embeds,
+by using the following syntax:
+
+```
+[Pycord](https://pycord.dev/)
+```
+
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
+    <a href={"https://pycord.dev/"}>Pycord</a>
+  </DiscordMessage>
+</DiscordComponent>
+
+<br/>
+
+Inside the supported elements that have just been mentioned,
+the example above will create a link with the text `Pycord` and the URL `https://pycord.dev/`.
+Outside of them, the link will still be clickable but the formatting will be ignored.
+
+## Embed Markdown
+ 
+Adding markdown to your embeds or messages will give your bot the sparkle it needs,
+however, markdown is limited inside embeds. Use the following table as a reference
+and keep in mind that embed title and filed names will always show in **bold**.
+
+<table>
+<thead>
+  <tr>
+    <th>Part</th>
+    <th>Text</th>
+    <th>Link</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Embed Author</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>Embed Title</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>Embed Description</td>
+    <td>Yes</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>Field Name</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td>Field Value</td>
+    <td>Yes</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>Embed Footer</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+</tbody>
+</table>
+
+:::info Related Topics
+
+-   [Embeds](embeds)
+
+:::
