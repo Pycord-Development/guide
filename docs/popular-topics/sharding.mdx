@@ -19,7 +19,7 @@ or `AutoShardedBot` class instead of a plain `Client` or `Bot` class. Pretty coo
 Just because you _can_ shard your bot doesn't mean you _should_. While Pycord makes it easy to shard
 your bot, it isn't necessary to shard unless your bot is large. Sharding a small bot isn't
 just useless, but _harmful_, as it uses extra resources and may slow down your bot. Discord
-themselves will let you know when your bot needs sharding so you won't need to worry about this until they contact you.
+themselves will let you know when your bot needs sharding, so you won't need to worry about this until they contact you.
 
 ## How Do I Shard in Pycord?
 
@@ -28,7 +28,7 @@ Sharding in Pycord is straightforward.
 Just replace your `discord.Client`, `discord.Bot`, `commands.Bot` objects
 with `discord.AutoShardedClient`, `discord.AutoShardedBot`, `commands.AutoShardedBot` respectively.
 
-These new objects have been inherited from the original objects, so all of the functions from those other types should be present. 
+These new objects have been inherited from the original objects, so all the functions from those other types should be present.
 
 If you want to specify the number of shards your bot uses,
 just add the `shards` parameter, along with the number of shards you want.

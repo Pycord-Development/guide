@@ -69,7 +69,7 @@ That was the decorator. Now, the function itself is pretty simple. It takes two 
 
 <!-- TODO: The values are sorted in the order the user selected them (?). The selected values are (?) -->
 
-In the callback, you could do anything you want. You get the two parameters `select` and `interaction` to play around with. Here, we send a message using `await interaction.response.send_message` (where interaction is [`discord.InteractionResponse`](https://docs.pycord.dev/en/master/api.html#discord.InteractionResponse)) with content `select.values[0]`, which sends the label of the first/only option the user selected. Obviously, this is only an example and you could do just about anything you want.
+In the callback, you could do anything you want. You get the two parameters `select` and `interaction` to play around with. Here, we send a message using `await interaction.response.send_message` (where interaction is [`discord.InteractionResponse`](https://docs.pycord.dev/en/master/api.html#discord.InteractionResponse)) with content `select.values[0]`, which sends the label of the first/only option the user selected. Obviously, this is only an example, and you could do just about anything you want.
 
 Finally, we create a global slash command called `flavour` that sends a message "Choose a flavor!" along with the view
 that contains our select menu.
@@ -281,7 +281,7 @@ No. As a Discord limitation, you can only have one view per message.
 
 They cannot be simple like commands. This system makes them flexible and doesn't limit your imagination. There are loads of different ways you can use UI Components. For example, you could subclass Buttons or Select Menus and add them to a view using the view's `add_item` function.
 
-UI Components aren't hard to use if you know Python. We recommend learning [Object Oriented Programming with Python](#oop).
+UI Components aren't hard to use if you know Python. We recommend learning [Object-Oriented Programming with Python](#oop).
 
 #### <e id="oop">What is OOP? What is subclassing?</e>
 
