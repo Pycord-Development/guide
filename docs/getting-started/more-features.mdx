@@ -21,7 +21,7 @@ So, you just created your first Pycord bot! Now, let's add some more features to
 
 ### Event Handlers
 
-Events in Discord are a way to listen for certain actions. For example, if you want to know when a user joins your server so you could send a welcome message, you can use the `on_member_join` event.
+Events in Discord are a way to listen for certain actions. For example, if you want to know when a user joins your server, so you could send a welcome message, you can use the `on_member_join` event.
 
 First, you need to ask Discord to send you events. This is done via "Intents". Read up the [Intents](../Popular-Topics/intents) page for more information.
 
@@ -203,7 +203,7 @@ embed.add_field(title="Inline Field 3", value="Inline Field 3", inline=True)
  
 This small section shows off embed fields. You can add fields to embeds with the [`add_field` method](https://docs.pycord.dev/en/master/api.html#discord.Embed.add_field)
 of the [`discord.Embed`](https://docs.pycord.dev/en/master/api.html#embed) class. These consist of three 
-keyword arguments: `title`, `value`, and `inline`. `title` and `value` are both required arguments, which inline defaults to `False` if it's not defined. The `inline` argument specifies whether or not space will be divided among the inline fields. There could be a mix of fields where inline has different values too.
+keyword arguments: `title`, `value`, and `inline`. `title` and `value` are both required arguments, which inline defaults to `False` if it's not defined. The `inline` argument specifies whether space will be divided among the inline fields. There could be a mix of fields where inline has different values too.
  
 ```py
 embed.set_footer(text="Footer! No markdown here.") # footers can have icons too
@@ -324,7 +324,7 @@ by using the following syntax:
 Inside the supported elements that have just been mentioned,
 the example above will look like this: [`Pycord`](https://pycord.dev/)
 
-Outside of them, the link will still be clickable but the formatting will be ignored,
+Outside them, the link will still be clickable but the formatting will be ignored,
 therefore the example above will look similarly to this: `[Pycord](https://pycord.dev/)`
 
 #### Embed Markdown

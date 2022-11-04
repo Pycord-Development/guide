@@ -169,7 +169,7 @@ statements can handle. This is done by using the same method as above with the `
 
 Adding error handlers per-command can be quite the task in terms of work if you have a lot. If you have happened to
 group your commands in cogs, then you're in luck! You can create an error handler that is specific to a cog and 
-handles all errors raised by commands inside of that cog.
+handles all errors raised by commands inside that cog.
 
 Here's an example of a bot with a cog that implements its own error handling:
 
@@ -259,7 +259,7 @@ Otherwise, if used in a guild context:
 <br />
 
 Per-cog error handling comes in very handy as you can relegate all of your error handling to a single function instead
-of spreading it out across several per-command error handlers or inside of the commands themselves.
+of spreading it out across several per-command error handlers or inside the commands themselves.
 
 ## <span id="global">Global Handling</span>
 
@@ -320,7 +320,7 @@ The error handling used above will yield this interaction if the command is used
 <br />
 
 The only issue regarding global error handling is that, if you have a large amount of commands, the global handler may
-start to get crammed with a lot of code. This is where all of the previously mentioned handlers can take their place!
+start to get crammed with a lot of code. This is where all the previously mentioned handlers can take their place!
 
 ## FAQ
 
@@ -336,8 +336,8 @@ If this is new to you, we recommend checking out these helpful resources to lear
 
 #### How many errors can I handle in a single error handler?
 
-While all of the examples in this guide page only handle one specific error and re-raise all others, all of these 
-error handlers can be extended to catch many different errors. 
+While all the examples in this guide page only handle one specific error and re-raise all others, all of these
+error handlers can be extended to catch many errors.
 
 In [basic handling](#basic) (i.e. try/except statements) you can do one of two things:
 *   Explicitly handle the errors you know might get raised and then have a broad `except Exception as exc:` statement
