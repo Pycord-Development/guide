@@ -17,7 +17,7 @@ The Guide is built using [Docusaurus 2](https://docusaurus.io/), a modern static
 
 [`/src`](./src) contains styling (`.scss`) and the index (`.tsx`/`jsx`).
 
-[`/docs`](./docs) contains the pages for the guide. The Guide Pages are writtern in the `mdx` file format, a combination of Markdown syntax and JSX/React.
+[`/docs`](./docs) contains the pages for the guide. The Guide Pages are written in the `mdx` file format, a combination of Markdown syntax and JSX/React.
 
 ## Local Development
 
