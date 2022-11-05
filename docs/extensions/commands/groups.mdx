@@ -5,7 +5,7 @@ title: Command Groups
 Command groups are a way to create subcommands for your commands. For example, `!afk set` or `!afk
 remove`.
 
-## Syntax
+## Prefixed Command Groups
 
 Creating a command group is very simple.
 
@@ -46,7 +46,58 @@ To create a command group, the command's decorator must be `@bot.group`. Once yo
 that decorator, you can use `@function.command()`, such as `@math.command()`. Now, you have subcommand
 groups!
 
-<!-- Waiting for slash command groups in Pycord -->
+
+## Slash Command Groups
+
+Slash command groups are a bit more complicated. You must create a `SlashCommandGroup` object, and then
+add subcommands to it. You can then add the group to the bot.
+
+```python title="Slash Command Groups Example"
+import discord
+from discord.ext import commands
+from discord import SlashCommandGroup
+
+bot = commands.Bot(debug_guilds=[...])
+
+# Automatically create a Slash Command Group
+math = bot.create_group(
+    "math", "Commands related to mathematics."
+)
+
+# The manual way, creating a SlashCommandGroup object and adding it to the bot.
+math = discord.SlashCommandGroup("math", "Commands related to mathematics.")
+
+# Create a sub-group
+advanced = math.create_subgroup("advanced", "Advanced mathematics commands.")
+
+# /math add
+@math.command()
+async def add(ctx, a: int, b: int):
+    await ctx.respond(f"The sub of these numbers is {a + b}")
+
+/math subtract
+@math.command()
+async def subtract(ctx, a: int, b: int):
+    await ctx.respond(f"The sub of these numbers is {a - b}")
+
+/math advanced multiply
+@advanced.command()
+async def multiply(ctx, a: int, b: int):
+    await ctx.respond(f"The product of these numbers is {a * b}")
+
+/math advanced divide
+@advanced.command()
+async def divide(ctx, a: int, b: int):
+    await ctx.respond(f"The quotient of these numbers is {a / b}")
+
+# If you created the group manually, you must add it to the bot.
+bot.add_slash_command_group(math)
+bot.add_slash_command_group(advanced)
+
+
+bot.run("token")
+```
+
 
 :::info Related Topics
 
