@@ -59,17 +59,17 @@ bot.run("TOKEN")
 There's a lot going on over here! Don't worry, we will go over the code and explain it.
 
 As you can see, we create a class called `MyView` that subclasses
-[`discord.ui.View`](https://docs.pycord.dev/en/master/api.html#discord.ui.View).
+[`discord.ui.View`](https://docs.pycord.dev/en/stable/api.html#discord.ui.View).
 
 Then, we add a function called `select_callback` to the `View` class with the decorator
-[`discord.ui.select`](https://docs.pycord.dev/en/master/api.html#discord.ui.select).
+[`discord.ui.select`](https://docs.pycord.dev/en/stable/api.html#discord.ui.select).
 This decorator adds a select menu to the view. This decorator takes a few arguments to customize your select menu. Read them in the [Customization section](#customization).
 
-That was the decorator. Now, the function itself is pretty simple. It takes two parameters, not including `self`. The parameters are `select`: The select menu, and `interaction`: a [`discord.InteractionResponse`](https://docs.pycord.dev/en/master/api.html#discord.InteractionResponse) object. Both of these are passed by Pycord, so you just need to specify them in the function!
+That was the decorator. Now, the function itself is pretty simple. It takes two parameters, not including `self`. The parameters are `select`: The select menu, and `interaction`: a [`discord.InteractionResponse`](https://docs.pycord.dev/en/stable/api.html#discord.InteractionResponse) object. Both of these are passed by Pycord, so you just need to specify them in the function!
 
 <!-- TODO: The values are sorted in the order the user selected them (?). The selected values are (?) -->
 
-In the callback, you could do anything you want. You get the two parameters `select` and `interaction` to play around with. Here, we send a message using `await interaction.response.send_message` (where interaction is [`discord.InteractionResponse`](https://docs.pycord.dev/en/master/api.html#discord.InteractionResponse)) with content `select.values[0]`, which sends the label of the first/only option the user selected. Obviously, this is only an example and you could do just about anything you want.
+In the callback, you could do anything you want. You get the two parameters `select` and `interaction` to play around with. Here, we send a message using `await interaction.response.send_message` (where interaction is [`discord.InteractionResponse`](https://docs.pycord.dev/en/stable/api.html#discord.InteractionResponse)) with content `select.values[0]`, which sends the label of the first/only option the user selected. Obviously, this is only an example, and you could do just about anything you want.
 
 Finally, we create a global slash command called `flavour` that sends a message "Choose a flavor!" along with the view
 that contains our select menu.
@@ -81,7 +81,7 @@ about making your code do amazing things, while Pycord handles the rest!
 
 #### Select Menu Properties
 
--   `options`\*: A list of [`discord.SelectOption`](https://docs.pycord.dev/en/master/api.html#discord.SelectOption) values. These are the options that can be selected in this menu.
+-   `options`\*: A list of [`discord.SelectOption`](https://docs.pycord.dev/en/stable/api.html#discord.SelectOption) values. These are the options that can be selected in this menu.
 -   `placeholder` is the placeholder text shown in the select menu if no option is selected.
 -   `custom_id`: The ID of the select menu that gets received during an interaction. It is recommended not to set this to anything unless you are trying to create a persistent view.
 -   `row`: The relative row this select menu belongs to. A Discord component can only have 5 rows. By default, items are arranged automatically into those 5 rows. If you’d like to control the relative positioning of the row then passing an index is advised. For example, row=1 will show up before row=2. Defaults to None, which is automatic ordering. The row number must be between 0 and 4 (i.e. zero indexed).
@@ -93,7 +93,7 @@ about making your code do amazing things, while Pycord handles the rest!
 
 #### Select Option Properties
 
-In the `options` parameter, you pass a list of [`discord.SelectOption`](https://docs.pycord.dev/en/master/api.html#discord.SelectOption) values. This class also has a few parameters:
+In the `options` parameter, you pass a list of [`discord.SelectOption`](https://docs.pycord.dev/en/stable/api.html#discord.SelectOption) values. This class also has a few parameters:
 -   `default` (whether the option is selected by default)
 -   `description` (an additional description, if any)
 -   `emoji` (a string or an emoji object, if any)
@@ -281,7 +281,7 @@ No. As a Discord limitation, you can only have one view per message.
 
 They cannot be simple like commands. This system makes them flexible and doesn't limit your imagination. There are loads of different ways you can use UI Components. For example, you could subclass Buttons or Select Menus and add them to a view using the view's `add_item` function.
 
-UI Components aren't hard to use if you know Python. We recommend learning [Object Oriented Programming with Python](#oop).
+UI Components aren't hard to use if you know Python. We recommend learning [Object-Oriented Programming with Python](#oop).
 
 #### <e id="oop">What is OOP? What is subclassing?</e>
 

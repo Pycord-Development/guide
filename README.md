@@ -1,5 +1,4 @@
 # Pycord Guide
-[![Netlify Status](https://api.netlify.com/api/v1/badges/c6976714-2c3d-4ff5-a30f-cf784045062a/deploy-status)](https://app.netlify.com/sites/pycord/deploys)
 
 The official Guide for Pycord, explaining Pycord's features and how to use them.
 
@@ -18,7 +17,7 @@ The Guide is built using [Docusaurus 2](https://docusaurus.io/), a modern static
 
 [`/src`](./src) contains styling (`.scss`) and the index (`.tsx`/`jsx`).
 
-[`/docs`](./docs) contains the pages for the guide. The Guide Pages are writtern in the `mdx` file format, a combination of Markdown syntax and JSX/React.
+[`/docs`](./docs) contains the pages for the guide. The Guide Pages are written in the `mdx` file format, a combination of Markdown syntax and JSX/React.
 
 ## Local Development
 

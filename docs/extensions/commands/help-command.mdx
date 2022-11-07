@@ -54,8 +54,8 @@ of making one with Pycord. Making a help command with subclassing and OOP will s
 
 There are two types of built-in help commands:
 
--   [`DefaultHelpCommand`](https://docs.pycord.dev/en/master/api.html#discord.ext.commands.DefaultHelpCommand)
--   [`MinimalHelpCommand`](https://docs.pycord.dev/en/master/api.html#discord.ext.commands.MinimalHelpCommand)
+-   [`DefaultHelpCommand`](https://docs.pycord.dev/en/stable/api.html#discord.ext.commands.DefaultHelpCommand)
+-   [`MinimalHelpCommand`](https://docs.pycord.dev/en/stable/api.html#discord.ext.commands.MinimalHelpCommand)
 
 `DefaultHelpCommand` is the command enabled by default. It isn't the best looking, but `MinimalHelpCommand` can help make it look a bit better.
 
@@ -359,7 +359,7 @@ class MyHelp(commands.HelpCommand):
         await self.get_destination().send(embed=embed)
 ```
 
-Add all of these methods together and you have a fully functioning help command!
+Add all of these methods together, and you have a fully functioning help command!
 
 <details>
 <summary>Click to see the final code for this section</summary>

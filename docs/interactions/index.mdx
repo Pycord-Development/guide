@@ -15,7 +15,7 @@ import DiscordComponent, { defaultOptions } from "../../src/components/DiscordCo
 
 In December 2020, Discord released their first Interaction: the
 [Slash Command](https://discord.com/developers/docs/interactions/application-commands#slash-commands).
-Since then, Discord has added many different types of Interactions, including:
+Since then, Discord has added many types of Interactions, including:
 
 [**Application Commands**](https://discord.com/developers/docs/interactions/application-commands)
 
@@ -41,7 +41,7 @@ Form-like modals can be used to ask for input from a user.
 Application Commands are another set of new features that are intended to avoid compromising users' safety and privacy. 
 They're relatively easy to add to your bot, and give people a simpler and safer way to use commands.
 
-### [Slash Commands](https://docs.pycord.dev/en/master/api.html#slashcommand)
+### [Slash Commands](https://docs.pycord.dev/en/stable/api.html#slashcommand)
 
 Slash Commands were the first Interaction added to Discord. They're easy to use and create, and
 is the only prefix commands alternative that does not need Message Content intent.
@@ -77,7 +77,7 @@ apart from the note telling you who invoked it. A Slash Command's fields can acc
 
 Just about as good as it gets.
 
-### [Message](https://docs.pycord.dev/en/master/api.html#messagecommand) and [User](https://docs.pycord.dev/en/master/api.html#usercommand) Commands
+### [Message](https://docs.pycord.dev/en/stable/api.html#messagecommand) and [User](https://docs.pycord.dev/en/stable/api.html#usercommand) Commands
 
 Message Commands and User Commands were both introduced at around the same time, and are very similar to each other, so we'll be 
 introducing them together. These commands can be found in the `Apps` tab when alt-clicking. The only difference between the two is that 
@@ -181,10 +181,10 @@ Message Components are fairly new features in Discord, allowing developers to gi
 and understandable user interface. Message Components are easy to use and make your bot look modern,
 sleek, and downright awesome.
 
-### [Views](https://docs.pycord.dev/en/master/api.html#discord.ui.View)
+### [Views](https://docs.pycord.dev/en/stable/api.html#discord.ui.View)
 
 Views are not an Application Command nor are they a Message Component. Views are the invisible placeholders, or grid, 
-that Message Components lie in. Views can have up to 5 [`Action Rows`](https://docs.pycord.dev/en/master/api.html#discord.ActionRow), 
+that Message Components lie in. Views can have up to 5 [`Action Rows`](https://docs.pycord.dev/en/stable/api.html#discord.ActionRow), 
 and Action Rows can have a maximum of 5 slots. Below, you can find a table showing how many slots a Message Interaction takes up.
 
 | Component    | Slots                        |
@@ -197,7 +197,7 @@ So, based on this, you could have a maximum of 25 Buttons in a View with no Sele
 Menus in a View with no Buttons. This doesn't mean you can't have them both in a View, however. You can have
 a combination of them, such as 20 Buttons and a Select Menu or 10 Buttons and 3 Select Menus.
 
-### [Buttons](https://docs.pycord.dev/en/master/api.html#discord.ui.Button)
+### [Buttons](https://docs.pycord.dev/en/stable/api.html#discord.ui.Button)
 
 Buttons are the first of the Message Components. They allow for quick responses to prompts, such as for canceling or continuing an action. 
 Of course, these aren't their only uses; people have created awesome things with Buttons, such as calculators, games, and more!
@@ -218,7 +218,7 @@ Of course, these aren't their only uses; people have created awesome things with
 This is what a Button looks like, very simple and modern. To learn more about Buttons, refer to our
 [Buttons page](./ui-components/buttons.mdx).
 
-### [Select Menus](https://docs.pycord.dev/en/master/api.html#discord.ui.Select)
+### [Select Menus](https://docs.pycord.dev/en/stable/api.html#discord.ui.Select)
 
 Select Menus are the second of Discord's Message Components. They allow users to select from a list of choices, which your bot can then use. 
 Select Menus are good for things such as choosing features, pages of a help menu, and more.
@@ -229,11 +229,11 @@ This is what a Select Menu looks like. While not looking as good as Buttons, the
 and have even greater possibilities. To learn more about Select Menus, please refer to our [Select
 Menus page](./ui-components/dropdowns.mdx).
 
-### [Modal Dialogs](https://docs.pycord.dev/en/master/api.html#discord.ui.Modal)
+### [Modal Dialogs](https://docs.pycord.dev/en/stable/api.html#discord.ui.Modal)
 
 Text Modals are the most recently added Message Component in Discord. They're useful for text input and filling out forms, such as a 
 sign-up for your bot's service. These are meant to replace long bot setup processes by allowing users to fill out multiple text fields, 
-which avoids having the user send multiple messages for the bot. Modals can accessed by either invoking an Application Command or by 
+which avoids having the user send multiple messages for the bot. Modals can be accessed by either invoking an Application Command or by
 interacting with another UI Component.
 
 ![Text Modal Example Image](../assets/interactions/modal-example.png)

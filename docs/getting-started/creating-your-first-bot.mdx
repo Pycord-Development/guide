@@ -173,7 +173,7 @@ Next, we load the env file with `load_dotenv()`.
 bot = discord.Bot()
 ```
 
-In this line, we create a new instance of [`discord.Bot`](https://docs.pycord.dev/en/master/api.html#discord.Bot).
+In this line, we create a new instance of [`discord.Bot`](https://docs.pycord.dev/en/stable/api.html#discord.Bot).
 In this object, we can pass various parameters for configuration purposes, such as `owner_ids`
 and [`intents`](https://docs.pycord.dev/en/stable/api.html?highlight=get_message#discord.Intents).
 
@@ -185,8 +185,8 @@ async def on_ready():
     print(f"{bot.user} is ready and online!")
 ```
 
-We use the [`event`](https://docs.pycord.dev/en/master/api.html#discord.Bot.event) decorator to override
-the [`on_ready`](https://docs.pycord.dev/en/master/api.html#discord.on_ready) function to define an
+We use the [`event`](https://docs.pycord.dev/en/stable/api.html#discord.Bot.event) decorator to override
+the [`on_ready`](https://docs.pycord.dev/en/stable/api.html#discord.on_ready) function to define an
 event that is automatically called when the bot is ready to use.
 
 ```py
@@ -195,7 +195,7 @@ async def say_hello(ctx):
     await ctx.respond("Hey!")
 ```
 
-Here, we use the [`slash_command`](https://docs.pycord.dev/en/master/api.html#discord.Bot.slash_command)
+Here, we use the [`slash_command`](https://docs.pycord.dev/en/stable/api.html#discord.Bot.slash_command)
 decorator to define a slash command. We specify the `name` and `description` arguments. If not
 specified, the name of the slash command would be the function name and the command description would
 be empty.

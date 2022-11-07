@@ -59,7 +59,7 @@ about it. I'm here to tell you that it isn't a good idea to shard your bot.
 *Wait a minute, why would it be an option if it wasn't a good idea?* It's simple. I lied. Sort of.
 I'm not going to go into the details of sharding a bot, so you can read about it on
 [this page](../Popular-Topics/sharding). Sharding is the process of taking your bot
-and breaking it up into small pieces so it's easier to perform tasks. This is very useful for large
+and breaking it up into small pieces, so it's easier to perform tasks. This is very useful for large
 bots, as it makes them faster and more reliable. Sharding is not a good practice for small bots.
 
 :::note
@@ -84,7 +84,7 @@ will be denied simply because you applied for an intent you didn't need.
 ### Subclassing
 
 While it may take some time, subclassing a bot is very worth it. Once again, this was explained 
-elsewhere so I won't go into the details, but I felt it fit here so I put it here.
+elsewhere, so I won't go into the details, but I felt it fit here, so I put it here.
 
 Subclassing a bot makes it more flexible and allows it to do a lot more. Read more about subclassing
 bots [here](../Popular-Topics/subclassing-bots)
@@ -96,7 +96,7 @@ Your bot is only able to be run for one reason: its token. If you followed the
 keeping that token safe. That's exactly what you want to do.
 
 Sharing your token is never good. If someone evil gets a hold of your token, they can do terrible things,
-such as making your bot leave all of its servers, spamming all of the members the bot has contact with,
+such as making your bot leave all of its servers, spamming all the members the bot has contact with,
 and even manipulating the servers the bot is in, if given the permissions. That's why it's very important
 to keep your token safe. To learn how to do so, read [this part](creating-your-first-bot#tokens) of
 the Creating Your First Bot guide.
@@ -106,13 +106,13 @@ the Creating Your First Bot guide.
 You always want to back up your bot's data. This includes both its code *and* its databases. This way,
 if something tragic happens, such as your host failing a data migration or you breaking your Raspberry
 Pi's SD card that held your bot, you'll still have its precious user data. I have a small program for
-my bot that uploads its databases to a remote GitHub repository every now and then to not lose any data.
+my bot that uploads its databases to a remote GitHub repository periodically to not lose any data.
 It may be smarter to find a bit more of a reliable way to do so, though.
 
 Public or private, having a local Git repository connected to a remote one is a good idea for making
 almost any application. For a lot of developers, it's like saving your work. If you do this, all of
-your bot's code won't be lost if your computer spontaneously combusts or you smash it to bits from 
-anger. You can simply grab the backup computer that everyone has laying around and you're back
+your bot's code won't be lost if your computer spontaneously combusts, or you smash it to bits from
+anger. You can simply grab the backup computer that everyone has lying around, and you're back
 in business. 
 
 ### Organization and Cleanliness
@@ -165,7 +165,7 @@ MongoDB is a JSON-like format and if you already use JSON files, it shouldn't be
 
 #### SQLite
 SQLite is based on SQL, a common relational data model. It's a lightweight, easy-to-use, portable database solution that
-works entirely on files. However, if for some reason you cannot read/write to and from a file and you need to manage
+works entirely on files. However, if for some reason you cannot read/write to and from a file, and you need to manage
 lots of data, SQLite might not be for you.
 
 While SQLite is a part of the Python Standard Library as the `sqlite3` package, we recommend not using it as it is 

@@ -76,7 +76,7 @@ for cog in cogs_list:
 ## Cog Rules
 
 When using a cog instead of the main file, there are some changes you have to make to your code. This
-is because cogs work slightly different than a regular file.
+is because cogs work slightly different from a regular file.
 
 ### The `self` variable
 
@@ -101,13 +101,13 @@ Similar to prefixed commands, you'll have to use either the `@discord.slash_comm
 or `@discord.message_command()` decorators for Application Commands.
 
 Also, when creating a command, make sure that it is indented. If we want a command to be actually
-inside of a cog, it has to be inside of your cog's class. If the command is not inside of the cog,
+inside a cog, it has to be inside your cog's class. If the command is not inside the cog,
 your command becomes useless.
 
 ### Events
 
 When creating events, you can no longer use `@bot.event` as a decorator. This is because we cannot
-access the `bot` variable outside of a function. To make an event, you have to use the `ext.commands`
+access the `bot` variable outside a function. To make an event, you have to use the `ext.commands`
 method, `@commands.Cog.listener()`. Events also need `self` as their first parameter.
 
 And that's it! Cogs are a simple and easy way of organizing your code. Now you can check out how to
