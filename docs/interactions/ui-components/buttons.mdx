@@ -74,13 +74,13 @@ Using this command should return the following message:
 <br />
 
 As you can see, we create a class called `MyView` that [subclasses](#oop)
-[`discord.ui.View`](https://docs.pycord.dev/en/master/api.html#discord.ui.View).
+[`discord.ui.View`](https://docs.pycord.dev/en/stable/api.html#discord.ui.View).
 
 Then, we add a function called `button_callback` to the `MyView` class with the decorator
-[`discord.ui.button`](https://docs.pycord.dev/en/master/api.html#discord.ui.button).
+[`discord.ui.button`](https://docs.pycord.dev/en/stable/api.html#discord.ui.button).
 This decorator adds a button to a component. This function takes two arguments: the button that was
 clicked and the interaction. These arguments are passed to the function when the button is clicked
-by the module. We use the [`interaction.response.send_message`](https://docs.pycord.dev/en/master/api.html#discord.InteractionResponse.send_message)
+by the module. We use the [`interaction.response.send_message`](https://docs.pycord.dev/en/stable/api.html#discord.InteractionResponse.send_message)
 function to send a message to the channel where the interaction was sent.
 
 Finally, we create a global slash command called `button` that sends the message, along with the view
@@ -119,7 +119,7 @@ class MyView(discord.ui.View):
 We have discussed that Views can have 5 rows. Each row has 5 slots, and each button takes up 1 slot.
 So, how do we move the buttons to another row?
 
-This can be done by specifying the `row` argument in the [`discord.ui.button`](https://docs.pycord.dev/en/master/api.html#discord.ui.button)
+This can be done by specifying the `row` argument in the [`discord.ui.button`](https://docs.pycord.dev/en/stable/api.html#discord.ui.button)
 decorator.
 
 :::info The `row` argument
