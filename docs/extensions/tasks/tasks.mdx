@@ -35,7 +35,7 @@ doing very useful stuff.
 doing very useful stuff.
 ```
 
-For a more useful example here's a task in a cog context ripped straight from the [docs](https://docs.pycord.dev/en/master/ext/tasks/index.html#recepies):
+For a more useful example here's a task in a cog context ripped straight from the [docs](https://docs.pycord.dev/en/stable/ext/tasks/index.html#recepies):
 
 ```py
 from discord.ext import tasks, commands
@@ -64,13 +64,13 @@ As you'd expect this will increment a number and print it out every 5 seconds li
 # ...
 ```
 
-## [Tasks](https://docs.pycord.dev/en/master/ext/tasks/index.html)
+## [Tasks](https://docs.pycord.dev/en/stable/ext/tasks/index.html)
 
 Now let's get into the nitty-gritty of tasks.
 
 As you've seen tasks can work in both outer scope and class contexts and the handle is roughly the same, you define a task using the `tasks.loop` decorator and use the `start` method to start it, the difference is you add the `self` argument when in a class context so since most people have all their bot's code in Cogs all the following code blocks will be in a Cog context to make it easy to copy it then apply whatever modifications you might need!
 
-### [Creating a task](https://docs.pycord.dev/en/master/ext/tasks/index.html#discord.ext.tasks.loop)
+### [Creating a task](https://docs.pycord.dev/en/stable/ext/tasks/index.html#discord.ext.tasks.loop)
 
 A look at `discord.ext.tasks.loop`'s definition in the documentation reveals that:
 1.  As you've seen before it expects the time between each execution, that however doesn't have to be in seconds as
@@ -83,7 +83,7 @@ to make it run forever which is also the default.
 4.  The loop function ***must*** be a coroutine.
 
 These are all really useful, and they aren't the only parameters so if you want to know more about them check out the
-[docs](https://docs.pycord.dev/en/master/ext/tasks/index.html#discord.ext.tasks.loop)!
+[docs](https://docs.pycord.dev/en/stable/ext/tasks/index.html#discord.ext.tasks.loop)!
 
 ### Attributes
 
@@ -208,5 +208,5 @@ the `stop` method and `restart` which restarts the task using the `restart` meth
 Finally, we add the `LeaderboardCog` cog to the bot, and we're done!
 
 I'd highly recommend you check the tasks extension
-[documentation](https://docs.pycord.dev/en/master/ext/tasks/index.html) for more info on how to use them and what other
+[documentation](https://docs.pycord.dev/en/stable/ext/tasks/index.html) for more info on how to use them and what other
 functions they have.

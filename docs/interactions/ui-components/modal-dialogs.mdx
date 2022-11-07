@@ -21,7 +21,7 @@ Modal Dialogs, also known as "modals", provide a form-like structure for bots to
 
 ## Concept
 
-Modal Dialogs consist of a title, custom ID, and up to 5 [`discord.ui.InputText`](https://docs.pycord.dev/en/master/api.html#discord.ui.InputText) components. While creating modals, we generally subclass [`discord.ui.Modal`](https://docs.pycord.dev/en/master/api.html#discord.ui.Modal), as we'll see later.
+Modal Dialogs consist of a title, custom ID, and up to 5 [`discord.ui.InputText`](https://docs.pycord.dev/en/stable/api.html#discord.ui.InputText) components. While creating modals, we generally subclass [`discord.ui.Modal`](https://docs.pycord.dev/en/stable/api.html#discord.ui.Modal), as we'll see later.
 
 Unlike other UI Components, Modals cannot be sent with messages. They must be invoked by an Application Command or another UI Component.
 
@@ -45,7 +45,7 @@ class MyModal(discord.ui.Modal):
 <Tabs>
 <TabItem value="application-commands" label="Sending Modals through Application Commands" default>
 
-The `ctx` parameter we define in Application Commands receives an [`ApplicationContext`](https://docs.pycord.dev/en/master/api.html#discord.ApplicationContext) object. Using its `send_modal()` coroutine, you can send a Modal dialog to the user invoking the Application Command.
+The `ctx` parameter we define in Application Commands receives an [`ApplicationContext`](https://docs.pycord.dev/en/stable/api.html#discord.ApplicationContext) object. Using its `send_modal()` coroutine, you can send a Modal dialog to the user invoking the Application Command.
 
 ```py
 @bot.slash_command()
@@ -58,7 +58,7 @@ async def modal_slash(ctx: discord.ApplicationContext):
 </TabItem>
 <TabItem value="ui-components" label="Sending Modals through UI Components">
 
-The `interaction` parameter we define in UI Components receives an [`Interaction`](https://docs.pycord.dev/en/master/api.html#discord.Interaction) object. The `response` attribute of the object contains an [`InteractionResponse`](https://docs.pycord.dev/en/master/api.html#discord.InteractionResponse) object, with various coroutines such as `send_message()` and `send_modal()`, which we utilize. 
+The `interaction` parameter we define in UI Components receives an [`Interaction`](https://docs.pycord.dev/en/stable/api.html#discord.Interaction) object. The `response` attribute of the object contains an [`InteractionResponse`](https://docs.pycord.dev/en/stable/api.html#discord.InteractionResponse) object, with various coroutines such as `send_message()` and `send_modal()`, which we utilize. 
 
 ```py
 class MyView(discord.ui.View):
@@ -79,7 +79,7 @@ Each input field can be accessed in the order it was added to the modal dialog, 
 
 ## Customization
 
-A Modal can have up to 5 [`InputText`](https://docs.pycord.dev/en/master/api.html#discord.ui.InputText) fields. These fields offer some customization.
+A Modal can have up to 5 [`InputText`](https://docs.pycord.dev/en/stable/api.html#discord.ui.InputText) fields. These fields offer some customization.
 
 Each field has a label which is shown to the user. This is defined with `label`.
 

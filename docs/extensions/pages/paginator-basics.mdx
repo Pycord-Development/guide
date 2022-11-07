@@ -4,7 +4,7 @@ title: Paginator Basics
 
 # Paginator Basics
 
-## [Page](https://docs.pycord.dev/en/master/ext/pages/index.html#page)
+## [Page](https://docs.pycord.dev/en/stable/ext/pages/index.html#page)
 This class contains two attributes: `content` and `embeds`, which correspond to the attributes of the same name on the
 `discord.Message` class.
 To create a new Page, use the following syntax:
@@ -13,11 +13,11 @@ import discord
 page = Page(content="My Page Content", embeds=[discord.Embed(title="My First Embed Title")])
 ```
 
-## [PageGroup](https://docs.pycord.dev/en/master/ext/pages/index.html#pagegroup)
+## [PageGroup](https://docs.pycord.dev/en/stable/ext/pages/index.html#pagegroup)
 This class represents a group of pages. It uses most of the same parameters as `Paginator`, which allows each
 `PageGroup` to effectively have its own settings and behaviours.
 
-## [Paginator](https://docs.pycord.dev/en/master/ext/pages/index.html#paginator)
+## [Paginator](https://docs.pycord.dev/en/stable/ext/pages/index.html#paginator)
 This is the main class for `ext.pages`, and is used to control most of the functionality of the extension.
 
 In its most basic form, with no arguments provided (default values listed below), a paginator can be created like so:
@@ -54,8 +54,8 @@ The only required parameter for `Paginator` is the `pages` parameter, which is u
 You can also pass in a list of `PageGroup` objects, a list of strings, a list of embeds, or a list of lists of embeds.
 
 Once the `Paginator` instance is created, you can call either
-[`Paginator.send()`](https://docs.pycord.dev/en/master/ext/pages/index.html#discord.ext.pages.Paginator.send)
-or [`Paginator.respond()`](https://docs.pycord.dev/en/master/ext/pages/index.html#discord.ext.pages.Paginator.respond)
+[`Paginator.send()`](https://docs.pycord.dev/en/stable/ext/pages/index.html#discord.ext.pages.Paginator.send)
+or [`Paginator.respond()`](https://docs.pycord.dev/en/stable/ext/pages/index.html#discord.ext.pages.Paginator.respond)
 to send a message or response with the paginator's contents.
 
 #### Depending on what's being passed to the `pages` parameter, the behaviour of the paginator may differ:
@@ -89,11 +89,11 @@ child list. This type of page cannot have any message content.
     -   When using the default buttons, shows a middle 5th button with the current/total page numbers.
 
 **For other parameters that can be set on initialization, please check the
-[API Reference](https://docs.pycord.dev/en/master/ext/pages/index.html#paginator)**
+[API Reference](https://docs.pycord.dev/en/stable/ext/pages/index.html#paginator)**
 
 
 
-## [PaginatorButton](https://docs.pycord.dev/en/master/ext/pages/index.html#paginatorbutton)
+## [PaginatorButton](https://docs.pycord.dev/en/stable/ext/pages/index.html#paginatorbutton)
 This class represents a button used to navigate between the pages of a paginator. It's also used to create the page
 indicator.
 
@@ -143,7 +143,7 @@ paginator.remove_button("last")
 ```
 
 
-## [PaginatorMenu](https://docs.pycord.dev/en/master/ext/pages/index.html#paginatormenu)
+## [PaginatorMenu](https://docs.pycord.dev/en/stable/ext/pages/index.html#paginatormenu)
 This class represents the `discord.Select` menu used to navigate between `PageGroup` instances. In most situations, you
 will not need to interact with this class directly.
 
