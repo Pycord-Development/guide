@@ -213,6 +213,42 @@ bot.run("TOKEN")
   </TabItem>
 </Tabs>
 
+## Autocomplete
+Discord's autocomplete allows developers to determine option choices that are used in a slash command option. By defining a function, you can do this.
+
+```py
+async def get_animal_types(ctx: discord.AutocompleteContext):
+  """
+  Here we will check if 'ctx.options['animal_type']' is and check if it's a marine or land animal and return specific option choices
+  """
+  animal_type = ctx.options['animal_type']
+  if animal_type == 'Marine':
+    return ['Whale', 'Shark', 'Fish', 'Octopus', 'Turtle']
+  else: # is land animal
+    return ['Snake', 'Wolf', 'Lizard', 'Lion', 'Bird']
+
+@bot.slash_command(name="animal")
+async def animal_command(ctx: discord.ApplicationContext, animal_type: discord.Option(str, choices=['Marine', 'Land']), animal: discord.Option(str, autocomplete=discord.utils.basic_autocomplete(get_animals)):
+  await ctx.respond(f'You picked an animal type of `{animal_type}` that led you to pick `{animal}`!')
+```
+
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
+    <div slot="interactions">
+      <DiscordInteraction profile="bob" command>
+        animal
+      </DiscordInteraction>
+    </div>
+   You picked an animal type of <code>Marine</code> that led you to pick <code>Shark</code>!
+  </DiscordMessage>
+</DiscordComponent>
+
+:::warning
+
+Autocomplete can **only** be used with slash commands.
+
+:::
+
 :::info Related Topics
 
 -   [Interactions Index](../../interactions)
