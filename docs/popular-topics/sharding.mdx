@@ -13,8 +13,6 @@ it, sharding is "a method of user-controlled guild sharding which allows for spl
 several gateway connections."
 
 Sharding is used only for large bots and takes up additional resources for managing the new processes.
-Pycord automatically shards your bot, so the only thing you need to do is use an `AutoShardedClient`
-or `AutoShardedBot` class instead of a plain `Client` or `Bot` class. Pretty cool, right?
 
 Just because you _can_ shard your bot doesn't mean you _should_. While Pycord makes it easy to shard
 your bot, it isn't necessary to shard unless your bot is large. Sharding a small bot isn't
@@ -23,15 +21,42 @@ themselves will let you know when your bot needs sharding, so you won't need to 
 
 ## How Do I Shard in Pycord?
 
-Sharding in Pycord is straightforward.
+Sharding in Pycord is straightforward although more advanced than v2 to enable higher scalability.
 
-Just replace your `discord.Client`, `discord.Bot`, `commands.Bot` objects
-with `discord.AutoShardedClient`, `discord.AutoShardedBot`, `commands.AutoShardedBot` respectively.
+### Basic Sharding
 
-These new objects have been inherited from the original objects, so all the functions from those other types should be present.
+For most bots which need to shard on pycord, basic unclustered sharding is most likely what you need.
 
-If you want to specify the number of shards your bot uses,
-just add the `shards` parameter, along with the number of shards you want.
+All you have to do is specify a `shards` option in your `pycord.Bot`
+
+Like so
+
+```python
+import pycord
+
+bot = pycord.Bot(..., shards=2)
+
+bot.run(...)
+```
+
+### Advanced Multi-Process Sharding
+
+For bots that are massive, or have massive workloads, 
+you would most likely want to scale using multiple cores and even for some multiple machines.
+Pycord supports these two options in a simple and configurable way.
+
+The `shards` option on your `pycord.Bot` can be used in another way than specifying an integer,
+you could specify **a list**, which makes it easier to configure, let's say, Kubernetes or multi-machine sharding.
+
+When running your bot clustered, instead of using `bot.run`, you'll need to use `bot.run_cluster`.
+`bot.run_cluster` takes the same parameters as `bot.run` but also adds some. You're required to have a 
+`clusters` parameter which specifies how many clusters (processes) should be run on your machine.
+
+You could also specify an `amount` to display how many shards you are already running, 
+and a `managers` parameter that specifies how many shard managers to run per cluster.
+
+Shards are already distributed throughout every cluster automatically, so specifying is not needed.
+`amount` is also only needed if you are running with multiple machines, if not, don't specify it.
 
 ## Why Should I Shard my Bot?
 

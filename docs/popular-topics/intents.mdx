@@ -22,9 +22,9 @@ Remember that [Privileged Intents](#what-are-privileged-intents) require you to 
   <TabItem value="enabling-all-intents" label="Enabling all intents" default>
 
 ```python
-import discord
+import pycord
 
-bot = discord.Bot(intents=discord.Intents.all())
+bot = pycord.Bot(intents=pycord.Intents.all())
 ```
 
   </TabItem>
@@ -34,9 +34,9 @@ bot = discord.Bot(intents=discord.Intents.all())
 You can view a list of intents and the events they subscribe to [here](https://docs.pycord.dev/en/stable/api.html#discord.Intents).
 
 ```python title="Enabling Intents"
-import discord
+import pycord
 
-bot = discord.Bot(intents=discord.intents.members(bans=True, guilds=True))
+bot = pycord.Bot(intents=pycord.Intents(guild_members=True, guild_bans=True))
 ```
 
   </TabItem>
@@ -44,13 +44,15 @@ bot = discord.Bot(intents=discord.intents.members(bans=True, guilds=True))
 
 ## What are Privileged Intents?
 
-Discord defines some intents as "privileged" because of the sensitive information they contain. Currently, there are three privileged intents: `members`, `presences`, and `message_content`. These intents must be enabled in your bot's Developer Portal. Once your bot reaches 100 servers, you will need to verify your bot for these intents to keep working and for your bot to be able to be invited to more guilds.
+Discord defines some intents as "privileged" because of the sensitive information they may contain. Currently, there are three privileged intents: `members`, `presences`, and `message_content`. These intents must be enabled in your bot's Developer Portal. Once your bot reaches 100 servers, you will need to verify your bot for these intents to keep working and for your bot to be able to be invited to more guilds.
 
 :::tip
 
 Only enable these intents if you need them. These intents give your bot access to quite sensitive information about the users in your guild. These intents are privileged to respect the privacy of users, and you should do that as well.
 
 Not enabling these intents doesn't mean you won't be able to ban users, but you will be unable to detect when a new user joins a guild, or what game they are playing. The majority of bots won't need all intents.
+
+Enabling unneeded intents could also lead to excessive memory usage which would likely lead to crashes and midnight headaches.
 
 :::
 

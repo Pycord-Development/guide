@@ -1,0 +1,44 @@
+---
+title: Gears
+---
+
+This article explains in thorough detail how to use the Gears system.
+
+Gears are a way to organize your events & commands often in separate files.
+They are different from discord.js's per-file system, commonly used as multiple commands or events, normally in a single Gear.
+
+## Getting Started
+
+Compared to v2, v3's new strategy involves much less boilerplate and removes the need for useless subclassing.
+
+Firstly, you'll want to make a folder to store your Gears. You can name this whatever you want, for this example, though, we'll simply name it `gears`.
+
+Then, make a python file named whatever you want, this will store your Gear. For this example, we'll just use `show_guilds.py`
+
+We can then create our Gear.
+
+```python title="./gears/show_guilds.py"
+import pycord
+from pycord.ext import gears
+
+show_guilds = gears.Gear()
+
+@show_guilds.listen("on_guild_create")
+async def on_guild_create(guild: pycord.Guild) -> None:
+    print(guild.name)
+```
+
+Once created, you're gonna want to attach your gear to your bot.
+It should be as easy as so:
+
+```python title="./cogs/greetings.py"
+import pycord
+from gears.show_guilds import show_guilds
+
+# initialize bot
+bot = pycord.Bot(...)
+
+show_guilds.attach(bot)
+
+bot.run(...)
+```
