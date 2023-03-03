@@ -62,11 +62,11 @@ Let's go through the code.
 
 First, we import Pycord's `discord` package.
 
-Next, we create a [`discord.Bot`](https://docs.pycord.dev/en/stable/api.html#discord.Bot) object and assign it to a variable `bot`.
+Next, we create a [`discord.Bot`](https://docs.pycord.dev/en/stable/api/clients.html#discord.Bot) object and assign it to a variable `bot`.
 
-We then go ahead and use the [`@bot.command`](https://docs.pycord.dev/en/stable/api.html#discord.Bot.command) decorator, which registers a new Slash Command. We pass a `description` parameter to give a description to the Slash Command. We can also pass a `name` parameter to change the Slash Command's name. By default, the name of the Slash Command will be the name of the function, in this case, `/ping`.
+We then go ahead and use the [`@bot.command`](https://docs.pycord.dev/en/stable/api/clients.html#discord.Bot.command) decorator, which registers a new Slash Command. We pass a `description` parameter to give a description to the Slash Command. We can also pass a `name` parameter to change the Slash Command's name. By default, the name of the Slash Command will be the name of the function, in this case, `/ping`.
 
-We create an async function called `ping` with parameters `ctx`, which, when called, sends the bot's ping/latency using [`ctx.respond`](https://docs.pycord.dev/en/stable/api.html#discord.ApplicationContext.respond).
+We create an async function called `ping` with parameters `ctx`, which, when called, sends the bot's ping/latency using [`ctx.respond`](https://docs.pycord.dev/en/stable/api/application_commands.html#discord.ApplicationContext.respond).
 
 ## Subcommand Groups
 
@@ -179,7 +179,7 @@ bot.run("TOKEN")
   </TabItem>
   <TabItem value="1" label="Using the SlashCommandOptionType enum">
 
-You could also explicitly declare the type using the [`SlashCommandOptionType`](https://docs.pycord.dev/en/stable/api.html#discord.SlashCommandOptionType) enum.
+You could also explicitly declare the type using the [`SlashCommandOptionType`](https://docs.pycord.dev/en/stable/api/enums.html#discord.SlashCommandOptionType) enum.
 
 ```python title="Slash Command Type"
 import discord
