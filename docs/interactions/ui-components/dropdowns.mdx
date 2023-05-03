@@ -81,6 +81,8 @@ about making your code do amazing things, while Pycord handles the rest!
 
 #### Select Menu Properties
 
+-   `select_type`: The type of select to create. This must be a [`discord.ComponentType`](https://docs.pycord.dev/en/stable/api/enums.html#discord.ComponentType) value.
+-   `channel_types`: A list of channel types that can be selected in the menu. This is only valid for selects of `select_type` [`discord.ComponentType.channel_select`](https://docs.pycord.dev/en/stable/api/enums.html#discord.ComponentType).
 -   `options`\*: A list of [`discord.SelectOption`](https://docs.pycord.dev/en/stable/api/data_classes.html#discord.SelectOption) values. These are the options that can be selected in this menu.
 -   `placeholder` is the placeholder text shown in the select menu if no option is selected.
 -   `custom_id`: The ID of the select menu that gets received during an interaction. It is recommended not to set this to anything unless you are trying to create a persistent view.
@@ -99,6 +101,39 @@ In the `options` parameter, you pass a list of [`discord.SelectOption`](https://
 -   `emoji` (a string or an emoji object, if any)
 -   `label` (the name displayed to users, can be up to 100 characters)
 -   `value` (a special value of the option, defaults to the label).
+
+## Select Types
+
+In addition to regular string selects, you can also have your select menu contain users, roles, mentionables, and channels as its options. You can use these alternative select types by passing a [`discord.ComponentType`](https://docs.pycord.dev/en/stable/api/enums.html#discord.ComponentType) value for the `select_type` parameter when creating the Select.
+
+:::info Viewing the selected option
+
+When accessing the value the user selected through `select.values[0]`, you will only be able to retrieve the ID of the user, role, mentionable, or channel if you are not using a [`discord.ComponentType.string_select`](https://docs.pycord.dev/en/stable/api/enums.html#discord.ComponentType.string_select).
+
+:::
+
+```python
+class MyView(discord.ui.View):
+    @discord.ui.select(
+        select_type=discord.ComponentType.user_select
+    )
+    async def select_callback(self, select, interaction):
+        await interaction.response.send_message(f"Hello, <@{select.values[0]}>")
+```
+
+### Specifying Channel Types
+
+When using a [`discord.ComponentType.channel_select`](https://docs.pycord.dev/en/stable/api/enums.html#discord.ComponentType.channel_select) type select menu, you can pass in a list of [`discord.ChannelType`](https://docs.pycord.dev/en/stable/api/enums.html#discord.ChannelType) values to limit which types of channels users can choose when interacting with the select menu.
+
+```python
+class MyView(discord.ui.View):
+    @discord.ui.select(
+        select_type=discord.ComponentType.channel_select,
+        channel_types=[discord.ChannelType.text, discord.ChannelType.voice]
+    )
+    async def select_callback(self, select, interaction):
+        await interaction.response.send_message(f"You selected <#{select.values[0]}>")
+```
 
 ## Action Rows
 
