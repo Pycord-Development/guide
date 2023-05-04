@@ -110,7 +110,7 @@ class MyView(discord.ui.View):
         select_type=discord.ComponentType.user_select
     )
     async def select_callback(self, select, interaction):
-        await interaction.response.send_message(f"Hello, <@{select.values[0]}>")
+        await interaction.response.send_message(f"Hello, {select.values[0].mention}")
 ```
 
 Additionally, you can use shortcut decorators to create a [`discord.ui.Select`](https://docs.pycord.dev/en/master/api/ui_kit.html#discord.ui.select) with a predetermined [`discord.ComponentType`](https://docs.pycord.dev/en/stable/api/enums.html#discord.ComponentType) value. Using a shortcut decorator, the above code can be rewritten like this:
@@ -119,7 +119,7 @@ Additionally, you can use shortcut decorators to create a [`discord.ui.Select`](
 class MyView(discord.ui.View):
     @discord.ui.user_select()
     async def select_callback(self, select, interaction):
-        await interaction.response.send_message(f"Hello, <@{select.values[0]}>")
+        await interaction.response.send_message(f"Hello, {select.values[0].mention}")
 ```
 
 ### Specifying Channel Types
@@ -133,7 +133,7 @@ class MyView(discord.ui.View):
         channel_types=[discord.ChannelType.text, discord.ChannelType.voice]
     )
     async def select_callback(self, select, interaction):
-        await interaction.response.send_message(f"You selected <#{select.values[0]}>")
+        await interaction.response.send_message(f"You selected {select.values[0].mention}")
 ```
 
 ## Action Rows
