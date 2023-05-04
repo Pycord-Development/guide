@@ -113,6 +113,15 @@ class MyView(discord.ui.View):
         await interaction.response.send_message(f"Hello, <@{select.values[0]}>")
 ```
 
+Additionally, you can use shortcut decorators to create a [`discord.ui.Select`](https://docs.pycord.dev/en/master/api/ui_kit.html#discord.ui.select) with a predetermined [`discord.ComponentType`](https://docs.pycord.dev/en/stable/api/enums.html#discord.ComponentType) value. Using a shortcut decorator, the above code can be rewritten like this:
+
+```python
+class MyView(discord.ui.View):
+    @discord.ui.user_select()
+    async def select_callback(self, select, interaction):
+        await interaction.response.send_message(f"Hello, <@{select.values[0]}>")
+```
+
 ### Specifying Channel Types
 
 When using a [`discord.ComponentType.channel_select`](https://docs.pycord.dev/en/stable/api/enums.html#discord.ComponentType.channel_select) type select menu, you can pass in a list of [`discord.ChannelType`](https://docs.pycord.dev/en/stable/api/enums.html#discord.ChannelType) values to limit which types of channels users can choose when interacting with the select menu.
