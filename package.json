@@ -46,7 +46,7 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "2.4.0",
     "@tsconfig/docusaurus": "1.0.7",
-    "micromark-extension-mdx-md": "^1.0.0",
+    "micromark-extension-mdx-md": "^1.0.1",
     "remark-cli": "^11.0.0",
     "remark-comment": "^1.0.0",
     "remark-frontmatter": "^4.0.1",
