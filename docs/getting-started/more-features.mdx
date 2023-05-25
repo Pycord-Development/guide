@@ -27,7 +27,7 @@ First, you need to ask Discord to send you events. This is done via "Intents". R
 
 Once you understand what intents are, you can enable the events you need, or just use the default ones with `discord.Intents.all()`.
 
-Now that that's done, let's add an event handler for when a user joins the server. We will use the [`on_member_join` event](https://docs.pycord.dev/en/stable/api.html#discord.on_member_join). We will send a private message to the user welcoming them to the server.
+Now that that's done, let's add an event handler for when a user joins the server. We will use the [`on_member_join` event](https://docs.pycord.dev/en/stable/api/events.html#discord.on_member_join). We will send a private message to the user welcoming them to the server.
 
 ```python
 @bot.event
@@ -37,9 +37,9 @@ async def on_member_join(member):
     )
 ```
 
-We use the [`discord.Bot.event` decorator](https://docs.pycord.dev/en/stable/api.html#discord.Bot.event) to add the event handler. 
+We use the [`discord.Bot.event` decorator](https://docs.pycord.dev/en/stable/api/clients.html#discord.Bot.event) to add the event handler. 
 
-The `on_member_join` event is called when a user joins the server. The `member` parameter is the user that joined. Different events have different names and parameters. You can find all of them [here](https://docs.pycord.dev/en/stable/api.html#discord.Intents).
+The `on_member_join` event is called when a user joins the server. The `member` parameter is the user that joined. Different events have different names and parameters. You can find all of them [here](https://docs.pycord.dev/en/stable/api/data_classes.html#discord.Intents).
 
 So, that's how you add event handlers!
 
