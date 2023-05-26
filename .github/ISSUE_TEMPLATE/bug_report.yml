@@ -1,0 +1,56 @@
+name: Bug Report
+description: Report broken or incorrect behaviour
+labels: unconfirmed bug
+body:
+  - type: markdown
+    attributes:
+      value: >
+        Thanks for taking the time to fill out a bug. If you want real-time support,
+        consider joining our Discord at https://pycord.dev/discord instead.
+
+        Please note that this form is for bugs only!
+  - type: input
+    attributes:
+      label: Summary
+      description: A simple summary of your bug report
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Reproduction Steps
+      description: >
+        What you did to make it happen.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected Results
+      description: >
+        What did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Actual Results
+      description: >
+        What actually happened?
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: System Information
+      description: Browser / Device information, if applicable.
+    validations:
+      required: false
+  - type: checkboxes
+    attributes:
+      label: Checklist
+      description: >
+        Let's make sure you've properly done due diligence when reporting this issue!
+      options:
+        - label: I have searched the open issues for duplicates.
+          required: true
+  - type: textarea
+    attributes:
+      label: Additional Context
+      description: If there is anything else to say, please do so here.

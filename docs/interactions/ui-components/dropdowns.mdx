@@ -81,15 +81,15 @@ about making your code do amazing things, while Pycord handles the rest!
 
 #### Select Menu Properties
 
--   `options`\*: A list of [`discord.SelectOption`](https://docs.pycord.dev/en/stable/api/data_classes.html#discord.SelectOption) values. These are the options that can be selected in this menu.
+-   `select_type`: The type of select to create. This must be a [`discord.ComponentType`](https://docs.pycord.dev/en/stable/api/enums.html#discord.ComponentType) value.
+-   `channel_types`: A list of channel types that can be selected in the menu. This is only valid for selects of `select_type` [`discord.ComponentType.channel_select`](https://docs.pycord.dev/en/stable/api/enums.html#discord.ComponentType).
+-   `options`: A list of [`discord.SelectOption`](https://docs.pycord.dev/en/stable/api/data_classes.html#discord.SelectOption) values. These are the options that can be selected in this menu.
 -   `placeholder` is the placeholder text shown in the select menu if no option is selected.
 -   `custom_id`: The ID of the select menu that gets received during an interaction. It is recommended not to set this to anything unless you are trying to create a persistent view.
 -   `row`: The relative row this select menu belongs to. A Discord component can only have 5 rows. By default, items are arranged automatically into those 5 rows. If you’d like to control the relative positioning of the row then passing an index is advised. For example, row=1 will show up before row=2. Defaults to None, which is automatic ordering. The row number must be between 0 and 4 (i.e. zero indexed).
 -   `min_values`: The minimum number of items that must be chosen for this select menu. Defaults to 1 and must be between 1 and 25.
 -   `max_values`: The maximum number of items that must be chosen for this select menu. Defaults to 1 and must be between 1 and 25.
 -   `disabled`: Whether the select is disabled or not. Defaults to False.
-
-\* means that the parameter is required.
 
 #### Select Option Properties
 
@@ -99,6 +99,42 @@ In the `options` parameter, you pass a list of [`discord.SelectOption`](https://
 -   `emoji` (a string or an emoji object, if any)
 -   `label` (the name displayed to users, can be up to 100 characters)
 -   `value` (a special value of the option, defaults to the label).
+
+## Select Types
+
+In addition to regular string selects, you can also have your select menu contain users, roles, mentionables, and channels as its options. You can use these alternative select types by passing a [`discord.ComponentType`](https://docs.pycord.dev/en/stable/api/enums.html#discord.ComponentType) value for the `select_type` parameter when creating the Select.
+
+```python
+class MyView(discord.ui.View):
+    @discord.ui.select(
+        select_type=discord.ComponentType.user_select
+    )
+    async def select_callback(self, select, interaction):
+        await interaction.response.send_message(f"Hello, {select.values[0].mention}")
+```
+
+Additionally, you can use shortcut decorators to create a [`discord.ui.Select`](https://docs.pycord.dev/en/master/api/ui_kit.html#discord.ui.select) with a predetermined [`discord.ComponentType`](https://docs.pycord.dev/en/stable/api/enums.html#discord.ComponentType) value. Using a shortcut decorator, the above code can be rewritten like this:
+
+```python
+class MyView(discord.ui.View):
+    @discord.ui.user_select()
+    async def select_callback(self, select, interaction):
+        await interaction.response.send_message(f"Hello, {select.values[0].mention}")
+```
+
+### Specifying Channel Types
+
+When using a [`discord.ComponentType.channel_select`](https://docs.pycord.dev/en/stable/api/enums.html#discord.ComponentType.channel_select) type select menu, you can pass in a list of [`discord.ChannelType`](https://docs.pycord.dev/en/stable/api/enums.html#discord.ChannelType) values to limit which types of channels users can choose when interacting with the select menu.
+
+```python
+class MyView(discord.ui.View):
+    @discord.ui.select(
+        select_type=discord.ComponentType.channel_select,
+        channel_types=[discord.ChannelType.text, discord.ChannelType.voice]
+    )
+    async def select_callback(self, select, interaction):
+        await interaction.response.send_message(f"You selected {select.values[0].mention}")
+```
 
 ## Action Rows
 
