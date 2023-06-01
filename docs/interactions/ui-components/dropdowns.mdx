@@ -19,7 +19,7 @@ These UI elements reside in a "view". To learn more about views, please refer to
 
 ## Usage Syntax
 
-Let's see how to create a simple responsive button.
+Let's see how to create a simple responsive select menu.
 
 ```python
 import discord
@@ -205,14 +205,12 @@ class MyView(discord.ui.View):
 class MyView(discord.ui.View):
     @discord.ui.select(options = [...])
     async def first_select_callback(self, select, interaction):
-        for child in self.children: # loop through all the children of the view
-            child.disabled = True # set the component to disabled
+        self.disable_all_items()
         await interaction.response.edit_message(view=self) # edit the message to show the changes
 
     @discord.ui.select(options = [...])
     async def second_select_callback(self, select, interaction):
-        for child in self.children:
-            child.disabled = True
+        self.disable_all_items()
         await interaction.response.edit_message(view=self)
 ```
 
@@ -229,8 +227,7 @@ You may want a select menu to automatically stop working after a certain amount 
 ```python
 class MyView(discord.ui.View):
     async def on_timeout(self):
-        for child in self.children:
-            child.disabled = True
+        self.disable_all_items()
         await self.message.edit(content="You took too long! Disabled all the components.", view=self)
 
     @discord.ui.select(options = [...])
@@ -251,8 +248,7 @@ class MyView(discord.ui.View):
         super().__init__(timeout=10) # specify the timeout here
 
     async def on_timeout(self):
-        for child in self.children:
-            child.disabled = True
+        self.disable_all_items()
         await self.message.edit(content="You took too long! Disabled all the components.", view=self)
 
     @discord.ui.select(options = [...])
@@ -263,8 +259,7 @@ class MyView(discord.ui.View):
 </TabItem>
 </Tabs>
 
-Here, we loop through all the children of the view (buttons and select menus in the view) and disable
-them. Then, we edit the message to show that the timeout was reached. 
+Here, we disable all buttons and select menus in the view. Then, we edit the message to show that the timeout was reached. 
 
 :::note
 
