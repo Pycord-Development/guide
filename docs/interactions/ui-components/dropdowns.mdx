@@ -181,7 +181,7 @@ class MyView(discord.ui.View):
 
 @bot.command()
 async def select_menu(ctx):
-    await ctx.send("Press thebutton!", view=MyView())
+    await ctx.send("Select and option from the menu!", view=MyView())
 ```
 
 ### Disabling Menus on Press
