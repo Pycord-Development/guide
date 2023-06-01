@@ -11,7 +11,7 @@ it will either be refactored, or redone.
 
 ## Contributing
 
-For contributing rules, please visit [this page](./.github/CONTRIBUTING.md).
+For contributing rules, please visit [this page](./CONTRIBUTING.md).
 
 The Guide is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator. 
 
