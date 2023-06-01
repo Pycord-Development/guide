@@ -192,8 +192,9 @@ async def select_menu(ctx):
 ```python
 class MyView(discord.ui.View):
   @discord.ui.select(options = [...])
-    async def select_callback(self, select, interaction):        select.disabled = True # set the status of the select as disabled
-        await interaction.response.edit_message(view=self) # edit the message to show the changes
+  async def select_callback(self, select, interaction):
+      select.disabled = True # set the status of the select as disabled
+      await interaction.response.edit_message(view=self) # edit the message to show the changes
 ```
 
   </TabItem>
