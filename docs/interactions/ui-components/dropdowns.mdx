@@ -173,14 +173,14 @@ class MyView(discord.ui.View):
 ```python
 class MyView(discord.ui.View):
     @discord.ui.select(
-        disabled = True, # pass disabled=True to set the button as disabled
+        disabled = True, # pass disabled=True to set the menu as disabled
         options = [...]
     )
     async def select_callback(self, select, interaction):
         ...
 
 @bot.command()
-async def button(ctx):
+async def select_menu(ctx):
     await ctx.send("Press thebutton!", view=MyView())
 ```
 
