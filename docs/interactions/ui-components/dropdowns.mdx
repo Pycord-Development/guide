@@ -181,10 +181,10 @@ class MyView(discord.ui.View):
 
 @bot.command()
 async def button(ctx):
-    await ctx.send("Press the button!", view=MyView())
+    await ctx.send("Press thebutton!", view=MyView())
 ```
 
-### Disabling Buttons on Press
+### Disabling Menus on Press
 
 <Tabs>
   <TabItem value="disabling-a-single-component" label="Disabling a single component" default>
@@ -192,8 +192,7 @@ async def button(ctx):
 ```python
 class MyView(discord.ui.View):
   @discord.ui.select(options = [...])
-    async def select_callback(self, select, interaction):
-        select.disabled = True # set the status of the select as disabled
+    async def select_callback(self, select, interaction):        select.disabled = True # set the status of the select as disabled
         await interaction.response.edit_message(view=self) # edit the message to show the changes
 ```
 
@@ -276,7 +275,7 @@ Normally, when the bot goes offline, all of its views stop working, even if they
 views, but nothing will happen when you try to interact with them. This is a problem
 if you are trying to create a self-role system, for example. This is where persistent views come in.
 
-Persistent views work forever. When the bot goes offline, the buttons will stop working. However, when the bot comes back online, the buttons will start working again.
+Persistent views work forever. When the bot goes offline, the buttons and select menus will stop working. However, when the bot comes back online, the buttons and select menus will start working again.
 
 In a Persistent View, the timeout must be set to `None` and all the children in the view much have a `custom_id` attribute set.
 
@@ -294,7 +293,7 @@ class MyView(discord.ui.View):
         ...
 
 @bot.command()
-async def button(ctx):
+async def select_menu(ctx):
     await ctx.send(f"View persistence status: {MyView.is_persistent(MyView())}", view=MyView())
 ```
 
