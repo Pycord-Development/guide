@@ -186,7 +186,10 @@ import discord
 from discord.ext import commands # Import the commands extension
 # discord.ext.commands are not the same as discord.commands!
 
-bot = commands.Bot(command_prefix="!") # You can change the command prefix to whatever you want.
+intents = discord.Intents.default() #Defining intents
+intents.message_content = True # Adding the message_content intent so that the bot can read user messages
+
+bot = commands.Bot(command_prefix="!", intents=intents) # You can change the command prefix to whatever you want.
 
 @bot.command() # This is the decorator we use to create a prefixed command.
 async def ping(ctx): # This is the function we will use to create the command.
