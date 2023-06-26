@@ -6072,12 +6072,19 @@ micromark-extension-mdx-jsx@^1.0.0:
     uvu "^0.5.0"
     vfile-message "^3.0.0"
 
-micromark-extension-mdx-md@^1.0.0, micromark-extension-mdx-md@^1.0.1:
+micromark-extension-mdx-md@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/micromark-extension-mdx-md/-/micromark-extension-mdx-md-1.0.1.tgz#595d4b2f692b134080dca92c12272ab5b74c6d1a"
   integrity sha512-7MSuj2S7xjOQXAjjkbjBsHkMtb+mDGVW6uI2dBL9snOBCbZmoNgDAeZ0nSn9j3T42UE/g2xVNMn18PJxZvkBEA==
   dependencies:
     micromark-util-types "^1.0.0"
+
+micromark-extension-mdx-md@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/micromark-extension-mdx-md/-/micromark-extension-mdx-md-2.0.0.tgz#1d252881ea35d74698423ab44917e1f5b197b92d"
+  integrity sha512-EpAiszsB3blw4Rpba7xTOUptcFeBFi+6PY8VnJ2hhimH+vCQDirWgsMpz7w1XcZE7LVrSAUGb9VJpG9ghlYvYQ==
+  dependencies:
+    micromark-util-types "^2.0.0"
 
 micromark-extension-mdxjs-esm@^1.0.0:
   version "1.0.2"
@@ -6282,6 +6289,11 @@ micromark-util-types@^1.0.0, micromark-util-types@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/micromark-util-types/-/micromark-util-types-1.0.2.tgz#f4220fdb319205812f99c40f8c87a9be83eded20"
   integrity sha512-DCfg/T8fcrhrRKTPjRrw/5LLvdGV7BHySf/1LOZx7TzWZdYRjogNtyNq885z3nNallwr3QUKARjqvHqX1/7t+w==
+
+micromark-util-types@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/micromark-util-types/-/micromark-util-types-2.0.0.tgz#63b4b7ffeb35d3ecf50d1ca20e68fc7caa36d95e"
+  integrity sha512-oNh6S2WMHWRZrmutsRmDDfkzKtxF+bc2VxLC9dvtrDIRFln627VsFP6fLMgTryGDljgLPjkrzQSDcPrjPyDJ5w==
 
 micromark@^3.0.0:
   version "3.0.10"
