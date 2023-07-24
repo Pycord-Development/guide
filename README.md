@@ -2,6 +2,9 @@
 
 The official Guide for Pycord, explaining Pycord's features and how to use them.
 
+## NOTE
+Currently deployed from https://github.com/Aiko-IT-Systems/pycord-guide/
+
 ## Purpose
 
 The Guide is meant to serve as a professional guide to **all** of Pycord's features.
