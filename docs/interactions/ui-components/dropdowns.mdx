@@ -151,11 +151,11 @@ The row argument specifies the relative row this select menu belongs to. A Disco
 ```python
 class MyView(discord.ui.View):
     @discord.ui.button(label="Button 1", row=0, style=discord.ButtonStyle.primary)
-    async def first_button_callback(self, button, interaction):
+    async def first_button_callback(self, interaction, button):
         await interaction.response.send_message("You pressed me!")
 
     @discord.ui.button(label="Button 2", row=0, style=discord.ButtonStyle.primary)
-    async def second_button_callback(self, button, interaction):
+    async def second_button_callback(self, interaction, button):
         await interaction.response.send_message("You pressed me!")
 
     @discord.ui.select(
