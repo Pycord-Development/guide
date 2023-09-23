@@ -33,7 +33,7 @@ bot = discord.Bot(debug_guilds=[...]) # specify the guild IDs in debug_guilds
 
 @bot.command(description="Sends the bot's latency.") # this decorator makes a slash command
 async def ping(ctx): # a slash command will be created with the name "ping"
-    await ctx.respond(f"Pong! Latency is {bot.latency}")
+    await ctx.respond(f"Pong! Latency is {bot.latency * 1000}ms.")
 
 bot.run("TOKEN")
 ```
