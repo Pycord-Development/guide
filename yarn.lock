@@ -1520,13 +1520,13 @@
   integrity sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==
 
 "@discordapp/twemoji@discord/twemoji":
-  version "14.1.2"
-  uid c9fb242544b5f9068221d3baadb3b5d7ec9727c0
-  resolved "https://codeload.github.com/discord/twemoji/tar.gz/c9fb242544b5f9068221d3baadb3b5d7ec9727c0"
+  version "15.0.2"
+  uid f8a6061fd1630a0ffa591a1ab93a984c55254fba
+  resolved "https://codeload.github.com/discord/twemoji/tar.gz/f8a6061fd1630a0ffa591a1ab93a984c55254fba"
   dependencies:
+    "@twemoji/parser" "15.0.0"
     fs-extra "^8.0.1"
     jsonfile "^5.0.0"
-    twemoji-parser "14.0.0"
     universalify "^0.1.2"
 
 "@docsearch/css@3.1.1":
@@ -2454,6 +2454,11 @@
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/@tsconfig/docusaurus/-/docusaurus-2.0.2.tgz#f96c7453ce9969ef938284eac74441e2d646efd7"
   integrity sha512-12HWfYmgUl4M2o76/TFufGtI68wl2k/b8qPrIrG7ci9YJLrpAtadpy897Bz5v29Mlkr7a1Hq4KHdQTKtU+2rhQ==
+
+"@twemoji/parser@15.0.0":
+  version "15.0.0"
+  resolved "https://registry.yarnpkg.com/@twemoji/parser/-/parser-15.0.0.tgz#8ae9749659ef524b5f0e6ee1412d0e48865e77bf"
+  integrity sha512-lh9515BNsvKSNvyUqbj5yFu83iIDQ77SwVcsN/SnEGawczhsKU6qWuogewN1GweTi5Imo5ToQ9s+nNTf97IXvg==
 
 "@types/acorn@^4.0.0":
   version "4.0.6"
