@@ -98,7 +98,7 @@ async def play(ctx, search: str):
     return await ctx.respond("No song found.") # we return an error message
 
   await vc.play(song) # Else, we play it
-  await ctx.respond(f"Now playing: `{vc.source.title}`") # and return a success message
+  await ctx.respond(f"Now playing: `{song.title}`") # and return a success message
 ```
 
 <DiscordComponent>
