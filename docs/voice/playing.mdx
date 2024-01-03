@@ -85,13 +85,13 @@ async def play(ctx, search: str):
     vc = await ctx.author.voice.channel.connect(cls=wavelink.Player) # If there isn't, we connect it to the channel
 
   # Now we are going to check if the invoker of the command
-  # is the same voice channel than the voice client, when defined.
+  # is in the same voice channel than the voice client, when defined.
   # If not, we return an error message.
   if ctx.author.voice.channel.id != vc.channel.id:
     return await ctx.respond("You must be in the same voice channel as the bot.")
 
   # Now we search for the song. You can optionally
-  # pass the "source" keyword, from type "wavelink.TrackSource"
+  # pass the "source" keyword, of type "wavelink.TrackSource"
   song = await wavelink.Playable.search(search)
 
   if not song: # In case the song is not found
