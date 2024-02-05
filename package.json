@@ -28,7 +28,7 @@
     "@discordapp/twemoji": "discord/twemoji",
     "@docusaurus/core": "2.4.3",
     "@docusaurus/preset-classic": "2.4.3",
-    "@easyops-cn/docusaurus-search-local": "0.27.1",
+    "@easyops-cn/docusaurus-search-local": "0.40.1",
     "@matteusan/sentro": "0.1.25",
     "@mdx-js/react": "3.0.0",
     "@types/react": "17.0.2",
