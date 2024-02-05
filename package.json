@@ -31,12 +31,12 @@
     "@easyops-cn/docusaurus-search-local": "0.40.1",
     "@matteusan/sentro": "0.1.25",
     "@mdx-js/react": "3.0.0",
-    "@types/react": "17.0.2",
+    "@types/react": "18.2.54",
     "clsx": "2.1.0",
     "discord-message-components": "https://gitpkg.now.sh/Pycord-Development/discord-message-components?aa468ada9b2b52986ae0aee4051660713c1e9095&scripts.postinstall=yarn%20install%20--ignore-scripts%20%26%26%20node%20node_modules%2Fesbuild%2Finstall.js%20%26%26yarn%20build%3Amarkdown%20%26%26%20yarn%20build%3Acore%20%26%26%20yarn%20build%3Areact",
     "docusaurus-plugin-sass": "0.2.5",
     "prism-react-renderer": "1.3.5",
-    "react": "17.0.2",
+    "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-twemoji": "^0.5.0",
     "sass": "1.70.0",
@@ -57,7 +57,7 @@
     "typescript": "5.3.3"
   },
   "resolutions": {
-    "@types/react": "17.0.2"
+    "@types/react": "18.2.54"
   },
   "browserslist": {
     "production": [
