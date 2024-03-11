@@ -41,7 +41,7 @@
     "react-twemoji": "^0.5.0",
     "sass": "1.71.1",
     "webpack": "^5.90.3",
-    "yarn": "^1.22.21"
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.1.1",
