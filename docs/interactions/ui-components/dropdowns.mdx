@@ -51,7 +51,7 @@ class MyView(discord.ui.View):
 
 @bot.command()
 async def flavor(ctx):
-    await ctx.send("Choose a flavor!", view=MyView())
+    await ctx.respond("Choose a flavor!", view=MyView())
 
 bot.run("TOKEN")
 ```
