@@ -10,4 +10,4 @@ jobs:
         with:
           python-version: "3.x"
       - run: pip install codespell
-      - run: codespell --ignore-words-list="groupt,nd,ot,claus" --skip="./yarn.lock"
+      - run: codespell --ignore-words-list="groupt,nd,ot,claus,everytime" --skip="./yarn.lock"

@@ -47,12 +47,15 @@ async def connect_nodes():
   """Connect to our Lavalink nodes."""
   await bot.wait_until_ready() # wait until the bot is ready
 
-  await wavelink.NodePool.create_node(
-    bot=bot,
-    host='0.0.0.0',
-    port=2333,
-    password='youshallnotpass'
-  ) # create a node
+  nodes = [
+    wavelink.Node(
+      identifier="Node1", # This identifier must be unique for all the nodes you are going to use
+      uri="http://0.0.0.0:443", # Protocol (http/s) is required, port must be 443 as it is the one lavalink uses
+      password="youshallnotpass"
+    )
+  ]
+
+  await wavelink.Pool.connect(nodes=nodes, client=bot) # Connect our nodes
 ```
 
 <br />
@@ -67,23 +70,35 @@ Now you are finished making your node! Next, you will want to:
 To make a play command, you will need to make a function to connect and play audio in a voice channel.
 
 ```py title="Play Command Example"
+import typing
+
 @bot.slash_command(name="play")
 async def play(ctx, search: str):
-  vc = ctx.voice_client # define our voice client
+  # First we may define our voice client,
+  # for this, we are going to use typing.cast()
+  # function just for the type checker know that
+  # `ctx.voice_client` is going to be from type
+  # `wavelink.Player`
+  vc = typing.cast(wavelink.Player, ctx.voice_client)
 
-  if not vc: # check if the bot is not in a voice channel
-    vc = await ctx.author.voice.channel.connect(cls=wavelink.Player) # connect to the voice channel
+  if not vc: # We firstly check if there is a voice client
+    vc = await ctx.author.voice.channel.connect(cls=wavelink.Player) # If there isn't, we connect it to the channel
 
-  if ctx.author.voice.channel.id != vc.channel.id: # check if the bot is not in the voice channel
-    return await ctx.respond("You must be in the same voice channel as the bot.") # return an error message
+  # Now we are going to check if the invoker of the command
+  # is in the same voice channel than the voice client, when defined.
+  # If not, we return an error message.
+  if ctx.author.voice.channel.id != vc.channel.id:
+    return await ctx.respond("You must be in the same voice channel as the bot.")
 
-  song = await wavelink.YouTubeTrack.search(query=search, return_first=True) # search for the song
+  # Now we search for the song. You can optionally
+  # pass the "source" keyword, of type "wavelink.TrackSource"
+  song = await wavelink.Playable.search(search)
 
-  if not song: # check if the song is not found
-    return await ctx.respond("No song found.") # return an error message
+  if not song: # In case the song is not found
+    return await ctx.respond("No song found.") # we return an error message
 
-  await vc.play(song) # play the song
-  await ctx.respond(f"Now playing: `{vc.source.title}`") # return a message
+  await vc.play(song) # Else, we play it
+  await ctx.respond(f"Now playing: `{song.title}`") # and return a success message
 ```
 
 <DiscordComponent>
@@ -113,8 +128,11 @@ async def on_ready():
   await connect_nodes() # connect to the server
 
 @bot.event
-async def on_wavelink_node_ready(node: wavelink.Node):
-  print(f"{node.identifier} is ready.") # print a message
+async def on_wavelink_node_ready(payload: wavelink.NodeReadyEventPayload):
+  # Everytime a node is successfully connected, we
+  # will print a message letting it know.
+  print(f"Node with ID {payload.session_id} has connected")
+  print(f"Resumed session: {payload.resumed}")
 
 bot.run("token")
 ```
