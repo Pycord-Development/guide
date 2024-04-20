@@ -224,7 +224,7 @@ async def on_ready():
     print(f"{bot.user} is ready and online!")
 
 @bot.slash_command(name = "hello", description = "Say hello to the bot")
-async def hello(ctx):
+async def hello(ctx: discord.ApplicationContext):
     await ctx.send("Hey!")
 
 bot.run("TOKEN")
