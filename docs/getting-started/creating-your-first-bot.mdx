@@ -191,7 +191,7 @@ event that is automatically called when the bot is ready to use.
 
 ```py
 @bot.slash_command(name="hello", description="Say hello to the bot")
-async def say_hello(ctx: discord.ApplicationContext):
+async def hello(ctx: discord.ApplicationContext):
     await ctx.respond("Hey!")
 ```
 
