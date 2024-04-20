@@ -134,7 +134,7 @@ bot = discord.Bot()
 async def on_ready():
     print(f"{bot.user} is ready and online!")
 
-@bot.slash_command(name = "hello", description = "Say hello to the bot")
+@bot.slash_command(name="hello", description="Say hello to the bot")
 async def hello(ctx: discord.ApplicationContext):
     await ctx.respond("Hey!")
 
@@ -190,7 +190,7 @@ the [`on_ready`](https://docs.pycord.dev/en/stable/api/events.html#discord.on_re
 event that is automatically called when the bot is ready to use.
 
 ```py
-@bot.slash_command(name = "hello", description = "Say hello to the bot")
+@bot.slash_command(name="hello", description="Say hello to the bot")
 async def say_hello(ctx: discord.ApplicationContext):
     await ctx.respond("Hey!")
 ```
@@ -225,7 +225,7 @@ bot = discord.Bot()
 async def on_ready():
     print(f"{bot.user} is ready and online!")
 
-@bot.slash_command(name = "hello", description = "Say hello to the bot")
+@bot.slash_command(name="hello", description="Say hello to the bot")
 async def hello(ctx: discord.ApplicationContext):
     await ctx.send("Hey!")
 
