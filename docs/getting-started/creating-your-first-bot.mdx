@@ -200,7 +200,7 @@ decorator to define a slash command. We specify the `name` and `description` arg
 specified, the name of the slash command would be the function name and the command description would
 be empty.
 
-Optional: We typehint [': discord.ApplicationContext'](https://docs.pycord.dev/en/stable/api/application_commands.html#discord.ApplicationContext) to get access to autocompletion and docstrings.
+Optional: We type-hint the context parameter (`ctx`) as [`discord.ApplicationContext`](https://docs.pycord.dev/en/stable/api/application_commands.html#discord.ApplicationContext). In modern IDEs, type-hinting allows access to autocompletion and docstrings. You can read more about type-hinting [here](https://docs.python.org/3/library/typing.html).
 
 Finally, you want to run the bot using the token specified in the `.env` file.
 
