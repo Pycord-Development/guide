@@ -200,6 +200,8 @@ decorator to define a slash command. We specify the `name` and `description` arg
 specified, the name of the slash command would be the function name and the command description would
 be empty.
 
+Optional: We typehint [': discord.ApplicationContext'](https://docs.pycord.dev/en/stable/api/application_commands.html#discord.ApplicationContext) to get access to autocompletion and docstrings.
+
 Finally, you want to run the bot using the token specified in the `.env` file.
 
 Now you have finished creating your first Pycord bot! What we have shown you is just the basic structure
