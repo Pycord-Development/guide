@@ -134,8 +134,8 @@ bot = discord.Bot()
 async def on_ready():
     print(f"{bot.user} is ready and online!")
 
-@bot.slash_command(name = "hello", description = "Say hello to the bot")
-async def hello(ctx):
+@bot.slash_command(name="hello", description="Say hello to the bot")
+async def hello(ctx: discord.ApplicationContext):
     await ctx.respond("Hey!")
 
 bot.run(os.getenv('TOKEN')) # run the bot with the token
@@ -190,8 +190,8 @@ the [`on_ready`](https://docs.pycord.dev/en/stable/api/events.html#discord.on_re
 event that is automatically called when the bot is ready to use.
 
 ```py
-@bot.slash_command(name = "hello", description = "Say hello to the bot")
-async def say_hello(ctx):
+@bot.slash_command(name="hello", description="Say hello to the bot")
+async def hello(ctx: discord.ApplicationContext):
     await ctx.respond("Hey!")
 ```
 
@@ -199,6 +199,8 @@ Here, we use the [`slash_command`](https://docs.pycord.dev/en/stable/api/clients
 decorator to define a slash command. We specify the `name` and `description` arguments. If not
 specified, the name of the slash command would be the function name and the command description would
 be empty.
+
+Optional: We type-hint the context parameter (`ctx`) as [`discord.ApplicationContext`](https://docs.pycord.dev/en/stable/api/application_commands.html#discord.ApplicationContext). In modern IDEs, type-hinting allows access to autocompletion and docstrings. You can read more about type-hinting [here](https://docs.python.org/3/library/typing.html).
 
 Finally, you want to run the bot using the token specified in the `.env` file.
 
@@ -223,8 +225,8 @@ bot = discord.Bot()
 async def on_ready():
     print(f"{bot.user} is ready and online!")
 
-@bot.slash_command(name = "hello", description = "Say hello to the bot")
-async def hello(ctx):
+@bot.slash_command(name="hello", description="Say hello to the bot")
+async def hello(ctx: discord.ApplicationContext):
     await ctx.send("Hey!")
 
 bot.run("TOKEN")
