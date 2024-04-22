@@ -1722,7 +1722,7 @@
     "@docusaurus/theme-search-algolia" "2.4.1"
     "@docusaurus/types" "2.4.1"
 
-"@docusaurus/react-loadable@5.5.2", "react-loadable@npm:@docusaurus/react-loadable@5.5.2":
+"@docusaurus/react-loadable@5.5.2":
   version "5.5.2"
   resolved "https://registry.yarnpkg.com/@docusaurus/react-loadable/-/react-loadable-5.5.2.tgz#81aae0db81ecafbdaee3651f12804580868fa6ce"
   integrity sha512-A3dYjdBGuy0IGT+wyLIGIKLRE+sAk1iNk0f1HjNDysO7u8lhL4N3VEm+FAubmJbAztn94F7MxBTPmnixbiyFdQ==
@@ -7691,6 +7691,14 @@ react-loadable-ssr-addon-v5-slorber@^1.0.1:
   dependencies:
     "@babel/runtime" "^7.10.3"
 
+"react-loadable@npm:@docusaurus/react-loadable@5.5.2":
+  version "5.5.2"
+  resolved "https://registry.yarnpkg.com/@docusaurus/react-loadable/-/react-loadable-5.5.2.tgz#81aae0db81ecafbdaee3651f12804580868fa6ce"
+  integrity sha512-A3dYjdBGuy0IGT+wyLIGIKLRE+sAk1iNk0f1HjNDysO7u8lhL4N3VEm+FAubmJbAztn94F7MxBTPmnixbiyFdQ==
+  dependencies:
+    "@types/react" "*"
+    prop-types "^15.6.2"
+
 react-router-config@^5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/react-router-config/-/react-router-config-5.1.1.tgz#0f4263d1a80c6b2dc7b9c1902c9526478194a988"
@@ -8515,10 +8523,10 @@ sass-loader@^10.1.1:
     schema-utils "^3.0.0"
     semver "^7.3.2"
 
-sass@1.67.0:
-  version "1.67.0"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.67.0.tgz#fed84d74b9cd708db603b1380d6dc1f71bb24f6f"
-  integrity sha512-SVrO9ZeX/QQyEGtuZYCVxoeAL5vGlYjJ9p4i4HFuekWl8y/LtJ7tJc10Z+ck1c8xOuoBm2MYzcLfTAffD0pl/A==
+sass@1.75.0:
+  version "1.75.0"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.75.0.tgz#91bbe87fb02dfcc34e052ddd6ab80f60d392be6c"
+  integrity sha512-ShMYi3WkrDWxExyxSZPst4/okE9ts46xZmJDSawJQrnte7M1V9fScVB+uNXOVKRBt0PggHOwoZcn8mYX4trnBw==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"
