@@ -18,7 +18,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ title, description, child
                 <meta name="description" content={ description } />
                 <meta property="og:description" content="The official guide for making bots and other Discord applications using the Pycord library." />
                 <meta property="og:title" content="The Pycord Guide" />
-                <meta property="og:image" content="https://guide.pycord.dev/img/logo.png" />
+                <meta property="og:thumbnail" content="https://guide.pycord.dev/img/logo.png" />
                 <meta name="theme-color" content="#5865F2" />
             </Head>
             <Layout>
