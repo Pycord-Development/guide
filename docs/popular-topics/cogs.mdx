@@ -8,9 +8,9 @@ to avoid making your bot's files messy and cluttered.
 
 ## Getting Started
 
-First, you'll need to create a folder to store your cogs, eg. `cogs/`.
+First, you'll need to create a folder to store your cogs, e.g. `cogs/`.
 
-Then, create a file inside the folder, eg. `cogs/greetings.py`. By convention, the file name should
+Then, create a file inside the folder, e.g. `cogs/greetings.py`. By convention, the file name should
 be the same as the name of the cog or module.
 
 We can then create the cog.
@@ -37,6 +37,23 @@ class Greetings(commands.Cog): # create a class for our cog that inherits from c
     async def greet(self, ctx, member: discord.Member):
         await ctx.respond(f'{ctx.author.mention} says hello to {member.mention}!')
 
+    math = discord.SlashCommandGroup("math", "Spooky math stuff") # create a Slash Command Group called "math"
+    advanced_math = math.create_subgroup(
+        "advanced",
+        "super hard math commands!"
+    )
+
+    @math.command()
+    async def add(self, a: int, b: int):
+        c = a + b
+        await ctx.respond(f"{a} + {b} is {c}.")
+    
+    @advanced_math.command()
+    async def midpoint(self, x1: float, y1: float, x2: float, y2: float):
+        mid_x = (x1 + x2)/2
+        mid_y = (y1 + y2)/2
+        await ctx.respond(f"The midpoint between those coordinates is ({mid_x}, {mid_y}).")
+
     @commands.Cog.listener() # we can add event listeners to our cog
     async def on_member_join(self, member): # this is called when a member joins the server
     # you must enable the proper intents
@@ -56,7 +73,7 @@ bot.load_extension('cogs.greetings')
 ```
 
 This loads the file `cogs/greetings.py` and adds it to the bot. 
-The argument of `load_extension` should be your cog's path (eg. cogs/greetings.py) without the file
+The argument of `load_extension` should be your cog's path (e.g. cogs/greetings.py) without the file
 extension and with the `/` replaced with `.`
 
 If you have multiple cogs, you can add them all at once by adding the following code:
