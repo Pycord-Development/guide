@@ -1,8 +1,8 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require("prism-react-renderer/themes/vsLight");
-const darkCodeTheme = require("prism-react-renderer/themes/vsDark");
+const lightCodeTheme = require("prism-react-renderer").themes.vsLight;
+const darkCodeTheme = require("prism-react-renderer").themes.vsDark;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -35,7 +35,10 @@ const config = {
       },
     ],
   ],
-
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'de', 'ja', 'fr', 'it', 'hi', 'ko', 'pt-BR', 'es-ES', 'zh-CN', 'ru'],
+  },
   themeConfig: {
     docs: {
       sidebar: {
@@ -55,26 +58,26 @@ const config = {
           position: "left",
           href: "https://pycord.dev/",
         },
-//         {
-//           label: "Docs",
-//           position: "left",
-//           href: "https://docs.pycord.dev",
-//         },
-//         {
-//           label: "GitHub",
-//           position: "left",
-//           href: "https://pycord.dev/github",
-//         },
+        {
+          label: "Docs",
+          position: "left",
+          href: "https://docs.pycord.dev",
+        },
+        {
+          label: "GitHub",
+          position: "left",
+          href: "https://pycord.dev/github",
+        },
         // TODO: Post v2.0: Version the docs
         // {
         //   type: 'docsVersionDropdown',
         //   position: 'right',
         // },
         // TODO: Locales
-        // {
-        //   type: 'localeDropdown',
-        //   position: 'right',
-        // },
+        {
+          type: 'localeDropdown',
+          position: 'right',
+        },
         {
           label: "Source",
           // We should use href instead of to, but it creates a strange styling issue

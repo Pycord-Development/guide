@@ -2,7 +2,7 @@ import React from 'react';
 import Head from '@docusaurus/Head';
 import Layout from "@theme/Layout";
 
-import { site } from '@site/src/constants/site';
+import { site } from '@constants/site';
 // import '../scss/main.scss';
 
 interface DefaultLayoutProps {
