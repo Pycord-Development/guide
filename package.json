@@ -30,20 +30,23 @@
     "postinstall": "yarn add react@17.0.0 --ignore-scripts",
     "check": "remark docs/*.mdx docs/**/*.mdx docs/**/**/*.mdx docs/**/**/**/*.mdx --quiet --frail",
     "format": "remark docs/*.mdx docs/**/*.mdx docs/**/**/*.mdx docs/**/**/**/*.mdx --quiet -o",
-    "crowdin:upload": "crowdin upload",
-    "crowdin:download": "crowdin download"
+    "crowdin:upload": "docusaurus write-translations && crowdin upload",
+    "crowdin:download": "crowdin download",
+    "crowdin:sync": "docusaurus write-translations && crowdin upload && crowdin download"
   },
   "dependencies": {
     "@algolia/client-search": "5.0.0",
     "@crowdin/cli": "4.1.1",
     "@discordapp/twemoji": "discord/twemoji",
     "@docusaurus/core": "^2.4.3",
+    "@docusaurus/mdx-loader": "2.4.3",
     "@docusaurus/preset-classic": "^2.4.3",
     "@docusaurus/theme-common": "^2.4.3",
     "@easyops-cn/docusaurus-search-local": "^0.36.0",
     "@matteusan/sentro": "1.1.0",
     "@mdx-js/react": "1.6.22",
     "@types/react": "17.0.0",
+    "babel-plugin-module-resolver": "5.0.2",
     "clsx": "2.1.1",
     "discord-message-components": "https://gitpkg.now.sh/Pycord-Development/discord-message-components?aa468ada9b2b52986ae0aee4051660713c1e9095&scripts.postinstall=yarn%20install%20--ignore-scripts%20%26%26%20node%20node_modules%2Fesbuild%2Finstall.js%20%26%26yarn%20build%3Amarkdown%20%26%26%20yarn%20build%3Acore%20%26%26%20yarn%20build%3Areact%20%26%26",
     "docusaurus-plugin-sass": "0.2.5",
@@ -60,7 +63,6 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^2.4.3",
     "@tsconfig/docusaurus": "2.0.3",
-    "babel-plugin-module-resolver": "5.0.2",
     "micromark-extension-mdx-md": "^2.0.0",
     "remark-cli": "^12.0.1",
     "remark-comment": "^1.0.0",

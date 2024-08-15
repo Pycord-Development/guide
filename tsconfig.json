@@ -1,16 +1,12 @@
 {
-  // This file is not used in compilation. It is here just for a nice editor experience.
   "extends": "@tsconfig/docusaurus/tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
     "forceConsistentCasingInFileNames": true,
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@constants/*": ["src/constants/*"]
+      "@site/*": ["./*"],
+      "react": ["./node_modules/@types/react"]
     },
     "strict": true
-  },
-  "paths": {
-    "react": [ "./node_modules/@types/react" ]
   }
 }

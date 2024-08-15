@@ -4,6 +4,8 @@
 const lightCodeTheme = require("prism-react-renderer").themes.vsLight;
 const darkCodeTheme = require("prism-react-renderer").themes.vsDark;
 
+const DefaultLocale = 'en';
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Pycord Guide",
@@ -23,8 +25,14 @@ const config = {
       "classic",
       {
         docs: {
-          editUrl:
-            "https://github.com/Pycord-Development/guide/tree/main",
+          editUrl: ({locale, versionDocsDirPath, docPath}) => {
+            // Link to Crowdin for French docs
+            if (locale !== DefaultLocale) {
+              return `https://translations.pycord.dev/guide/${locale}`;
+            }
+            // Link to GitHub for English docs
+            return `https://github.com/Pycord-Development/guide/edit/main/${versionDocsDirPath}/${docPath}`;
+          },
           routeBasePath: "/",
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
