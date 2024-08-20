@@ -17,7 +17,6 @@ import DiscordComponent from "@site/src/components/DiscordComponent";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-
 On March 24, 2021, Discord added Slash Commands to Discord as an easier, more efficient, and better way of using bot commands. Pycord has implemented Slash Commands into the library, so it's simple, efficient, and familiar.
 
 :::important
@@ -52,6 +51,7 @@ bot.run("TOKEN")
         ping
       </DiscordInteraction>
     </div>
+
     Pong! Latency is 335ms.
   </DiscordMessage>
 </DiscordComponent>
@@ -94,6 +94,7 @@ bot.run("TOKEN")
 ```
 
 Or, you can instead manually make a `SlashCommandGroup` class like so:
+
 ```python
 import discord
 
@@ -157,92 +158,94 @@ Since you want different inputs from Options, you'll have to specify the type fo
 
 <Tabs>
   <TabItem value="0" label="Using Type Annotations" default>
+    You could use Type Annotations and let Pycord figure out the option type or explicitly specified using the [`SlashCommandOptionType`](https://docs.pycord.dev/en/stable/api/enums.html#discord.SlashCommandOptionType) enum.
 
-You could use Type Annotations and let Pycord figure out the option type or explicitly specified using the [`SlashCommandOptionType`](https://docs.pycord.dev/en/stable/api/enums.html#discord.SlashCommandOptionType) enum.
+    ```python
+    import discord
 
-```python
-import discord
+    bot = discord.Bot()
 
-bot = discord.Bot()
+    @bot.command()
+    # pycord will figure out the types for you
+    async def add(ctx, first: discord.Option(int), second: discord.Option(int)):
+      # you can use them as they were actual integers
+      sum = first + second
+      await ctx.respond(f"The sum of {first} and {second} is {sum}.")
 
-@bot.command()
-# pycord will figure out the types for you
-async def add(ctx, first: discord.Option(int), second: discord.Option(int)):
-  # you can use them as they were actual integers
-  sum = first + second
-  await ctx.respond(f"The sum of {first} and {second} is {sum}.")
+    @bot.command()
+    # this explicitly tells pycord what types the options are instead
+    async def join(
+      ctx,
+      first: discord.Option(discord.SlashCommandOptionType.string),
+      second: discord.Option(discord.SlashCommandOptionType.string)
+    ):
+      joined = first + second
+      await ctx.respond(f"When you join \"{first}\" and \"{second}\", you get: \"{joined}\".")
 
-@bot.command()
-# this explicitly tells pycord what types the options are instead
-async def join(
-  ctx,
-  first: discord.Option(discord.SlashCommandOptionType.string),
-  second: discord.Option(discord.SlashCommandOptionType.string)
-):
-  joined = first + second
-  await ctx.respond(f"When you join \"{first}\" and \"{second}\", you get: \"{joined}\".")
+    bot.run("TOKEN")
+    ```
 
-bot.run("TOKEN")
-```
+    <DiscordComponent>
+      <DiscordMessage profile="robocord">
+        <div slot="interactions">
+          <DiscordInteraction profile="bob" command>
+            add
+          </DiscordInteraction>
+        </div>
 
-<DiscordComponent>
-  <DiscordMessage profile="robocord">
-    <div slot="interactions">
-      <DiscordInteraction profile="bob" command>
-        add
-      </DiscordInteraction>
-    </div>
-    The sum of 1 and 1 is 2.
-  </DiscordMessage>
-  <DiscordMessage profile="robocord">
-    <div slot="interactions">
-      <DiscordInteraction profile="bob" command>
-        join
-      </DiscordInteraction>
-    </div>
-    When you join "Py" and "cord", you get: "Pycord".
-  </DiscordMessage>
-</DiscordComponent>
+        The sum of 1 and 1 is 2.
+      </DiscordMessage>
 
+      <DiscordMessage profile="robocord">
+        <div slot="interactions">
+          <DiscordInteraction profile="bob" command>
+            join
+          </DiscordInteraction>
+        </div>
+
+        When you join "Py" and "cord", you get: "Pycord".
+      </DiscordMessage>
+    </DiscordComponent>
   </TabItem>
+
   <TabItem value="1" label="Using option decorator">
+    Instead of Type Annotations, you can also use the option decorator. This is usually done to have type-hinting.
 
-Instead of Type Annotations, you can also use the option decorator. This is usually done to have type-hinting.
+    ```python title="Slash Command Type"
+    import discord
 
-```python title="Slash Command Type"
-import discord
+    bot = discord.Bot()
 
-bot = discord.Bot()
+    @bot.command()
+    @discord.option("first", type=discord.SlashCommandOptionType.string) # type = str also works
+    @discord.option("second", type=discord.SlashCommandOptionType.string) # type = str also works
+    async def join(
+      ctx,
+      first: str,
+      second: str,
+    ):
+      joined = first + second
+      await ctx.respond(f"When you join \"{first}\" and \"{second}\", you get: \"{joined}\".")
 
-@bot.command()
-@discord.option("first", type=discord.SlashCommandOptionType.string) # type = str also works
-@discord.option("second", type=discord.SlashCommandOptionType.string) # type = str also works
-async def join(
-  ctx,
-  first: str,
-  second: str,
-):
-  joined = first + second
-  await ctx.respond(f"When you join \"{first}\" and \"{second}\", you get: \"{joined}\".")
+    bot.run("TOKEN")
+    ```
 
-bot.run("TOKEN")
-```
+    <DiscordComponent>
+      <DiscordMessage profile="robocord">
+        <div slot="interactions">
+          <DiscordInteraction profile="bob" command>
+            join
+          </DiscordInteraction>
+        </div>
 
-<DiscordComponent>
-  <DiscordMessage profile="robocord">
-    <div slot="interactions">
-      <DiscordInteraction profile="bob" command>
-        join
-      </DiscordInteraction>
-    </div>
-    When you join "Py" and "cord", you get: "Pycord".
-  </DiscordMessage>
-</DiscordComponent>
-
+        When you join "Py" and "cord", you get: "Pycord".
+      </DiscordMessage>
+    </DiscordComponent>
   </TabItem>
 </Tabs>
 
 ## Autocomplete
+
 Discord's autocomplete allows developers to determine option choices that are used in a slash command option. You can do this by defining a function:
 
 ```py
@@ -272,7 +275,8 @@ async def animal_command(
         animal
       </DiscordInteraction>
     </div>
-   You picked an animal type of <code>Marine</code> that led you to pick <code>Shark</code>!
+
+    You picked an animal type of <code>Marine</code> that led you to pick <code>Shark</code>!
   </DiscordMessage>
 </DiscordComponent>
 
@@ -284,8 +288,8 @@ Autocomplete can **only** be used with slash commands.
 
 :::info Related Topics
 
--   [Interactions Index](../../interactions)
--   [Rules and Common Practices](../../getting-started/rules-and-common-practices)
--   [Cogs](../../popular-topics/cogs)
+* [Interactions Index](../../interactions)
+* [Rules and Common Practices](../../getting-started/rules-and-common-practices)
+* [Cogs](../../popular-topics/cogs)
 
 :::

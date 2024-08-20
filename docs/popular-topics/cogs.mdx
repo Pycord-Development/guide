@@ -72,7 +72,7 @@ not work on its own. In your main bot file, you must add the following code:
 bot.load_extension('cogs.greetings')
 ```
 
-This loads the file `cogs/greetings.py` and adds it to the bot. 
+This loads the file `cogs/greetings.py` and adds it to the bot.
 The argument of `load_extension` should be your cog's path (e.g. cogs/greetings.py) without the file
 extension and with the `/` replaced with `.`
 
@@ -97,9 +97,9 @@ is because cogs work slightly different from a regular file.
 
 ### The `self` variable
 
-The self variable is a variable that represents a class. In the case of cogs, `self` represents 
+The self variable is a variable that represents a class. In the case of cogs, `self` represents
 the cog. In the `__init__` function, you can see that we have `self.bot = bot`. `bot` represents your
-`discord.Bot` or `discord.ext.commands.Bot` instance, which is used for some functions. 
+`discord.Bot` or `discord.ext.commands.Bot` instance, which is used for some functions.
 
 This means that instead of using functions that would usually be accessed via `bot`, you now need
 to access them via `self.bot`
@@ -111,7 +111,7 @@ wouldn't be able to access our bot instance.
 ### Creating Commands
 
 When creating prefixed commands, your decorator would usually be something like `@bot.command()`. If you're using
-cogs, this isn't the case. In a cog, you can't access the bot instance outside of functions, so to 
+cogs, this isn't the case. In a cog, you can't access the bot instance outside of functions, so to
 register a function as a command, you must instead use `@commands.command()`.
 
 Similar to prefixed commands, you'll have to use either the `@discord.slash_command()`, `@discord.user_command()`,
@@ -132,9 +132,9 @@ create a help command [here](../extensions/commands/help-command).
 
 :::info Related Topics
 
--   [Creating a Help Command](../extensions/commands/help-command)
--   [Rules and Common Practices](../getting-started/rules-and-common-practices)
--   [Prefixed Commands](../extensions/commands/prefixed-commands)
--   [Application Commands](../interactions#application-commands)
+* [Creating a Help Command](../extensions/commands/help-command)
+* [Rules and Common Practices](../getting-started/rules-and-common-practices)
+* [Prefixed Commands](../extensions/commands/prefixed-commands)
+* [Application Commands](../interactions#application-commands)
 
 :::
