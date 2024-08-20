@@ -2,7 +2,12 @@
   "extends": "@tsconfig/docusaurus/tsconfig.json",
   "compilerOptions": {
     "target": "esnext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "esModuleInterop": true,
+    "allowJs": true,
     "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
     "baseUrl": ".",
     "forceConsistentCasingInFileNames": true,
     "paths": {
