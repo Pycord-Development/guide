@@ -1,0 +1,168 @@
+---
+title: Paginator Basics
+---
+
+# Paginator Basics
+
+## [Page](https://docs.pycord.dev/en/stable/ext/pages/index.html#page)
+
+This class contains two attributes: `content` and `embeds`, which correspond to the attributes of the same name on the
+`discord.Message` class.
+To create a new Page, use the following syntax:
+
+```py
+import discord
+page = Page(content="My Page Content", embeds=[discord.Embed(title="My First Embed Title")])
+```
+
+## [PageGroup](https://docs.pycord.dev/en/stable/ext/pages/index.html#pagegroup)
+
+This class represents a group of pages. It uses most of the same parameters as `Paginator`, which allows each
+`PageGroup` to effectively have its own settings and behaviours.
+
+## [Paginator](https://docs.pycord.dev/en/stable/ext/pages/index.html#paginator)
+
+This is the main class for `ext.pages`, and is used to control most of the functionality of the extension.
+
+In its most basic form, with no arguments provided (default values listed below), a paginator can be created like so:
+
+```py title="Paginator Example"
+import discord
+from discord.ext.pages import Paginator, Page
+
+my_pages = [
+    Page(
+        content="This is my first page. It has a list of embeds and message content.",
+        embeds=[
+            discord.Embed(title="My First Embed Title"),
+            discord.Embed(title="My Second Embed Title"),
+        ],
+    ),
+    Page(
+        content="This is my second page. It only has message content.",
+    ),
+    Page(
+        embeds=[
+            discord.Embed(
+                title="This is my third page.",
+                description="It has no message content, and one embed.",
+            )
+        ],
+    ),
+]
+paginator = Paginator(pages=my_pages)
+```
+
+The only required parameter for `Paginator` is the `pages` parameter, which is usually a list of `Page` objects.
+
+You can also pass in a list of `PageGroup` objects, a list of strings, a list of embeds, or a list of lists of embeds.
+
+Once the `Paginator` instance is created, you can call either
+[`Paginator.send()`](https://docs.pycord.dev/en/stable/ext/pages/index.html#discord.ext.pages.Paginator.send)
+or [`Paginator.respond()`](https://docs.pycord.dev/en/stable/ext/pages/index.html#discord.ext.pages.Paginator.respond)
+to send a message or response with the paginator's contents.
+
+#### Depending on what's being passed to the `pages` parameter, the behaviour of the paginator may differ:
+
+- Passing a list of `PageGroup` objects will essentially treat each `PageGroup` as its own Paginator, with most
+  `Paginator` attributes able to be set independently for each `PageGroup`.
+      \-   Each `PageGroup` accepts its own `pages` parameter, which inherits the same behaviour as the `pages` parameter
+      of `Paginator`, except it cannot contain other `PageGroup` objects.
+- If a page is a `Page` object, this will allow you to specify both the `discord.Message.content` and
+  `discord.Message.embeds` attributes for a page.
+      \-   **This is the preferred method of defining a page.**
+- If a page is a string, this will be used for the `discord.Message.content` attribute. This type of page cannot have
+  any embeds.
+- If a page is a list of embeds, this will be used for the `discord.Message.embeds` attribute. This type of page
+  cannot have any message content.
+- If a page is a list of lists of embeds, each parent list item will create a page containing all embeds from its
+  child list. This type of page cannot have any message content.
+
+#### Parameters for the `Paginator` class which have default values:
+
+- `show_disabled` **:** `True`
+  - Show buttons that are disabled (i.e. can't be clicked)
+- `author_check` **:** `True`
+  - Only the author can interact with the paginator.
+- `timeout` **:** `180` _(seconds)_
+  - The paginator will time out and become inactive after this many seconds.
+- `disable_on_timeout` **:** `True`
+  - If the paginator times out, it will be automatically disabled and all buttons will be unusable.
+- `use_default_buttons` **:** `True`
+  - Use the default set of 4 buttons and a page indicator.
+- `show_indicator` **:** `True`
+  - When using the default buttons, shows a middle 5th button with the current/total page numbers.
+
+**For other parameters that can be set on initialization, please check the
+[API Reference](https://docs.pycord.dev/en/stable/ext/pages/index.html#paginator)**
+
+## [PaginatorButton](https://docs.pycord.dev/en/stable/ext/pages/index.html#paginatorbutton)
+
+This class represents a button used to navigate between the pages of a paginator. It's also used to create the page
+indicator.
+
+When creating your own custom buttons, you can either use this class directly or subclass it to add any additional
+functionality you may need.
+
+To add custom buttons to the paginator instead of the default navigation buttons, you have two options to do so:
+
+1. **Using the `custom_buttons` parameter of `Paginator`:**
+
+   ```py
+   import discord
+   from discord.ext.pages import PaginatorButton, Paginator
+
+   buttons = [
+               PaginatorButton("first", label="<<-", style=discord.ButtonStyle.green),
+               PaginatorButton("prev", label="<-", style=discord.ButtonStyle.green),
+               PaginatorButton("page_indicator", style=discord.ButtonStyle.gray, disabled=True),
+               PaginatorButton("next", label="->", style=discord.ButtonStyle.green),
+               PaginatorButton("last", label="->>", style=discord.ButtonStyle.green),
+           ]
+   paginator = Paginator(
+               pages=["Page 1", "Page 2", "Page 3"],
+               show_indicator=True,
+               use_default_buttons=False,
+               custom_buttons=buttons,
+           )
+   ```
+2. **Using `Paginator.add_button()`:**
+
+   ```py
+   import discord
+   from discord.ext.pages import PaginatorButton, Paginator
+
+   paginator = Paginator(pages=["Page 1", "Page 2", "Page 3"], use_default_buttons=False)
+   paginator.add_button(PaginatorButton("prev", label="<", style=discord.ButtonStyle.green))
+   paginator.add_button(PaginatorButton("page_indicator", style=discord.ButtonStyle.gray, disabled=True))
+   paginator.add_button(PaginatorButton("next", label=">", style=discord.ButtonStyle.green))
+   ```
+
+If you want to use the default navigation buttons, but not all of them, you can also use `Paginator.remove_button()` to
+selectively remove them:
+
+```py
+from discord.ext.pages import Paginator
+
+paginator = Paginator(pages=["Page 1", "Page 2", "Page 3"])
+paginator.remove_button("first")
+paginator.remove_button("last")
+```
+
+## [PaginatorMenu](https://docs.pycord.dev/en/stable/ext/pages/index.html#paginatormenu)
+
+This class represents the `discord.Select` menu used to navigate between `PageGroup` instances. In most situations, you
+will not need to interact with this class directly.
+
+If you do subclass it, you'll likely want to call `super()` in your `__init__` method to ensure that the `PageGroup`
+navigation functionality is retained.
+
+## Usage Examples
+
+For a comprehensive list of examples showing all `Paginator` functionality, please see the
+[example in cog form](https://github.com/Pycord-Development/pycord/blob/master/examples/views/paginator.py) in the repo.
+
+## Support and Feedback
+
+If you have any questions, suggestions, or feedback for `ext.pages`, please join the
+[Discord server](https://discord.gg/pycord).

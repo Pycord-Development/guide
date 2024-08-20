@@ -1,0 +1,383 @@
+---
+title: Error Handling
+description: All about handling errors.
+---
+
+import {
+    DiscordEmbed,
+    DiscordInteraction,
+    DiscordMessage,
+} from "discord-message-components/packages/react";
+import DiscordComponent, { defaultOptions } from "@site/src/components/DiscordComponent";
+
+## About
+
+When using the library, errors are frequently raised due to various reasons. These reasons range from the Discord API 
+failing your bot's request due to missing permissions or an invalid syntax error.
+
+Before going into error handling, it's best that you learn the basic ways of handling errors. A good resource is:
+
+- [W3Schools' Guide to Python Try-Except Statements](https://www.w3schools.com/python/python_try_except.asp)
+
+## <span id="basic">Basic Handling</span>
+
+The most basic way to handle errors is to tackle it at the source. This can be done like so:
+
+```python title="./main.py"
+# This code requires the `message_content` privileged intent for prefixed commands.
+
+import asyncio
+
+import discord
+
+intents = discord.Intents.default()
+intents.message_content = True
+
+bot = discord.Bot(intents=intents)
+
+
+@bot.slash_command(description="Gets some feedback.")
+@discord.option("name", description="Enter your name.")
+async def feedback(ctx: discord.ApplicationContext, name: str):
+    try:
+        await ctx.respond(f"Hey, {name}! Send your feedback within the next 30 seconds please!")
+
+        def is_author(m: discord.Message):
+            return m.author.id == ctx.author.id
+
+        feedback_message = await bot.wait_for("message", check=is_author, timeout=30.0) 
+        await ctx.send(f"Thanks for the feedback!\nReceived feedback: `{feedback_message.content}`")
+    except asyncio.TimeoutError:
+        await ctx.send("Timed out, please try again!")
+
+
+bot.run("TOKEN")
+```
+
+If you respond within 30 seconds, the interaction will look like so:
+
+<DiscordComponent>
+    <DiscordMessage profile="robocord">
+        <div slot="interactions">
+            <DiscordInteraction profile="dorukyum" command>
+                feedback
+            </DiscordInteraction>
+        </div>
+        Hey, Dorukyum! Send your feedback within the next 30 seconds please!
+    </DiscordMessage> 
+    <DiscordMessage profile="dorukyum">
+        Great bot!
+    </DiscordMessage>
+    <DiscordMessage profile="robocord">
+        Thanks for the feedback!
+        <br />
+        Received feedback: <code>Great bot!</code>
+    </DiscordMessage>
+</DiscordComponent>
+<br />
+
+Otherwise, if you don't respond in time, the interaction will go as follows:
+
+<DiscordComponent>
+    <DiscordMessage profile="robocord">
+        <div slot="interactions">
+            <DiscordInteraction profile="dorukyum" command>
+                feedback
+            </DiscordInteraction>
+        </div>
+        Hey, Dorukyum! Send your feedback within the next 30 seconds please!
+    </DiscordMessage>
+    <DiscordMessage profile="robocord">
+        Timed out, please try again!
+    </DiscordMessage>
+</DiscordComponent>
+<br />
+
+This basic method of error handling can be extended to handle 
+many other errors including ones raised directly by py-cord.
+
+## <span id="percommand">Per-Command Handling</span>
+
+This type of error handling allows you to handle errors per each command you have on your bot.
+Each and every command can have it's own error handler made to handle specific errors that each command may raise!
+
+An example of per-command error handling is as follows:
+
+:::note Bridge Commands
+
+For these types of commands, it is recommended to utilize global error handling 
+until [the feature](https://github.com/Pycord-Development/pycord/issues/1388) is added.
+:::
+
+```python title="./main.py"
+import discord
+from discord.ext import commands
+
+bot = discord.Bot(owner_id=...)  # Your Discord user ID goes in owner_id
+
+
+@bot.slash_command(description="A private command...")
+@commands.is_owner()  # This decorator will raise commands.NotOwner if the invoking user doesn't have the owner_id
+async def secret(ctx: discord.ApplicationContext):
+    await ctx.respond(f"Hey {ctx.author.name}! This is a secret command!")
+
+
+@secret.error
+async def on_application_command_error(ctx: discord.ApplicationContext, error: discord.DiscordException):
+    if isinstance(error, commands.NotOwner):
+        await ctx.respond("Sorry, only the bot owner can use this command!")
+    else:
+        raise error  # Here we raise other errors to ensure they aren't ignored
+
+
+bot.run("TOKEN")
+```
+
+If your ID is registered as the owner ID, you'll get the following:
+
+<DiscordComponent>
+    <DiscordMessage profile="robocord">
+        <div slot="interactions">
+            <DiscordInteraction profile="dorukyum" command>
+                secret
+            </DiscordInteraction>
+        </div>
+        Hey Dorukyum! This is a secret command!
+    </DiscordMessage>
+</DiscordComponent>
+<br />
+
+Any other user whose ID doesn't match the bot owner's will get the following:
+
+<DiscordComponent>
+    <DiscordMessage profile="robocord">
+        <div slot="interactions">
+            <DiscordInteraction profile="bob" command>
+                secret
+            </DiscordInteraction>
+        </div>
+        Sorry, only the bot owner can use this command!
+    </DiscordMessage>
+</DiscordComponent>
+<br />
+
+This local (per-command) error handler can also be used to handle the same types of errors that standard try-except
+statements can handle. This is done by using the same method as above with the `isinstance` built-in function.
+
+## <span id="percog">Per-Cog Handling</span>
+
+Adding error handlers per-command can be quite the task in terms of work if you have a lot. If you have happened to
+group your commands in cogs, then you're in luck! You can create an error handler that is specific to a cog and 
+handles all errors raised by commands inside that cog.
+
+Here's an example of a bot with a cog that implements its own error handling:
+
+```python title="./cogs/dm.py"
+# This cog is for DM only commands! Sadly, we only have 1 command here right now...
+
+import discord
+from discord.ext import commands
+
+
+class DM(commands.Cog):
+    def __init__(self, bot: commands.Bot):
+        self.bot = bot
+
+    @commands.command()
+    @commands.dm_only()  # This decorator will raise commands.PrivateMessageOnly if invoked in a guild context.
+    async def avatar(self, ctx: commands.Context):
+        embed = discord.Embed(
+            title="Avatar", 
+            description=f"Here's your enlarged avatar, {ctx.author.name}!",
+            color=ctx.author.top_role.color
+        )
+        embed.set_image(url=ctx.author.display_avatar.url)
+        await ctx.send(embed=embed, reference=ctx.message)
+
+    async def cog_command_error(self, ctx: commands.Context, error: commands.CommandError):
+        if isinstance(error, commands.PrivateMessageOnly):
+            await ctx.send("Sorry, you can only use this in private messages!", reference=ctx.message)
+        else:
+            raise error  # Here we raise other errors to ensure they aren't ignored
+
+
+def setup(bot: commands.Bot):
+    bot.add_cog(DM(bot))
+```
+
+```python title="./main.py"
+# This code requires the `message_content` privileged intent for prefixed commands.
+
+# This is the main file where we load the DM cog and run the bot.
+
+import discord
+from discord.ext import commands
+
+intents = discord.Intents.default()
+intents.message_content = True 
+
+bot = commands.Bot(command_prefix=commands.when_mentioned_or("!"))
+bot.load_extension("cogs.dm")
+bot.run("TOKEN")
+```
+
+If you use this command in a DM context, you'll get the following:
+
+<DiscordComponent>
+    <DiscordMessage profile="bob">
+        !avatar
+    </DiscordMessage>
+    <DiscordMessage profile="robocord">
+        <div slot="interactions">
+            <DiscordInteraction profile="bob" highlight>
+                !avatar
+            </DiscordInteraction>
+        </div>
+        <DiscordEmbed embedTitle="Avatar" image="/img/bob.png" borderColor={defaultOptions.profiles.bob.roleColor}>
+            Here's your enlarged avatar, BobDotCom!
+        </DiscordEmbed>
+    </DiscordMessage>
+</DiscordComponent>
+<br />
+
+Otherwise, if used in a guild context:
+
+<DiscordComponent>
+    <DiscordMessage profile="dorukyum">
+        !avatar
+    </DiscordMessage>
+    <DiscordMessage profile="robocord">
+        <div slot="interactions">
+            <DiscordInteraction profile="dorukyum" highlight>
+                !avatar
+            </DiscordInteraction>
+        </div>
+        Sorry, you can only use this in private messages!
+    </DiscordMessage>
+</DiscordComponent>
+<br />
+
+Per-cog error handling comes in very handy as you can relegate all of your error handling to a single function instead
+of spreading it out across several per-command error handlers or inside the commands themselves.
+
+## <span id="global">Global Handling</span>
+
+If separating your error handling is not how you would like to handle errors, then global error handling is the way to
+go. This method of handling allows you to relegate all handling to a single function that resides within your bot 
+instance.
+
+A non-subclassed bot would implement this like so:
+
+```python title="./main.py"
+import discord
+from discord.ext import commands
+
+bot = discord.Bot()
+
+
+@bot.slash_command(description="Get the bot's current latency!")
+@commands.cooldown(1, 30, commands.BucketType.user) 
+# ^ This decorator allows one usage of the command every 30 seconds and raises commands.CommandOnCooldown if exceeded
+async def ping(ctx: discord.ApplicationContext):
+    await ctx.respond(f"Pong! `{int(bot.latency*1000)} ms`.")
+
+
+@bot.event
+async def on_application_command_error(ctx: discord.ApplicationContext, error: discord.DiscordException):
+    if isinstance(error, commands.CommandOnCooldown):
+        await ctx.respond("This command is currently on cooldown!")
+    else:
+        raise error  # Here we raise other errors to ensure they aren't ignored
+
+
+bot.run("TOKEN")
+```
+
+If you've subclassed your bot, the `on_application_command_error` event will be placed inside the subclass without a
+`bot.event` decorator and `bot.slash_command` will be replaced with `discord.slash_command`.
+
+The error handling used above will yield this interaction if the command is used again too quickly:
+
+<DiscordComponent>
+    <DiscordMessage profile="robocord">
+        <div slot="interactions">
+            <DiscordInteraction profile="bob" command>
+                ping
+            </DiscordInteraction>
+        </div>
+        Pong! <code>49</code> ms.
+    </DiscordMessage>
+    <DiscordMessage profile="robocord">
+        <div slot="interactions">
+            <DiscordInteraction profile="bob" command>
+                ping
+            </DiscordInteraction>
+        </div>
+        This command is currently on cooldown!
+    </DiscordMessage>
+</DiscordComponent>
+<br />
+
+The only issue regarding global error handling is that, if you have a large amount of commands, the global handler may
+start to get crammed with a lot of code. This is where all the previously mentioned handlers can take their place!
+
+## FAQ
+
+#### Why does the example in per-cog handling have self at the start of its function signatures?
+
+This is a feature of classes and allows you to reference the cog object as `self` and get access to the bot object
+passed at initialization through `self.bot`.
+
+If this is new to you, we recommend checking out these helpful resources to learn more about classes and cogs:
+
+- [W3Schools' Guide to Python Classes & Objects](https://www.w3schools.com/python/python_classes.asp)
+- [Our Cogs Guide Page](./cogs)
+
+#### How many errors can I handle in a single error handler?
+
+While all the examples in this guide page only handle one specific error and re-raise all others, all of these
+error handlers can be extended to catch many errors.
+
+In [basic handling](#basic) (i.e. try/except statements) you can do one of two things:
+
+- Explicitly handle the errors you know might get raised and then have a broad `except Exception as exc:` statement
+  as a catch-all.
+- Catch any and all errors via the catch-all statement mentioned above.
+
+In [per-command](#percommand), [per-cog](#percog), and [global handling](#global), you can use elif clauses with the
+built-in isinstance function to catch specific errors. Atop of this, an else clause can be used to catch any other
+errors you either don't want to handle or want to relegate to a different error handler.
+
+#### Can I use more than one type of error handler at once?
+
+Thankfully, all of these different ways of error handling can be mixed together, so you don't have to pick just one!
+For commands that raise specific errors that no other commands will raise, you can use [per-command](#percommand). 
+For cogs that raise specific errors that no other cogs will raise, use [per-cog](#percog)! Lastly, for errors that
+occur frequently across all commands and cogs, use [global handling](#global)! 
+
+However, one important note to remember is that you should always raise the error again in an error handler if it 
+isn't handled there! If you don't do this, the error will go ignored and your other handlers won't have a chance to
+do their work!
+
+#### What's the difference between slash and prefixed command error handling?
+
+Although most examples shown here use slash commands, the [per-cog handling](#percog) section presents a prefixed
+command. The main difference you may notice is the change in command signature. 
+
+To make the distinguishing features apparent:
+
+- Slash commands use `on_application_command_error(ctx: discord.ApplicationContext, error: discord.DiscordException)`
+  as presented in the [per-command](#percommand) and [global handling](#global) examples.
+- Prefixed commands use `on_command_error(ctx: commands.Context, error: commands.CommandError)` as presented in the
+  [per-cog handling](#percog) example.
+
+This distinction is made as both types of commands need their own system for handling errors that are specific to
+themselves.
+
+:::info Related Topics
+
+- [Slash Commands](../interactions/application-commands/slash-commands)
+- [Prefixed Commands](../extensions/commands/prefixed-commands)
+- [Cogs](./cogs)
+
+:::

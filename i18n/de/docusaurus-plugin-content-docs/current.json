@@ -1,0 +1,46 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.defaultSidebar.category.Getting Started": {
+    "message": "Getting Started",
+    "description": "The label for category Getting Started in sidebar defaultSidebar"
+  },
+  "sidebar.defaultSidebar.category.Interactions": {
+    "message": "Interactions",
+    "description": "The label for category Interactions in sidebar defaultSidebar"
+  },
+  "sidebar.defaultSidebar.category.Application Commands": {
+    "message": "Application Commands",
+    "description": "The label for category Application Commands in sidebar defaultSidebar"
+  },
+  "sidebar.defaultSidebar.category.UI Components": {
+    "message": "UI Components",
+    "description": "The label for category UI Components in sidebar defaultSidebar"
+  },
+  "sidebar.defaultSidebar.category.Extensions": {
+    "message": "Extensions",
+    "description": "The label for category Extensions in sidebar defaultSidebar"
+  },
+  "sidebar.defaultSidebar.category.Commands": {
+    "message": "Commands",
+    "description": "The label for category Commands in sidebar defaultSidebar"
+  },
+  "sidebar.defaultSidebar.category.Pages": {
+    "message": "Pages",
+    "description": "The label for category Pages in sidebar defaultSidebar"
+  },
+  "sidebar.defaultSidebar.category.Voice": {
+    "message": "Voice",
+    "description": "The label for category Voice in sidebar defaultSidebar"
+  },
+  "sidebar.defaultSidebar.category.Popular Topics": {
+    "message": "Popular Topics",
+    "description": "The label for category Popular Topics in sidebar defaultSidebar"
+  },
+  "sidebar.defaultSidebar.category.More": {
+    "message": "More",
+    "description": "The label for category More in sidebar defaultSidebar"
+  }
+}

@@ -27,12 +27,12 @@
       
       h1 {
         text-align: center;
-        font-size: clamp(#{sentro.px-to-rem(28px)}, 10vw, #{sentro.px-to-rem(34px)});
+        font-size: clamp(#{sentro.to-rem(28px)}, 10vw, #{sentro.to-rem(34px)});
       }
       
       .pyc-hero__subtitle {
         text-align: center;
-        font-size: clamp(#{sentro.px-to-rem(16px)}, 5.3vw, #{sentro.px-to-rem(18px)});
+        font-size: clamp(#{sentro.to-rem(16px)}, 5.3vw, #{sentro.to-rem(18px)});
         font-weight: 300;
         font-family: sentro.token-get('subtitle-family');
       }
@@ -56,7 +56,7 @@
           user-select: text;
           
           code {
-            font-size: sentro.px-to-rem(16px);
+            font-size: sentro.to-rem(16px);
             font-family: sentro.token-get('code-family');
             white-space: nowrap;
             
@@ -72,7 +72,7 @@
             padding: 0.3rem;
             
             .pyc-button__icon {
-              font-size: sentro.px-to-rem(16px);
+              font-size: sentro.to-rem(16px);
             }
           }
         }
