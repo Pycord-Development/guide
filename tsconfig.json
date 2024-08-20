@@ -9,6 +9,6 @@
       "@site/*": ["./*"],
       "react": ["./node_modules/@types/react"]
     },
-    "strict": false
+    "strict": true
   }
 }
