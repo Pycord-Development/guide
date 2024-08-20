@@ -27,165 +27,142 @@ The syntax becomes a little more complicated when you want to have multiple comm
 disadvantages to this system. This is where the commands extension comes in. `ext.commands` has
 various advantages, such as:
 
-* Simpler syntax
-* Easier to use
-* Easier to parse user input
-* Comes with built-in help commands
-* Comes with a built-in system for categorizing commands
+-   Simpler syntax
+-   Easier to use
+-   Easier to parse user input
+-   Comes with built-in help commands
+-   Comes with a built-in system for categorizing commands
 
 <Tabs>
   <TabItem value="0" label="Using Events to Create Prefixed Commands" default>
-    ```python title="Prefixed Commands with Events"
-    import discord
 
-    client = discord.Client()
+```python title="Prefixed Commands with Events"
+import discord
 
-    @client.event
-    async def on_message(message):
-        if message.content.startswith("!ping"):
-            await message.channel.send("Pong!")
+client = discord.Client()
 
-        elif message.content.startswith("!announce"):
-            if len(message.content.split(" ")) < 3:
-                await message.channel.send("You need to specify a title and a message. Correct usage: `!announce Hello Hello everyone!`")
-                return
+@client.event
+async def on_message(message):
+    if message.content.startswith("!ping"):
+        await message.channel.send("Pong!")
 
-            msg = message.content.split(" ", 2)
-            title = msg[1]
-            content = msg[2]
+    elif message.content.startswith("!announce"):
+        if len(message.content.split(" ")) < 3:
+            await message.channel.send("You need to specify a title and a message. Correct usage: `!announce Hello Hello everyone!`")
+            return
 
-            await message.channel.send("**{}**\n{}".format(title, content))
+        msg = message.content.split(" ", 2)
+        title = msg[1]
+        content = msg[2]
 
-        elif message.content.startswith("!"):
-            await message.channel.send("Unknown command.")
-    ```
+        await message.channel.send("**{}**\n{}".format(title, content))
 
-    <DiscordComponent>
-      <DiscordMessage profile="bob">
-        !ping
-      </DiscordMessage>
+    elif message.content.startswith("!"):
+        await message.channel.send("Unknown command.")
+```
 
-      <DiscordMessage profile="robocord">
-        Pong!
-      </DiscordMessage>
-
-      <DiscordMessage profile="bob">
-        !announce Hello Hello World!
-      </DiscordMessage>
-
-      <DiscordMessage profile="robocord" t>
-        <strong>Hello</strong>
-
-        <br />
-
-        Hello World!
-      </DiscordMessage>
-
-      <DiscordMessage profile="bob">
-        !help
-      </DiscordMessage>
-
-      <DiscordMessage profile="robocord">
-        Unknown Command.
-      </DiscordMessage>
-    </DiscordComponent>
-  </TabItem>
-
-  <TabItem value="1" label="Using the Commands Extension">
-    ```python title="The Commands Extension"
-    import discord
-    from discord.ext import commands
-
-    intents = discord.Intents.default()
-    intents.message_content = True
-
-    bot = commands.Bot(command_prefix="!", intents=intents)
-
-    @bot.command()
-    async def ping(ctx):
-        await ctx.send("Pong!")
-
-    @bot.command()
-    async def announce(ctx, title, *, message):
-        await ctx.send("**{}**\n{}".format(title, message))
-
-    @bot.event
-    async def on_command_error(ctx, error):
-        if isinstance(error, commands.CommandNotFound):
-            await ctx.send("Unknown command.")
-    ```
-
-    <DiscordComponent>
-      <DiscordMessage profile="bob">
-        !ping
-      </DiscordMessage>
-
-      <DiscordMessage profile="robocord">
-        Pong!
-      </DiscordMessage>
-
-      <DiscordMessage profile="bob">
-        !announce Hello Hello World!
-      </DiscordMessage>
-
-      <DiscordMessage profile="robocord">
-        <strong>Hello</strong>
-
-        <br />
-
-        Hello World!
-      </DiscordMessage>
-
-      <DiscordMessage profile="bob">
-        !pycord
-      </DiscordMessage>
-
-      <DiscordMessage profile="robocord">
-        Unknown command.
-      </DiscordMessage>
-
-      <DiscordMessage profile="bob">
-        !help
-      </DiscordMessage>
-
-      <DiscordMessage profile="robocord">
-        <code>
-          No Category:
-
-          <br />
-
-          <div style={{ paddingLeft: "2em" }}>
-            !help Shows this message
-
-            <br />
-
-            !ping
-
-            <br />
-
-            !announce
-          </div>
-
-          <br />
-
-          Type !help command for more info on a command.
-
-          <br />
-
-          You can also type !help category for more info on a category.
-        </code>
-      </DiscordMessage>
-    </DiscordComponent>
-
+<DiscordComponent>
+  <DiscordMessage profile="bob">
+    !ping
+  </DiscordMessage>
+  <DiscordMessage profile="robocord">
+    Pong!
+  </DiscordMessage>
+  <DiscordMessage profile="bob">
+    !announce Hello Hello World!
+  </DiscordMessage>
+  <DiscordMessage profile="robocord"t>
+    <strong>Hello</strong>
     <br />
+    Hello World!
+  </DiscordMessage>
+  <DiscordMessage profile="bob">
+    !help
+  </DiscordMessage>
+  <DiscordMessage profile="robocord">
+    Unknown Command.
+  </DiscordMessage>
+</DiscordComponent>
 
-    :::tip
+  </TabItem>
+  <TabItem value="1" label="Using the Commands Extension">
 
-    The commands extension has many more uses. This example only showcases the basic features mentioned
-    in the previous example. Other things you can do with the commands extension include using a different
-    built-in help command and creating your own. The following tutorials showcase these.
+```python title="The Commands Extension"
+import discord
+from discord.ext import commands
 
-    :::
+intents = discord.Intents.default()
+intents.message_content = True
+
+bot = commands.Bot(command_prefix="!", intents=intents)
+
+@bot.command()
+async def ping(ctx):
+    await ctx.send("Pong!")
+
+@bot.command()
+async def announce(ctx, title, *, message):
+    await ctx.send("**{}**\n{}".format(title, message))
+
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.CommandNotFound):
+        await ctx.send("Unknown command.")
+```
+
+<DiscordComponent>
+  <DiscordMessage profile="bob">
+    !ping
+  </DiscordMessage>
+  <DiscordMessage profile="robocord">
+    Pong!
+  </DiscordMessage>
+  <DiscordMessage profile="bob">
+    !announce Hello Hello World!
+  </DiscordMessage>
+  <DiscordMessage profile="robocord">
+    <strong>Hello</strong>
+    <br />
+    Hello World!
+  </DiscordMessage>
+  <DiscordMessage profile="bob">
+    !pycord
+  </DiscordMessage>
+  <DiscordMessage profile="robocord">
+    Unknown command.
+  </DiscordMessage>
+  <DiscordMessage profile="bob">
+    !help
+  </DiscordMessage>
+  <DiscordMessage profile="robocord">
+    <code>
+      No Category:
+      <br />
+      <div style={{ paddingLeft: "2em" }}>
+        !help Shows this message
+        <br />
+        !ping
+        <br />
+        !announce
+      </div>
+      <br />
+      Type !help command for more info on a command.
+      <br />
+      You can also type !help category for more info on a category.
+    </code>
+  </DiscordMessage>
+</DiscordComponent>
+
+<br />
+
+:::tip
+
+The commands extension has many more uses. This example only showcases the basic features mentioned
+in the previous example. Other things you can do with the commands extension include using a different
+built-in help command and creating your own. The following tutorials showcase these.
+
+:::
+
   </TabItem>
 </Tabs>
 
@@ -226,35 +203,24 @@ bot.run("token") # Run the bot with your token.
   <DiscordMessage profile="bob">
     !ping
   </DiscordMessage>
-
   <DiscordMessage profile="robocord">
     Pong!
   </DiscordMessage>
-
   <DiscordMessage profile="bob">
     !help
   </DiscordMessage>
-
   <DiscordMessage profile="robocord">
     <code>
       No Category:
-
       <br />
-
       <div style={{ paddingLeft: "2em" }}>
         !help Shows this message
-
         <br />
-
         !ping
       </div>
-
       <br />
-
       Type !help command for more info on a command.
-
       <br />
-
       You can also type !help category for more info on a category.
     </code>
   </DiscordMessage>
@@ -283,7 +249,7 @@ async def echo(ctx, *, message):
 `ctx` is the context of the message. `*` means that the parameter can be any number of words. `message`
 is the parameter. If you had not passed `*`, `message` would only have been one word.
 
-For example, if a user had used `!echo hello world`, `message` would have been `hello`. Since we
+For example, if a user had used `!echo hello world`, `message` would have been `hello`. Since we 
 passed `*`, `message` is `hello world`, or the rest of the message.
 
 We can pass multiple parameters too!
@@ -310,28 +276,22 @@ However, since Pycord parses the message at whitespaces, the title will end up b
 message "Greetings! Greetings to you all!". The user can prevent this by typing `!echo "Holiday
 Greetings!" Greetings to you all!`.
 
+<!-- TODO: Change this to a non-holiday example, lots of people aren't religious. -->
 <DiscordComponent>
   <DiscordMessage author="Santa Claus" avatar="blue">
     !echo #general Holiday Greetings! Greetings to you all!
   </DiscordMessage>
-
   <DiscordMessage author="Elf" avatar="red" bot>
     <strong>Holiday</strong>
-
     <br />
-
     Greetings! Greetings to you all!
   </DiscordMessage>
-
   <DiscordMessage author="Mrs. Claus" avatar="green">
     !echo #general "Holiday Greetings!" Greetings to you all!
   </DiscordMessage>
-
   <DiscordMessage author="Elf" avatar="red" bot>
     <strong>Holiday Greetings!</strong>
-
     <br />
-
     Greetings to you all!
   </DiscordMessage>
 </DiscordComponent>
@@ -357,7 +317,7 @@ with `int(guess)`.
 
 :::info Related Topics
 
-* [Command Groups](groups)
-* [Rules and Common Practices](../../Getting-Started/rules-and-common-practices)
+-   [Command Groups](groups)
+-   [Rules and Common Practices](../../Getting-Started/rules-and-common-practices)
 
 :::

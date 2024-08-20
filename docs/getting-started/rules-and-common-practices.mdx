@@ -34,7 +34,7 @@ information neatly is all you need to do.
 :::
 
 Providing a Terms of Service for your bot is optional, though usually a best practice. It tells users
-what they can and cannot do with your service, and makes it easier to settle disputes if someone
+what they can and cannot do with your service, and makes it easier to settle disputes if someone 
 disagrees with you.
 
 Read more in Discord's official [Legal Docs](https://discord.com/developers/docs/legal).
@@ -53,7 +53,7 @@ of creating a Discord bot with Pycord.
 
 ### Bot Sharding
 
-To any new or maybe even experienced bot developer, sharding a bot sounds beneficial once you hear
+To any new or maybe even experienced bot developer, sharding a bot sounds beneficial once you hear 
 about it. I'm here to tell you that it isn't a good idea to shard your bot.
 
 *Wait a minute, why would it be an option if it wasn't a good idea?* It's simple. I lied. Sort of.
@@ -83,7 +83,7 @@ will be denied simply because you applied for an intent you didn't need.
 
 ### Subclassing
 
-While it may take some time, subclassing a bot is very worth it. Once again, this was explained
+While it may take some time, subclassing a bot is very worth it. Once again, this was explained 
 elsewhere, so I won't go into the details, but I felt it fit here, so I put it here.
 
 Subclassing a bot makes it more flexible and allows it to do a lot more. Read more about subclassing
@@ -91,7 +91,7 @@ bots [here](../Popular-Topics/subclassing-bots)
 
 ### Your Bot's Token
 
-Your bot is only able to be run for one reason: its token. If you followed the
+Your bot is only able to be run for one reason: its token. If you followed the 
 [guide for creating your first bot](creating-your-first-bot), you should already know a bit about
 keeping that token safe. That's exactly what you want to do.
 
@@ -113,13 +113,13 @@ Public or private, having a local Git repository connected to a remote one is a 
 almost any application. For a lot of developers, it's like saving your work. If you do this, all of
 your bot's code won't be lost if your computer spontaneously combusts, or you smash it to bits from
 anger. You can simply grab the backup computer that everyone has lying around, and you're back
-in business.
+in business. 
 
 ### Organization and Cleanliness
 
-It is *extremely* important to have organized code. This includes commands, objects, functions,
+It is *extremely* important to have organized code. This includes commands, objects, functions, 
 and classes. If you don't have organized code, it will get progressively harder for you to recognize
-it, and others won't be able to decipher it.
+it, and others won't be able to decipher it. 
 
 Make sure you utilize indents and spaces, as these are very important in making your code readable.
 
@@ -140,7 +140,7 @@ class MyClass:
         return num1 - num2
 ```
 
-See the difference? Now, which one looks more readable? Hopefully, you answered the second example.
+See the difference? Now, which one looks more readable? Hopefully, you answered the second example. 
 Python's [PEP8](https://www.python.org/dev/peps/pep-0008/) is a PEP (**Python Enhancement Proposal**)
 style guide for Python. It is the style guide that is used by most Python developers and programmers,
 providing a universal way to write and read code.
@@ -157,30 +157,25 @@ out there, like MongoDB, SQLite, and PostgreSQL to name a few.
 
 All of these databases I named do the job well, and which one you use depends on what features you want out of a database.
 
-<>
-  {/* Maybe clarify these/add more options */}
-</>
+<>{/* Maybe clarify these/add more options */}</>
 
 #### MongoDB
 
 MongoDB is a JSON-like format and if you already use JSON files, it shouldn't be too hard to migrate over to.
 
 #### SQLite
-
 SQLite is based on SQL, a common relational data model. It's a lightweight, easy-to-use, portable database solution that
 works entirely on files. However, if for some reason you cannot read/write to and from a file, and you need to manage
 lots of data, SQLite might not be for you.
 
-While SQLite is a part of the Python Standard Library as the `sqlite3` package, we recommend not using it as it is
+While SQLite is a part of the Python Standard Library as the `sqlite3` package, we recommend not using it as it is 
 synchronous and blocking. You should use an asynchronous alternative, such as [`aiosqlite`](https://pypi.org/project/aiosqlite/).
 
 #### PostgreSQL
-
 PostgreSQL is also based on SQL, but it also has more features than SQLite. It's compliant with the SQL standard,
 open-source, and extensible. However, it's not that fast or simple compared to SQLite.
 
 #### MariaDB
-
 MariaDB is also based on SQL and is a fork of the MySQL project. It's compliant with the SQL standard, it's also open
 source and is a complete drop-in replacement for any code with MySQL. You don't even need to change what package you're
 using!

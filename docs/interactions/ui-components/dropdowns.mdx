@@ -3,8 +3,10 @@ title: Select Menus
 description: Learn all about implementing Select Menus or Dropdowns in your Discord Bot with Pycord.
 ---
 
+
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+
 
 Shortly after the buttons were added, Discord added their second message component: Select Menus. Select Menus allow users to choose from a list of items sent by a bot. These are a great substitute for having a user send a number that corresponds to an option. You can even allow users to select multiple options from the Select Menus. This guide will show you the easy and painless ways of using them with Pycord.
 
@@ -65,6 +67,8 @@ This decorator adds a select menu to the view. This decorator takes a few argume
 
 That was the decorator. Now, the function itself is pretty simple. It takes two parameters, not including `self`. The parameters are `select`: The select menu, and `interaction`: a [`discord.InteractionResponse`](https://docs.pycord.dev/en/stable/api/models.html#discord.InteractionResponse) object. Both of these are passed by Pycord, so you just need to specify them in the function!
 
+<!-- TODO: The values are sorted in the order the user selected them (?). The selected values are (?) -->
+
 In the callback, you could do anything you want. You get the two parameters `select` and `interaction` to play around with. Here, we send a message using `await interaction.response.send_message` (where interaction is [`discord.InteractionResponse`](https://docs.pycord.dev/en/stable/api/models.html#discord.InteractionResponse)) with content `select.values[0]`, which sends the label of the first/only option the user selected. Obviously, this is only an example, and you could do just about anything you want.
 
 Finally, we create a global slash command called `flavour` that sends a message "Choose a flavor!" along with the view
@@ -77,25 +81,24 @@ about making your code do amazing things, while Pycord handles the rest!
 
 #### Select Menu Properties
 
-* `select_type`: The type of select to create. This must be a [`discord.ComponentType`](https://docs.pycord.dev/en/stable/api/enums.html#discord.ComponentType) value.
-* `channel_types`: A list of channel types that can be selected in the menu. This is only valid for selects of `select_type` [`discord.ComponentType.channel_select`](https://docs.pycord.dev/en/stable/api/enums.html#discord.ComponentType).
-* `options`: A list of [`discord.SelectOption`](https://docs.pycord.dev/en/stable/api/data_classes.html#discord.SelectOption) values. These are the options that can be selected in this menu.
-* `placeholder` is the placeholder text shown in the select menu if no option is selected.
-* `custom_id`: The ID of the select menu that gets received during an interaction. It is recommended not to set this to anything unless you are trying to create a persistent view.
-* `row`: The relative row this select menu belongs to. A Discord component can only have 5 rows. By default, items are arranged automatically into those 5 rows. If you’d like to control the relative positioning of the row then passing an index is advised. For example, row=1 will show up before row=2. Defaults to None, which is automatic ordering. The row number must be between 0 and 4 (i.e. zero indexed).
-* `min_values`: The minimum number of items that must be chosen for this select menu. Defaults to 1 and must be between 1 and 25.
-* `max_values`: The maximum number of items that must be chosen for this select menu. Defaults to 1 and must be between 1 and 25.
-* `disabled`: Whether the select is disabled or not. Defaults to False.
+-   `select_type`: The type of select to create. This must be a [`discord.ComponentType`](https://docs.pycord.dev/en/stable/api/enums.html#discord.ComponentType) value.
+-   `channel_types`: A list of channel types that can be selected in the menu. This is only valid for selects of `select_type` [`discord.ComponentType.channel_select`](https://docs.pycord.dev/en/stable/api/enums.html#discord.ComponentType).
+-   `options`: A list of [`discord.SelectOption`](https://docs.pycord.dev/en/stable/api/data_classes.html#discord.SelectOption) values. These are the options that can be selected in this menu.
+-   `placeholder` is the placeholder text shown in the select menu if no option is selected.
+-   `custom_id`: The ID of the select menu that gets received during an interaction. It is recommended not to set this to anything unless you are trying to create a persistent view.
+-   `row`: The relative row this select menu belongs to. A Discord component can only have 5 rows. By default, items are arranged automatically into those 5 rows. If you’d like to control the relative positioning of the row then passing an index is advised. For example, row=1 will show up before row=2. Defaults to None, which is automatic ordering. The row number must be between 0 and 4 (i.e. zero indexed).
+-   `min_values`: The minimum number of items that must be chosen for this select menu. Defaults to 1 and must be between 1 and 25.
+-   `max_values`: The maximum number of items that must be chosen for this select menu. Defaults to 1 and must be between 1 and 25.
+-   `disabled`: Whether the select is disabled or not. Defaults to False.
 
 #### Select Option Properties
 
 In the `options` parameter, you pass a list of [`discord.SelectOption`](https://docs.pycord.dev/en/stable/api/data_classes.html#discord.SelectOption) values. This class also has a few parameters:
-
-* `default` (whether the option is selected by default)
-* `description` (an additional description, if any)
-* `emoji` (a string or an emoji object, if any)
-* `label` (the name displayed to users, can be up to 100 characters)
-* `value` (a special value of the option, defaults to the label).
+-   `default` (whether the option is selected by default)
+-   `description` (an additional description, if any)
+-   `emoji` (a string or an emoji object, if any)
+-   `label` (the name displayed to users, can be up to 100 characters)
+-   `value` (a special value of the option, defaults to the label).
 
 ## Select Types
 
@@ -185,28 +188,32 @@ async def select_menu(ctx):
 
 <Tabs>
   <TabItem value="disabling-a-single-component" label="Disabling a single component" default>
-    ```python
-    class MyView(discord.ui.View):
-      @discord.ui.select(options = [...])
-      async def select_callback(self, select, interaction):
-          select.disabled = True # set the status of the select as disabled
-          await interaction.response.edit_message(view=self) # edit the message to show the changes
-    ```
+
+```python
+class MyView(discord.ui.View):
+  @discord.ui.select(options = [...])
+  async def select_callback(self, select, interaction):
+      select.disabled = True # set the status of the select as disabled
+      await interaction.response.edit_message(view=self) # edit the message to show the changes
+```
+
   </TabItem>
 
   <TabItem value="disabling-all-children" label="Disabling all the components of a view">
-    ```python
-    class MyView(discord.ui.View):
-        @discord.ui.select(options = [...])
-        async def first_select_callback(self, select, interaction):
-            self.disable_all_items()
-            await interaction.response.edit_message(view=self) # edit the message to show the changes
 
-        @discord.ui.select(options = [...])
-        async def second_select_callback(self, select, interaction):
-            self.disable_all_items()
-            await interaction.response.edit_message(view=self)
-    ```
+```python
+class MyView(discord.ui.View):
+    @discord.ui.select(options = [...])
+    async def first_select_callback(self, select, interaction):
+        self.disable_all_items()
+        await interaction.response.edit_message(view=self) # edit the message to show the changes
+
+    @discord.ui.select(options = [...])
+    async def second_select_callback(self, select, interaction):
+        self.disable_all_items()
+        await interaction.response.edit_message(view=self)
+```
+
   </TabItem>
 </Tabs>
 
@@ -215,41 +222,44 @@ async def select_menu(ctx):
 You may want a select menu to automatically stop working after a certain amount of time. This is where timeouts come in.
 
 <Tabs>
-  <TabItem value="0" label="Specifying time when creating a view object">
-    ```python
-    class MyView(discord.ui.View):
-        async def on_timeout(self):
-            self.disable_all_items()
-            await self.message.edit(content="You took too long! Disabled all the components.", view=self)
+<TabItem value="0" label="Specifying time when creating a view object">
 
-        @discord.ui.select(options = [...])
-        async def select_callback(self, select, interaction):
-            ...
+```python
+class MyView(discord.ui.View):
+    async def on_timeout(self):
+        self.disable_all_items()
+        await self.message.edit(content="You took too long! Disabled all the components.", view=self)
 
-    @bot.command()
-    async def select(ctx):
-        await ctx.send(view=MyView(timeout=30)) # specify the timeout here
-    ```
-  </TabItem>
+    @discord.ui.select(options = [...])
+    async def select_callback(self, select, interaction):
+        ...
 
-  <TabItem value="1" label="Specifying the time when subclassing">
-    ```python
-    class MyView(discord.ui.View):
-        def __init__(self):
-            super().__init__(timeout=10) # specify the timeout here
+@bot.command()
+async def select(ctx):
+    await ctx.send(view=MyView(timeout=30)) # specify the timeout here
+```
 
-        async def on_timeout(self):
-            self.disable_all_items()
-            await self.message.edit(content="You took too long! Disabled all the components.", view=self)
+</TabItem>
+<TabItem value="1" label="Specifying the time when subclassing">
 
-        @discord.ui.select(options = [...])
-        async def select_callback(self, select, interaction):
-            ...
-    ```
-  </TabItem>
+```python
+class MyView(discord.ui.View):
+    def __init__(self):
+        super().__init__(timeout=10) # specify the timeout here
+
+    async def on_timeout(self):
+        self.disable_all_items()
+        await self.message.edit(content="You took too long! Disabled all the components.", view=self)
+
+    @discord.ui.select(options = [...])
+    async def select_callback(self, select, interaction):
+        ...
+```
+
+</TabItem>
 </Tabs>
 
-Here, we disable all buttons and select menus in the view. Then, we edit the message to show that the timeout was reached.
+Here, we disable all buttons and select menus in the view. Then, we edit the message to show that the timeout was reached. 
 
 :::note
 
@@ -315,8 +325,8 @@ We highly recommend you learn about basic Python concepts like classes and inher
 
 **Resources**:
 
-* [W3Schools's Guide to Python Classes & Objects](https://www.w3schools.com/python/python_classes.asp)
-* [W3Schools's Guide to Python Inheritance](https://www.w3schools.com/python/python_inheritance.asp)
+-   [W3Schools's Guide to Python Classes & Objects](https://www.w3schools.com/python/python_classes.asp)
+-   [W3Schools's Guide to Python Inheritance](https://www.w3schools.com/python/python_inheritance.asp)
 
 #### Do select menus need any special permissions?
 
@@ -324,7 +334,7 @@ No new permissions are needed in the bot or in the server.
 
 :::info Related Topics
 
-* [Slash Commands](../application-commands/slash-commands)
-* [Interactions Index](../../interactions)
+-   [Slash Commands](../application-commands/slash-commands)
+-   [Interactions Index](../../interactions)
 
 :::

@@ -17,6 +17,7 @@ import DiscordComponent from "@site/src/components/DiscordComponent";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
+
 On May 26, 2021, Discord added a new interaction called buttons. Instead of reactions, bots could now
 send buttons and users could use them to interact with bots. This opened up a whole new world of
 possibilities for bots. Soon after, developers made calculators, polls, and games like blackjack, UNO,
@@ -61,9 +62,7 @@ Using this command should return the following message:
         button
       </DiscordInteraction>
     </div>
-
     This is a button!
-
     <div slot="actions">
       <DiscordButtons>
         <DiscordButton type="primary" emoji="😎">Click me!</DiscordButton>
@@ -91,6 +90,8 @@ This is the basic syntax of creating a button. What you create with it is up to 
 about making your button do amazing things, while Pycord handles the rest!
 
 ## Button Styles
+
+<!-- Button Styles is explained before the other sections because the user should know about disabled buttons, button colours, and so on to be able to understand timeouts -->
 
 | Name      | Usage                                                                                     | Color   |
 | --------- | ----------------------------------------------------------------------------------------- | ------- |
@@ -157,29 +158,33 @@ async def button(ctx):
 
 <Tabs>
   <TabItem value="disabling-a-single-component" label="Disabling a single component" default>
-    ```python
-    class MyView(discord.ui.View):
-      @discord.ui.button(label="A button", style=discord.ButtonStyle.primary)
-      async def button_callback(self, button, interaction):
-          button.disabled = True # set button.disabled to True to disable the button
-          button.label = "No more pressing!" # change the button's label to something else
-          await interaction.response.edit_message(view=self) # edit the message's view
-    ```
+
+```python
+class MyView(discord.ui.View):
+  @discord.ui.button(label="A button", style=discord.ButtonStyle.primary)
+  async def button_callback(self, button, interaction):
+      button.disabled = True # set button.disabled to True to disable the button
+      button.label = "No more pressing!" # change the button's label to something else
+      await interaction.response.edit_message(view=self) # edit the message's view
+```
+
   </TabItem>
 
   <TabItem value="disabling-all-children" label="Disabling all the components of a view">
-    ```python
-    class MyView(discord.ui.View):
-        @discord.ui.button(emoji="😀", label="Button 1", style=discord.ButtonStyle.primary)
-        async def button_callback(self, button, interaction):
-            self.disable_all_items()
-            await interaction.response.edit_message(view=self)
 
-        @discord.ui.button(label="Button 2", style=discord.ButtonStyle.primary)
-        async def second_button_callback(self, button, interaction):
-            self.disable_all_items()
-            await interaction.response.edit_message(view=self)
-    ```
+```python
+class MyView(discord.ui.View):
+    @discord.ui.button(emoji="😀", label="Button 1", style=discord.ButtonStyle.primary)
+    async def button_callback(self, button, interaction):
+        self.disable_all_items()
+        await interaction.response.edit_message(view=self)
+
+    @discord.ui.button(label="Button 2", style=discord.ButtonStyle.primary)
+    async def second_button_callback(self, button, interaction):
+        self.disable_all_items()
+        await interaction.response.edit_message(view=self)
+```
+
   </TabItem>
 </Tabs>
 
@@ -188,38 +193,41 @@ async def button(ctx):
 Sometimes, you want to have a button that is disabled after a certain amount of time. This is where timeouts come in.
 
 <Tabs>
-  <TabItem value="0" label="Specifying time when creating a view object">
-    ```python
-    class MyView(discord.ui.View):
-        async def on_timeout(self):
-            self.disable_all_items()
-            await self.message.edit(content="You took too long! Disabled all the components.", view=self)
+<TabItem value="0" label="Specifying time when creating a view object">
 
-        @discord.ui.button()
-        async def button_callback(self, button, interaction):
-            ...
+```python
+class MyView(discord.ui.View):
+    async def on_timeout(self):
+        self.disable_all_items()
+        await self.message.edit(content="You took too long! Disabled all the components.", view=self)
 
-    @bot.command()
-    async def button(ctx):
-        await ctx.send("Press the button!", view=MyView(timeout=30))
-    ```
-  </TabItem>
+    @discord.ui.button()
+    async def button_callback(self, button, interaction):
+        ...
 
-  <TabItem value="1" label="Specifying the time when subclassing">
-    ```python
-    class MyView(discord.ui.View):
-        def __init__(self):
-            super().__init__(timeout=10) # specify the timeout here
+@bot.command()
+async def button(ctx):
+    await ctx.send("Press the button!", view=MyView(timeout=30))
+```
 
-        async def on_timeout(self):
-            self.disable_all_items()
-            await self.message.edit(content="You took too long! Disabled all the components.", view=self)
+</TabItem>
+<TabItem value="1" label="Specifying the time when subclassing">
 
-        @discord.ui.button()
-        async def button_callback(self, button, interaction):
-            ...
-    ```
-  </TabItem>
+```python
+class MyView(discord.ui.View):
+    def __init__(self):
+        super().__init__(timeout=10) # specify the timeout here
+
+    async def on_timeout(self):
+        self.disable_all_items()
+        await self.message.edit(content="You took too long! Disabled all the components.", view=self)
+
+    @discord.ui.button()
+    async def button_callback(self, button, interaction):
+        ...
+```
+
+</TabItem>
 </Tabs>
 
 Here, we disable all buttons and select menus in the view. Then, we edit the message to show that the timeout was reached.
@@ -288,8 +296,8 @@ We highly recommend you learn about basic Python concepts like classes and inher
 
 **Resources**:
 
-* [W3Schools's Guide to Python Classes & Objects](https://www.w3schools.com/python/python_classes.asp)
-* [W3Schools's Guide to Python Inheritance](https://www.w3schools.com/python/python_inheritance.asp)
+-   [W3Schools's Guide to Python Classes & Objects](https://www.w3schools.com/python/python_classes.asp)
+-   [W3Schools's Guide to Python Inheritance](https://www.w3schools.com/python/python_inheritance.asp)
 
 #### Do buttons need any special permissions?
 
@@ -301,7 +309,7 @@ That is up to you. Buttons do provide a cleaner interface for your bot and are e
 
 :::info Related Topics
 
-* [Slash Commands](../application-commands/slash-commands)
-* [Interactions Index](../../interactions)
+-   [Slash Commands](../application-commands/slash-commands)
+-   [Interactions Index](../../interactions)
 
 :::

@@ -19,6 +19,7 @@ Let's say that you want to make a command that is both a Slash Command and a Pre
 
 This is where the `ext.bridge` module comes in. It allows you to use one callback to make both a Slash Command and a Prefixed Command.
 
+
 ### Example Usage
 
 ```python
@@ -44,7 +45,6 @@ bot.run("TOKEN")
         hello
       </DiscordInteraction>
     </div>
-
     Hello!
   </DiscordMessage>
 
@@ -58,7 +58,6 @@ bot.run("TOKEN")
         !hello
       </DiscordInteraction>
     </div>
-
     Hello!
   </DiscordMessage>
 </DiscordComponent>
@@ -102,7 +101,6 @@ The cog will automatically split the Bridge Command into their Slash Command and
         hello
       </DiscordInteraction>
     </div>
-
     Hello!
   </DiscordMessage>
 
@@ -116,7 +114,6 @@ The cog will automatically split the Bridge Command into their Slash Command and
         !hello
       </DiscordInteraction>
     </div>
-
     Hello!
   </DiscordMessage>
 
@@ -126,7 +123,6 @@ The cog will automatically split the Bridge Command into their Slash Command and
         bye
       </DiscordInteraction>
     </div>
-
     Bye!
   </DiscordMessage>
 
@@ -140,7 +136,6 @@ The cog will automatically split the Bridge Command into their Slash Command and
         !bye
       </DiscordInteraction>
     </div>
-
     Bye!
   </DiscordMessage>
 </DiscordComponent>
@@ -148,6 +143,8 @@ The cog will automatically split the Bridge Command into their Slash Command and
 ### Deferring
 
 You can defer if you want to communicate to the user that your bot is busy processing the command. This is done by using `ctx.defer()`. For the Slash Command implementation, `ctx.defer()` calls the function that gives out a "Bot is thinking" message. For the Prefixed Command implementation, `ctx.defer()` enables the typing indicator.
+
+<!-- TODO: Add example images of deferring at work -->
 
 ### Options
 
@@ -176,7 +173,6 @@ bot.run("TOKEN")
         sum
       </DiscordInteraction>
     </div>
-
     4
   </DiscordMessage>
 
@@ -190,7 +186,6 @@ bot.run("TOKEN")
         !sum 2 2
       </DiscordInteraction>
     </div>
-
     4
   </DiscordMessage>
 </DiscordComponent>

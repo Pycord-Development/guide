@@ -12,12 +12,12 @@ import DiscordComponent, { defaultOptions } from "@site/src/components/DiscordCo
 
 ## About
 
-When using the library, errors are frequently raised due to various reasons. These reasons range from the Discord API
+When using the library, errors are frequently raised due to various reasons. These reasons range from the Discord API 
 failing your bot's request due to missing permissions or an invalid syntax error.
 
 Before going into error handling, it's best that you learn the basic ways of handling errors. A good resource is:
 
-* [W3Schools' Guide to Python Try-Except Statements](https://www.w3schools.com/python/python_try_except.asp)
+*   [W3Schools' Guide to Python Try-Except Statements](https://www.w3schools.com/python/python_try_except.asp)
 
 ## <span id="basic">Basic Handling</span>
 
@@ -57,52 +57,43 @@ bot.run("TOKEN")
 If you respond within 30 seconds, the interaction will look like so:
 
 <DiscordComponent>
-  <DiscordMessage profile="robocord">
-    <div slot="interactions">
-      <DiscordInteraction profile="dorukyum" command>
-        feedback
-      </DiscordInteraction>
-    </div>
-
-    Hey, Dorukyum! Send your feedback within the next 30 seconds please!
-  </DiscordMessage>
-
-  <DiscordMessage profile="dorukyum">
-    Great bot!
-  </DiscordMessage>
-
-  <DiscordMessage profile="robocord">
-    Thanks for the feedback!
-
-    <br />
-
-    Received feedback: <code>Great bot!</code>
-  </DiscordMessage>
+    <DiscordMessage profile="robocord">
+        <div slot="interactions">
+            <DiscordInteraction profile="dorukyum" command>
+                feedback
+            </DiscordInteraction>
+        </div>
+        Hey, Dorukyum! Send your feedback within the next 30 seconds please!
+    </DiscordMessage> 
+    <DiscordMessage profile="dorukyum">
+        Great bot!
+    </DiscordMessage>
+    <DiscordMessage profile="robocord">
+        Thanks for the feedback!
+        <br />
+        Received feedback: <code>Great bot!</code>
+    </DiscordMessage>
 </DiscordComponent>
-
 <br />
 
 Otherwise, if you don't respond in time, the interaction will go as follows:
 
 <DiscordComponent>
-  <DiscordMessage profile="robocord">
-    <div slot="interactions">
-      <DiscordInteraction profile="dorukyum" command>
-        feedback
-      </DiscordInteraction>
-    </div>
-
-    Hey, Dorukyum! Send your feedback within the next 30 seconds please!
-  </DiscordMessage>
-
-  <DiscordMessage profile="robocord">
-    Timed out, please try again!
-  </DiscordMessage>
+    <DiscordMessage profile="robocord">
+        <div slot="interactions">
+            <DiscordInteraction profile="dorukyum" command>
+                feedback
+            </DiscordInteraction>
+        </div>
+        Hey, Dorukyum! Send your feedback within the next 30 seconds please!
+    </DiscordMessage>
+    <DiscordMessage profile="robocord">
+        Timed out, please try again!
+    </DiscordMessage>
 </DiscordComponent>
-
 <br />
 
-This basic method of error handling can be extended to handle
+This basic method of error handling can be extended to handle 
 many other errors including ones raised directly by py-cord.
 
 ## <span id="percommand">Per-Command Handling</span>
@@ -113,9 +104,9 @@ Each and every command can have it's own error handler made to handle specific e
 An example of per-command error handling is as follows:
 
 :::note Bridge Commands
-As of writing this guide page, bridge commands do not currently support per-command error handling.
+As of writing this guide page, bridge commands do not currently support per-command error handling. 
 
-For these types of commands, it is recommended to utilize global error handling
+For these types of commands, it is recommended to utilize global error handling 
 until [the feature](https://github.com/Pycord-Development/pycord/issues/1388) is added.
 :::
 
@@ -146,33 +137,29 @@ bot.run("TOKEN")
 If your ID is registered as the owner ID, you'll get the following:
 
 <DiscordComponent>
-  <DiscordMessage profile="robocord">
-    <div slot="interactions">
-      <DiscordInteraction profile="dorukyum" command>
-        secret
-      </DiscordInteraction>
-    </div>
-
-    Hey Dorukyum! This is a secret command!
-  </DiscordMessage>
+    <DiscordMessage profile="robocord">
+        <div slot="interactions">
+            <DiscordInteraction profile="dorukyum" command>
+                secret
+            </DiscordInteraction>
+        </div>
+        Hey Dorukyum! This is a secret command!
+    </DiscordMessage>
 </DiscordComponent>
-
 <br />
 
 Any other user whose ID doesn't match the bot owner's will get the following:
 
 <DiscordComponent>
-  <DiscordMessage profile="robocord">
-    <div slot="interactions">
-      <DiscordInteraction profile="bob" command>
-        secret
-      </DiscordInteraction>
-    </div>
-
-    Sorry, only the bot owner can use this command!
-  </DiscordMessage>
+    <DiscordMessage profile="robocord">
+        <div slot="interactions">
+            <DiscordInteraction profile="bob" command>
+                secret
+            </DiscordInteraction>
+        </div>
+        Sorry, only the bot owner can use this command!
+    </DiscordMessage>
 </DiscordComponent>
-
 <br />
 
 This local (per-command) error handler can also be used to handle the same types of errors that standard try-except
@@ -181,7 +168,7 @@ statements can handle. This is done by using the same method as above with the `
 ## <span id="percog">Per-Cog Handling</span>
 
 Adding error handlers per-command can be quite the task in terms of work if you have a lot. If you have happened to
-group your commands in cogs, then you're in luck! You can create an error handler that is specific to a cog and
+group your commands in cogs, then you're in luck! You can create an error handler that is specific to a cog and 
 handles all errors raised by commands inside that cog.
 
 Here's an example of a bot with a cog that implements its own error handling:
@@ -238,43 +225,37 @@ bot.run("TOKEN")
 If you use this command in a DM context, you'll get the following:
 
 <DiscordComponent>
-  <DiscordMessage profile="bob">
-    !avatar
-  </DiscordMessage>
-
-  <DiscordMessage profile="robocord">
-    <div slot="interactions">
-      <DiscordInteraction profile="bob" highlight>
+    <DiscordMessage profile="bob">
         !avatar
-      </DiscordInteraction>
-    </div>
-
-    <DiscordEmbed embedTitle="Avatar" image="/img/bob.png" borderColor={defaultOptions.profiles.bob.roleColor}>
-      Here's your enlarged avatar, BobDotCom!
-    </DiscordEmbed>
-  </DiscordMessage>
+    </DiscordMessage>
+    <DiscordMessage profile="robocord">
+        <div slot="interactions">
+            <DiscordInteraction profile="bob" highlight>
+                !avatar
+            </DiscordInteraction>
+        </div>
+        <DiscordEmbed embedTitle="Avatar" image="/img/bob.png" borderColor={defaultOptions.profiles.bob.roleColor}>
+            Here's your enlarged avatar, BobDotCom!
+        </DiscordEmbed>
+    </DiscordMessage>
 </DiscordComponent>
-
 <br />
 
 Otherwise, if used in a guild context:
 
 <DiscordComponent>
-  <DiscordMessage profile="dorukyum">
-    !avatar
-  </DiscordMessage>
-
-  <DiscordMessage profile="robocord">
-    <div slot="interactions">
-      <DiscordInteraction profile="dorukyum" highlight>
+    <DiscordMessage profile="dorukyum">
         !avatar
-      </DiscordInteraction>
-    </div>
-
-    Sorry, you can only use this in private messages!
-  </DiscordMessage>
+    </DiscordMessage>
+    <DiscordMessage profile="robocord">
+        <div slot="interactions">
+            <DiscordInteraction profile="dorukyum" highlight>
+                !avatar
+            </DiscordInteraction>
+        </div>
+        Sorry, you can only use this in private messages!
+    </DiscordMessage>
 </DiscordComponent>
-
 <br />
 
 Per-cog error handling comes in very handy as you can relegate all of your error handling to a single function instead
@@ -283,7 +264,7 @@ of spreading it out across several per-command error handlers or inside the comm
 ## <span id="global">Global Handling</span>
 
 If separating your error handling is not how you would like to handle errors, then global error handling is the way to
-go. This method of handling allows you to relegate all handling to a single function that resides within your bot
+go. This method of handling allows you to relegate all handling to a single function that resides within your bot 
 instance.
 
 A non-subclassed bot would implement this like so:
@@ -319,27 +300,23 @@ If you've subclassed your bot, the `on_application_command_error` event will be 
 The error handling used above will yield this interaction if the command is used again too quickly:
 
 <DiscordComponent>
-  <DiscordMessage profile="robocord">
-    <div slot="interactions">
-      <DiscordInteraction profile="bob" command>
-        ping
-      </DiscordInteraction>
-    </div>
-
-    Pong! <code>49</code> ms.
-  </DiscordMessage>
-
-  <DiscordMessage profile="robocord">
-    <div slot="interactions">
-      <DiscordInteraction profile="bob" command>
-        ping
-      </DiscordInteraction>
-    </div>
-
-    This command is currently on cooldown!
-  </DiscordMessage>
+    <DiscordMessage profile="robocord">
+        <div slot="interactions">
+            <DiscordInteraction profile="bob" command>
+                ping
+            </DiscordInteraction>
+        </div>
+        Pong! <code>49</code> ms.
+    </DiscordMessage>
+    <DiscordMessage profile="robocord">
+        <div slot="interactions">
+            <DiscordInteraction profile="bob" command>
+                ping
+            </DiscordInteraction>
+        </div>
+        This command is currently on cooldown!
+    </DiscordMessage>
 </DiscordComponent>
-
 <br />
 
 The only issue regarding global error handling is that, if you have a large amount of commands, the global handler may
@@ -354,8 +331,8 @@ passed at initialization through `self.bot`.
 
 If this is new to you, we recommend checking out these helpful resources to learn more about classes and cogs:
 
-* [W3Schools' Guide to Python Classes & Objects](https://www.w3schools.com/python/python_classes.asp)
-* [Our Cogs Guide Page](./cogs)
+*   [W3Schools' Guide to Python Classes & Objects](https://www.w3schools.com/python/python_classes.asp)
+*   [Our Cogs Guide Page](./cogs)
 
 #### How many errors can I handle in a single error handler?
 
@@ -363,10 +340,9 @@ While all the examples in this guide page only handle one specific error and re-
 error handlers can be extended to catch many errors.
 
 In [basic handling](#basic) (i.e. try/except statements) you can do one of two things:
-
-* Explicitly handle the errors you know might get raised and then have a broad `except Exception as exc:` statement
-  as a catch-all.
-* Catch any and all errors via the catch-all statement mentioned above.
+*   Explicitly handle the errors you know might get raised and then have a broad `except Exception as exc:` statement
+as a catch-all.
+*   Catch any and all errors via the catch-all statement mentioned above.
 
 In [per-command](#percommand), [per-cog](#percog), and [global handling](#global), you can use elif clauses with the
 built-in isinstance function to catch specific errors. Atop of this, an else clause can be used to catch any other
@@ -375,33 +351,32 @@ errors you either don't want to handle or want to relegate to a different error 
 #### Can I use more than one type of error handler at once?
 
 Thankfully, all of these different ways of error handling can be mixed together, so you don't have to pick just one!
-For commands that raise specific errors that no other commands will raise, you can use [per-command](#percommand).
+For commands that raise specific errors that no other commands will raise, you can use [per-command](#percommand). 
 For cogs that raise specific errors that no other cogs will raise, use [per-cog](#percog)! Lastly, for errors that
-occur frequently across all commands and cogs, use [global handling](#global)!
+occur frequently across all commands and cogs, use [global handling](#global)! 
 
-However, one important note to remember is that you should always raise the error again in an error handler if it
+However, one important note to remember is that you should always raise the error again in an error handler if it 
 isn't handled there! If you don't do this, the error will go ignored and your other handlers won't have a chance to
 do their work!
 
 #### What's the difference between slash and prefixed command error handling?
 
 Although most examples shown here use slash commands, the [per-cog handling](#percog) section presents a prefixed
-command. The main difference you may notice is the change in command signature.
+command. The main difference you may notice is the change in command signature. 
 
 To make the distinguishing features apparent:
-
-* Slash commands use `on_application_command_error(ctx: discord.ApplicationContext, error: discord.DiscordException)`
-  as presented in the [per-command](#percommand) and [global handling](#global) examples.
-* Prefixed commands use `on_command_error(ctx: commands.Context, error: commands.CommandError)` as presented in the
-  [per-cog handling](#percog) example.
+*   Slash commands use `on_application_command_error(ctx: discord.ApplicationContext, error: discord.DiscordException)`
+as presented in the [per-command](#percommand) and [global handling](#global) examples.
+*   Prefixed commands use `on_command_error(ctx: commands.Context, error: commands.CommandError)` as presented in the
+[per-cog handling](#percog) example.
 
 This distinction is made as both types of commands need their own system for handling errors that are specific to
 themselves.
 
 :::info Related Topics
 
-* [Slash Commands](../interactions/application-commands/slash-commands)
-* [Prefixed Commands](../extensions/commands/prefixed-commands)
-* [Cogs](./cogs)
+*   [Slash Commands](../interactions/application-commands/slash-commands)
+*   [Prefixed Commands](../extensions/commands/prefixed-commands)
+*   [Cogs](./cogs)
 
 :::
