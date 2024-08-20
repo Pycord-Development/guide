@@ -2678,6 +2678,13 @@
     "@types/history" "^4.7.11"
     "@types/react" "*"
 
+"@types/react-twemoji@0.4.3":
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/@types/react-twemoji/-/react-twemoji-0.4.3.tgz#83542b47ffcee8c872b669a05e74a5ef7876e497"
+  integrity sha512-VzWkjmO8yJ31JSWgQhe0LCLU3FxcurTOklECm9p8v1xI/WfUBOGbSrqPjQPL46LE4oOqfrYIQ+0LM/8I6A8EDQ==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@17.0.2":
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.2.tgz#3de24c4efef902dd9795a49c75f760cbe4f7a5a8"

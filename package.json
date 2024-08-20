@@ -45,7 +45,6 @@
     "@easyops-cn/docusaurus-search-local": "^0.36.0",
     "@matteusan/sentro": "1.1.0",
     "@mdx-js/react": "1.6.22",
-    "@types/react": "17.0.0",
     "babel-plugin-module-resolver": "5.0.2",
     "clsx": "2.1.1",
     "discord-message-components": "https://gitpkg.now.sh/Pycord-Development/discord-message-components?aa468ada9b2b52986ae0aee4051660713c1e9095&scripts.postinstall=yarn%20install%20--ignore-scripts%20%26%26%20node%20node_modules%2Fesbuild%2Finstall.js%20%26%26yarn%20build%3Amarkdown%20%26%26%20yarn%20build%3Acore%20%26%26%20yarn%20build%3Areact%20%26%26",
@@ -63,6 +62,8 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^2.4.3",
     "@tsconfig/docusaurus": "2.0.3",
+    "@types/react": "17.0.0",
+    "@types/react-twemoji": "0.4.3",
     "micromark-extension-mdx-md": "^2.0.0",
     "remark-cli": "^12.0.1",
     "remark-comment": "^1.0.0",

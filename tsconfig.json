@@ -10,6 +10,7 @@
     "resolveJsonModule": true,
     "baseUrl": ".",
     "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": false,
     "paths": {
       "@site/*": ["./*"],
       "react": ["./node_modules/@types/react"]
