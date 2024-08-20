@@ -11,10 +11,11 @@
     justify-content: center;
     align-items: center;
     padding: 0.4rem 0.6rem;
-    font-size: clamp(#{sentro.px-to-rem(16px)}, 7vw, #{sentro.px-to-rem(18px)});
+    font-size: clamp(#{sentro.to-rem(16px)}, 7vw, #{sentro.to-rem(18px)});
     font-weight: 700;
     border-radius: sentro.token-get('radius-small');
     cursor: pointer;
+    -webkit-user-select: none;
     user-select: none;
     @include sentro.prefix(transition, all 0.1s ease);
     
@@ -47,14 +48,14 @@
     .pyc-button__icon {
       display: grid;
       place-items: center;
-      font-size: sentro.px-to-rem(24px);
+      font-size: sentro.to-rem(24px);
       vertical-align: center;
       
       > svg {
         vertical-align: center;
-        width: sentro.px-to-rem(24px);
-        height: sentro.px-to-rem(24px);
-        size: sentro.px-to-rem(24px);
+        width: sentro.to-rem(24px);
+        height: sentro.to-rem(24px);
+        size: sentro.to-rem(24px);
       }
     }
     
@@ -67,9 +68,11 @@
 }
 
 @mixin _text($color: 'blurple') {
-  background-color: sentro.key-create('button-fill', rgba(0 0 0 / 0));
-  color: sentro.key-create('button-ink', sentro.token-get('#{$color}'));
-  border: 1px solid sentro.key-create('button-border', rgba(0 0 0 / 0));
+  & {
+    background-color: sentro.key-create('button-fill', rgba(0 0 0 / 0));
+    color: sentro.key-create('button-ink', sentro.token-get('#{$color}'));
+    border: 1px solid sentro.key-create('button-border', rgba(0 0 0 / 0));
+  }
   
   &:hover,
   &:focus {
@@ -90,9 +93,11 @@
 }
 
 @mixin _outlined($color: 'blurple') {
-  background-color: sentro.key-create('button-fill', rgba(0 0 0 / 0));
-  color: sentro.key-create('button-ink', sentro.token-get('#{$color}-ink'));
-  border: 1px solid sentro.key-create('button-border', sentro.token-get('#{$color}'));
+  & {
+    background-color: sentro.key-create('button-fill', rgba(0 0 0 / 0));
+    color: sentro.key-create('button-ink', sentro.token-get('#{$color}-ink'));
+    border: 1px solid sentro.key-create('button-border', sentro.token-get('#{$color}'));
+  }
   
   &:focus {
     @include sentro.key-bind('button-fill', rgba(#fff, 10%));
@@ -117,9 +122,9 @@
 }
 
 @mixin _filled($color: 'blurple') {
-  background-color: sentro.key-create('button-fill', sentro.token-get('#{$color}'));
+  &{background-color: sentro.key-create('button-fill', sentro.token-get('#{$color}'));
   color: sentro.key-create('button-ink', sentro.token-get('#{$color}-ink'));
-  border: 1px solid sentro.key-create('button-border', sentro.token-get('#{$color}'));
+  border: 1px solid sentro.key-create('button-border', sentro.token-get('#{$color}'));}
   
   &:hover {
     @include sentro.key-bind('button-fill', sentro.token-get('#{$color}'));

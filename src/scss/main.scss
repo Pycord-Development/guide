@@ -159,7 +159,7 @@ body {
   width: calc(100% - 30px);
   max-width: 1077px;
   margin: 0 auto;
-  padding: #{sentro.px-to-rem(81px)} 0 1.5rem 0;
+  padding: #{sentro.to-rem(81px)} 0 1.5rem 0;
   
   &--home-page {
     width: calc(100% - 30px);
@@ -313,7 +313,9 @@ body {
     .discord-buttons .discord-button {
       font-family: inherit;
     }
-    font-weight: 400;
+    & {
+      font-weight: 400;
+    }
   }
 }
 

@@ -1,0 +1,56 @@
+---
+title: Command Groups
+---
+
+Command groups are a way to create subcommands for your commands. For example, `!afk set` or `!afk
+remove`.
+
+## Syntax
+
+Creating a command group is very simple.
+
+```python title="Command Groups Example"
+import discord
+from discord.ext import commands
+
+bot = commands.Bot(command_prefix='!')
+
+@bot.group()
+async def afk():
+    pass
+
+@afk.command()
+async def set():
+    ...
+
+@afk.command()
+async def remove():
+    ...
+
+# Another command group
+
+@bot.group(invoke_without_command=True) # Indicates if the group callback should begin parsing and invocation only if no subcommand was found.
+async def math(ctx):
+    await ctx.send('Subcommand not found')
+
+@math.command()
+async def add(ctx, a: int, b: int):
+    ...
+
+@math.command()
+async def subtract(ctx, a: int, b: int):
+    ...
+```
+
+To create a command group, the command's decorator must be `@bot.group`. Once you have a command with
+that decorator, you can use `@function.command()`, such as `@math.command()`. Now, you have subcommand
+groups!
+
+<!-- Waiting for slash command groups in Pycord -->
+
+:::info Related Topics
+
+- [Prefixed Commands](./prefixed-commands.mdx)
+- [Cogs](../../popular-topics/cogs)
+
+:::

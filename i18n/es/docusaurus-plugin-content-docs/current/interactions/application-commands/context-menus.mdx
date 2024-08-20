@@ -1,0 +1,85 @@
+---
+title: Context Menus
+description: Learn all about Context Menus (User Commands & Message Commands) and how to implement them into your Discord Bot with Pycord!
+---
+
+import {
+  DiscordButton,
+  DiscordButtons,
+  DiscordInteraction,
+  DiscordMessage,
+  DiscordMessages,
+} from "discord-message-components/packages/react";
+import "discord-message-components/packages/react/dist/style.css";
+
+import DiscordComponent, { defaultOptions } from "@site/src/components/DiscordComponent";
+
+When you right-click a message, you may see an option called "Apps". Hover over it, and you can see
+commands a bot can run with that message. These are called message commands.
+
+When you right-click a user in the user list, you can once again see an option called "Apps". 
+Hover over it, and you can see commands a bot can run with that message. These are called user commands.
+
+Together, these two are called Context Menus or Context Menu Commands. These commands work very much like normal commands, except they take a member or message.
+
+:::note
+
+A bot can have up to 5 global Context Menus of each type.
+
+:::
+
+## User Commands
+
+Creating a user command is very simple.
+
+```python
+@bot.user_command(name="Account Creation Date", guild_ids=[...])  # create a user command for the supplied guilds
+async def account_creation_date(ctx, member: discord.Member):  # user commands return the member
+    await ctx.respond(f"{member.name}'s account was created on {member.created_at}")
+```
+
+<DiscordComponent>
+  <DiscordMessage profile="robocord">
+    <div slot="interactions">
+      <DiscordInteraction profile="bob" contextMenu>
+          Account Creation Date
+      </DiscordInteraction>
+    </div>
+      {defaultOptions.profiles.bob.author}'s account was created on 2020-01-01
+  </DiscordMessage>
+</DiscordComponent>
+
+## Message Commands
+
+```python
+@bot.message_command(name="Get Message ID")  # creates a global message command. use guild_ids=[] to create guild-specific commands.
+async def get_message_id(ctx, message: discord.Message):  # message commands return the message
+    await ctx.respond(f"Message ID: `{message.id}`")
+```
+
+<DiscordComponent>
+  <DiscordMessage profile="bob">
+    Do. Or do not. There is no try.
+  </DiscordMessage>
+  <DiscordMessage profile="robocord">
+    <div slot="interactions">
+      <DiscordInteraction
+        author="Other Guide Man"
+        avatar="green"
+        contextMenu
+      >
+        Get Message ID
+      </DiscordInteraction>
+    </div>
+    Message ID: <code>930650407917748286</code>
+  </DiscordMessage>
+</DiscordComponent>
+
+<br/>
+
+:::info Related Topics
+
+- [Slash Commands](./slash-commands)
+- [Interactions Index](../../interactions)
+
+:::

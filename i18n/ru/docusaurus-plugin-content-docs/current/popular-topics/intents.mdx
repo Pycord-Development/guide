@@ -1,0 +1,62 @@
+---
+title: Intents
+description: All about intents in Discord.
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+## What are Intents?
+
+Intents allow bot developers to "subscribe" to specific events in Discord. This is useful for bots that need to respond to specific events, such as when a user joins a server or sends a message. You could choose to enable all intents or to enable only specific intents that your bot requires.
+
+## How do I enable intents?
+
+:::important
+
+Remember that [Privileged Intents](#what-are-privileged-intents) require you to enable them in the Discord Developer Portal. Verified Discord Bots that don't already have access to them will need to request Discord to allow access.
+
+:::
+
+<Tabs>
+  <TabItem value="enabling-all-intents" label="Enabling all intents" default>
+
+```python
+import discord
+
+bot = discord.Bot(intents=discord.Intents.all())
+```
+
+</TabItem>
+    
+  <TabItem value="enabling-specific-intents" label="Enabling specific intents">
+
+You can view a list of intents and the events they subscribe to [here](https://docs.pycord.dev/en/stable/api/data_classes.html#discord.Intents).
+
+```python title="Enabling Intents"
+import discord
+
+bot = discord.Bot(intents=discord.intents.members(bans=True, guilds=True))
+```
+
+</TabItem>
+</Tabs>
+
+## What are Privileged Intents?
+
+Discord defines some intents as "privileged" because of the sensitive information they contain. Currently, there are three privileged intents: `members`, `presences`, and `message_content`. These intents must be enabled in your bot's Developer Portal. Once your bot reaches 100 servers, you will need to verify your bot for these intents to keep working and for your bot to be able to be invited to more guilds.
+
+:::tip
+
+Only enable these intents if you need them. These intents give your bot access to quite sensitive information about the users in your guild. These intents are privileged to respect the privacy of users, and you should do that as well.
+
+Not enabling these intents doesn't mean you won't be able to ban users, but you will be unable to detect when a new user joins a guild, or what game they are playing. The majority of bots won't need all intents.
+
+:::
+
+:::info Related Topics
+
+- [Sharding Bots](sharding)
+- [Rules and Common Practices](../Getting-Started/rules-and-common-practices)
+
+:::

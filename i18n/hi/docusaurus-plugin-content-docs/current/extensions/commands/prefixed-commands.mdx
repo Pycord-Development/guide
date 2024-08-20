@@ -1,0 +1,324 @@
+---
+title: Prefixed Commands
+description: Learn how to use the commands extension for Pycord.
+---
+
+import {
+  DiscordButton,
+  DiscordButtons,
+  DiscordInteraction,
+  DiscordMessage,
+  DiscordMessages,
+} from "discord-message-components/packages/react";
+import "discord-message-components/packages/react/dist/style.css";
+
+import DiscordComponent from "@site/src/components/DiscordComponent";
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+Before Discord added slash commands, all bots had prefixed commands. A user would type the bot's prefix
+followed by a word or phrase to invoke a command, such as `?help` or `!help`.
+However, this prefixed commands system isn't native to Discord! Developers made use of an `on_message`
+event to check if the message began with a certain character, then invoke the command. Every time a
+message was sent, the bot would see the message and check for its "prefix"
+
+The syntax becomes a little more complicated when you want to have multiple commands. There are several
+disadvantages to this system. This is where the commands extension comes in. `ext.commands` has
+various advantages, such as:
+
+- Simpler syntax
+- Easier to use
+- Easier to parse user input
+- Comes with built-in help commands
+- Comes with a built-in system for categorizing commands
+
+<Tabs>
+  <TabItem value="0" label="Using Events to Create Prefixed Commands" default>
+
+```python title="Prefixed Commands with Events"
+import discord
+
+client = discord.Client()
+
+@client.event
+async def on_message(message):
+    if message.content.startswith("!ping"):
+        await message.channel.send("Pong!")
+
+    elif message.content.startswith("!announce"):
+        if len(message.content.split(" ")) < 3:
+            await message.channel.send("You need to specify a title and a message. Correct usage: `!announce Hello Hello everyone!`")
+            return
+
+        msg = message.content.split(" ", 2)
+        title = msg[1]
+        content = msg[2]
+
+        await message.channel.send("**{}**\n{}".format(title, content))
+
+    elif message.content.startswith("!"):
+        await message.channel.send("Unknown command.")
+```
+
+<DiscordComponent>
+  <DiscordMessage profile="bob">
+    !ping
+  </DiscordMessage>
+  <DiscordMessage profile="robocord">
+    Pong!
+  </DiscordMessage>
+  <DiscordMessage profile="bob">
+    !announce Hello Hello World!
+  </DiscordMessage>
+  <DiscordMessage profile="robocord"t>
+    <strong>Hello</strong>
+    <br />
+    Hello World!
+  </DiscordMessage>
+  <DiscordMessage profile="bob">
+    !help
+  </DiscordMessage>
+  <DiscordMessage profile="robocord">
+    Unknown Command.
+  </DiscordMessage>
+</DiscordComponent>
+
+</TabItem>
+  <TabItem value="1" label="Using the Commands Extension">
+
+```python title="The Commands Extension"
+import discord
+from discord.ext import commands
+
+intents = discord.Intents.default()
+intents.message_content = True
+
+bot = commands.Bot(command_prefix="!", intents=intents)
+
+@bot.command()
+async def ping(ctx):
+    await ctx.send("Pong!")
+
+@bot.command()
+async def announce(ctx, title, *, message):
+    await ctx.send("**{}**\n{}".format(title, message))
+
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.CommandNotFound):
+        await ctx.send("Unknown command.")
+```
+
+<DiscordComponent>
+  <DiscordMessage profile="bob">
+    !ping
+  </DiscordMessage>
+  <DiscordMessage profile="robocord">
+    Pong!
+  </DiscordMessage>
+  <DiscordMessage profile="bob">
+    !announce Hello Hello World!
+  </DiscordMessage>
+  <DiscordMessage profile="robocord">
+    <strong>Hello</strong>
+    <br />
+    Hello World!
+  </DiscordMessage>
+  <DiscordMessage profile="bob">
+    !pycord
+  </DiscordMessage>
+  <DiscordMessage profile="robocord">
+    Unknown command.
+  </DiscordMessage>
+  <DiscordMessage profile="bob">
+    !help
+  </DiscordMessage>
+  <DiscordMessage profile="robocord">
+    <code>
+      No Category:
+      <br />
+      <div style={{ paddingLeft: "2em" }}>
+        !help Shows this message
+        <br />
+        !ping
+        <br />
+        !announce
+      </div>
+      <br />
+      Type !help command for more info on a command.
+      <br />
+      You can also type !help category for more info on a category.
+    </code>
+  </DiscordMessage>
+</DiscordComponent>
+
+<br />
+
+:::tip
+
+The commands extension has many more uses. This example only showcases the basic features mentioned
+in the previous example. Other things you can do with the commands extension include using a different
+built-in help command and creating your own. The following tutorials showcase these.
+
+:::
+
+</TabItem>
+</Tabs>
+
+## Syntax
+
+Before we check out the syntax, let's take a look at the bot classes.
+
+> `discord.Client` - Contains only events.
+>
+> `discord.Bot` - Subclasses `discord.Client`, adds commands.
+>
+> `discord.ext.commands.Bot` - Subclasses `discord.Bot`, adds prefixed commands, cogs, and more.
+
+This means that `discord.ext.commands.Bot` has both slash commands and prefixed commands, as well as
+events, cogs and more.
+
+Now let's look at the syntax.
+
+```python title="A Simple Prefixed Bot"
+import discord
+from discord.ext import commands # Import the commands extension
+# discord.ext.commands are not the same as discord.commands!
+
+intents = discord.Intents.default() #Defining intents
+intents.message_content = True # Adding the message_content intent so that the bot can read user messages
+
+bot = commands.Bot(command_prefix="!", intents=intents) # You can change the command prefix to whatever you want.
+
+@bot.command() # This is the decorator we use to create a prefixed command.
+async def ping(ctx): # This is the function we will use to create the command.
+    await ctx.send("Pong!") # This is the response the bot will send.
+
+
+bot.run("token") # Run the bot with your token.
+```
+
+<DiscordComponent>
+  <DiscordMessage profile="bob">
+    !ping
+  </DiscordMessage>
+  <DiscordMessage profile="robocord">
+    Pong!
+  </DiscordMessage>
+  <DiscordMessage profile="bob">
+    !help
+  </DiscordMessage>
+  <DiscordMessage profile="robocord">
+    <code>
+      No Category:
+      <br />
+      <div style={{ paddingLeft: "2em" }}>
+        !help Shows this message
+        <br />
+        !ping
+      </div>
+      <br />
+      Type !help command for more info on a command.
+      <br />
+      You can also type !help category for more info on a category.
+    </code>
+  </DiscordMessage>
+</DiscordComponent>
+
+<br />
+
+:::tip
+
+The help command is a built-in command and is enabled by default. You will learn more about it in the
+following guides.
+
+:::
+
+## Parameters
+
+Prefixed commands can take parameters, just like slash commands. You can specify the parameters in
+the function itself.
+
+```python title="Parameters Example 1"
+@bot.command()
+async def echo(ctx, *, message):
+    await ctx.send(message)
+```
+
+`ctx` is the context of the message. `*` means that the parameter can be any number of words. `message`
+is the parameter. If you had not passed `*`, `message` would only have been one word.
+
+For example, if a user had used `!echo hello world`, `message` would have been `hello`. Since we 
+passed `*`, `message` is `hello world`, or the rest of the message.
+
+We can pass multiple parameters too!
+
+```python title="Parameters Example 2"
+@bot.command()
+async def echo(ctx, channel:discord.TextChannel, title, *, message):
+    await channel.send("**{}**\n{}".format(title, message))
+```
+
+In the example above, `channel` is a parameter that is of type `discord.TextChannel`. When you
+specify the type of the parameter, Pycord will automatically try to convert the parameter to that type.
+That is why you can use `channel.send` directly without needing to convert it first.
+
+We also have a new parameter, `title`. This does not have a type, so it will be a string. `*` means
+that the rest of the message belongs to the next parameter, in this case, `message`.
+
+When a user types `!echo #general Greetings! Hello World!`, `channel` will be the text channel
+`#general`, `title` will be `Greetings!` and `message` will be `Hello World!`.
+
+Let's take an example where the user passes `!echo #general Holiday Greetings! Greetings to you all!`.
+Here, the user wants the title to be "Holiday Greetings!" and the message to be "Greetings to you all!".
+However, since Pycord parses the message at whitespaces, the title will end up being "Holiday" and the
+message "Greetings! Greetings to you all!". The user can prevent this by typing `!echo "Holiday
+Greetings!" Greetings to you all!`.
+
+<!-- TODO: Change this to a non-holiday example, lots of people aren't religious. -->
+
+<DiscordComponent>
+  <DiscordMessage author="Santa Claus" avatar="blue">
+    !echo #general Holiday Greetings! Greetings to you all!
+  </DiscordMessage>
+  <DiscordMessage author="Elf" avatar="red" bot>
+    <strong>Holiday</strong>
+    <br />
+    Greetings! Greetings to you all!
+  </DiscordMessage>
+  <DiscordMessage author="Mrs. Claus" avatar="green">
+    !echo #general "Holiday Greetings!" Greetings to you all!
+  </DiscordMessage>
+  <DiscordMessage author="Elf" avatar="red" bot>
+    <strong>Holiday Greetings!</strong>
+    <br />
+    Greetings to you all!
+  </DiscordMessage>
+</DiscordComponent>
+
+Let's check out another example for parameters and parameter types.
+
+```python title="Parameters Example 3"
+import random
+
+@bot.command()
+async def gtn(ctx, guess:int):
+    number = random.randint(1, 10)
+    if guess == number:
+        await ctx.send("You guessed it!")
+    else:
+        await ctx.send("Nope! Better luck next time :)")
+```
+
+If you had not specified the type of the parameter, it would have been a string. And since `"5"` is not
+the same as `5` in python, the bot would have responded with "Nope! Better luck next time :)".
+Even if you do not specify the type of the parameter, you can still convert it later on, in this case,
+with `int(guess)`.
+
+:::info Related Topics
+
+- [Command Groups](groups)
+- [Rules and Common Practices](../../Getting-Started/rules-and-common-practices)
+
+:::
