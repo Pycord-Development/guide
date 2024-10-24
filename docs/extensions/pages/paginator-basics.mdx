@@ -60,33 +60,33 @@ to send a message or response with the paginator's contents.
 
 #### Depending on what's being passed to the `pages` parameter, the behaviour of the paginator may differ:
 
--   Passing a list of `PageGroup` objects will essentially treat each `PageGroup` as its own Paginator, with most
+- Passing a list of `PageGroup` objects will essentially treat each `PageGroup` as its own Paginator, with most
 `Paginator` attributes able to be set independently for each `PageGroup`.
-    -   Each `PageGroup` accepts its own `pages` parameter, which inherits the same behaviour as the `pages` parameter
+    - Each `PageGroup` accepts its own `pages` parameter, which inherits the same behaviour as the `pages` parameter
     of `Paginator`, except it cannot contain other `PageGroup` objects.
--   If a page is a `Page` object, this will allow you to specify both the `discord.Message.content` and
+- If a page is a `Page` object, this will allow you to specify both the `discord.Message.content` and
 `discord.Message.embeds` attributes for a page.
-    -   **This is the preferred method of defining a page.**
--   If a page is a string, this will be used for the `discord.Message.content` attribute. This type of page cannot have
+    - **This is the preferred method of defining a page.**
+- If a page is a string, this will be used for the `discord.Message.content` attribute. This type of page cannot have
 any embeds.
--   If a page is a list of embeds, this will be used for the `discord.Message.embeds` attribute. This type of page
+- If a page is a list of embeds, this will be used for the `discord.Message.embeds` attribute. This type of page
 cannot have any message content.
--   If a page is a list of lists of embeds, each parent list item will create a page containing all embeds from its
+- If a page is a list of lists of embeds, each parent list item will create a page containing all embeds from its
 child list. This type of page cannot have any message content.
 
 #### Parameters for the `Paginator` class which have default values:
--   `show_disabled` **:** `True`
-    -   Show buttons that are disabled (i.e. can't be clicked)
--   `author_check` **:** `True`
-    -   Only the author can interact with the paginator.
--   `timeout` **:** `180` *(seconds)*
-    -   The paginator will time out and become inactive after this many seconds.
--   `disable_on_timeout` **:** `True`
-    -   If the paginator times out, it will be automatically disabled and all buttons will be unusable.
--   `use_default_buttons` **:** `True`
-    -   Use the default set of 4 buttons and a page indicator.
--   `show_indicator` **:** `True`
-    -   When using the default buttons, shows a middle 5th button with the current/total page numbers.
+- `show_disabled` **:** `True`
+    - Show buttons that are disabled (i.e. can't be clicked)
+- `author_check` **:** `True`
+    - Only the author can interact with the paginator.
+- `timeout` **:** `180` *(seconds)*
+    - The paginator will time out and become inactive after this many seconds.
+- `disable_on_timeout` **:** `True`
+    - If the paginator times out, it will be automatically disabled and all buttons will be unusable.
+- `use_default_buttons` **:** `True`
+    - Use the default set of 4 buttons and a page indicator.
+- `show_indicator` **:** `True`
+    - When using the default buttons, shows a middle 5th button with the current/total page numbers.
 
 **For other parameters that can be set on initialization, please check the
 [API Reference](https://docs.pycord.dev/en/stable/ext/pages/index.html#paginator)**
