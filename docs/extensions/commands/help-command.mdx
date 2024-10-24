@@ -26,8 +26,8 @@ Pycord bot. It is important to understand these two concepts before continuing.
 
 **Learning Resources**:
 
-- [W3Schools - Python Subclassing](https://www.w3schools.com/python/python_classes.asp)
-- [W3Schools - Python Inheritance](https://www.w3schools.com/python/python_inheritance.asp)
+-   [W3Schools - Python Subclassing](https://www.w3schools.com/python/python_classes.asp)
+-   [W3Schools - Python Inheritance](https://www.w3schools.com/python/python_inheritance.asp)
 
 :::
 
@@ -54,8 +54,8 @@ of making one with Pycord. Making a help command with subclassing and OOP will s
 
 There are two types of built-in help commands:
 
-- [`DefaultHelpCommand`](https://docs.pycord.dev/en/stable/ext/commands/api.html#discord.ext.commands.DefaultHelpCommand)
-- [`MinimalHelpCommand`](https://docs.pycord.dev/en/stable/ext/commands/api.html#discord.ext.commands.MinimalHelpCommand)
+-   [`DefaultHelpCommand`](https://docs.pycord.dev/en/stable/ext/commands/api.html#discord.ext.commands.DefaultHelpCommand)
+-   [`MinimalHelpCommand`](https://docs.pycord.dev/en/stable/ext/commands/api.html#discord.ext.commands.MinimalHelpCommand)
 
 `DefaultHelpCommand` is the command enabled by default. It isn't the best looking, but `MinimalHelpCommand` can help make it look a bit better.
 
@@ -194,10 +194,10 @@ For this, we will subclass the `HelpCommand` class.
 
 There are 4 methods that we need to override:
 
-- `HelpCommand.send_bot_help(mapping)` that gets called with `<prefix>help`
-- `HelpCommand.send_command_help(command)` that gets called with `<prefix>help <command>`
-- `HelpCommand.send_group_help(group)` that gets called with `<prefix>help <group>`
-- `HelpCommand.send_cog_help(cog)` that gets called with `<prefix>help <cog>`
+-   `HelpCommand.send_bot_help(mapping)` that gets called with `<prefix>help`
+-   `HelpCommand.send_command_help(command)` that gets called with `<prefix>help <command>`
+-   `HelpCommand.send_group_help(group)` that gets called with `<prefix>help <group>`
+-   `HelpCommand.send_cog_help(cog)` that gets called with `<prefix>help <cog>`
 
 ### Bot Help
 
@@ -219,27 +219,27 @@ bot.help_command = MyHelp()
 
 Let's go through the code.
 
-- First, we create a new class called `MyHelp`. This class is a subclass of `HelpCommand`.
+-   First, we create a new class called `MyHelp`. This class is a subclass of `HelpCommand`.
 
-- Next, we override the `send_bot_help` method. This method is responsible for sending the main help
+-   Next, we override the `send_bot_help` method. This method is responsible for sending the main help
 command to the user.
 
-- We create an embed with the title "Help".
+-   We create an embed with the title "Help".
 
-- We iterate through `mapping.items()`, which returns a list of tuples, the first element being the
+-   We iterate through `mapping.items()`, which returns a list of tuples, the first element being the
 cog and the second element being a list of commands.
 
-- By using `self.get_command_signature(c)` we get the signature of the command, also known as the
+-   By using `self.get_command_signature(c)` we get the signature of the command, also known as the
 `parameters` or `arguments`.
 
-- There is a chance that the cog is empty, so we use `if command_signatures:`.
+-   There is a chance that the cog is empty, so we use `if command_signatures:`.
 
-- We get the name of the cog using `getattr(cog, "qualified_name", "No Category")`. This calls the
+-   We get the name of the cog using `getattr(cog, "qualified_name", "No Category")`. This calls the
 cog's attribute `qualified_name` which returns "No Category" if the cog has no name.
 
-- We add a field to the embed with the name of the cog and the value of the command signatures.
+-   We add a field to the embed with the name of the cog and the value of the command signatures.
 
-- Finally, we send the embed to the channel.
+-   Finally, we send the embed to the channel.
 
 Let's improve the code a little.
 
@@ -289,10 +289,10 @@ bot.help_command = MyHelp()
 
 Let's quickly go through the code we haven't discussed yet.
 
-- In line 3, we create an embed with a title the signature of the command (so that the title of the
+-   In line 3, we create an embed with a title the signature of the command (so that the title of the
 embed looks like `<command> <parameter> [parameter]`), and a random color.
 
-- In lines 4 and 5, we get the command's `help` description and add it to the embed. The help description
+-   In lines 4 and 5, we get the command's `help` description and add it to the embed. The help description
 of a command can be specified in the docstrings of a command function. For example:
 
     ```python
@@ -302,7 +302,7 @@ of a command can be specified in the docstrings of a command function. For examp
       await ctx.send(f"Pong! {round(bot.latency * 1000)}ms")
     ```
 
-- Line 6 is shorthand for
+-   Line 6 is shorthand for
 
     ```python
     alias = command.aliases
@@ -317,7 +317,7 @@ of a command can be specified in the docstrings of a command function. For examp
 
     A very helpful (but not well-known) Python shorthand!
 
-- In line 7, we get the aliases of the command and add them to the embed.
+-   In line 7, we get the aliases of the command and add them to the embed.
 
 ### Cog Help
 
@@ -472,8 +472,8 @@ Thanks to InterStella0 for making this guide amazing.
 
 :::info Related Topics
 
-- [Subclassing Bots](../../Popular-Topics/subclassing-bots)
-- [Prefixed Commands](./prefixed-commands)
-- [Cogs](../../popular-topics/cogs)
+-   [Subclassing Bots](../../Popular-Topics/subclassing-bots)
+-   [Prefixed Commands](./prefixed-commands)
+-   [Cogs](../../popular-topics/cogs)
 
 :::

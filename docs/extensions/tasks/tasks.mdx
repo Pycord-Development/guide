@@ -88,11 +88,11 @@ These are all really useful, and they aren't the only parameters so if you want 
 ### Attributes
 
 A task has the following attributes:
-- `current_loop`: The current loop the task is on.
-- `hours`, `minutes`, `seconds`: attributes that represent the time between each execution.
-- `time`: A list of datetime.time objects that represent the times the task will run, returns `None` if no datetime
+-   `current_loop`: The current loop the task is on.
+-   `hours`, `minutes`, `seconds`: attributes that represent the time between each execution.
+-   `time`: A list of datetime.time objects that represent the times the task will run, returns `None` if no datetime
 objects were passed.
-- `next_iteration`: A `datetime.datetime` object that represents the next time the next iteration of the task will
+-   `next_iteration`: A `datetime.datetime` object that represents the next time the next iteration of the task will
 run, can return `None` if the task stopped running.
 
 These attributes serve as a really powerful asset to get info about your loop.
