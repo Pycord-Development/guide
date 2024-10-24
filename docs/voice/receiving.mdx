@@ -61,6 +61,7 @@ async def record(ctx):  # If you're using commands.Bot, this will also work.
         record
       </DiscordInteraction>
     </div>
+
     Started recording!
   </DiscordMessage>
 </DiscordComponent>
@@ -69,8 +70,8 @@ async def record(ctx):  # If you're using commands.Bot, this will also work.
 
 Now you are finished making your command for voice receiving! Next, you will want to:
 
-1.  Make your finished callback
-2.  Make a stop command
+1. Make your finished callback
+2. Make a stop command
 
 ### Making a Callback
 
@@ -91,7 +92,10 @@ async def once_done(sink: discord.sinks, channel: discord.TextChannel, *args):  
 <DiscordComponent>
   <DiscordMessage profile="robocord">
     finished recording audio for:{" "}
-    <DiscordMention highlight={true}>{defaultOptions.profiles.bob.author}</DiscordMention>
+
+    <DiscordMention highlight={true}>
+      {defaultOptions.profiles.bob.author}
+    </DiscordMention>
   </DiscordMessage>
 </DiscordComponent>
 
@@ -125,6 +129,6 @@ it easy to make complex bots so that you can get even the most advanced of ideas
 
 :::info Related Topics
 
--   [Rules and Common Practices](../getting-started/rules-and-common-practices)
+* [Rules and Common Practices](../getting-started/rules-and-common-practices)
 
 :::

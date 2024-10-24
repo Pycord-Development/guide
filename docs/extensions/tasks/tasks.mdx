@@ -55,6 +55,7 @@ class MyCog(commands.Cog):
 ```
 
 As you'd expect this will increment a number and print it out every 5 seconds like so:
+
 ```sh
 0
 # 5 seconds later
@@ -73,14 +74,15 @@ As you've seen tasks can work in both outer scope and class contexts and the han
 ### [Creating a task](https://docs.pycord.dev/en/stable/ext/tasks/index.html#discord.ext.tasks.loop)
 
 A look at `discord.ext.tasks.loop`'s definition in the documentation reveals that:
-1.  As you've seen before it expects the time between each execution, that however doesn't have to be in seconds as
-there are `seconds`, `minutes` and `hours` parameters to make it easier for us, they can also be floats in case you want
-ultra-precision.
-2.  You can also pass in a `datetime.time` object or a sequence of them in the `time` parameter which will make it run
-at the specified time(s).
-3.  You can pass in how many times a loop runs before it stops by passing in the `count` parameter, you can use `None`
-to make it run forever which is also the default.
-4.  The loop function ***must*** be a coroutine.
+
+1. As you've seen before it expects the time between each execution, that however doesn't have to be in seconds as
+   there are `seconds`, `minutes` and `hours` parameters to make it easier for us, they can also be floats in case you want
+   ultra-precision.
+2. You can also pass in a `datetime.time` object or a sequence of them in the `time` parameter which will make it run
+   at the specified time(s).
+3. You can pass in how many times a loop runs before it stops by passing in the `count` parameter, you can use `None`
+   to make it run forever which is also the default.
+4. The loop function ***must*** be a coroutine.
 
 These are all really useful, and they aren't the only parameters so if you want to know more about them check out the
 [docs](https://docs.pycord.dev/en/stable/ext/tasks/index.html#discord.ext.tasks.loop)!
@@ -88,12 +90,13 @@ These are all really useful, and they aren't the only parameters so if you want 
 ### Attributes
 
 A task has the following attributes:
--   `current_loop`: The current loop the task is on.
--   `hours`, `minutes`, `seconds`: attributes that represent the time between each execution.
--   `time`: A list of datetime.time objects that represent the times the task will run, returns `None` if no datetime
-objects were passed.
--   `next_iteration`: A `datetime.datetime` object that represents the next time the next iteration of the task will
-run, can return `None` if the task stopped running.
+
+* `current_loop`: The current loop the task is on.
+* `hours`, `minutes`, `seconds`: attributes that represent the time between each execution.
+* `time`: A list of datetime.time objects that represent the times the task will run, returns `None` if no datetime
+  objects were passed.
+* `next_iteration`: A `datetime.datetime` object that represents the next time the next iteration of the task will
+  run, can return `None` if the task stopped running.
 
 These attributes serve as a really powerful asset to get info about your loop.
 
@@ -105,6 +108,7 @@ also provide a refresher of how slash commands groups work in cogs.
 For the sake of this example let's pretend that we have a leaderboard module that does all the leaderboard handling for
 us and that computing the leaderboard is very expensive computationally wise, so we want to store one version of it that
 gets regularly updated instead of generating it every time someone calls the `/leaderboard view` command.
+
 ```py
 from discord.ext import tasks, commands
 from discord.commands import SlashCommandGroup, CommandPermissions

@@ -1,7 +1,9 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
+// @ts-ignore
 const lightCodeTheme = require("prism-react-renderer").themes.vsLight;
+// @ts-ignore
 const darkCodeTheme = require("prism-react-renderer").themes.vsDark;
 
 const DefaultLocale = 'en';
@@ -25,6 +27,7 @@ const config = {
       "classic",
       {
         docs: {
+          // @ts-ignore
           editUrl: ({locale, versionDocsDirPath, docPath}) => {
             // Link to Crowdin for French docs
             if (locale !== DefaultLocale) {

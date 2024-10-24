@@ -1,5 +1,5 @@
 import React from "react";
-import DefaultLayout from "../layouts/DefaultLayout";
+import DefaultLayout from "@site/src/layouts/DefaultLayout";
 import PYCHero from "@site/src/components/PYCHero";
 import PYCButton from "@site/src/components/PYCButton";
 
