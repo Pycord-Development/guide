@@ -17,7 +17,7 @@
       
       .navbar__title {
         font-family: sentro.token-get('title-family');
-        font-size: sentro.px-to-rem(24px);
+        font-size: sentro.to-rem(24px);
         font-weight: sentro.token-get('title-weight');
       }
       

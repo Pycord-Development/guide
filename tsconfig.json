@@ -1,10 +1,20 @@
 {
-  // This file is not used in compilation. It is here just for a nice editor experience.
   "extends": "@tsconfig/docusaurus/tsconfig.json",
   "compilerOptions": {
-    "baseUrl": "."
-  },
-  "paths": {
-    "react": [ "./node_modules/@types/react" ]
+    "target": "esnext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "esModuleInterop": true,
+    "allowJs": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": false,
+    "paths": {
+      "@site/*": ["./*"],
+      "react": ["./node_modules/@types/react"]
+    },
+    "strict": true
   }
 }

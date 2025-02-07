@@ -4,20 +4,20 @@ description: Learn how you can implement Modals in your Discord Bot with Pycord!
 ---
 
 import {
-  DiscordButton,
-  DiscordButtons,
-  DiscordInteraction,
-  DiscordMessage,
-  DiscordMessages,
+    DiscordButton,
+    DiscordButtons,
+    DiscordInteraction,
+    DiscordMessage,
+    DiscordMessages,
 } from "discord-message-components/packages/react";
 import "discord-message-components/packages/react/dist/style.css";
 
-import DiscordComponent from "../../../src/components/DiscordComponent";
+import DiscordComponent from "@site/src/components/DiscordComponent";
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-Modal Dialogs, also known as "modals", provide a form-like structure for bots to receive input from users. No extra permissions are needed for bots to send modal dialogs, so it becomes a convenient workaround for bots to receive longer input without needing the Message Content [intent](../../popular-topics/intents). 
+Modal Dialogs, also known as "modals", provide a form-like structure for bots to receive input from users. No extra permissions are needed for bots to send modal dialogs, so it becomes a convenient workaround for bots to receive longer input without needing the Message Content [intent](../../popular-topics/intents).
 
 ## Concept
 
@@ -43,35 +43,32 @@ class MyModal(discord.ui.Modal):
 ```
 
 <Tabs>
-<TabItem value="application-commands" label="Sending Modals through Application Commands" default>
+  <TabItem value="application-commands" label="Sending Modals through Application Commands" default>
+    The `ctx` parameter we define in Application Commands receives an [`ApplicationContext`](https://docs.pycord.dev/en/stable/api/application_commands.html#discord.ApplicationContext) object. Using its `send_modal()` coroutine, you can send a Modal dialog to the user invoking the Application Command.
 
-The `ctx` parameter we define in Application Commands receives an [`ApplicationContext`](https://docs.pycord.dev/en/stable/api/application_commands.html#discord.ApplicationContext) object. Using its `send_modal()` coroutine, you can send a Modal dialog to the user invoking the Application Command.
+    ```py
+    @bot.slash_command()
+    async def modal_slash(ctx: discord.ApplicationContext):
+        """Shows an example of a modal dialog being invoked from a slash command."""
+        modal = MyModal(title="Modal via Slash Command")
+        await ctx.send_modal(modal)
+    ```
+  </TabItem>
 
-```py
-@bot.slash_command()
-async def modal_slash(ctx: discord.ApplicationContext):
-    """Shows an example of a modal dialog being invoked from a slash command."""
-    modal = MyModal(title="Modal via Slash Command")
-    await ctx.send_modal(modal)
-```
+  <TabItem value="ui-components" label="Sending Modals through UI Components">
+    The `interaction` parameter we define in UI Components receives an [`Interaction`](https://docs.pycord.dev/en/stable/api/models.html#discord.Interaction) object. The `response` attribute of the object contains an [`InteractionResponse`](https://docs.pycord.dev/en/stable/api/models.html#discord.InteractionResponse) object, with various coroutines such as `send_message()` and `send_modal()`, which we utilize.
 
-</TabItem>
-<TabItem value="ui-components" label="Sending Modals through UI Components">
+    ```py
+    class MyView(discord.ui.View):
+        @discord.ui.button(label="Send Modal")
+        async def button_callback(self, button, interaction):
+            await interaction.response.send_modal(MyModal(title="Modal via Button"))
 
-The `interaction` parameter we define in UI Components receives an [`Interaction`](https://docs.pycord.dev/en/stable/api/models.html#discord.Interaction) object. The `response` attribute of the object contains an [`InteractionResponse`](https://docs.pycord.dev/en/stable/api/models.html#discord.InteractionResponse) object, with various coroutines such as `send_message()` and `send_modal()`, which we utilize. 
-
-```py
-class MyView(discord.ui.View):
-    @discord.ui.button(label="Send Modal")
-    async def button_callback(self, button, interaction):
-        await interaction.response.send_modal(MyModal(title="Modal via Button"))
-
-@bot.slash_command()
-async def send_modal(ctx):
-    await ctx.respond(view=MyView())
-```
-
-</TabItem>
+    @bot.slash_command()
+    async def send_modal(ctx):
+        await ctx.respond(view=MyView())
+    ```
+  </TabItem>
 </Tabs>
 
 The above example uses an embed to display the results of the modal submission, but you can do anything you want with the text provided by the user.
@@ -100,8 +97,8 @@ long = 2
 
 :::info Related Topics
 
--   [Slash Commands](../application-commands/slash-commands)
--   [Buttons](./buttons)
--   [Interactions Index](../../interactions)
+* [Slash Commands](../application-commands/slash-commands)
+* [Buttons](./buttons)
+* [Interactions Index](../../interactions)
 
 :::
