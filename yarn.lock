@@ -2271,7 +2271,7 @@
   dependencies:
     simple-markdown "^0.7.3"
 
-"@pycord/discord-message-components-react@^0.3.2":
+"@pycord/discord-message-components-react@==0.3.2":
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/@pycord/discord-message-components-react/-/discord-message-components-react-0.3.2.tgz#374f71a79482f441a909b4a8ea26d365771acb5c"
   integrity sha512-G6WkbzfSBiamjo0QaDRk5Fz6zdn8f9ojg6yW2q5z08avDOyNxL3C0tvE8ECwetIA7e8CRlzxr9JwCz7li+y8NQ==
