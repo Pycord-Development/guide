@@ -101,7 +101,7 @@ const config = {
     },
     footer: {
       style: "dark",
-      copyright: `Copyright © ${new Date().getFullYear()} Pycord Development, All rights reserved.`,
+      copyright: `Copyright © 2022-${new Date().getFullYear()} Pycord Development, All rights reserved.`,
     },
     prism: {
       defaultLanguage: "python",
