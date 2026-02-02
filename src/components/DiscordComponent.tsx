@@ -4,7 +4,7 @@ import {
 	DiscordOptionsContext,
 	DiscordMessageOptions,
 	DiscordMessages,
-} from 'discord-message-components/packages/react'
+} from '@pycord/discord-message-components-react'
 import Twemoji from 'react-twemoji';
 
 export const defaultOptions: DiscordMessageOptions = {
