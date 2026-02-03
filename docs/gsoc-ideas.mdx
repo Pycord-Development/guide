@@ -1,0 +1,331 @@
+---
+title: GSoC '26 Ideas List
+description: Google Summer of Code 2026 Project Ideas for Pycord
+sidebar_position: 99
+sidebar_class_name: hidden
+---
+
+[shortcut link to the list](#project-ideas)
+
+## About Pycord
+
+**Pycord** is a modern, easy-to-use, feature-rich, and async-ready API wrapper for Discord. We empower developers to create powerful Discord bots and applications with an intuitive Python interface.
+
+- GitHub Organization: [Pycord-Development](https://github.com/Pycord-Development)
+- Main Repository: [pycord](https://github.com/Pycord-Development/pycord)
+- Documentation: [docs.pycord.dev](https://docs.pycord.dev)
+- Guide: where you are right now!
+
+---
+
+## GSoC 2026 Participation
+
+**This is Pycord's first year applying to participate in Google Summer of Code!** We're planning to accept **1 contributor** for summer 2026.
+
+## Getting Started
+
+Before applying, we strongly encourage you to:
+
+1. Join our community at [discord.gg/pycord](https://discord.gg/pycord)
+2. Check out our repositories and get familiar with Pycord
+3. Ask questions, discuss your ideas, and get feedback from our mentors and core developers
+4. Review our [documentation](https://docs.pycord.dev) and [guide](https://guide.pycord.dev)
+
+## Contact & Communication
+
+- Our Discord Server [discord.gg/pycord](https://discord.gg/pycord) is our primary communication channel
+- You can reach out by email at [admin@pycord.dev](mailto:admin@pycord.dev)
+
+When reaching out, please:
+
+- Introduce yourself and your background
+- Mention which project(s) interest you **and why**
+- Ask specific questions about the project scope or requirements
+- Share any relevant experience, insight or ideas you have
+
+Mentorship note: Ideas list a primary mentor. Additional mentors may be assigned from the Pycord team based on project fit.
+
+---
+
+## Project Ideas
+
+### 1. Guide Remake
+
+**Size:** Small (90 hours) or Medium (175 hours)
+
+**Difficulty:** Medium
+
+**Category:** Infrastructure
+
+**Mentor:** [Paillat](https://github.com/Paillat-dev)
+
+#### Description
+
+The current Pycord guide at [guide.pycord.dev](https://guide.pycord.dev) has accumulated technical debt and contains outdated content. We need a complete remake using modern web technologies to provide a good learning experience for new Pycord developers.
+
+This project involves both documentation and web development work. You'll be rebuilding the guide from the ground up with a modern tech stack while updating all tutorials and examples to reflect current Discord API features and Pycord best practices.
+
+The new guide should serve as the primary learning resource for developers new to Pycord, covering everything from basic bot setup to advanced features.
+
+#### Expected Outcomes
+
+- New guide website built with Astro framework and Tailwind CSS v4
+- Updated tutorials covering the latest Discord features and Pycord capabilities
+- Modern, responsive design that works seamlessly across devices
+- Beginner-friendly documentation
+
+#### Stretch Goals (Medium / 175h scope)
+
+- Full working code examples integrated and continuously synchronized from the core GitHub repository
+- Video tutorials or animated examples for complex concepts
+- Multi-language support or internationalization framework using Crowdin
+- Advanced topics section covering best practices and optimization
+
+#### Skills Required/Preferred
+
+Non-negotiable:
+
+- Python (intermediate level)
+- Technical writing and documentation skills
+- Web development fundamentals (HTML, CSS, JavaScript)
+- Basic understanding of Discord bots and the Discord API
+
+Preferred:
+
+- Experience with Astro framework
+- Strong knowledge of Tailwind CSS
+- Prior experience writing developer documentation
+- Familiarity with Pycord or discord.py
+
+#### Resources
+
+- Current Guide: [guide.pycord.dev](https://guide.pycord.dev)
+- Guide Repository: [github.com/Pycord-Development/guide](https://github.com/Pycord-Development/guide)
+- Pycord Core: [github.com/Pycord-Development/pycord](https://github.com/Pycord-Development/pycord)
+- Pycord Examples: [github.com/Pycord-Development/pycord/tree/master/examples](https://github.com/Pycord-Development/pycord/tree/master/examples)
+
+---
+
+### 2. Pycord-next: The Future of Pycord
+
+**Size:** Medium (175 hours) or Large (350 hours)
+
+**Difficulty:** Hard
+
+**Category:** Core Development
+
+**Mentor:** [Paillat](https://github.com/Paillat-dev)
+
+#### Description
+
+Pycord-next is an ambitious ongoing refactor that aims to modernize and improve the core architecture of Pycord. This project is not about completing the entire refactor, but rather making meaningful, substantial contributions that push the project forward.
+
+As a contributor, you'll work closely with mentors and the core team to understand Pycord's internals, make architectural decisions, and implement changes that will shape the future of the library. This is a unique opportunity to have a lasting impact on a library used by thousands of Discord bot developers.
+
+Success in this project means demonstrating the ability to understand complex async Python codebases, make well-reasoned design decisions, and implement clean, well-typed, well-documented code.
+
+#### Expected Outcomes
+
+- Meaningful contributions to the pycord-next refactor following the project roadmap
+- Well-documented code changes with comprehensive type annotations
+- Participation in architectural discussions and decision-making
+- Pull requests that advance specific areas of the refactor (models, gateway, HTTP client, etc.)
+- Understanding and documentation of design decisions for future contributors
+
+Potential focus areas:
+
+- Model system refactoring
+- Gateway connection handling improvements
+- HTTP client modernization
+- Type system improvements and full typing coverage
+
+#### Skills Required/Preferred
+
+Non-negotiable:
+
+- Advanced Python knowledge
+- Strong understanding of async/await and asyncio
+- Solid grasp of Object-Oriented Programming principles
+- Experience with Python type hints and static typing
+- Ability to read and understand large codebases
+
+Preferred:
+
+- Prior experience with Pycord or discord.py
+- Understanding of the Discord API and WebSocket protocols
+- Experience with API wrapper design patterns
+- Familiarity with modern Python tooling (mypy, ruff, etc.)
+
+#### Important Note
+
+Applicants interested in this project should spend significant time exploring the Pycord codebase before applying. We expect candidates to demonstrate familiarity with the library's architecture in their proposals.
+
+#### Resources
+
+- Pycord-next Repository: [github.com/Pycord-Development/pycord-next](https://github.com/Pycord-Development/pycord-next)
+- Main Pycord Repository: [github.com/Pycord-Development/pycord](https://github.com/Pycord-Development/pycord)
+- Discord API Documentation: [discord.com/developers/docs](https://discord.com/developers/docs)
+
+---
+
+### 3. Discord Bot Testing Framework
+
+**Size:** Medium (175 hours) or Large (350 hours)
+
+**Difficulty:** Hard
+
+**Category:** Infrastructure/Automation
+
+**Mentor:** [Paillat](https://github.com/Paillat-dev)
+
+#### Description
+
+Testing Discord bots is notoriously difficult because they rely on external services and real-time events. This project aims to create a comprehensive testing framework that allows developers to write reliable, reproducible tests for their Pycord bots.
+
+The framework should allow users to simulate Discord events, mock API responses, and verify bot behavior without needing a real Discord connection. This involves creating a new repository with the testing tools as well as potential contributions to Pycord core to ensure compatibility and testability.
+
+#### Expected Outcomes
+
+- A standalone testing library for Pycord bots (new repository)
+- Event simulation system allowing developers to trigger customizable mock events
+- Response verification tools to check bot outputs and API calls
+- Mock Discord API client for offline testing
+- Integration with popular Python testing frameworks (pytest)
+- Comprehensive documentation and example test suites
+
+#### Stretch Goals (Large / 350h scope)
+
+- Integration testing tools for multi-bot scenarios
+- Performance testing utilities
+- CI/CD integration examples and GitHub Actions templates
+- Contributions to Pycord core for improved testability
+
+#### Skills Required/Preferred
+
+Non-negotiable:
+
+- Advanced Python knowledge
+- Experience with testing frameworks (pytest preferred)
+- Understanding of mocking and test doubles
+- Familiarity with async Python testing patterns
+
+Preferred:
+
+- Experience with Pycord or discord.py
+- Knowledge of the Discord API structure
+- Prior experience building testing tools or frameworks
+- Understanding of CI/CD pipelines
+
+#### Resources
+
+- Pycord Repository: [github.com/Pycord-Development/pycord](https://github.com/Pycord-Development/pycord)
+- pytest Documentation: [docs.pytest.org](https://docs.pytest.org)
+- Discord API Documentation: [discord.com/developers/docs](https://discord.com/developers/docs)
+
+---
+
+## Your Own Idea
+
+We welcome original project ideas! If you have a creative concept that uses or may improves Pycord in a meaningful way, we'd love to hear about it.
+
+Requirements for custom proposals:
+
+- Must use or otherwise be related to Pycord in a meaningful way
+- Should be achievable within the GSoC timeframe (90-350 hours)
+- Must have clear, measurable outcomes
+- Needs to benefit the Pycord community or ecosystem
+
+Before submitting a custom idea:
+
+1. Join our Discord and discuss your idea with the community
+2. Get feedback from and find potential mentors there
+3. Refine your proposal based on community input (not limited to feedback from mentors)
+4. Ensure scope is appropriate for GSoC
+
+---
+
+## Application Process
+
+### How to Apply
+
+1. Familiarize yourself with Pycord and the project you're interested in
+2. Join our Discord (mentioned above) and introduce yourself in the GSoC channel
+3. Discuss your proposal with potential mentors before submitting
+4. Submit your application
+
+### Application Template
+
+Your application should include:
+
+1. About You
+- Name and contact information
+- Educational background
+- Relevant experience (coding, open source, Discord bots, etc.)
+- Why you're interested in Pycord and GSoC
+
+2. Project Proposal
+- Which project you're applying for and why
+- Your understanding of the project goals
+- Any unique approaches or ideas you'd bring to the project
+
+3. Technical Background
+- Programming languages you know (especially Python)
+- Relevant technologies (web frameworks, databases, etc.)
+- Links to your code (GitHub, personal projects, etc.)
+- Previous contributions to open source (if any)
+
+4. Availability
+- Time commitment you can make (hours per week)
+- Any known schedule conflicts during the coding period
+- **Your timezone!**
+
+### Tips for Strong Applications
+
+- Don't wait until the last minute to reach out
+- Show you understand the project and have concrete ideas
+- Making a small contribution to Pycord before applying demonstrates commitment but is not a hard requirement
+- Good communication is essential for remote mentorship
+- Ask questions, we wouldd rather answer questions than receive an unclear proposal
+
+---
+
+## General Information
+
+### What We're Looking For
+
+We value:
+
+- Clear communication and willingness to ask for help
+- Self-motivated learning and problem-solving skills
+- Community engagement and collaborative spirit
+- Quality over quantity in code and documentation
+- Passion for open source and helping other developers
+
+### Mentorship Style
+
+Our mentors will:
+
+- Provide regular feedback and guidance (minimum 3 hours per week)
+- Help you navigate the codebase and community
+- Review your work and suggest improvements
+- Be available on Discord for questions
+- Conduct weekly check-ins to track progress
+
+We expect contributors to:
+
+- Communicate proactively about progress and blockers
+- Participate actively in the Pycord community
+- Write clean, documented code following our style guidelines
+- Be open to feedback and willing to iterate
+
+---
+
+## Questions?
+
+If you have any questions about these projects or GSoC in general:
+
+- Join our Discord: [discord.gg/pycord](https://discord.gg/pycord)
+- Email us at [admin@pycord.dev](mailto:admin@pycord.dev)
+- Read more about GSoC [summerofcode.withgoogle.com](https://summerofcode.withgoogle.com/)
+
+We look forward to reading your applications!
