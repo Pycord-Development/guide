@@ -38,20 +38,20 @@
     "@algolia/client-search": "5.0.0",
     "@crowdin/cli": "4.1.1",
     "@discordapp/twemoji": "discord/twemoji",
-    "@docusaurus/core": "^2.4.3",
-    "@docusaurus/mdx-loader": "2.4.3",
-    "@docusaurus/preset-classic": "^2.4.3",
-    "@docusaurus/theme-common": "^2.4.3",
+    "@docusaurus/core": "^3.0.0",
+    "@docusaurus/mdx-loader": "3.9.2",
+    "@docusaurus/preset-classic": "^3.0.0",
+    "@docusaurus/theme-common": "^3.0.0",
     "@easyops-cn/docusaurus-search-local": "^0.36.0",
     "@matteusan/sentro": "1.1.0",
-    "@mdx-js/react": "1.6.22",
+    "@mdx-js/react": "3.1.1",
     "@pycord/discord-message-components-react": "==0.3.2",
     "babel-plugin-module-resolver": "5.0.2",
     "clsx": "2.1.1",
     "docusaurus-plugin-sass": "0.2.5",
     "prism-react-renderer": "2.3.1",
-    "react": "17.0.0",
-    "react-dom": "17.0.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
     "react-loadable": "5.5.0",
     "react-twemoji": "^0.6.0",
     "sass": "1.77.8",
@@ -60,9 +60,9 @@
     "yarn": "^1.22.22"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^2.4.3",
+    "@docusaurus/module-type-aliases": "^3.0.0",
     "@tsconfig/docusaurus": "2.0.3",
-    "@types/react": "17.0.0",
+    "@types/react": "19.2.14",
     "@types/react-twemoji": "0.4.3",
     "micromark-extension-mdx-md": "^2.0.0",
     "remark-cli": "^12.0.1",
@@ -75,7 +75,7 @@
     "typescript": "5.5.4"
   },
   "resolutions": {
-    "@types/react": "17.0.2"
+    "@types/react": "19.2.14"
   },
   "browserslist": {
     "production": [
