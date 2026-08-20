@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@algolia/client-search": "5.57.0",
-    "@crowdin/cli": "4.15.0",
+    "@crowdin/cli": "4.15.1",
     "@discordapp/twemoji": "discord/twemoji",
     "@docusaurus/core": "^3.0.0",
     "@docusaurus/mdx-loader": "3.10.2",
