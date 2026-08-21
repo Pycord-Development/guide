@@ -1,0 +1,34 @@
+{
+  "id": "1234567890123456842",
+  "type": 0,
+  "content": "No Category:\n  !help Shows this message\n  !ping\n  !announce\n\nType !help command for more info on a command.\nYou can also type !help category for more info on a category.",
+  "channel_id": "9876543210987654321",
+  "author": {
+    "id": "882743264564875285",
+    "username": "Robocord",
+    "avatar": "e1fb97ca1fe3466357e39a7be5f274f1",
+    "discriminator": "0",
+    "public_flags": 65536,
+    "bot": true
+  },
+  "member": {
+    "nick": null,
+    "roles": ["2222222222222222222"],
+    "joined_at": "2024-01-01T00:00:00.000000+00:00",
+    "premium_since": null,
+    "deaf": false,
+    "mute": false
+  },
+  "attachments": [],
+  "embeds": [],
+  "mentions": [],
+  "mention_roles": [],
+  "pinned": false,
+  "mention_everyone": false,
+  "tts": false,
+  "timestamp": "2024-10-01T18:06:00.123456+00:00",
+  "edited_timestamp": null,
+  "flags": 0,
+  "components": [],
+  "application_id": "882743264564875285"
+}

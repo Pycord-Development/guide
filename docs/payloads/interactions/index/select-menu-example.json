@@ -1,0 +1,131 @@
+{
+  "id": "1234567890123456803",
+  "type": 0,
+  "content": "",
+  "channel_id": "9876543210987654321",
+  "author": {
+    "id": "882743264564875285",
+    "username": "Robocord",
+    "avatar": "e1fb97ca1fe3466357e39a7be5f274f1",
+    "discriminator": "0",
+    "public_flags": 65536,
+    "bot": true
+  },
+  "member": {
+    "nick": null,
+    "roles": ["2222222222222222222"],
+    "joined_at": "2024-01-01T00:00:00.000000+00:00",
+    "premium_since": null,
+    "deaf": false,
+    "mute": false
+  },
+  "attachments": [],
+  "embeds": [],
+  "mentions": [],
+  "mention_roles": [],
+  "pinned": false,
+  "mention_everyone": false,
+  "tts": false,
+  "timestamp": "2024-10-01T15:30:00.123456+00:00",
+  "edited_timestamp": null,
+  "flags": 0,
+  "components": [
+    {
+      "type": 1,
+      "components": [
+        {
+          "type": 3,
+          "custom_id": "select_menu_1",
+          "options": [
+            {
+              "label": "Label",
+              "value": "option_1",
+              "description": "Description",
+              "emoji": {
+                "id": null,
+                "name": "👀"
+              }
+            },
+            {
+              "label": "Label no Emoji",
+              "value": "option_2",
+              "description": "Description no Emoji"
+            }
+          ],
+          "placeholder": "Select an option",
+          "min_values": 1,
+          "max_values": 1
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "components": [
+        {
+          "type": 3,
+          "custom_id": "select_menu_2",
+          "options": [
+            {
+              "label": "Test",
+              "value": "test_option",
+              "description": "Test",
+              "emoji": {
+                "id": null,
+                "name": "🔥"
+              }
+            }
+          ],
+          "placeholder": "Disabled Select Menu",
+          "disabled": true,
+          "min_values": 1,
+          "max_values": 1
+        }
+      ]
+    },
+    {
+      "type": 1,
+      "components": [
+        {
+          "type": 3,
+          "custom_id": "select_menu_3",
+          "options": [
+            {
+              "label": "BobDotCom",
+              "value": "bob",
+              "description": "Hi there 👋, I'm BobDotCom"
+            },
+            {
+              "label": "Dorukyum",
+              "value": "dorukyum",
+              "description": "Hi there 👋, I'm Dorukyum"
+            },
+            {
+              "label": "Lala Sabathil",
+              "value": "lala",
+              "description": "Hi there, I'm Lala Sabathil"
+            },
+            {
+              "label": "Paillat",
+              "value": "paillat",
+              "description": ":3"
+            },
+            {
+              "label": "Swayam",
+              "value": "swayam",
+              "description": "Hi 👋, I'm Swayam"
+            },
+            {
+              "label": "Robocord",
+              "value": "robocord",
+              "description": "Nvm I'm a silly robot"
+            }
+          ],
+          "placeholder": "Overflow",
+          "min_values": 1,
+          "max_values": 1
+        }
+      ]
+    }
+  ],
+  "application_id": "882743264564875285"
+}

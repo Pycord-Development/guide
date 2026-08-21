@@ -1,0 +1,52 @@
+{
+  "type": 0,
+  "tts": false,
+  "timestamp": "2025-10-02T16:50:34.029000+00:00",
+  "pinned": false,
+  "mentions": [],
+  "mention_roles": [],
+  "mention_everyone": false,
+  "id": 1423351465761706064,
+  "flags": 0,
+  "embeds": [],
+  "edited_timestamp": null,
+  "content": "Hello, I am an example message !",
+  "components": [],
+  "channel_id": "1317208024682725426",
+  "author": {
+    "username": "paillat",
+    "public_flags": 4194368,
+    "primary_guild": {
+      "tag": "CAP",
+      "identity_guild_id": "1317206872763404478",
+      "identity_enabled": true,
+      "badge": "d7234d6824ca9ead59ffdcd76be30277"
+    },
+    "id": "707196665668436019",
+    "global_name": "Paillat",
+    "display_name_styles": null,
+    "discriminator": "0",
+    "collectibles": {
+      "nameplate": {
+        "sku_id": "1382845914225442886",
+        "palette": "bubble_gum",
+        "label": "COLLECTIBLES_NAMEPLATES_VOL_3_BONSAI_A11Y",
+        "expires_at": null,
+        "asset": "nameplates/nameplates_v3/bonsai/"
+      }
+    },
+    "clan": {
+      "tag": "CAP",
+      "identity_guild_id": "1317206872763404478",
+      "identity_enabled": true,
+      "badge": "d7234d6824ca9ead59ffdcd76be30277"
+    },
+    "avatar_decoration_data": {
+      "sku_id": "1409898407874531328",
+      "expires_at": null,
+      "asset": "a_34f162fc767aeb087d8d54a6f1ce697b"
+    },
+    "avatar": "186cec21194b515a264c6be8ebac252f"
+  },
+  "attachments": []
+}

@@ -14,8 +14,14 @@ edit_uri = "https://github.com/Pycord-Development/guide/edit/main/docs/"
 docs_dir = "docs"
 
 nav = [
-  { "Get started" = "index.md" },
-  { "Markdown in 5min" = "markdown.md" },
+  { "Introduction" = "introduction.md" },
+  { "Installation" = "installation.md" },
+  { "Getting Started" = ["getting-started/index.md", { "Creating Your First Bot" = "getting-started/creating-your-first-bot.md" }, { "Rules and Common Practices" = "getting-started/rules-and-common-practices.md" }, { "More Features" = "getting-started/more-features.md" }, { "Hosting Your Pycord Bot" = "getting-started/hosting-your-bot.md" }] },
+  { "Interactions" = ["interactions/index.md", { "Application Commands" = [{ "Slash Commands" = "interactions/application-commands/slash-commands.md" }, { "Context Menus" = "interactions/application-commands/context-menus.md" }, { "Localizations" = "interactions/application-commands/localizations.md" }] }, { "UI Components" = [{ "Buttons" = "interactions/ui-components/buttons.md" }, { "Select Menus" = "interactions/ui-components/dropdowns.md" }, { "Modal Dialogs" = "interactions/ui-components/modal-dialogs.md" }] }] },
+  { "Extensions" = ["extensions/index.md", { "Commands" = [{ "Prefixed Commands" = "extensions/commands/prefixed-commands.md" }, { "Command Groups" = "extensions/commands/groups.md" }, { "Help Command" = "extensions/commands/help-command.md" }] }, { "Pages" = [{ "Paginator Basics" = "extensions/pages/paginator-basics.md" }, { "Paginator FAQ" = "extensions/pages/paginator-faq.md" }] }, { "Bridge" = "extensions/bridge.md" }, { "Tasks" = "extensions/tasks/tasks.md" }] },
+  { "Voice" = ["voice/index.md", { "Wavelink Audio Player" = "voice/playing.md" }, { "Receiving Voice Samples" = "voice/receiving.md" }] },
+  { "Popular Topics" = ["popular-topics/index.md", { "Cogs" = "popular-topics/cogs.md" }, { "Error Handling" = "popular-topics/error-handling.md" }, { "Intents" = "popular-topics/intents.md" }, { "Sharding" = "popular-topics/sharding.md" }, { "Subclassing Bots" = "popular-topics/subclassing-bots.md" }, { "Threads" = "popular-topics/threads.md" }] },
+  { "More" = ["more/index.md", { "Community Resources" = "more/community-resources.md" }, { "Contributing to the Guide" = "more/contributing.md" }, { "Installing Git" = "more/git.md" }, { "Virtual Environments" = "more/virtual-environments.md" }] },
 ]
 
 # extra_css = ["stylesheets/extra.css"]
