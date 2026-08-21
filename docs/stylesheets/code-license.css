@@ -1,0 +1,33 @@
+/* Styles for javascripts/code-license.js.
+*/
+
+.highlight > pre:has(+ .pyc-code-license) {
+  margin-bottom: 0;
+}
+
+.highlight > pre:has(+ .pyc-code-license) > code {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.pyc-code-license {
+  margin: 0 0 1em;
+  padding: 0.4em 0.9rem;
+  font-size: 0.68rem;
+  line-height: 1.5;
+  text-align: right;
+  color: var(--md-default-fg-color--light);
+  background-color: var(--md-code-bg-color);
+  border-top: 0.05rem solid var(--md-default-fg-color--lightest);
+  border-radius: 0 0 0.4rem 0.4rem;
+}
+
+.pyc-code-license a {
+  color: var(--md-typeset-a-color);
+  text-underline-offset: 0.15em;
+}
+
+.pyc-code-license a:hover,
+.pyc-code-license a:focus {
+  color: var(--md-accent-fg-color);
+}

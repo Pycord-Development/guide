@@ -1,0 +1,9 @@
+Copyright (c) 2026-present Pycord-Development <admin@pycord.dev>
+
+Every fenced code block embedded in the documentation files under
+the docs/ directory is exclusively licensed under the license provided in
+LICENSES/Unlicense.txt.
+
+Any other content provided under the docs/ directory not already covered by
+the license(s) provided above is exclusively licensed under the license
+provided in LICENSES/CC-BY-NC-SA-4.0.txt instead.

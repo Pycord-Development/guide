@@ -4,7 +4,7 @@ site_name = "Pycord Guide"
 site_description = "Your project description"
 site_author = "Pycord-Development"
 
-copyright = "Copyright &copy; 2026 Pycord-Development"
+copyright = 'Copyright &copy; 2026 Pycord-Development <br/> Guide content licensed under <a href="/licenses/cc-by-nc-sa-4.0.txt" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>'
 
 repo_url = "https://github.com/Pycord-Development/pycord/"
 repo_name = "Pycord-Development/pycord"
@@ -25,7 +25,7 @@ nav = [
   { "More" = ["more/index.md", { "Community Resources" = "more/community-resources.md" }, { "Contributing to the Guide" = "more/contributing.md" }, { "Installing Git" = "more/git.md" }, { "Virtual Environments" = "more/virtual-environments.md" }] },
 ]
 
-extra_css = ["stylesheets/home.css", "stylesheets/code-license.css", "stylesheets/theme.css"]
+extra_css = ["stylesheets/home.css", "stylesheets/code-license.css"]
 extra_javascript = ["javascripts/code-license.js"]
 
 [project.theme]
