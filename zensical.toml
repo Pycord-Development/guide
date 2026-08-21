@@ -14,6 +14,7 @@ edit_uri = "https://github.com/Pycord-Development/guide/edit/main/docs/"
 docs_dir = "docs"
 
 nav = [
+  { "Home" = "index.md" },
   { "Introduction" = "introduction.md" },
   { "Installation" = "installation.md" },
   { "Getting Started" = ["getting-started/index.md", { "Creating Your First Bot" = "getting-started/creating-your-first-bot.md" }, { "Rules and Common Practices" = "getting-started/rules-and-common-practices.md" }, { "More Features" = "getting-started/more-features.md" }, { "Hosting Your Pycord Bot" = "getting-started/hosting-your-bot.md" }] },
@@ -24,10 +25,11 @@ nav = [
   { "More" = ["more/index.md", { "Community Resources" = "more/community-resources.md" }, { "Contributing to the Guide" = "more/contributing.md" }, { "Installing Git" = "more/git.md" }, { "Virtual Environments" = "more/virtual-environments.md" }] },
 ]
 
-# extra_css = ["stylesheets/extra.css"]
-# extra_javascript = ["javascripts/extra.js"]
+extra_css = ["stylesheets/home.css", "stylesheets/code-license.css", "stylesheets/theme.css"]
+extra_javascript = ["javascripts/code-license.js"]
 
 [project.theme]
+custom_dir = "overrides"
 language = "en"
 features = [
   # Announcements
@@ -74,24 +76,24 @@ code = "Jetbrains Mono"
 media = "(prefers-color-scheme)"
 toggle.icon = "lucide/sun-moon"
 toggle.name = "Switch to light mode"
-primary = "deep purple"
-accent = "deep purple"
+primary = "custom"
+accent = "custom"
 
 [[project.theme.palette]]
 media = "(prefers-color-scheme: light)"
 scheme = "default"
 toggle.icon = "lucide/sun"
 toggle.name = "Switch to dark mode"
-primary = "deep purple"
-accent = "deep purple"
+primary = "custom"
+accent = "custom"
 
 [[project.theme.palette]]
 media = "(prefers-color-scheme: dark)"
 scheme = "slate"
 toggle.icon = "lucide/moon"
 toggle.name = "Switch to system preference"
-primary = "deep purple"
-accent = "deep purple"
+primary = "custom"
+accent = "custom"
 
 [[project.extra.social]]
 icon = "fontawesome/brands/github"

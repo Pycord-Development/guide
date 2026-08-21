@@ -1,0 +1,72 @@
+.pyc-hero {
+  display: flex;
+  align-items: center;
+  padding: 4rem 0;
+  min-height: min(72vh, 640px);
+  background: radial-gradient(
+    58% 78% at 82% 32%,
+    color-mix(in srgb, var(--md-primary-fg-color) 16%, transparent),
+    transparent 70%
+  );
+}
+
+.pyc-hero__inner {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+  grid-template-columns: 1fr;
+  text-align: center;
+}
+
+.pyc-hero__content h1 {
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.1;
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.pyc-hero__subtitle {
+  margin: 0.7rem 0 0;
+  font-weight: 300;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: var(--md-default-fg-color--light);
+}
+
+.pyc-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.pyc-hero__visual {
+  display: grid;
+  place-items: center;
+}
+
+.pyc-hero__logo {
+  width: min(70%, 300px);
+  height: auto;
+  user-select: none;
+  filter: drop-shadow(
+    0 0.75rem 2rem color-mix(in srgb, var(--md-primary-fg-color) 30%, transparent)
+  );
+}
+
+body:has(.pyc-hero) .md-content__inner {
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+@media screen and (min-width: 60em) {
+  .pyc-hero__inner {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 3.5rem;
+    text-align: left;
+  }
+
+  .pyc-hero__actions {
+    justify-content: flex-start;
+  }
+}
