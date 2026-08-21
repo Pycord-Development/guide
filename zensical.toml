@@ -1,0 +1,141 @@
+[project]
+site_url = "https://guide.pycord.dev/"
+site_name = "Pycord Guide"
+site_description = "Your project description"
+site_author = "Pycord-Development"
+
+copyright = "Copyright &copy; 2026 Pycord-Development"
+
+repo_url = "https://github.com/Pycord-Development/pycord/"
+repo_name = "Pycord-Development/pycord"
+
+# Different repo for guide so we override here
+edit_uri = "https://github.com/Pycord-Development/guide/edit/main/docs/"
+docs_dir = "docs"
+
+nav = [
+  { "Get started" = "index.md" },
+  { "Markdown in 5min" = "markdown.md" },
+]
+
+# extra_css = ["stylesheets/extra.css"]
+# extra_javascript = ["javascripts/extra.js"]
+
+[project.theme]
+language = "en"
+features = [
+  # Announcements
+  "announce.dismiss",
+  # Content
+  "content.action.edit",
+  "content.action.view",
+  "content.code.annotate",
+  "content.code.copy",
+  "content.code.select",
+  "content.footnote.tooltips",
+  "content.tabs.link",
+  "content.tooltips",
+  # Navigation
+  "navigation.expand",
+  "navigation.footer",
+  "navigation.indexes",
+  "navigation.instant",
+  "navigation.instant.prefetch",
+  "navigation.path",
+  "navigation.sections",
+  "navigation.top",
+  "navigation.tracking",
+  # Search
+  "search.highlight",
+  # Table of contents
+  "toc.follow",
+  # "toc.integrate",
+  # Footer
+  "navigation.footer",
+]
+
+favicon = "images/favicon.png"
+logo = "assets/logo.png"
+
+[project.theme.icon]
+repo = "fontawesome/brands/github"
+
+[project.theme.font]
+text = "Geist"
+code = "Jetbrains Mono"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme)"
+toggle.icon = "lucide/sun-moon"
+toggle.name = "Switch to light mode"
+primary = "deep purple"
+accent = "deep purple"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+primary = "deep purple"
+accent = "deep purple"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to system preference"
+primary = "deep purple"
+accent = "deep purple"
+
+[[project.extra.social]]
+icon = "fontawesome/brands/github"
+link = "https://github.com/Pycord-Development/pycord"
+
+[[project.extra.social]]
+icon = "lucide/globe"
+link = "https://pycord.dev"
+
+[[project.extra.social]]
+icon = "fontawesome/brands/discord"
+link = "https://pycord.dev/discord"
+
+[project.validation]
+unresolved_references = true
+unresolved_footnotes = true
+unused_definitions = true
+unused_footnotes = true
+shadowed_definitions = true
+shadowed_footnotes = true
+
+[project.markdown_extensions]
+abbr = {}
+admonition = {}
+attr_list = {}
+def_list = {}
+footnotes = {}
+md_in_html = {}
+toc.permalink = true
+pymdownx.arithmatex.generic = true
+pymdownx.betterem = {
+  smart_enable = "all"
+}
+pymdownx.caret = {}
+pymdownx.details = {}
+pymdownx.emoji.emoji_generator = "zensical.extensions.emoji.to_svg"
+pymdownx.emoji.emoji_index = "zensical.extensions.emoji.twemoji"
+pymdownx.highlight.anchor_linenums = true
+pymdownx.highlight.line_spans = "__span"
+pymdownx.highlight.pygments_lang_class = true
+pymdownx.inlinehilite = {}
+pymdownx.keys = {}
+pymdownx.magiclink = {}
+pymdownx.mark = {}
+pymdownx.smartsymbols = {}
+# pymdownx.snippets.base_path = "includes"
+pymdownx.superfences.custom_fences = [
+  { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" },
+]
+pymdownx.tabbed.alternate_style = true
+pymdownx.tabbed.combine_header_slug = true
+pymdownx.tasklist.custom_checkbox = true
+pymdownx.tilde = {}

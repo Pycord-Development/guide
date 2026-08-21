@@ -25,3 +25,6 @@ yarn-error.log*
 
 # Bot Tests
 bot_tests/
+
+# Zensical out dir
+site/
