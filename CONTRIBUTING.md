@@ -16,24 +16,12 @@ Found something wrong? Please be aware of the following when filing an issue.
 1. Tell us **what's wrong** and, where relevant, **what it should say instead**.
 1. If a code sample doesn't work, include what you ran and what happened (the
     complete error or traceback, with any token removed).
-    Duplicate issues will be closed.
-1. Point us to **where** the problem is (page, section, or link).
-1. Tell us **what's wrong** and, where relevant, **what it should say instead**.
-1. If a code sample doesn't work, include what you ran and what happened (the
-    complete error or traceback, with any token removed).
 
 The clearer the report, the faster it gets fixed.
 
 ## Submitting a Pull Request
 
 1. Make sure you are up to date with the latest changes. It is recommended you pull
-    the latest changes from the master branch before working on your own.
-1. Preview your changes locally and make sure the guide builds before submitting.
-1. Explain everything in a way that is easy to understand. If it's an advanced topic
-    that requires some expertise, say so in a note admonition.
-1. Follow proper grammar and spelling.
-1. Try to follow the guide's style, and keep each pull request focused on a single
-    aspect — avoid scope creep.
     the latest changes from the master branch before working on your own.
 1. Preview your changes locally and make sure the guide builds before submitting.
 1. Explain everything in a way that is easy to understand. If it's an advanced topic
@@ -51,7 +39,6 @@ Some style guides we recommend:
 
 - The [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) style is
     widely used and a good place to start.
-    widely used and a good place to start.
 - The [gitmoji](https://gitmoji.dev) style makes your pull request look more lively.
 
 We don't limit or deny pull requests using another style — just make sure it is
@@ -63,13 +50,6 @@ By submitting a contribution (including but not limited to a pull request, patch
 content) you agree to and accept the following:
 
 1. You hold the copyright on everything in your contribution, or you have permission
-    to submit it under the terms below.
-1. Your contribution is licensed under the terms described in [`LICENSE`](./LICENSE),
-    matching the location and nature of the material.
-1. You understand your contribution and can explain its purpose, meaning, and impact
-    when requested.
-1. If you are found to be in fault with any of the above, we shall not be held
-    responsible in any way after the pull request has been merged.
     to submit it under the terms below.
 1. Your contribution is licensed under the terms described in [`LICENSE`](./LICENSE),
     matching the location and nature of the material.
