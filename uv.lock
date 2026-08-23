@@ -89,6 +89,7 @@ source = { virtual = "." }
 dev = [
     { name = "mdformat" },
     { name = "mdformat-mkdocs", extra = ["recommended"] },
+    { name = "mdformat-ruff" },
     { name = "zensical" },
 ]
 
@@ -98,6 +99,7 @@ dev = [
 dev = [
     { name = "mdformat", specifier = "~=1.0" },
     { name = "mdformat-mkdocs", extras = ["recommended"], specifier = "~=5.2" },
+    { name = "mdformat-ruff", specifier = ">=0.1.3" },
     { name = "zensical", specifier = "~=0.0.56" },
 ]
 
