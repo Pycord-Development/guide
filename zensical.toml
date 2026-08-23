@@ -1,0 +1,149 @@
+[project]
+site_url = "https://guide.pycord.dev/"
+site_name = "Pycord Guide"
+site_description = "Your project description"
+site_author = "Pycord-Development"
+
+copyright = 'Copyright &copy; 2026 Pycord-Development <br/> Guide content licensed under <a href="/licenses/cc-by-nc-sa-4.0.txt" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>'
+
+repo_url = "https://github.com/Pycord-Development/pycord/"
+repo_name = "Pycord-Development/pycord"
+
+# Different repo for guide so we override here
+edit_uri = "https://github.com/Pycord-Development/guide/edit/main/docs/"
+docs_dir = "docs"
+
+nav = [
+  { "Home" = "index.md" },
+  { "Introduction" = "introduction.md" },
+  { "Installation" = "installation.md" },
+  { "Getting Started" = ["getting-started/index.md", { "Creating Your First Bot" = "getting-started/creating-your-first-bot.md" }, { "Rules and Common Practices" = "getting-started/rules-and-common-practices.md" }, { "More Features" = "getting-started/more-features.md" }, { "Hosting Your Pycord Bot" = "getting-started/hosting-your-bot.md" }] },
+  { "Interactions" = ["interactions/index.md", { "Application Commands" = [{ "Slash Commands" = "interactions/application-commands/slash-commands.md" }, { "Context Menus" = "interactions/application-commands/context-menus.md" }, { "Localizations" = "interactions/application-commands/localizations.md" }] }, { "UI Components" = [{ "Buttons" = "interactions/ui-components/buttons.md" }, { "Select Menus" = "interactions/ui-components/dropdowns.md" }, { "Modal Dialogs" = "interactions/ui-components/modal-dialogs.md" }] }] },
+  { "Extensions" = ["extensions/index.md", { "Commands" = [{ "Prefixed Commands" = "extensions/commands/prefixed-commands.md" }, { "Command Groups" = "extensions/commands/groups.md" }, { "Help Command" = "extensions/commands/help-command.md" }] }, { "Pages" = [{ "Paginator Basics" = "extensions/pages/paginator-basics.md" }, { "Paginator FAQ" = "extensions/pages/paginator-faq.md" }] }, { "Bridge" = "extensions/bridge.md" }, { "Tasks" = "extensions/tasks/tasks.md" }] },
+  { "Voice" = ["voice/index.md", { "Wavelink Audio Player" = "voice/playing.md" }, { "Receiving Voice Samples" = "voice/receiving.md" }] },
+  { "Popular Topics" = ["popular-topics/index.md", { "Cogs" = "popular-topics/cogs.md" }, { "Error Handling" = "popular-topics/error-handling.md" }, { "Intents" = "popular-topics/intents.md" }, { "Sharding" = "popular-topics/sharding.md" }, { "Subclassing Bots" = "popular-topics/subclassing-bots.md" }, { "Threads" = "popular-topics/threads.md" }] },
+  { "More" = ["more/index.md", { "Community Resources" = "more/community-resources.md" }, { "Contributing to the Guide" = "more/contributing.md" }, { "Installing Git" = "more/git.md" }, { "Virtual Environments" = "more/virtual-environments.md" }] },
+]
+
+extra_css = ["stylesheets/home.css", "stylesheets/code-license.css"]
+extra_javascript = ["javascripts/code-license.js"]
+
+[project.theme]
+custom_dir = "overrides"
+language = "en"
+features = [
+  # Announcements
+  "announce.dismiss",
+  # Content
+  "content.action.edit",
+  "content.action.view",
+  "content.code.annotate",
+  "content.code.copy",
+  "content.code.select",
+  "content.footnote.tooltips",
+  "content.tabs.link",
+  "content.tooltips",
+  # Navigation
+  "navigation.expand",
+  "navigation.footer",
+  "navigation.indexes",
+  "navigation.instant",
+  "navigation.instant.prefetch",
+  "navigation.path",
+  "navigation.sections",
+  "navigation.top",
+  "navigation.tracking",
+  # Search
+  "search.highlight",
+  # Table of contents
+  "toc.follow",
+  # "toc.integrate",
+  # Footer
+  "navigation.footer",
+]
+
+favicon = "images/favicon.png"
+logo = "assets/logo.png"
+
+[project.theme.icon]
+repo = "fontawesome/brands/github"
+
+[project.theme.font]
+text = "Geist"
+code = "Jetbrains Mono"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme)"
+toggle.icon = "lucide/sun-moon"
+toggle.name = "Switch to light mode"
+primary = "custom"
+accent = "custom"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+primary = "custom"
+accent = "custom"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to system preference"
+primary = "custom"
+accent = "custom"
+
+[[project.extra.social]]
+icon = "fontawesome/brands/github"
+link = "https://github.com/Pycord-Development/pycord"
+
+[[project.extra.social]]
+icon = "lucide/globe"
+link = "https://pycord.dev"
+
+[[project.extra.social]]
+icon = "fontawesome/brands/discord"
+link = "https://pycord.dev/discord"
+
+[project.validation]
+unresolved_references = true
+unresolved_footnotes = true
+unused_definitions = true
+unused_footnotes = true
+shadowed_definitions = true
+shadowed_footnotes = true
+
+[project.markdown_extensions]
+abbr = {}
+admonition = {}
+attr_list = {}
+def_list = {}
+footnotes = {}
+md_in_html = {}
+toc.permalink = true
+pymdownx.arithmatex.generic = true
+pymdownx.betterem = {
+  smart_enable = "all"
+}
+pymdownx.caret = {}
+pymdownx.details = {}
+pymdownx.emoji.emoji_generator = "zensical.extensions.emoji.to_svg"
+pymdownx.emoji.emoji_index = "zensical.extensions.emoji.twemoji"
+pymdownx.highlight.anchor_linenums = true
+pymdownx.highlight.line_spans = "__span"
+pymdownx.highlight.pygments_lang_class = true
+pymdownx.inlinehilite = {}
+pymdownx.keys = {}
+pymdownx.magiclink = {}
+pymdownx.mark = {}
+pymdownx.smartsymbols = {}
+# pymdownx.snippets.base_path = "includes"
+pymdownx.superfences.custom_fences = [
+  { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" },
+]
+pymdownx.tabbed.alternate_style = true
+pymdownx.tabbed.combine_header_slug = true
+pymdownx.tasklist.custom_checkbox = true
+pymdownx.tilde = {}

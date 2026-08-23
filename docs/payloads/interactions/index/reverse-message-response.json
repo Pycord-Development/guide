@@ -1,0 +1,47 @@
+{
+  "id": "1234567890123456787",
+  "type": 20,
+  "content": "Message 930650407917748286 reversed is \"!dlroW olleH\"",
+  "channel_id": "9876543210987654321",
+  "author": {
+    "id": "882743264564875285",
+    "username": "Robocord",
+    "avatar": "e1fb97ca1fe3466357e39a7be5f274f1",
+    "discriminator": "0",
+    "public_flags": 65536,
+    "bot": true
+  },
+  "member": {
+    "nick": null,
+    "roles": ["2222222222222222222"],
+    "joined_at": "2024-01-01T00:00:00.000000+00:00",
+    "premium_since": null,
+    "deaf": false,
+    "mute": false
+  },
+  "attachments": [],
+  "embeds": [],
+  "mentions": [],
+  "mention_roles": [],
+  "pinned": false,
+  "mention_everyone": false,
+  "tts": false,
+  "timestamp": "2024-10-01T15:15:05.123456+00:00",
+  "edited_timestamp": null,
+  "flags": 0,
+  "components": [],
+  "application_id": "882743264564875285",
+  "interaction": {
+    "id": "1234567890123456796",
+    "type": 3,
+    "name": "Reverse Message",
+    "user": {
+      "id": "690420846774321221",
+      "username": "BobDotCom",
+      "avatar": "4810eacf552fcbaf2e5541885b753705",
+      "discriminator": "0",
+      "public_flags": 0
+    }
+  },
+  "webhook_id": "882743264564875285"
+}

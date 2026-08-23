@@ -13,7 +13,7 @@ it will either be refactored, or redone.
 
 For contributing rules, please visit [this page](./CONTRIBUTING.md).
 
-The Guide is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator. 
+The Guide is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
 [`/src`](./src) contains styling (`.scss`) and the index (`.tsx`/`jsx`).
 
@@ -23,19 +23,25 @@ The Guide is built using [Docusaurus 2](https://docusaurus.io/), a modern static
 
 First, you need to clone the repository:
 
-    git clone https://github.com/Pycord-Development/guide
+```
+git clone https://github.com/Pycord-Development/guide
+```
 
 ### Installing Requirements
 
 You need to install the requirements for the guide, which you may do by running the following command:
 
-    yarn
+```
+yarn
+```
 
 ### Starting the Server
 
 Then, you can start the server by running the following command:
 
-    yarn start
+```
+yarn start
+```
 
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
@@ -43,7 +49,9 @@ This command starts a local development server and opens up a browser window. Mo
 
 Then, you can build the website by running the following command:
 
-    yarn build
+```
+yarn build
+```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
@@ -51,11 +59,15 @@ This command generates static content into the `build` directory and can be serv
 
 Using SSH:
 
-    USE_SSH=true yarn deploy
+```
+USE_SSH=true yarn deploy
+```
 
 Without SSH:
 
-    GIT_USER=<Your GitHub username> yarn deploy
+```
+GIT_USER=<Your GitHub username> yarn deploy
+```
 
 If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
 

@@ -1,0 +1,18 @@
+[project]
+name = "guide"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Paillat-dev", email = "me@paillat.dev" }
+]
+requires-python = ">=3.13"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "zensical~=0.0.56",
+    "mdformat~=1.0",
+    "mdformat-mkdocs[recommended]~=5.2",
+    "mdformat-ruff>=0.1.3",
+]

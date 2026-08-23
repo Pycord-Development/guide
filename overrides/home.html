@@ -1,0 +1,41 @@
+{% extends "main.html" %}
+
+{% block htmltitle %}
+  <title>{{ config.site_name }}</title>
+{% endblock %}
+
+{% block tabs %}
+  {{ super() }}
+  <section class="pyc-hero">
+    <div class="pyc-hero__inner md-grid">
+      <div class="pyc-hero__content md-typeset">
+        <h1>{{ config.site_name }}</h1>
+        <p class="pyc-hero__subtitle">
+          Learn how to create Discord bots with Pycord
+        </p>
+        <div class="pyc-hero__actions">
+          <a class="md-button md-button--primary" href="{{ 'introduction/' | url }}">
+            Get started
+          </a>
+          <a class="md-button" href="{{ config.repo_url }}" target="_blank" rel="noopener">
+            View on GitHub
+          </a>
+        </div>
+      </div>
+      {% if config.theme.logo %}
+        <div class="pyc-hero__visual">
+          <img
+            class="pyc-hero__logo"
+            src="{{ config.theme.logo | url }}"
+            alt="{{ config.site_name }} logo"
+            draggable="false"
+          >
+        </div>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}
+
+{% block content %}
+  {{ page.content }}
+{% endblock %}

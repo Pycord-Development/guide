@@ -1,0 +1,32 @@
+{
+  "id": "1234567890123456857",
+  "type": 0,
+  "content": "!sum 2 2",
+  "channel_id": "9876543210987654321",
+  "author": {
+    "id": "690420846774321221",
+    "username": "BobDotCom",
+    "avatar": "4810eacf552fcbaf2e5541885b753705",
+    "discriminator": "0",
+    "public_flags": 0
+  },
+  "member": {
+    "nick": null,
+    "roles": ["6666666666666666666"],
+    "joined_at": "2024-01-10T00:00:00.000000+00:00",
+    "premium_since": null,
+    "deaf": false,
+    "mute": false
+  },
+  "attachments": [],
+  "embeds": [],
+  "mentions": [],
+  "mention_roles": [],
+  "pinned": false,
+  "mention_everyone": false,
+  "tts": false,
+  "timestamp": "2024-10-01T18:30:00.123456+00:00",
+  "edited_timestamp": null,
+  "flags": 0,
+  "components": []
+}

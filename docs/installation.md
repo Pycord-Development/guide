@@ -1,0 +1,80 @@
+---
+title: Installation
+icon: lucide/download
+---
+
+Before you can start using Pycord, you need to install the library.
+
+!!! note
+
+    Python **3.9 or above** is required to use Pycord.
+
+!!! tip
+
+    Before you start installing python packages globally, it's recommended you set up a virtual environment.
+    You can find instructions for that [here](more/virtual-environments.md).
+
+## Fresh Installation
+
+To install Pycord, you can use the following command in your terminal:
+
+```bash
+pip install py-cord
+```
+
+!!! tip
+
+    Remember that you need to install `py-cord`, not `pycord`.
+    Also, the `pip` command varies depending on your installation. For example, it might be `python3 -m pip` on macOS/Linux or `py3 -m pip` on some versions of Windows.
+
+If you need voice support for your bot, you should run:
+
+```bash
+pip install "py-cord[voice]"
+```
+
+## Migration
+
+### Updating Pycord
+
+If you are upgrading from a previous version of Pycord, you can use the following command in your terminal to upgrade to the latest version:
+
+```bash
+pip install -U py-cord
+```
+
+### Migrating from other libraries
+
+If you are migrating from another library, say, `discord.py`, first of all, you need to uninstall it.
+
+```bash
+pip uninstall discord.py
+```
+
+Then, you can install Pycord, it's as simple as that!:
+
+```bash
+pip install py-cord
+```
+
+!!! caution
+
+    Uninstalling `discord.py` *after* installing `py-cord` can cause issues. Make sure to uninstall it first!
+
+## Installing Other Builds
+
+### Development Build
+
+!!! caution
+
+    The development build comes with cutting edge features and new functionality, but as it isn't a stable build you may encounter bugs.
+
+To install the development build, you can use the following command in your terminal:
+
+```bash
+pip install -U git+https://github.com/Pycord-Development/pycord
+```
+
+!!! important
+
+    Git is required to install this build. [Learn how you can install Git](more/git.md).

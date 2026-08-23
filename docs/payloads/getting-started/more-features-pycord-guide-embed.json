@@ -1,0 +1,85 @@
+{
+  "id": "1234567890123456784",
+  "type": 0,
+  "content": "",
+  "channel_id": "9876543210987654321",
+  "author": {
+    "id": "882743264564875285",
+    "username": "Robocord",
+    "avatar": "e1fb97ca1fe3466357e39a7be5f274f1",
+    "discriminator": "0",
+    "public_flags": 65536,
+    "bot": true
+  },
+  "member": {
+    "nick": null,
+    "roles": ["2222222222222222222"],
+    "joined_at": "2024-01-01T00:00:00.000000+00:00",
+    "premium_since": null,
+    "deaf": false,
+    "mute": false
+  },
+  "attachments": [],
+  "embeds": [
+    {
+      "type": "rich",
+      "title": "Pycord Guide",
+      "description": "The Pycord Guide is a detailed guide that explains how to use Pycord and all of its features.",
+      "url": "https://guide.pycord.dev",
+      "color": 5793266,
+      "fields": [
+        {
+          "name": "Getting Started",
+          "value": "The Getting Started section explains how you can get a brand new bot created and running from scratch.",
+          "inline": false
+        },
+        {
+          "name": "Interactions",
+          "value": "Interactions with Pycord",
+          "inline": true
+        },
+        {
+          "name": "Extensions",
+          "value": "Pycord's various Extensions",
+          "inline": true
+        },
+        {
+          "name": "Popular Topics",
+          "value": "Other Popular Topics",
+          "inline": true
+        },
+        {
+          "name": "And More!",
+          "value": "We have so much more! Just explore, and you will find everything you need. If you want another page added, open an issue on the GitHub.",
+          "inline": false
+        }
+      ],
+      "author": {
+        "name": "Pycord Team",
+        "url": "https://github.com/Pycord-Development/guide",
+        "icon_url": "https://guide.pycord.dev/logo.webp"
+      },
+      "footer": {
+        "text": "Created with 💖 by the Pycord Team & Contributors",
+        "icon_url": "https://guide.pycord.dev/logo.webp"
+      },
+      "thumbnail": {
+        "url": "https://guide.pycord.dev/logo.webp"
+      },
+      "image": {
+        "url": "https://guide.pycord.dev/logo.webp"
+      },
+      "timestamp": "2021-01-09T00:00:00.000000+00:00"
+    }
+  ],
+  "mentions": [],
+  "mention_roles": [],
+  "pinned": false,
+  "mention_everyone": false,
+  "tts": false,
+  "timestamp": "2024-10-01T14:30:00.123456+00:00",
+  "edited_timestamp": null,
+  "flags": 0,
+  "components": [],
+  "application_id": "882743264564875285"
+}

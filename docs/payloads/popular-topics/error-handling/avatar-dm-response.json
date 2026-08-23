@@ -1,0 +1,51 @@
+{
+  "id": "1234567890123456829",
+  "type": 0,
+  "content": "",
+  "channel_id": "9876543210987654321",
+  "author": {
+    "id": "882743264564875285",
+    "username": "Robocord",
+    "avatar": "e1fb97ca1fe3466357e39a7be5f274f1",
+    "discriminator": "0",
+    "public_flags": 65536,
+    "bot": true
+  },
+  "attachments": [],
+  "embeds": [
+    {
+      "type": "rich",
+      "title": "Avatar",
+      "description": "Here's your enlarged avatar, BobDotCom!",
+      "color": 5793266,
+      "image": {
+        "url": "https://cdn.discordapp.com/avatars/690420846774321221/4810eacf552fcbaf2e5541885b753705.png"
+      }
+    }
+  ],
+  "mentions": [],
+  "mention_roles": [],
+  "pinned": false,
+  "mention_everyone": false,
+  "tts": false,
+  "timestamp": "2024-10-01T17:15:02.123456+00:00",
+  "edited_timestamp": null,
+  "flags": 0,
+  "components": [],
+  "message_reference": {
+    "channel_id": "9876543210987654321",
+    "message_id": "1234567890123456828"
+  },
+  "referenced_message": {
+    "id": "1234567890123456828",
+    "type": 0,
+    "content": "!avatar",
+    "author": {
+      "id": "690420846774321221",
+      "username": "BobDotCom",
+      "avatar": "4810eacf552fcbaf2e5541885b753705",
+      "discriminator": "0"
+    }
+  },
+  "application_id": "882743264564875285"
+}

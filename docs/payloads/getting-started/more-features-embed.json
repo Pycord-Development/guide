@@ -1,0 +1,90 @@
+{
+  "id": "1234567890123456783",
+  "type": 20,
+  "content": "Hello! Here's a cool embed.",
+  "channel_id": "9876543210987654321",
+  "author": {
+    "id": "882743264564875285",
+    "username": "Robocord",
+    "avatar": "e1fb97ca1fe3466357e39a7be5f274f1",
+    "discriminator": "0",
+    "public_flags": 65536,
+    "bot": true
+  },
+  "member": {
+    "nick": null,
+    "roles": ["2222222222222222222"],
+    "joined_at": "2024-01-01T00:00:00.000000+00:00",
+    "premium_since": null,
+    "deaf": false,
+    "mute": false
+  },
+  "attachments": [],
+  "embeds": [
+    {
+      "type": "rich",
+      "title": "My Amazing Embed",
+      "description": "Embeds are super easy, barely an inconvenience.",
+      "color": 5793266,
+      "fields": [
+        {
+          "name": "A Normal Field",
+          "value": "A really nice field with some information. **The description as well as the fields support markdown!**",
+          "inline": false
+        },
+        {
+          "name": "Inline Field 1",
+          "value": "Inline Field 1",
+          "inline": true
+        },
+        {
+          "name": "Inline Field 2",
+          "value": "Inline Field 2",
+          "inline": true
+        },
+        {
+          "name": "Inline Field 3",
+          "value": "Inline Field 3",
+          "inline": true
+        }
+      ],
+      "author": {
+        "name": "Pycord Team",
+        "icon_url": "https://guide.pycord.dev/logo.webp"
+      },
+      "footer": {
+        "text": "Footer! No markdown here.",
+        "icon_url": "https://guide.pycord.dev/logo.webp"
+      },
+      "thumbnail": {
+        "url": "https://guide.pycord.dev/logo.webp"
+      },
+      "image": {
+        "url": "https://guide.pycord.dev/logo.webp"
+      }
+    }
+  ],
+  "mentions": [],
+  "mention_roles": [],
+  "pinned": false,
+  "mention_everyone": false,
+  "tts": false,
+  "timestamp": "2024-10-01T14:25:30.123456+00:00",
+  "edited_timestamp": null,
+  "flags": 0,
+  "components": [],
+  "application_id": "882743264564875285",
+  "interaction": {
+    "id": "1234567890123456793",
+    "type": 2,
+    "name": "count",
+    "user": {
+      "id": "690420846774321221",
+      "username": "BobDotCom",
+      "avatar": "4810eacf552fcbaf2e5541885b753705",
+      "discriminator": "0",
+      "public_flags": 0
+    }
+  },
+  "webhook_id": "882743264564875285"
+}

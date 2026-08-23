@@ -4,5 +4,6 @@
     "local>Pycord-Development/renovate-config",
     ":semanticPrefixFixDepsChoreOthers",
     ":dependencyDashboard"
-  ]
+  ],
+  "pinDigests": true
 }
