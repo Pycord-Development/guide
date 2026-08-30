@@ -1,132 +1,169 @@
 ---
-title: Wavelink Audio Player
+title: Playing Audio in Voice Channels
 ---
 
 # About
 
-Pycord and Wavelink try to keep the playing of audio as simple and easy as possible, to keep making Discord
-bots of any kind easy for all audiences. This guide provides simple and easy examples of using the
-audio playing feature.
+Pycord offers multiple ways to play audio streams in a voice channel keeping it as simple
+and easy as possible, so making any kind of Discord bot is easy for all audiences. This
+guide provides simple and easy examples of using the multiple ways the library allows
+you to play audio.
 
 For users that want extra examples, you can find some in Pycord's
-[GitHub repository](https://github.com/Pycord-Development/pycord/blob/master/examples/).
+[Github repository](https://github.com/Pycord-Development/pycord/blob/master/examples/).
 
 ## Starting out
 
-First you need to run a [Lavalink Server](https://github.com/freyacodes/Lavalink) to connect with.
-There a multiple documentations to do this, so we are not covering that here.
+Pycord natively provides an [`discord.AudioSource`](https://docs.pycord.dev/en/stable/api/voice.html#discord.AudioSource)
+object. This object defines the structure audio sources must follow in order to be accepted by
+the library. For more information on this structure, check the respective documentation.
 
-You also need to install the [wavelink](https://github.com/PythonistaGuild/Wavelink) library.
+You usually do not need to manually create subclasses of this object as the library also provides you
+with the most common audio source types.
 
-```py title="Installing wavelink"
-python3 -m pip install wavelink
-```
+### [`PCMAudio`](https://docs.pycord.dev/en/stable/api/voice.html#discord.PCMAudio)
 
-You will now want to connect to your server via a node.
+`PCMAudio` is the base class designed to read raw, uncompressed 16-bit 48kHz stereo PCM bytes
+directly from an existing byte stream or file. This essentially means that common audio formats
+such as `mp3`, `wav`, or `ogg` are not valid, as they are not PCM streams (check `FFmpegPCMAudio`).
 
-```py title="Connect Node with Lavalink"
+You should only use `PCMAudio` in specialized or advanced scenarios where you have raw PCM bytes
+(such as live audio synthesis or reading from pre-recorded `.pcm` data) without needing external
+tools.
+
+```py title="Using PCMAudio"
+import io
 import discord
-import wavelink
 
 bot = discord.Bot()
 
+@bot.command()
+async def play(ctx: discord.ApplicationContext) -> None:
+    if not ctx.voice_client:
+        await ctx.author.voice.channel.connect()
 
-async def connect_nodes():
-    """Connect to our Lavalink nodes."""
-    await bot.wait_until_ready()  # wait until the bot is ready
+    with open("raw_audio.pcm", "rb") as f:
+        # we use io.BytesIO as a container for the bytes we are reading
+        pcm_data = io.BytesIO(f.read())
 
-    nodes = [
-        wavelink.Node(
-            identifier="Node1",  # This identifier must be unique for all the nodes you are going to use
-            uri="http://0.0.0.0:443",  # Protocol (http/s) is required, port must be 443 as it is the one lavalink uses
-            password="youshallnotpass",
-        )
-    ]
-
-    await wavelink.Pool.connect(nodes=nodes, client=bot)  # Connect our nodes
+    source = discord.PCMAudio(pcm_data)
+    ctx.voice_client.play(source)
+    await ctx.respond("Playing PCM audio.")
 ```
 
-<br />
+### [`FFmpegPCMAudio`](https://docs.pycord.dev/en/stable/api/voice.html#discord.FFmpegPCMAudio)
 
-Now you are finished making your node! Next, you will want to:
+Unlike `PCMAudio`, `FFmpegPCMAudio` allows you to pass different audio file formats and automatically
+decode it to PCM. This is done by using the `ffmpeg` (or `avconv`) executables to convert these audio
+streams into manipulable PCM data in a dedicated sub-process.
 
-1. Making a play command
-1. Adding connect events
+This intermediate PCM step is slightly more CPU-intensive, as it has to encode the raw audio again into
+Opus in order to be transmitted to Discord. However, having access to the raw PCM is necessary if you
+want to manipulate or modify the audio.
 
-### Making a play command
+```py title="Using FFmpegPCMAudio"
+import discord
 
-To make a play command, you will need to make a function to connect and play audio in a voice channel.
+bot = discord.Bot()
 
-```py title="Play Command Example"
-import typing
+@bot.command()
+async def play(ctx: discord.ApplicationContext) -> None:
+    if not ctx.voice_client:
+        await ctx.author.voice.channel.connect()
 
-
-@bot.slash_command(name="play")
-async def play(ctx, search: str):
-    # First we may define our voice client,
-    # for this, we are going to use typing.cast()
-    # function just for the type checker know that
-    # `ctx.voice_client` is going to be from type
-    # `wavelink.Player`
-    vc = typing.cast(wavelink.Player, ctx.voice_client)
-
-    if not vc:  # We firstly check if there is a voice client
-        vc = await ctx.author.voice.channel.connect(
-            cls=wavelink.Player
-        )  # If there isn't, we connect it to the channel
-
-    # Now we are going to check if the invoker of the command
-    # is in the same voice channel than the voice client, when defined.
-    # If not, we return an error message.
-    if ctx.author.voice.channel.id != vc.channel.id:
-        return await ctx.respond("You must be in the same voice channel as the bot.")
-
-    # Now we search for the song. You can optionally
-    # pass the "source" keyword, of type "wavelink.TrackSource"
-    song = await wavelink.Playable.search(search)
-
-    if not song:  # In case the song is not found
-        return await ctx.respond("No song found.")  # we return an error message
-
-    await vc.play(song)  # Else, we play it
-    await ctx.respond(f"Now playing: `{song.title}`")  # and return a success message
+    # unlike PCMAudio, you do not need to manually open and read
+    # the file, the library will do it for you.
+    # FFmpegPCMAudio takes a path to a valid audio file as its first parameter
+    # this means that both relative and absolute paths are allowed
+    source = discord.FFmpegPCMAudio("audio_file.mp3")
+    ctx.voice_client.play(source)
+    await ctx.respond("Playing FFmpeg PCM audio.")
 ```
 
+### [`PCMVolumeTransformer`](https://docs.pycord.dev/en/stable/api/voice.html#discord.PCMVolumeTransformer)
+
+`PCMVolumeTransformer` is an audio source that simplifies the volume changing process in PCM sources
+(such as `PCMAudio` or `FFmpegPCMAudio`) by doing it for you.
+
+This also allows you to dynamically change the volume during playback, by just setting a new value to the
+`volume` property.
+
+```py title="Using PCMVolumeTransformer"
+import discord
+
+bot = discord.Bot()
+
+@bot.command()
+async def play(ctx: discord.ApplicationContext, volume: float = 1.0) -> None:
+    if not ctx.voice_client:
+        await ctx.author.voice.channel.connect()
+
+    # this can be any non-opus source (such as discord.PCMAudio or discord.FFmpegPCMAudio)
+    original_source = ...
+
+    source = discord.PCMVolumeTransformer(original_source, volume=volume)
+    ctx.voice_client.play(source)
+    await ctx.respond("Playing PCM volume transformed audio.")
+
+
+@bot.command()
+async def volume(ctx: discord.ApplicationContext, *, volume: float) -> None:
+    if not ctx.voice_client or not ctx.voice_client.source:
+        await ctx.respond("Connect to a voice channel and play something first!")
+        return
+
+    ctx.voice_client.source.volume = volume
+    await ctx.respond(f"Changed the audio volume to {volume}")
 ```
-# link with playing-now-playing.json
+
+### [`FFmpegOpusAudio`](https://docs.pycord.dev/en/stable/api/voice.html#discord.FFmpegOpusAudio)
+
+This is similar to `FFmpegPCMAudio`, but, as the name suggests, this does not produce manipulable PCM
+streams and directly encodes audio streams to Opus.
+
+This is the most efficient and recommended way to play local media files or web streams directly into
+a voice channel **only when no extra processing (such as changing volume) is required**.
+
+`FFmpegOpusAudio` also uses `ffmpeg` (or `avconv`) to encode common audio formats to Opus, which is the
+native audio format Discord requires for voice transmission.
+
+Unlike other sources, this one has to be initialized by using the `FFmpegOpusAudio.from_probe` classmethod.
+This analyzes the audio to obtain the codec and bitrate of the audio, so it uses the fastest and
+most efficient way to encode it to Opus, this is done by using `ffprobe` (or `avprobe`).
+
+```py title="Initializing a FFmpegOpusAudio"
+source = await discord.FFmpegOpusAudio.from_probe("audio.webm")
+voice_client.play(source)
 ```
 
-<br />
+`FFmpegOpusAudio.from_probe` also allows you to pass a custom `method`, used to determine the codec and
+bitrate of the audio source. This can be a string defining whether to use the `native` probe
+(`ffprobe` / `avprobe`), or `fallback`, which falls back to use `ffmpeg` / `avconv`. The latter
+may be used by Windows users when none of `ffprobe` or `avprobe` is installed.
 
-Now that you've done this, the only thing left to do is make your connect events.
+This can also take custom functions which take two parameters, the `source` and the `executable`, and
+should return a tuple of `(codec, bitrate)`.
 
-### Adding connect events
+```py title="Using FFmpegOpusAudio"
+import discord
 
-The final step to this guide is connecting the node to your server when the bot goes online.
+bot = discord.Bot()
 
-To make it, you will want to do the following:
+@bot.command()
+async def play(ctx: discord.ApplicationContext) -> None:
+    if not ctx.voice_client:
+        await ctx.author.voice.channel.connect()
 
-```py title="Adding connect events"
-@bot.event
-async def on_ready():
-    await connect_nodes()  # connect to the server
-
-
-@bot.event
-async def on_wavelink_node_ready(payload: wavelink.NodeReadyEventPayload):
-    # Everytime a node is successfully connected, we
-    # will print a message letting it know.
-    print(f"Node with ID {payload.session_id} has connected")
-    print(f"Resumed session: {payload.resumed}")
-
-
-bot.run("token")
+    source = await discord.FFmpegOpusAudio.from_probe("audio.wav")
+    ctx.voice_client.play(source)
+    await ctx.respond("Playing FFmpeg Opus audio.")
 ```
 
-Congratulations! You have now implemented voice playing into your bot! Most bots and Discord API
-wrappers don't have this as a feature, so this is quite an accomplishment. Thankfully, Pycord makes
-it easy to make complex bots so that you can get even the most advanced of ideas down.
+And... congratulations! You now know how to implement audio sources for voice channel playback into your
+bot! Some audio sources may look more complex than others, but all of them keep an easy and simple design
+so you can make complex bots and get even the most advanced of ideas down.
 
 !!! info "Related Topics"
 
     - [Rules and Common Practices](../getting-started/rules-and-common-practices.md)
+    - [Advanced Audio Playback](./advanced-playing.md)
