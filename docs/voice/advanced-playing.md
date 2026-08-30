@@ -224,4 +224,4 @@ Pycord makes it easy to make complex bots so that you can get the most advanced 
 
 !!! info "Related Topics"
 
-    - [Rules and Common Practises](../getting-started/rules-and-common-practises.md)
+    - [Rules and Common Practices](../getting-started/rules-and-common-practices.md)
