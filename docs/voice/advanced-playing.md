@@ -206,10 +206,6 @@ The final step of this guide is connecting to the node to your server when the b
 To make it, you will want to do the following:
 
 ```py title="Adding connect events"
-@bot.listen()
-async def on_connect() -> None:
-    await sl_client.start()  # Starting the client & connect all nodes
-
 @bot.event
 async def on_sonolink_node_ready(payload: sonolink.gateway.ReadyEvent) -> None:
     print(f"Node with ID {payload.node.id!r} has connected!")
