@@ -191,7 +191,7 @@ async def play(ctx: discord.ApplicationContext, *, search: str) -> None:
         track = result.result
 
     # And finally... we play the track we obtained
-    await vc.play(song)
+    await vc.play(track)
     await ctx.respond(f"Now playing: `{track.title}`")
 ```
 
