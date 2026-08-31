@@ -118,6 +118,7 @@ sl_client.create_node(
 @bot.listen()
 async def on_connect() -> None:
     await sl_client.start()  # starts connection to the created nodes
+    print("SonoLink nodes connected successfully!")
 ```
 
 <br />
