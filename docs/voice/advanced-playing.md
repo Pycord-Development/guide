@@ -207,9 +207,9 @@ To make it, you will want to do the following:
 
 ```py title="Adding connect events"
 @bot.event
-async def on_sonolink_node_ready(payload: sonolink.gateway.ReadyEvent) -> None:
-    print(f"Node with ID {payload.node.id!r} has connected!")
-    print(f"Resumed session: {payload.resumed}")
+async def on_sonolink_node_ready(event: sonolink.gateway.ReadyEvent) -> None:
+    print(f"Node with ID {event.node.id!r} has connected!")
+    print(f"Resumed session: {event.resumed}")
 
 bot.run("token")
 ```
