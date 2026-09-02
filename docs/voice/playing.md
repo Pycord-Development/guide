@@ -10,7 +10,7 @@ guide provides simple and easy examples of using the multiple ways the library a
 you to play audio.
 
 For users that want extra examples, you can find some in Pycord's
-[Github repository](https://github.com/Pycord-Development/pycord/blob/master/examples/).
+[GitHub repository](https://github.com/Pycord-Development/pycord/blob/master/examples/).
 
 ## Starting out
 
