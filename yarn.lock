@@ -1247,53 +1247,53 @@
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
   integrity sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==
 
-"@crowdin/cli-darwin-arm64@5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@crowdin/cli-darwin-arm64/-/cli-darwin-arm64-5.0.1.tgz#e0008e857a605368e8919d57002521bf1686fa78"
-  integrity sha512-x8sfmegf4Rqdyw6mTH5Dvj+MKpSNrU32xLZjjZZ3SZ9jDGIke/ULOTO4mbd2UA+ryNrk+a9PgHxcKX5CF0LDgg==
+"@crowdin/cli-darwin-arm64@5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@crowdin/cli-darwin-arm64/-/cli-darwin-arm64-5.0.2.tgz#69c4e319fb63a2005305a2b90a502556e6d32655"
+  integrity sha512-gMNXyJYxkfgJF4cAXrss6mgkvPoFOkwRi4PO/93+wlOMTLOQ7ENlq45hbjQqxAsLbysYF1oHyzafaPNlC7JuMQ==
 
-"@crowdin/cli-darwin-x64@5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@crowdin/cli-darwin-x64/-/cli-darwin-x64-5.0.1.tgz#22537a5acc218ae67502ad2b50cd1a205110ebd6"
-  integrity sha512-tKWIGOKJVW+0L40E5pEhy4ghlFd5nYzJLdYbrTnOtmK+g3D/QkQpmY5Y3yujZah1A9KOewg5AgNDl2sEZFASLQ==
+"@crowdin/cli-darwin-x64@5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@crowdin/cli-darwin-x64/-/cli-darwin-x64-5.0.2.tgz#faf0bbc09d961f60e436839d73f6bac46e49bab2"
+  integrity sha512-0iBJLy+kn0W095lFlkPG0jE0uLamFGjSR15N9yW3Q+Yps1zJBVyIH9IpjvALZOEHX0w9l5DZdCWzDowD9GTSQg==
 
-"@crowdin/cli-linux-arm64-musl@5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@crowdin/cli-linux-arm64-musl/-/cli-linux-arm64-musl-5.0.1.tgz#32f22b98ea843a7b67b889f0b72ddf54fae3df24"
-  integrity sha512-88r2zA+QwgzqqY6cY2qdFlO8r5gmMkv4WYFeiCh6fIFMFcFFpKkJh1xyAu/bg+Gt6/ltOXHWXtflkxppncvmpg==
+"@crowdin/cli-linux-arm64-musl@5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@crowdin/cli-linux-arm64-musl/-/cli-linux-arm64-musl-5.0.2.tgz#0d3141e8d4ec327e99e29ef7e29bdf2a70a5d1a8"
+  integrity sha512-/cfHw6bvPgFCGdIhYyFltGSQt33vgYbK1gFZO3BVGpM4gxLj/7cHz6sU4IRw+vHvSIHanfqeyAZzVLpCsfQwiA==
 
-"@crowdin/cli-linux-arm64@5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@crowdin/cli-linux-arm64/-/cli-linux-arm64-5.0.1.tgz#78589741078a774f8aab9be91759cac395ab9462"
-  integrity sha512-cZrzCGNeN6n0QVTYnSBy18mdv4M+PcXyJ/MAAIq4E603WEP2pKQ5KM9eS32tdQIIaCl3NZ8miXundFcYOAlHEQ==
+"@crowdin/cli-linux-arm64@5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@crowdin/cli-linux-arm64/-/cli-linux-arm64-5.0.2.tgz#b777dc5044a5c63500d21a1116a6e1359013e330"
+  integrity sha512-8LPMdQqqdVrn5t1KWywv/ewmxslwvUKMaFLFlNj44DFwRyd34yCXM3J56HazepMhuXIBD8tx0W6WMt9axv4j5w==
 
-"@crowdin/cli-linux-x64-musl@5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@crowdin/cli-linux-x64-musl/-/cli-linux-x64-musl-5.0.1.tgz#181280ba6ae0f6e5d13200eca248345eaade6f9e"
-  integrity sha512-4MGZ+1M+A2cp8RyuQC2cvX5wwEpPS4i/qOVTGJ3QIYK0xn3IR/GKt9QObKqIjZNYCsn8tUDzwDiyHuM+LZmhUw==
+"@crowdin/cli-linux-x64-musl@5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@crowdin/cli-linux-x64-musl/-/cli-linux-x64-musl-5.0.2.tgz#354bc8e17567a49eba14f9aebf02da9d051860aa"
+  integrity sha512-0BwcXbcBvCqutHyegSUqdUfSSrkNSxaar4y4TZE3Kgfjcw2laiTeOK8CAWhWxk523Jj/3/6P45wById07g0qKQ==
 
-"@crowdin/cli-linux-x64@5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@crowdin/cli-linux-x64/-/cli-linux-x64-5.0.1.tgz#a621160061e35221d44c1a44873262e783817706"
-  integrity sha512-a76gwEcI0EUPcZKhjHsWP6V8BhoLqK7Qo19avQ5Fdque+uh7YTfYZ5CYM8oI2PIozkpL7rXECj4PY7Ul07vxTA==
+"@crowdin/cli-linux-x64@5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@crowdin/cli-linux-x64/-/cli-linux-x64-5.0.2.tgz#7dcf9aa26684a2485329bea36befeee665aee826"
+  integrity sha512-Fk1abpG2a9tM+49NyZU6l1/OyooNz9ZPIrpsR4xWP/c6ui0rh1l2XjOtbPjvXh2dW3YWemeOqiatW2j+WFj/cg==
 
-"@crowdin/cli-win32-x64@5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@crowdin/cli-win32-x64/-/cli-win32-x64-5.0.1.tgz#ba55ce539c1012ceb256224e246cedd0413bca4e"
-  integrity sha512-wqPqWsCtw2s2eVopy2ZEYC6KfIcphI/1dVo+ikJAb47OQwzRot3JWN2n9GS+WKtRqtfuCTug3QVOx6Ypbme43Q==
+"@crowdin/cli-win32-x64@5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@crowdin/cli-win32-x64/-/cli-win32-x64-5.0.2.tgz#0a23290337543a47313e2789cf9f4cd954afe266"
+  integrity sha512-cMarWbzeJvJ6f0MNwRH2fEEKKUM8gQn+oEtCo2PQ3a3wXXMpOb1gRw96tthgYxaHIHISYxdYalNNITnswLGE/A==
 
-"@crowdin/cli@5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@crowdin/cli/-/cli-5.0.1.tgz#d00d1de8b74785de5294c5a18dce26f68c96c30c"
-  integrity sha512-4CUJYUNK8qVB2htvdbGWsmToC2wB9L3L7O41jfhlWs5QK/YpeMjnDJIkN5fDL6bq9Iq9AlgsGqVojamQwmqWkw==
+"@crowdin/cli@5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@crowdin/cli/-/cli-5.0.2.tgz#398217fe0555e5c178d4c316c94a5a7b5b2a8036"
+  integrity sha512-TBUGFCIzAexEvePLet8aBRUEicB1A8r+A3/3gz+4paVKEc86cHK2CtaNhbto1ptKMRPkgFGXq8Z3f/TaoF09Lw==
   optionalDependencies:
-    "@crowdin/cli-darwin-arm64" "5.0.1"
-    "@crowdin/cli-darwin-x64" "5.0.1"
-    "@crowdin/cli-linux-arm64" "5.0.1"
-    "@crowdin/cli-linux-arm64-musl" "5.0.1"
-    "@crowdin/cli-linux-x64" "5.0.1"
-    "@crowdin/cli-linux-x64-musl" "5.0.1"
-    "@crowdin/cli-win32-x64" "5.0.1"
+    "@crowdin/cli-darwin-arm64" "5.0.2"
+    "@crowdin/cli-darwin-x64" "5.0.2"
+    "@crowdin/cli-linux-arm64" "5.0.2"
+    "@crowdin/cli-linux-arm64-musl" "5.0.2"
+    "@crowdin/cli-linux-x64" "5.0.2"
+    "@crowdin/cli-linux-x64-musl" "5.0.2"
+    "@crowdin/cli-win32-x64" "5.0.2"
 
 "@csstools/cascade-layer-name-parser@^2.0.5":
   version "2.0.5"
@@ -5098,10 +5098,10 @@ dns-packet@^5.2.2:
   dependencies:
     "@leichtgewicht/ip-codec" "^2.0.1"
 
-docusaurus-plugin-sass@0.2.6:
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/docusaurus-plugin-sass/-/docusaurus-plugin-sass-0.2.6.tgz#b4930a1fe1cc7bcead639bb1bee38bce0ffd073d"
-  integrity sha512-2hKQQDkrufMong9upKoG/kSHJhuwd+FA3iAe/qzS/BmWpbIpe7XKmq5wlz4J5CJaOPu4x+iDJbgAxZqcoQf0kg==
+docusaurus-plugin-sass@0.2.7:
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/docusaurus-plugin-sass/-/docusaurus-plugin-sass-0.2.7.tgz#305d3399e331e11f02a0ab69800aa5ba13d5f406"
+  integrity sha512-v+XWW2BBlKiBfqNbDr8iF/DUcWIXDTsAVAfkbG0/pzCx9yV0zK6Qu0ZVFxpZXcMihokzl0zFD1HIN/M4TnzEwA==
   dependencies:
     sass-loader "^16.0.2"
 
@@ -9926,10 +9926,10 @@ sass-loader@^16.0.2:
   dependencies:
     neo-async "^2.6.2"
 
-sass@1.103.1:
-  version "1.103.1"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.103.1.tgz#13b70f5ff69288db956dc27d27c8fb79f3a27c61"
-  integrity sha512-9icZURbP51S6S0QGoyaeqk9uB06GNWxsFYWfH5RgpFgqK5FA8tJcM3AdVxrZEVJ7dz+L87nG95gBKf4VuaMHGw==
+sass@1.104.0:
+  version "1.104.0"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.104.0.tgz#40a6dfc42f8cc469f7f2c10b40c6a0b8577895ac"
+  integrity sha512-btHMApW2bgolvClhRW8AlQJzgI9lUB3pPSofBQQT+E46GWvf9o0TVQ13SYv5riWZVFyPN+JNz3TKW9XhBlc10w==
   dependencies:
     chokidar "^5.0.0"
     immutable "^5.1.5"
