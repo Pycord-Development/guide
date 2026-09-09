@@ -11,7 +11,7 @@ and offloading voice processing to standalone audio nodes, using Lavalink.
 
 ## Starting out
 
-In the [previous guide](./playing.md), standard audio sources that Pycord provides were covered. While
+[Playing Audio in Voice Channels](./playing.md) has covered Pycord-provided standard audio sources. While
 these built-in classes cover most general needs, [`discord.AudioSource`](https://docs.pycord.dev/en/stable/api/voice.html#discord.AudioSource)
 can be subclassed to create custom audio pipelines, synthesizers, or memory stream handlers.
 
@@ -217,7 +217,7 @@ async def on_sonolink_node_ready(payload: sonolink.gateway.ReadyEvent) -> None:
 bot.run("token")
 ```
 
-Congratulations! You are now able to create custom Audio Sources for advanced playback, and offloading
+Congratulations! You are now able to create custom audio sources for advanced playback, and offloading
 the playback to an external node using Lavalink and interacting with it using Sonolink! Most bots and
 Discord API wrappers don't have this as a feature, so this is quite an accomplishment. Thankfully,
 Pycord makes it easy to make complex bots so that you can get the most advanced of ideas down.
