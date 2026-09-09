@@ -118,6 +118,7 @@ sl_client.create_node(
 @bot.listen()
 async def on_connect() -> None:
     await sl_client.start()  # starts connection to the created nodes
+    print("SonoLink nodes connected successfully!")
 ```
 
 <br />
@@ -190,7 +191,7 @@ async def play(ctx: discord.ApplicationContext, *, search: str) -> None:
         track = result.result
 
     # And finally... we play the track we obtained
-    await vc.play(song)
+    await vc.play(track)
     await ctx.respond(f"Now playing: `{track.title}`")
 ```
 
@@ -205,14 +206,10 @@ The final step of this guide is connecting to the node to your server when the b
 To make it, you will want to do the following:
 
 ```py title="Adding connect events"
-@bot.listen()
-async def on_connect() -> None:
-    await sl_client.start()  # Starting the client & connect all nodes
-
 @bot.event
-async def on_sonolink_node_ready(payload: sonolink.gateway.ReadyEvent) -> None:
-    print(f"Node with ID {payload.node.id!r} has connected!")
-    print(f"Resumed session: {payload.resumed}")
+async def on_sonolink_node_ready(event: sonolink.gateway.ReadyEvent) -> None:
+    print(f"Node with ID {event.node.id!r} has connected!")
+    print(f"Resumed session: {event.resumed}")
 
 bot.run("token")
 ```
