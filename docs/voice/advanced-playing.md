@@ -111,7 +111,7 @@ sl_client = sonolink.Client(bot)
 
 sl_client.create_node(
     id="main-node",  # the unique ID for the node being created
-    uri="http://0.0.0.0:443",  # HTTP(S) protocol is required when passing URI
+    uri="http://0.0.0.0:2333",  # HTTP(S) protocol is required when passing URI
     password="youshallnotpass"
 )
 
