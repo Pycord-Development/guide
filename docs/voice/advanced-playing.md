@@ -16,7 +16,7 @@ these built-in classes cover most general needs, [`discord.AudioSource`](https:/
 can be subclassed to create custom audio pipelines, synthesizers, or memory stream handlers.
 
 However, as a bot grows larger, handling multiple local FFmpeg processes and real-time encoding on the
-same machine as your bot's running can quickly bottleneck CPU performance. To solve this, advanced
+same machine your bot is running on can quickly bottleneck CPU performance. To solve this, advanced
 bot architectures decouple playback entirely by relying on external audio servers such as Lavalink and
 interacting with them through lightweight client libraries like SonoLink.
 
@@ -31,9 +31,9 @@ You may override `is_opus` when the audio returned by the `read` method is alrea
 When no more audio is available, you can return an empty bytes-like object to tell the library the
 audio reading is over.
 
-You may also override `cleanup` when extra clean-up processes are needed when the reading is complete.
+You may also override `cleanup` when extra clean-up processes are needed if the reading is complete.
 
-A common usecase for subclassing an `AudioSource` is when you want to implement an audio player that extracts audio from an online source, such as YouTube (using `youtube_dl`/`yt_dlp`).
+A common use case for subclassing an `AudioSource` is when you want to implement an audio player that extracts audio from an online source, such as YouTube (using `youtube_dl`/`yt_dlp`).
 
 ```py title="Implementing a custom audio source"
 import asyncio
@@ -66,7 +66,7 @@ class YTDLSource(discord.AudioSource):
 
     @classmethod
     async def from_url(cls, url: str) -> YTDLSource:
-        # here, we will implement our logic from obtaining the youtube audio from an url
+        # here, we will implement our logic for obtaining the youtube audio from an url
         # we will be using asyncio.to_thread, because extracting the info is a sync operation
         # and may block our bot for the duration it takes to finish
         data = await asyncio.to_thread(ytdl.extract_info, url, download=True)
@@ -85,10 +85,10 @@ For a more advanced explanation and implementation of this source, check
 ### Using Lavalink
 
 Lavalink is the ultimate audio playback server tool, as it can handle both remote and local audio
-playing while being easy to handle and setup, and low-usage.
+playing while being easy to handle and set up, and low-usage.
 
 First, you need to run a [Lavalink Server](https://github.com/lavalink-devs/Lavalink) to connect with.
-In case you do not know how, there are multiple documentations to do so that will not be covered here,
+In case you do not know how, there are multiple documentation to do so that will not be covered here,
 but we recommend you the [SonoLink Lavalink Setup Guide](https://sonolink.readthedocs.io/en/latest/guides/lavalink-setup.html).
 
 To interact with your Lavalink server you must send HTTP requests, but here we will be using
@@ -214,8 +214,8 @@ async def on_sonolink_node_ready(event: sonolink.gateway.ReadyEvent) -> None:
 bot.run("token")
 ```
 
-Congratulations! You are now able to create custom audio sources for advanced playback, and offloading
-the playback to an external node using Lavalink and interacting with it using Sonolink! Most bots and
+Congratulations! You are now able to create custom audio sources for advanced playback, and to offload
+the playback to an external node using Lavalink and interacting with it using SonoLink! Most bots and
 Discord API wrappers don't have this as a feature, so this is quite an accomplishment. Thankfully,
 Pycord makes it easy to make complex bots so that you can get the most advanced of ideas down.
 

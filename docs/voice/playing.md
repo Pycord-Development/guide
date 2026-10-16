@@ -14,7 +14,7 @@ For users that want extra examples, you can find some in Pycord's
 
 ## Starting out
 
-Pycord natively provides an [`discord.AudioSource`](https://docs.pycord.dev/en/stable/api/voice.html#discord.AudioSource)
+Pycord natively provides a [`discord.AudioSource`](https://docs.pycord.dev/en/stable/api/voice.html#discord.AudioSource)
 object. This object defines the structure audio sources must follow in order to be accepted by
 the library. For more information on this structure, check the respective documentation.
 
@@ -54,7 +54,7 @@ async def play(ctx: discord.ApplicationContext) -> None:
 ### [`FFmpegPCMAudio`](https://docs.pycord.dev/en/stable/api/voice.html#discord.FFmpegPCMAudio)
 
 Unlike `PCMAudio`, `FFmpegPCMAudio` allows you to pass different audio file formats and automatically
-decode it to PCM. This is done by using the `ffmpeg` (or `avconv`) executables to convert these audio
+decode them to PCM. This is done by using the `ffmpeg` (or `avconv`) executables to convert these audio
 streams into manipulable PCM data in a dedicated sub-process.
 
 This intermediate PCM step is slightly more CPU-intensive, as it has to encode the raw audio again into
@@ -73,8 +73,8 @@ async def play(ctx: discord.ApplicationContext) -> None:
 
     # unlike PCMAudio, you do not need to manually open and read
     # the file, the library will do it for you.
-    # FFmpegPCMAudio takes a path to a valid audio file as its first parameter
-    # this means that both relative and absolute paths are allowed
+    # FFmpegPCMAudio takes a path to a valid audio file as its first parameter.
+    # This means that both relative and absolute paths are allowed
     source = discord.FFmpegPCMAudio("audio_file.mp3")
     ctx.voice_client.play(source)
     await ctx.respond("Playing FFmpeg PCM audio.")
@@ -85,7 +85,7 @@ async def play(ctx: discord.ApplicationContext) -> None:
 `PCMVolumeTransformer` is an audio source that simplifies the volume changing process in PCM sources
 (such as `PCMAudio` or `FFmpegPCMAudio`) by doing it for you.
 
-This also allows you to dynamically change the volume during playback, by just setting a new value to the
+This also allows you to dynamically change the volume during playback by just setting a new value for the
 `volume` property.
 
 ```py title="Using PCMVolumeTransformer"
@@ -103,7 +103,7 @@ async def play(ctx: discord.ApplicationContext, volume: float = 1.0) -> None:
 
     source = discord.PCMVolumeTransformer(original_source, volume=volume)
     ctx.voice_client.play(source)
-    await ctx.respond("Playing PCM volume transformed audio.")
+    await ctx.respond("Playing volume-transformed PCM audio.")
 
 
 @bot.command()
@@ -127,9 +127,10 @@ a voice channel **only when no extra processing (such as changing volume) is req
 `FFmpegOpusAudio` also uses `ffmpeg` (or `avconv`) to encode common audio formats to Opus, which is the
 native audio format Discord requires for voice transmission.
 
-Unlike other sources, this one has to be initialized by using the `FFmpegOpusAudio.from_probe` classmethod.
-This analyzes the audio to obtain the codec and bitrate of the audio, so it uses the fastest and
-most efficient way to encode it to Opus, this is done by using `ffprobe` (or `avprobe`).
+Unlike other sources, this one is typically initialized via the `FFmpegOpusAudio.from_probe`
+classmethod. 
+This analyzes the audio to obtain its codec and bitrate, so it uses the fastest and
+most efficient way to encode it to Opus. This is done by using `ffprobe` (or `avprobe`).
 
 ```py title="Initializing a FFmpegOpusAudio"
 source = await discord.FFmpegOpusAudio.from_probe("audio.webm")
@@ -138,7 +139,7 @@ voice_client.play(source)
 
 `FFmpegOpusAudio.from_probe` also allows you to pass a custom `method`, used to determine the codec and
 bitrate of the audio source. This can be a string defining whether to use the `native` probe
-(`ffprobe` / `avprobe`), or `fallback`, which falls back to use `ffmpeg` / `avconv`. The latter
+(`ffprobe` / `avprobe`), or `fallback`, which falls back to using `ffmpeg` / `avconv`. The latter
 may be used by Windows users when none of `ffprobe` or `avprobe` is installed.
 
 This can also take custom functions which take two parameters, the `source` and the `executable`, and
