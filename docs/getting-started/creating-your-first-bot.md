@@ -12,17 +12,22 @@ you should:
 
 1. Go to the [Discord Developer Portal](https://discord.com/developers/applications) and click
     on <button class="blurplebutton">New Application</button>.
+    ![The Applications page of the Discord Developer Portal](../assets/developer-portal/applications-list.png)
 1. Give your bot a name, and click <button class="blurplebutton">Create</button>.
+    ![The "Create a new app" dialog](../assets/developer-portal/create-application.png)
 1. Now, you should see a page like this.
-    ![image](https://gblobscdn.gitbook.com/assets%2F-MjPk-Yu4sOq8KGrr_yG%2F-MjdW3OQnwUhacopqSWw%2F-Mjd_-mxrJCrzmaXrAg8%2Fimage.png?alt=media&token=b8e2ae6c-2290-4d37-ad7c-eb412f3fb00e)
+    ![The General Information page of an application](../assets/developer-portal/general-information.png)
 1. Click on the <button class="greybutton">Bot</button> tab on the left side of the screen.
 1. Click on <button class="blurplebutton">Add bot</button>.
 1. You can give it a name, change the Avatar, etc.
+    ![The Bot page of an application](../assets/developer-portal/bot-page.png)
 
 ## Inviting the bot
 
 Now, lets get the bot added to some servers. Go to the <button class="greybutton">OAuth2</button> tab
 in the left pane and select `bot` and `applications.commands` as scopes.
+
+![The OAuth2 URL Generator with the bot and applications.commands scopes selected](../assets/developer-portal/oauth2-scopes.png)
 
 You may want your bot to have application commands, which is what the `application.commands` scope
 allows your bot to make.
@@ -37,7 +42,7 @@ your bot's permissions, click on <button class="blurplebutton">copy</button> to 
     your bot truly needs them. Try selecting only permissions the bot will need. For testing,
     Administrator permissions are fine.
 
-![image](https://gblobscdn.gitbook.com/assets%2F-MjPk-Yu4sOq8KGrr_yG%2F-Mk6tNY3LfDkjd6pqdpL%2F-Mk6tkdpddEWoa2jczZk%2Fimage.png?alt=media&token=52c8a29f-a798-48f8-a8c7-4ecca2681f79)
+![The OAuth2 URL Generator with the generated invite link](../assets/developer-portal/oauth2-generated-url.png)
 
 You can use this link to invite the bot.
 
@@ -55,7 +60,7 @@ Now, lets get your bot's token. To do this, you want to:
 
 1. Go back to the <button class="greybutton">Bot</button> tab.
 1. Click on the <button class="blurplebutton">Copy</button> button in the "Token" section.
-    ![image](https://gblobscdn.gitbook.com/assets%2F-MjPk-Yu4sOq8KGrr_yG%2F-MjdbU12JISJorAZxrKH%2F-MjdbpUsapzb5n15Po5P%2Fimage.png?alt=media&token=118e259f-940a-4f6c-b3a3-c29f3a54100d)
+    ![The Token section on the Bot page](../assets/developer-portal/bot-token-public.png)
 
 Now, you have your bot's token copied to your clipboard.
 

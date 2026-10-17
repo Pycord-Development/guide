@@ -35,6 +35,8 @@ Intents allow bot developers to "subscribe" to specific events in Discord. This 
 
 Discord defines some intents as "privileged" because of the sensitive information they contain. Currently, there are three privileged intents: `members`, `presences`, and `message_content`. These intents must be enabled in your bot's Developer Portal. Once your bot reaches 100 servers, you will need to verify your bot for these intents to keep working and for your bot to be able to be invited to more guilds.
 
+![The Privileged Gateway Intents section of the Bot page](../assets/developer-portal/privileged-intents.png)
+
 !!! tip
 
     Only enable these intents if you need them. These intents give your bot access to quite sensitive information about the users in your guild. These intents are privileged to respect the privacy of users, and you should do that as well.
