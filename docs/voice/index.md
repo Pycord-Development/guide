@@ -20,6 +20,6 @@ The following features are optional:
     Some hosts may not come with it, though, so remember to always check if required dependencies are installed.
 
 - [`FFmpeg`](https://ffmpeg.org) - used for sending/receiving files other than `.pcm` and `.wav`
-- [`Pycord.Wavelink`](https://github.com/Pycord-Development/Pycord.Wavelink),
+- [`SonoLink`](https://github.com/sonolink/sonolink) - used for advanced audio playback
     [`Lavalink.py`](https://github.com/Devoxin/Lavalink.py),
     [`Wavelink`](https://github.com/PythonistaGuild/Wavelink) or any other Python LavaLink library for music playback.
