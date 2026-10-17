@@ -23,7 +23,7 @@ with the most common audio source types.
 
 ### [`PCMAudio`](https://docs.pycord.dev/en/stable/api/voice.html#discord.PCMAudio)
 
-`PCMAudio` is the base class designed to read raw, uncompressed 16-bit 48kHz stereo PCM bytes
+`PCMAudio` is one of Pycord's built-in `AudioSource` implementations designed to read raw, uncompressed 16-bit, 48 kHz, stereo PCM bytes
 directly from an existing byte stream or file. This essentially means that common audio formats
 such as `mp3`, `wav`, or `ogg` are not valid, as they are not PCM streams (check `FFmpegPCMAudio`).
 
