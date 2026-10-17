@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block extrahead %}
+{% set ns = namespace(title="", content="", readtime_s="", icon_href="https://guide.pycord.dev/img/logo.png") %}
+{% set ns.title = page.meta.title if page.meta and page.meta.title else page.title|striptags %}
+{% set ns.content = page.meta.description if page.meta and page.meta.description else config.site_description %}
+
+{% if page.url %}
+{% set chars = page.content|striptags|length %}
+{% if chars > 300 %}
+{% set minutes = (chars / 1590)|round|int %}
+{% if minutes < 1 %}{% set minutes = 1 %}{% endif %}
+{% set ns.readtime_s = lang.t("readtime.one") if minutes == 1 else lang.t("readtime.other")|replace("#", minutes|string) %}
+{% set stripped = page.content|striptags %}
+{% if stripped|length > 250 %}
+{% set ns.content = stripped[:247] ~ "..." %}
+{% else %}
+{% set ns.content = stripped %}
+{% endif %}
+{% endif %}
+{% endif %}
+<script id="discord:component-embed" type="application/json">
+    {
+        "component": {
+            "type": 17,
+            "accent_color": null,
+            "spoiler": false,
+            "components": [
+                {
+                    "type": 10,
+                    "content": {{ ("# " ~ ns.title)|tojson }}
+                },
+                {
+                    "type": 9,
+                    "accessory": {
+                        "type": 11,
+                        "media": {
+                            "url": {{ ns.icon_href | tojson }}
+                        },
+                        "description": null,
+                        "spoiler": false
+                    },
+                    "components": [
+                        {
+                            "type": 10,
+                            "content": {{ ns.content|tojson }}
+                        }
+                    ]
+                },
+                {
+                    "type": 14,
+                    "divider": false,
+                    "spacing": 1
+                },
+                {
+                    "type": 1,
+                    "components": [
+                        {
+                            "type": 2,
+                            "style": 5,
+                            "label": {{ ("Read More" if page.url else "Open")|tojson }},
+                            "emoji": null,
+                            "disabled": false,
+                            "url": {{ page.canonical_url|tojson }}
+                        }
+                    ]
+                }
+                {%- if ns.readtime_s %},
+                {
+                    "type": 10,
+                    "content": {{ ("-# " ~ ns.readtime_s)|tojson }}
+                }
+                {%- endif %}
+            ]
+        }
+    }
+</script>
+{% endblock %}
