@@ -128,7 +128,7 @@ a voice channel **only when no extra processing (such as changing volume) is req
 native audio format Discord requires for voice transmission.
 
 Unlike other sources, this one is typically initialized via the `FFmpegOpusAudio.from_probe`
-classmethod. 
+classmethod.
 This analyzes the audio to obtain its codec and bitrate, so it uses the fastest and
 most efficient way to encode it to Opus. This is done by using `ffprobe` (or `avprobe`).
 

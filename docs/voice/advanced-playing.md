@@ -126,7 +126,7 @@ async def on_connect() -> None:
 Now you are finished making your node! Next, you will want to:
 
 1. Make a `play` command
-2. Add connection-handling events
+1. Add connection-handling events
 
 #### Making a `play` command
 
