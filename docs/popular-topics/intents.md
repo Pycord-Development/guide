@@ -3,6 +3,7 @@ title: Intents
 description: All about intents in Discord.
 ---
 
+
 ## What are Intents?
 
 Intents allow bot developers to "subscribe" to specific events in Discord. This is useful for bots that need to respond to specific events, such as when a user joins a server or sends a message. You could choose to enable all intents or to enable only specific intents that your bot requires.
