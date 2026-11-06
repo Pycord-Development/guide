@@ -35,6 +35,8 @@ Providing a Terms of Service for your bot is optional, though usually a best pra
 what they can and cannot do with your service, and makes it easier to settle disputes if someone
 disagrees with you.
 
+![The Terms of Service URL and Privacy Policy URL fields on the General Information page](../assets/developer-portal/legal-urls.png)
+
 Read more in Discord's official [Legal Docs](https://discord.com/developers/docs/legal).
 
 ### Developer Policy
@@ -74,6 +76,8 @@ is in more than 75 servers. It's generally a good idea to try to get your bot ve
 possible. We're talking at 76 servers soon. This is because Discord can be somewhat slow in terms of
 bot verification, so verifying as soon as possible gives them enough time to verify before your bot
 reaches the 100 server cap. If a bot is not verified, it cannot grow beyond 100 servers.
+
+![The App Verification page listing the verification requirements](../assets/developer-portal/app-verification.png)
 
 It's also a good idea to only apply for the privileged intents that you need. Applying for intents
 your bot doesn't use wastes both your time and Discord's time, as your privileged intent request
